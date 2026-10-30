@@ -67,15 +67,20 @@ skip = [
   "src/in_toto_linkml/schema/attestation/*",
   "tests/neighbours/*",
   ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
-ignore-words-list = "linke"
+# gost is in-toto's name for the GOST R 34.11 digest, and intoto is the InToto
+# class prefix, as in lmodel/slsa.
+ignore-words-list = "linke,gost,intoto"
 quiet-level = 3
 
 # Ref.: https://github.com/crate-ci/typos (spell checker)
 [tool.typos.default.extend-words]
 linke = "linke"
+gost = "gost"
+intoto = "intoto"
 
 [tool.typos.files]
 extend-exclude = [
@@ -88,4 +93,5 @@ extend-exclude = [
   "src/in_toto_linkml/schema/attestation/*",
   "tests/neighbours/*",
   ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
