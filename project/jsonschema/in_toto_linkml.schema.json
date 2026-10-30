@@ -1501,13 +1501,7 @@
             "additionalProperties": false,
             "description": "The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself.",
             "properties": {
-                "predicate_type": {
-                    "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
-                    "format": "uri",
-                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
-                    "type": "string"
-                },
-                "statement_predicate": {
+                "predicate": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/InTotoTestResult"
@@ -1538,6 +1532,12 @@
                         }
                     ],
                     "description": "The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty."
+                },
+                "predicate_type": {
+                    "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
+                    "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
+                    "type": "string"
                 },
                 "statement_type": {
                     "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",

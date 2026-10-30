@@ -1,4 +1,4 @@
-# Fails at: /statement_predicate
+# Fails at: /predicate
 # Invalid: a verification result's fields in a test-result predicate.
 statement_type: https://in-toto.io/Statement/v1
 subject:
@@ -6,7 +6,7 @@ subject:
     digest:
       sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
 predicate_type: https://in-toto.io/attestation/test-result/v0.1
-statement_predicate:
+predicate:
   predicate_kind: InTotoTestResult
   test_result: PASSED
   configuration: []

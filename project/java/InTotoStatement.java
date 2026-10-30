@@ -16,10 +16,10 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class InTotoStatement  {
 
+  private InTotoPredicate predicate;
   private URI statementType;
   private List<InTotoStatementSubject> subject;
   private URI predicateType;
-  private InTotoPredicate statementPredicate;
 
 
 }

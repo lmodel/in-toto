@@ -33,13 +33,11 @@ def test_digest_set_rules_name_every_algorithm():
     assert reserved == {JSON_KEYS.get(name, name) for name in algorithms} | algorithms
 
 
-def test_every_predicate_is_a_kind_of_statement_predicate():
+def test_every_predicate_is_a_kind_of_the_statements_predicate():
     """The statement's predicate ranges over the base every predicate extends,
     so predicate_kind can name each of them."""
     sv = SchemaView(str(SCHEMA))
-    assert sv.induced_slot("statement_predicate", "InTotoStatement").range == (
-        "InTotoPredicate"
-    )
+    assert sv.induced_slot("predicate", "InTotoStatement").range == "InTotoPredicate"
     for name in sv.class_descendants("InTotoPredicate", reflexive=False):
         assert "predicate_kind" in sv.class_slots(name), name
 

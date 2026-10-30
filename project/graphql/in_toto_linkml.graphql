@@ -206,10 +206,10 @@ type InTotoSimpleVerificationResult
 
 type InTotoStatement
   {
+    predicate: InTotoPredicate
     statementType: InTotoTypeUri!
     subject: [InTotoStatementSubject]!
     predicateType: InTotoTypeUri!
-    statementPredicate: InTotoPredicate
   }
 
 type InTotoStatementSubject

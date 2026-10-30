@@ -155,14 +155,14 @@ export interface InTotoStatementSubject extends InTotoResourceDescriptor {
  * The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself.
  */
 export interface InTotoStatement {
+    /** The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty. */
+    predicate?: InTotoPredicate,
     /** The in-toto statement type, always https://in-toto.io/Statement/v1. */
     statement_type: string,
     /** The artifacts the predicate is about, each with a digest. */
     subject: InTotoStatementSubject[],
     /** The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1. */
     predicate_type: string,
-    /** The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty. */
-    statement_predicate?: InTotoPredicate,
 }
 
 

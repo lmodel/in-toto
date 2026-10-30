@@ -5,7 +5,7 @@ subject:
     digest:
       sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
 predicate_type: https://in-toto.io/attestation/link/v0.3
-statement_predicate:
+predicate:
   predicate_kind: InTotoLink
   step_name: build
   step_command:

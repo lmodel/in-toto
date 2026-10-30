@@ -24,11 +24,12 @@ lmodel/slsa gave the layer, which follow the attestation's JSON in snake case:
 `statement_type` for `_type`, `resource_uri` for `uri` and `dir_hash` for
 `dirHash`, for example.
 
-Three names differ from the JSON so that the adapt copy can sit beside LOKF's
-schema. The statement's predicate is `statement_predicate`, because LOKF's
-`predicate` is a relation's type. `media_type` carries DCAT's `mediaType` and
-`algorithm` SPDX 2's `algorithm`, the IRIs LOKF gives the same keys, because
-the framework's fields mean the same.
+Three keys are also LOKF's, so the adapt copy treats them apart. `media_type`
+carries DCAT's `mediaType` and `algorithm` SPDX 2's `algorithm`, the IRIs LOKF
+gives the same keys, because the framework's fields mean the same. The
+statement's `predicate` keeps in-toto's name and its own IRI. It is a slot of
+its own, so `lokf adapt` renames it `in_toto_linkml_predicate` in the copy,
+because LOKF's `predicate` is a relation's type.
 
 The predicates' fields carry a prefix of their predicate's, such as
 `scai_attribute` and `svr_verifier`, or a noun of their own, such as

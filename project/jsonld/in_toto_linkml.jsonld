@@ -554,6 +554,30 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "predicate",
+      "definition_uri": "https://w3id.org/lmodel/in-toto/predicate",
+      "description": "The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.",
+      "comments": [
+        "It is a slot of its own rather than an attribute of InTotoStatement, because LOKF's predicate is a relation's type: `lokf adapt` renames a slot whose name LOKF defines and keeps its IRI, so a copy beside LOKF calls it in_toto_linkml_predicate."
+      ],
+      "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "see_also": [
+        "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md"
+      ],
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/predicate"
+      ],
+      "slot_uri": "https://w3id.org/lmodel/in-toto/predicate",
+      "owner": "InTotoStatement",
+      "domain_of": [
+        "InTotoStatement"
+      ],
+      "range": "InTotoPredicate",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "inTotoDocument__in_toto_statements",
       "description": "The statements, each an in-toto attestation without its envelope.",
       "from_schema": "https://w3id.org/lmodel/in-toto",
@@ -1270,27 +1294,6 @@
       ],
       "range": "in_toto_type_uri",
       "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "inTotoStatement__statement_predicate",
-      "description": "The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.",
-      "comments": [
-        "The attestation's JSON calls this field predicate. The name here keeps it apart from LOKF's predicate, the type of a relation, which a composite schema gives one IRI."
-      ],
-      "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
-      "mappings": [
-        "https://w3id.org/lmodel/in-toto/statement_predicate"
-      ],
-      "slot_uri": "https://w3id.org/lmodel/in-toto/statement_predicate",
-      "alias": "statement_predicate",
-      "owner": "InTotoStatement",
-      "domain_of": [
-        "InTotoStatement"
-      ],
-      "range": "InTotoPredicate",
-      "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3239,10 +3242,10 @@
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md"
       ],
       "slots": [
+        "predicate",
         "inTotoStatement__statement_type",
         "inTotoStatement__subject",
-        "inTotoStatement__predicate_type",
-        "inTotoStatement__statement_predicate"
+        "inTotoStatement__predicate_type"
       ],
       "slot_usage": {},
       "attributes": [
@@ -3273,17 +3276,6 @@
           "slot_uri": "in_toto_linkml:predicate_type",
           "range": "in_toto_type_uri",
           "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "statement_predicate",
-          "description": "The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.",
-          "comments": [
-            "The attestation's JSON calls this field predicate. The name here keeps it apart from LOKF's predicate, the type of a relation, which a composite schema gives one IRI."
-          ],
-          "slot_uri": "in_toto_linkml:statement_predicate",
-          "range": "InTotoPredicate",
-          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],

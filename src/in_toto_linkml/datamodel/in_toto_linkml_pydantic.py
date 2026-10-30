@@ -824,14 +824,17 @@ class InTotoStatement(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/lmodel/in-toto/in_toto_core',
          'see_also': ['https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md']})
 
+    predicate: Optional[Union[InTotoTestResult,InTotoSimpleVerificationResult,InTotoScaiAttributeReport,InTotoLink,InTotoReference,InTotoRelease,InTotoRuntimeTrace,InTotoVulns]] = Field(default=None, description="""The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.""", json_schema_extra = { "linkml_meta": {'comments': ['It is a slot of its own rather than an attribute of '
+                      "InTotoStatement, because LOKF's predicate is a relation's type: "
+                      '`lokf adapt` renames a slot whose name LOKF defines and keeps '
+                      'its IRI, so a copy beside LOKF calls it '
+                      'in_toto_linkml_predicate.'],
+         'domain_of': ['InTotoStatement'],
+         'see_also': ['https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md'],
+         'slot_uri': 'in_toto_linkml:predicate'} })
     statement_type: URI = Field(default=..., description="""The in-toto statement type, always https://in-toto.io/Statement/v1.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoStatement'], 'slot_uri': 'in_toto_linkml:statement_type'} })
     subject: list[InTotoStatementSubject] = Field(default=..., description="""The artifacts the predicate is about, each with a digest.""", min_length=1, json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoStatement'], 'slot_uri': 'in_toto_linkml:subject'} })
     predicate_type: URI = Field(default=..., description="""The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoStatement'], 'slot_uri': 'in_toto_linkml:predicate_type'} })
-    statement_predicate: Optional[Union[InTotoTestResult,InTotoSimpleVerificationResult,InTotoScaiAttributeReport,InTotoLink,InTotoReference,InTotoRelease,InTotoRuntimeTrace,InTotoVulns]] = Field(default=None, description="""The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.""", json_schema_extra = { "linkml_meta": {'comments': ["The attestation's JSON calls this field predicate. The name "
-                      "here keeps it apart from LOKF's predicate, the type of a "
-                      'relation, which a composite schema gives one IRI.'],
-         'domain_of': ['InTotoStatement'],
-         'slot_uri': 'in_toto_linkml:statement_predicate'} })
 
     @field_validator('statement_type')
     def pattern_statement_type(cls, v):

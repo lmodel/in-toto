@@ -273,10 +273,6 @@
          "@type": "xsd:anyURI",
          "@id": "predicate_type"
       },
-      "statement_predicate": {
-         "@type": "@id",
-         "@id": "statement_predicate"
-      },
       "statement_type": {
          "@type": "xsd:anyURI",
          "@id": "statement_type"
@@ -384,6 +380,10 @@
       },
       "severity_score": {
          "@id": "severity_score"
+      },
+      "predicate": {
+         "@type": "@id",
+         "@id": "predicate"
       },
       "resource_uri": {
          "@type": "xsd:anyURI",

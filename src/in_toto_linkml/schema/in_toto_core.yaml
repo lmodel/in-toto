@@ -96,6 +96,22 @@ slots:
     range: InTotoDigestSet
     inlined: true
 
+  predicate:
+    description: >-
+      The predicate, one of the kinds this schema or an importing one models;
+      predicate_kind names which. Unset means the same as empty.
+    see_also:
+      - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md
+    slot_uri: in_toto_linkml:predicate
+    range: InTotoPredicate
+    inlined: true
+    comments:
+      - >-
+        It is a slot of its own rather than an attribute of InTotoStatement, because
+        LOKF's predicate is a relation's type: `lokf adapt` renames a slot whose name
+        LOKF defines and keeps its IRI, so a copy beside LOKF calls it
+        in_toto_linkml_predicate.
+
 classes:
   # ── Resource descriptors ────────────────────────────────────────────────
 
@@ -429,6 +445,8 @@ classes:
       - >-
         A statement is the attestation, and its predicate is one kind of claim about
         the subjects, such as a test result or build provenance.
+    slots:
+      - predicate
     attributes:
       statement_type:
         slot_uri: in_toto_linkml:statement_type
@@ -452,18 +470,6 @@ classes:
           https://in-toto.io/attestation/test-result/v0.1.
         range: in_toto_type_uri
         required: true
-      statement_predicate:
-        slot_uri: in_toto_linkml:statement_predicate
-        description: >-
-          The predicate, one of the kinds this schema or an importing one models;
-          predicate_kind names which. Unset means the same as empty.
-        range: InTotoPredicate
-        inlined: true
-        comments:
-          - >-
-            The attestation's JSON calls this field predicate. The name here keeps it
-            apart from LOKF's predicate, the type of a relation, which a composite
-            schema gives one IRI.
 
   # ── Predicate layer ─────────────────────────────────────────────────────
 

@@ -381,7 +381,7 @@ class InTotoStatement(YAMLRoot):
     statement_type: Union[str, InTotoTypeUri] = None
     subject: Union[Union[dict, InTotoStatementSubject], list[Union[dict, InTotoStatementSubject]]] = None
     predicate_type: Union[str, InTotoTypeUri] = None
-    statement_predicate: Optional[Union[dict, "InTotoPredicate"]] = None
+    predicate: Optional[Union[dict, "InTotoPredicate"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.statement_type):
@@ -400,8 +400,8 @@ class InTotoStatement(YAMLRoot):
         if not isinstance(self.predicate_type, InTotoTypeUri):
             self.predicate_type = InTotoTypeUri(self.predicate_type)
 
-        if self.statement_predicate is not None and not isinstance(self.statement_predicate, InTotoPredicate):
-            self.statement_predicate = InTotoPredicate(**as_dict(self.statement_predicate))
+        if self.predicate is not None and not isinstance(self.predicate, InTotoPredicate):
+            self.predicate = InTotoPredicate(**as_dict(self.predicate))
 
         super().__post_init__(**kwargs)
 
@@ -1283,6 +1283,9 @@ slots.resource_uri = Slot(uri=IN_TOTO_LINKML.resource_uri, name="resource_uri", 
 slots.digest = Slot(uri=IN_TOTO_LINKML.digest, name="digest", curie=IN_TOTO_LINKML.curie('digest'),
                    model_uri=IN_TOTO_LINKML.digest, domain=None, range=Optional[Union[dict, InTotoDigestSet]])
 
+slots.predicate = Slot(uri=IN_TOTO_LINKML.predicate, name="predicate", curie=IN_TOTO_LINKML.curie('predicate'),
+                   model_uri=IN_TOTO_LINKML.predicate, domain=None, range=Optional[Union[dict, InTotoPredicate]])
+
 slots.inTotoDocument__in_toto_statements = Slot(uri=IN_TOTO_LINKML.in_toto_statements, name="inTotoDocument__in_toto_statements", curie=IN_TOTO_LINKML.curie('in_toto_statements'),
                    model_uri=IN_TOTO_LINKML.inTotoDocument__in_toto_statements, domain=None, range=Optional[Union[Union[dict, InTotoStatement], list[Union[dict, InTotoStatement]]]])
 
@@ -1427,9 +1430,6 @@ slots.inTotoStatement__subject = Slot(uri=IN_TOTO_LINKML.subject, name="inTotoSt
 
 slots.inTotoStatement__predicate_type = Slot(uri=IN_TOTO_LINKML.predicate_type, name="inTotoStatement__predicate_type", curie=IN_TOTO_LINKML.curie('predicate_type'),
                    model_uri=IN_TOTO_LINKML.inTotoStatement__predicate_type, domain=None, range=Union[str, InTotoTypeUri])
-
-slots.inTotoStatement__statement_predicate = Slot(uri=IN_TOTO_LINKML.statement_predicate, name="inTotoStatement__statement_predicate", curie=IN_TOTO_LINKML.curie('statement_predicate'),
-                   model_uri=IN_TOTO_LINKML.inTotoStatement__statement_predicate, domain=None, range=Optional[Union[dict, InTotoPredicate]])
 
 slots.inTotoPredicate__predicate_kind = Slot(uri=IN_TOTO_LINKML.predicate_kind, name="inTotoPredicate__predicate_kind", curie=IN_TOTO_LINKML.curie('predicate_kind'),
                    model_uri=IN_TOTO_LINKML.inTotoPredicate__predicate_kind, domain=None, range=Optional[str])

@@ -5,7 +5,7 @@ subject:
     digest:
       sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
 predicate_type: https://in-toto.io/attestation/test-result/v0.1
-statement_predicate:
+predicate:
   predicate_kind: InTotoTestResult
   test_result: PASSED
   configuration:

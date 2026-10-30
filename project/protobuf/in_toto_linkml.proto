@@ -259,14 +259,14 @@ message InTotoSimpleVerificationResult {
 }
 // The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself.
 message InTotoStatement {
-  // The in-toto statement type, always https://in-toto.io/Statement/v1.
-  string statement_type = 1;
-  // The artifacts the predicate is about, each with a digest.
-  repeated InTotoStatementSubject subject = 2;
-  // The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
-  string predicate_type = 3;
   // The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.
-  InTotoPredicate statement_predicate = 4;
+  InTotoPredicate predicate = 1;
+  // The in-toto statement type, always https://in-toto.io/Statement/v1.
+  string statement_type = 2;
+  // The artifacts the predicate is about, each with a digest.
+  repeated InTotoStatementSubject subject = 3;
+  // The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
+  string predicate_type = 4;
 }
 // One artifact an in-toto statement is about: a resource descriptor that carries a digest.
 message InTotoStatementSubject {

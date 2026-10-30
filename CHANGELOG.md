@@ -17,5 +17,5 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Changed
 
-- **The statement's predicate is `statement_predicate`, and `media_type` and `algorithm` carry LOKF's IRIs.** slsa v0.7.0 named the first `predicate`, which LOKF uses for a relation's type, and gave the other two its own IRIs for what LOKF's mean.
+- **`media_type` and `algorithm` carry LOKF's IRIs, and the statement's `predicate` is a slot of its own.** slsa v0.7.0 gave the first two IRIs of its own for what LOKF's mean. The adapt copy renames `predicate` to `in_toto_linkml_predicate`, apart from LOKF's relation type, so a slsa v0.7.0 document keeps its `predicate` key.
 - **The Python package and schema are named `in_toto_linkml`, and the Python project `in-toto-linkml`**, because the in-toto reference implementation installs `in_toto`. PyPI publishing stays off.

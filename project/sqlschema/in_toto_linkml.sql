@@ -62,7 +62,7 @@
 --     * Slot: statement_type Description: The in-toto statement type, always https://in-toto.io/Statement/v1.
 --     * Slot: predicate_type Description: The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
 --     * Slot: InTotoDocument_id Description: Autocreated FK slot
---     * Slot: statement_predicate_id Description: The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.
+--     * Slot: predicate_id Description: The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.
 -- # Abstract Class: InTotoPredicate Description: The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind.
 --     * Slot: id
 --     * Slot: predicate_kind Description: The kind of predicate, one of this class's descendants.
@@ -370,10 +370,10 @@ CREATE TABLE "InTotoStatement" (
 	statement_type TEXT NOT NULL,
 	predicate_type TEXT NOT NULL,
 	"InTotoDocument_id" INTEGER,
-	statement_predicate_id INTEGER,
+	predicate_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY("InTotoDocument_id") REFERENCES "InTotoDocument" (id),
-	FOREIGN KEY(statement_predicate_id) REFERENCES "InTotoPredicate" (id)
+	FOREIGN KEY(predicate_id) REFERENCES "InTotoPredicate" (id)
 );
 CREATE INDEX "ix_InTotoStatement_id" ON "InTotoStatement" (id);
 
@@ -439,8 +439,8 @@ CREATE TABLE "InTotoTestResult_passed_tests" (
 	PRIMARY KEY ("InTotoTestResult_id", passed_tests),
 	FOREIGN KEY("InTotoTestResult_id") REFERENCES "InTotoTestResult" (id)
 );
-CREATE INDEX "ix_InTotoTestResult_passed_tests_passed_tests" ON "InTotoTestResult_passed_tests" (passed_tests);
 CREATE INDEX "ix_InTotoTestResult_passed_tests_InTotoTestResult_id" ON "InTotoTestResult_passed_tests" ("InTotoTestResult_id");
+CREATE INDEX "ix_InTotoTestResult_passed_tests_passed_tests" ON "InTotoTestResult_passed_tests" (passed_tests);
 
 CREATE TABLE "InTotoTestResult_warned_tests" (
 	"InTotoTestResult_id" INTEGER,
@@ -448,8 +448,8 @@ CREATE TABLE "InTotoTestResult_warned_tests" (
 	PRIMARY KEY ("InTotoTestResult_id", warned_tests),
 	FOREIGN KEY("InTotoTestResult_id") REFERENCES "InTotoTestResult" (id)
 );
-CREATE INDEX "ix_InTotoTestResult_warned_tests_warned_tests" ON "InTotoTestResult_warned_tests" (warned_tests);
 CREATE INDEX "ix_InTotoTestResult_warned_tests_InTotoTestResult_id" ON "InTotoTestResult_warned_tests" ("InTotoTestResult_id");
+CREATE INDEX "ix_InTotoTestResult_warned_tests_warned_tests" ON "InTotoTestResult_warned_tests" (warned_tests);
 
 CREATE TABLE "InTotoTestResult_failed_tests" (
 	"InTotoTestResult_id" INTEGER,
@@ -561,8 +561,8 @@ CREATE TABLE "InTotoSimpleVerificationResult_verified_properties" (
 	PRIMARY KEY ("InTotoSimpleVerificationResult_id", verified_properties),
 	FOREIGN KEY("InTotoSimpleVerificationResult_id") REFERENCES "InTotoSimpleVerificationResult" (id)
 );
-CREATE INDEX "ix_InTotoSimpleVerificationResult_verified_properties_InTotoSimpleVerificationResult_id" ON "InTotoSimpleVerificationResult_verified_properties" ("InTotoSimpleVerificationResult_id");
 CREATE INDEX "ix_InTotoSimpleVerificationResult_verified_properties_verified_properties" ON "InTotoSimpleVerificationResult_verified_properties" (verified_properties);
+CREATE INDEX "ix_InTotoSimpleVerificationResult_verified_properties_InTotoSimpleVerificationResult_id" ON "InTotoSimpleVerificationResult_verified_properties" ("InTotoSimpleVerificationResult_id");
 
 CREATE TABLE "InTotoAnnotation" (
 	id INTEGER NOT NULL,
@@ -638,8 +638,8 @@ CREATE TABLE "InTotoAnnotation_annotation_values" (
 	PRIMARY KEY ("InTotoAnnotation_id", annotation_values),
 	FOREIGN KEY("InTotoAnnotation_id") REFERENCES "InTotoAnnotation" (id)
 );
-CREATE INDEX "ix_InTotoAnnotation_annotation_values_InTotoAnnotation_id" ON "InTotoAnnotation_annotation_values" ("InTotoAnnotation_id");
 CREATE INDEX "ix_InTotoAnnotation_annotation_values_annotation_values" ON "InTotoAnnotation_annotation_values" (annotation_values);
+CREATE INDEX "ix_InTotoAnnotation_annotation_values_InTotoAnnotation_id" ON "InTotoAnnotation_annotation_values" ("InTotoAnnotation_id");
 
 CREATE TABLE "InTotoObjectEntry_entry_values" (
 	"InTotoObjectEntry_id" INTEGER,

@@ -69,7 +69,7 @@ MESSAGES = {
             "type": "statement_type",
             "subject": "subject",
             "predicate_type": "predicate_type",
-            "predicate": "statement_predicate",
+            "predicate": "predicate",
         },
     ),
     ("v1/resource_descriptor.proto", "ResourceDescriptor"): (

@@ -5,7 +5,7 @@ subject:
     digest:
       sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
 predicate_type: https://in-toto.io/attestation/vulns/v0.2
-statement_predicate:
+predicate:
   predicate_kind: InTotoVulns
   vuln_scanner:
     scanner_uri: pkg:github/aquasecurity/trivy@244fd47e07d1004f0aed9

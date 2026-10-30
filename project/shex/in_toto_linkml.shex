@@ -282,10 +282,10 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoStatement> CLOSED {
-    (  $<InTotoStatement_tes> (  <statement_type> @<InTotoTypeUri> ;
+    (  $<InTotoStatement_tes> (  <predicate> @<InTotoPredicate> ? ;
+          <statement_type> @<InTotoTypeUri> ;
           <subject> @<InTotoStatementSubject> + ;
-          <predicate_type> @<InTotoTypeUri> ;
-          <statement_predicate> @<InTotoPredicate> ?
+          <predicate_type> @<InTotoTypeUri>
        ) ;
        rdf:type [ <InTotoStatement> ] ?
     )
