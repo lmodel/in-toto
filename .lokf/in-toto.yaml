@@ -54,83 +54,108 @@ classes:
       leaves a condition's own range out, and a null value would then count as present.
     attributes:
       sha256:
+        slot_uri: in_toto_linkml:sha256
         description: The SHA-256 digest of the artifact.
         pattern: ^[a-f0-9]{64}$
       sha224:
+        slot_uri: in_toto_linkml:sha224
         description: The SHA-224 digest of the artifact.
         pattern: ^[a-f0-9]{56}$
       sha384:
+        slot_uri: in_toto_linkml:sha384
         description: The SHA-384 digest of the artifact.
         pattern: ^[a-f0-9]{96}$
       sha512:
+        slot_uri: in_toto_linkml:sha512
         description: The SHA-512 digest of the artifact.
         pattern: ^[a-f0-9]{128}$
       sha512_224:
+        slot_uri: in_toto_linkml:sha512_224
         description: The SHA-512/224 digest of the artifact.
         pattern: ^[a-f0-9]{56}$
       sha512_256:
+        slot_uri: in_toto_linkml:sha512_256
         description: The SHA-512/256 digest of the artifact.
         pattern: ^[a-f0-9]{64}$
       sha3_224:
+        slot_uri: in_toto_linkml:sha3_224
         description: The SHA3-224 digest of the artifact.
         pattern: ^[a-f0-9]{56}$
       sha3_256:
+        slot_uri: in_toto_linkml:sha3_256
         description: The SHA3-256 digest of the artifact.
         pattern: ^[a-f0-9]{64}$
       sha3_384:
+        slot_uri: in_toto_linkml:sha3_384
         description: The SHA3-384 digest of the artifact.
         pattern: ^[a-f0-9]{96}$
       sha3_512:
+        slot_uri: in_toto_linkml:sha3_512
         description: The SHA3-512 digest of the artifact.
         pattern: ^[a-f0-9]{128}$
       shake128:
+        slot_uri: in_toto_linkml:shake128
         description: The SHAKE128 digest of the artifact, of at least 32 bytes.
         pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
       shake256:
+        slot_uri: in_toto_linkml:shake256
         description: The SHAKE256 digest of the artifact, of at least 32 bytes.
         pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
       blake2b:
+        slot_uri: in_toto_linkml:blake2b
         description: The BLAKE2b digest of the artifact, of 32 to 64 bytes.
         pattern: ^[a-f0-9]{64}([a-f0-9]{2}){0,32}$
       blake2s:
+        slot_uri: in_toto_linkml:blake2s
         description: The BLAKE2s digest of the artifact, at its full 32 bytes.
         pattern: ^[a-f0-9]{64}$
       ripemd160:
+        slot_uri: in_toto_linkml:ripemd160
         description: The RIPEMD-160 digest of the artifact.
         pattern: ^[a-f0-9]{40}$
       sm3:
+        slot_uri: in_toto_linkml:sm3
         description: The SM3 digest of the artifact.
         pattern: ^[a-f0-9]{64}$
       gost:
+        slot_uri: in_toto_linkml:gost
         description: The GOST R 34.11 digest of the artifact, of 256 or 512 bits.
         pattern: ^[a-f0-9]{64}([a-f0-9]{64})?$
       sha1:
+        slot_uri: in_toto_linkml:sha1
         description: The SHA-1 digest of the artifact.
         pattern: ^[a-f0-9]{40}$
         comments:
         - SHA-1 lacks collision resistance, so most consumers should not rely on it.
       md5:
+        slot_uri: in_toto_linkml:md5
         description: The MD5 digest of the artifact.
         pattern: ^[a-f0-9]{32}$
         comments:
         - MD5 lacks collision resistance, so most consumers should not accept it.
       dir_hash:
+        slot_uri: in_toto_linkml:dir_hash
         description: A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal
           rather than base64.
         pattern: ^[a-f0-9]{64}$
       git_commit:
+        slot_uri: in_toto_linkml:git_commit
         description: The git commit id of a source revision.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       git_tree:
+        slot_uri: in_toto_linkml:git_tree
         description: The git tree id of a source revision's content, or of any file tree.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       git_blob:
+        slot_uri: in_toto_linkml:git_blob
         description: The git blob id of a file's content.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       git_tag:
+        slot_uri: in_toto_linkml:git_tag
         description: The git object id of an annotated tag.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       additional_digests:
+        slot_uri: in_toto_linkml:additional_digests
         description: The digests under algorithms this class does not name.
         range: InTotoAdditionalDigest
         multivalued: true
@@ -315,6 +340,7 @@ classes:
         - An algorithm that InTotoDigestSet names, by its JSON key or by its field name, goes in that
           field instead.
       value:
+        slot_uri: in_toto_linkml:value
         description: The digest under that algorithm, in the encoding the algorithm documents.
         required: true
         pattern: ^\S+$
@@ -328,9 +354,11 @@ classes:
       not check this.
     attributes:
       annotation_key:
+        slot_uri: in_toto_linkml:annotation_key
         description: The annotation's key.
         required: true
       annotation_values:
+        slot_uri: in_toto_linkml:annotation_values
         description: The annotation's values.
         multivalued: true
   InTotoResourceDescriptor:
@@ -349,20 +377,24 @@ classes:
     - digest
     attributes:
       resource_name:
+        slot_uri: in_toto_linkml:resource_name
         description: A name for the resource within the attestation that carries it.
       download_location:
+        slot_uri: in_toto_linkml:download_location
         description: Where the resource can be fetched, when that differs from its identifying URI.
         range: uri
       media_type:
         description: The IANA media type of the resource's content.
         slot_uri: dcat:mediaType
       content:
+        slot_uri: in_toto_linkml:content
         description: The resource's content itself, base64-encoded, for a resource small enough to carry
           inline.
         pattern: ^[A-Za-z0-9+/_-]+={0,2}$
         comments:
         - The in-toto framework asks for content under 1 KB, so that attestations stay small.
       annotations:
+        slot_uri: in_toto_linkml:annotations
         description: Vendor-specific annotations on the resource, such as the source references a SLSA
           Source Verification Summary records.
         range: InTotoAnnotation
@@ -405,11 +437,13 @@ classes:
       as a test result or build provenance.
     attributes:
       statement_type:
+        slot_uri: in_toto_linkml:statement_type
         description: The in-toto statement type, always https://in-toto.io/Statement/v1.
         range: uri
         required: true
         pattern: ^https://in-toto\.io/Statement/v1$
       subject:
+        slot_uri: in_toto_linkml:subject
         description: The artifacts the predicate is about, each with a digest.
         range: InTotoStatementSubject
         multivalued: true
@@ -418,10 +452,12 @@ classes:
         inlined: true
         inlined_as_list: true
       predicate_type:
+        slot_uri: in_toto_linkml:predicate_type
         description: The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
         range: uri
         required: true
       statement_predicate:
+        slot_uri: in_toto_linkml:statement_predicate
         description: The predicate, one of the kinds this schema or an importing one models; predicate_kind
           names which. Unset means the same as empty.
         range: InTotoPredicate
@@ -441,6 +477,7 @@ classes:
       under its own URI.
     attributes:
       predicate_kind:
+        slot_uri: in_toto_linkml:predicate_kind
         description: The kind of predicate, one of this class's descendants.
         range: string
   InTotoPredicateType:

@@ -553,6 +553,9 @@
       "name": "inTotoDigestSet__sha256",
       "description": "The SHA-256 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha256"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha256",
       "alias": "sha256",
       "owner": "InTotoDigestSet",
@@ -567,6 +570,9 @@
       "name": "inTotoDigestSet__sha224",
       "description": "The SHA-224 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha224"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha224",
       "alias": "sha224",
       "owner": "InTotoDigestSet",
@@ -581,6 +587,9 @@
       "name": "inTotoDigestSet__sha384",
       "description": "The SHA-384 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha384"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha384",
       "alias": "sha384",
       "owner": "InTotoDigestSet",
@@ -595,6 +604,9 @@
       "name": "inTotoDigestSet__sha512",
       "description": "The SHA-512 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha512"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha512",
       "alias": "sha512",
       "owner": "InTotoDigestSet",
@@ -609,6 +621,9 @@
       "name": "inTotoDigestSet__sha512_224",
       "description": "The SHA-512/224 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha512_224"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha512_224",
       "alias": "sha512_224",
       "owner": "InTotoDigestSet",
@@ -623,6 +638,9 @@
       "name": "inTotoDigestSet__sha512_256",
       "description": "The SHA-512/256 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha512_256"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha512_256",
       "alias": "sha512_256",
       "owner": "InTotoDigestSet",
@@ -637,6 +655,9 @@
       "name": "inTotoDigestSet__sha3_224",
       "description": "The SHA3-224 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha3_224"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_224",
       "alias": "sha3_224",
       "owner": "InTotoDigestSet",
@@ -651,6 +672,9 @@
       "name": "inTotoDigestSet__sha3_256",
       "description": "The SHA3-256 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha3_256"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_256",
       "alias": "sha3_256",
       "owner": "InTotoDigestSet",
@@ -665,6 +689,9 @@
       "name": "inTotoDigestSet__sha3_384",
       "description": "The SHA3-384 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha3_384"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_384",
       "alias": "sha3_384",
       "owner": "InTotoDigestSet",
@@ -679,6 +706,9 @@
       "name": "inTotoDigestSet__sha3_512",
       "description": "The SHA3-512 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha3_512"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_512",
       "alias": "sha3_512",
       "owner": "InTotoDigestSet",
@@ -693,6 +723,9 @@
       "name": "inTotoDigestSet__shake128",
       "description": "The SHAKE128 digest of the artifact, of at least 32 bytes.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/shake128"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/shake128",
       "alias": "shake128",
       "owner": "InTotoDigestSet",
@@ -707,6 +740,9 @@
       "name": "inTotoDigestSet__shake256",
       "description": "The SHAKE256 digest of the artifact, of at least 32 bytes.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/shake256"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/shake256",
       "alias": "shake256",
       "owner": "InTotoDigestSet",
@@ -721,6 +757,9 @@
       "name": "inTotoDigestSet__blake2b",
       "description": "The BLAKE2b digest of the artifact, of 32 to 64 bytes.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/blake2b"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/blake2b",
       "alias": "blake2b",
       "owner": "InTotoDigestSet",
@@ -735,6 +774,9 @@
       "name": "inTotoDigestSet__blake2s",
       "description": "The BLAKE2s digest of the artifact, at its full 32 bytes.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/blake2s"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/blake2s",
       "alias": "blake2s",
       "owner": "InTotoDigestSet",
@@ -749,6 +791,9 @@
       "name": "inTotoDigestSet__ripemd160",
       "description": "The RIPEMD-160 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/ripemd160"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/ripemd160",
       "alias": "ripemd160",
       "owner": "InTotoDigestSet",
@@ -763,6 +808,9 @@
       "name": "inTotoDigestSet__sm3",
       "description": "The SM3 digest of the artifact.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sm3"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sm3",
       "alias": "sm3",
       "owner": "InTotoDigestSet",
@@ -777,6 +825,9 @@
       "name": "inTotoDigestSet__gost",
       "description": "The GOST R 34.11 digest of the artifact, of 256 or 512 bits.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/gost"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/gost",
       "alias": "gost",
       "owner": "InTotoDigestSet",
@@ -794,6 +845,9 @@
         "SHA-1 lacks collision resistance, so most consumers should not rely on it."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/sha1"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha1",
       "alias": "sha1",
       "owner": "InTotoDigestSet",
@@ -811,6 +865,9 @@
         "MD5 lacks collision resistance, so most consumers should not accept it."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/md5"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/md5",
       "alias": "md5",
       "owner": "InTotoDigestSet",
@@ -825,6 +882,9 @@
       "name": "inTotoDigestSet__dir_hash",
       "description": "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/dir_hash"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/dir_hash",
       "alias": "dir_hash",
       "owner": "InTotoDigestSet",
@@ -839,6 +899,9 @@
       "name": "inTotoDigestSet__git_commit",
       "description": "The git commit id of a source revision.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/git_commit"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/git_commit",
       "alias": "git_commit",
       "owner": "InTotoDigestSet",
@@ -853,6 +916,9 @@
       "name": "inTotoDigestSet__git_tree",
       "description": "The git tree id of a source revision's content, or of any file tree.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/git_tree"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/git_tree",
       "alias": "git_tree",
       "owner": "InTotoDigestSet",
@@ -867,6 +933,9 @@
       "name": "inTotoDigestSet__git_blob",
       "description": "The git blob id of a file's content.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/git_blob"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/git_blob",
       "alias": "git_blob",
       "owner": "InTotoDigestSet",
@@ -881,6 +950,9 @@
       "name": "inTotoDigestSet__git_tag",
       "description": "The git object id of an annotated tag.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/git_tag"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/git_tag",
       "alias": "git_tag",
       "owner": "InTotoDigestSet",
@@ -895,6 +967,9 @@
       "name": "inTotoDigestSet__additional_digests",
       "description": "The digests under algorithms this class does not name.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/additional_digests"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/additional_digests",
       "alias": "additional_digests",
       "owner": "InTotoDigestSet",
@@ -969,6 +1044,9 @@
       "name": "inTotoAdditionalDigest__value",
       "description": "The digest under that algorithm, in the encoding the algorithm documents.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/value"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/value",
       "alias": "value",
       "owner": "InTotoAdditionalDigest",
@@ -984,6 +1062,9 @@
       "name": "inTotoAnnotation__annotation_key",
       "description": "The annotation's key.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/annotation_key"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/annotation_key",
       "alias": "annotation_key",
       "owner": "InTotoAnnotation",
@@ -998,6 +1079,9 @@
       "name": "inTotoAnnotation__annotation_values",
       "description": "The annotation's values.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/annotation_values"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/annotation_values",
       "alias": "annotation_values",
       "owner": "InTotoAnnotation",
@@ -1012,6 +1096,9 @@
       "name": "inTotoResourceDescriptor__resource_name",
       "description": "A name for the resource within the attestation that carries it.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/resource_name"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/resource_name",
       "alias": "resource_name",
       "owner": "InTotoResourceDescriptor",
@@ -1025,6 +1112,9 @@
       "name": "inTotoResourceDescriptor__download_location",
       "description": "Where the resource can be fetched, when that differs from its identifying URI.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/download_location"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/download_location",
       "alias": "download_location",
       "owner": "InTotoResourceDescriptor",
@@ -1057,6 +1147,9 @@
         "The in-toto framework asks for content under 1 KB, so that attestations stay small."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/content"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/content",
       "alias": "content",
       "owner": "InTotoResourceDescriptor",
@@ -1071,6 +1164,9 @@
       "name": "inTotoResourceDescriptor__annotations",
       "description": "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/annotations"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/annotations",
       "alias": "annotations",
       "owner": "InTotoResourceDescriptor",
@@ -1087,6 +1183,9 @@
       "name": "inTotoStatement__statement_type",
       "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/statement_type"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/statement_type",
       "alias": "statement_type",
       "owner": "InTotoStatement",
@@ -1102,6 +1201,9 @@
       "name": "inTotoStatement__subject",
       "description": "The artifacts the predicate is about, each with a digest.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/subject"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/subject",
       "alias": "subject",
       "owner": "InTotoStatement",
@@ -1120,6 +1222,9 @@
       "name": "inTotoStatement__predicate_type",
       "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/predicate_type"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/predicate_type",
       "alias": "predicate_type",
       "owner": "InTotoStatement",
@@ -1137,6 +1242,9 @@
         "The attestation's JSON calls this field predicate. The name here keeps it apart from LOKF's predicate, the type of a relation, which a composite schema gives one IRI."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/statement_predicate"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/statement_predicate",
       "alias": "statement_predicate",
       "owner": "InTotoStatement",
@@ -1152,6 +1260,9 @@
       "name": "inTotoPredicate__predicate_kind",
       "description": "The kind of predicate, one of this class's descendants.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "mappings": [
+        "https://w3id.org/lmodel/in-toto/predicate_kind"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/predicate_kind",
       "designates_type": true,
       "alias": "predicate_kind",
@@ -2237,102 +2348,119 @@
         {
           "name": "sha256",
           "description": "The SHA-256 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha256",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha224",
           "description": "The SHA-224 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha224",
           "pattern": "^[a-f0-9]{56}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha384",
           "description": "The SHA-384 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha384",
           "pattern": "^[a-f0-9]{96}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha512",
           "description": "The SHA-512 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha512",
           "pattern": "^[a-f0-9]{128}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha512_224",
           "description": "The SHA-512/224 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha512_224",
           "pattern": "^[a-f0-9]{56}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha512_256",
           "description": "The SHA-512/256 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha512_256",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha3_224",
           "description": "The SHA3-224 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha3_224",
           "pattern": "^[a-f0-9]{56}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha3_256",
           "description": "The SHA3-256 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha3_256",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha3_384",
           "description": "The SHA3-384 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha3_384",
           "pattern": "^[a-f0-9]{96}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sha3_512",
           "description": "The SHA3-512 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sha3_512",
           "pattern": "^[a-f0-9]{128}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "shake128",
           "description": "The SHAKE128 digest of the artifact, of at least 32 bytes.",
+          "slot_uri": "in_toto_linkml:shake128",
           "pattern": "^[a-f0-9]{64}([a-f0-9]{2})*$",
           "@type": "SlotDefinition"
         },
         {
           "name": "shake256",
           "description": "The SHAKE256 digest of the artifact, of at least 32 bytes.",
+          "slot_uri": "in_toto_linkml:shake256",
           "pattern": "^[a-f0-9]{64}([a-f0-9]{2})*$",
           "@type": "SlotDefinition"
         },
         {
           "name": "blake2b",
           "description": "The BLAKE2b digest of the artifact, of 32 to 64 bytes.",
+          "slot_uri": "in_toto_linkml:blake2b",
           "pattern": "^[a-f0-9]{64}([a-f0-9]{2}){0,32}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "blake2s",
           "description": "The BLAKE2s digest of the artifact, at its full 32 bytes.",
+          "slot_uri": "in_toto_linkml:blake2s",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "ripemd160",
           "description": "The RIPEMD-160 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:ripemd160",
           "pattern": "^[a-f0-9]{40}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "sm3",
           "description": "The SM3 digest of the artifact.",
+          "slot_uri": "in_toto_linkml:sm3",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "gost",
           "description": "The GOST R 34.11 digest of the artifact, of 256 or 512 bits.",
+          "slot_uri": "in_toto_linkml:gost",
           "pattern": "^[a-f0-9]{64}([a-f0-9]{64})?$",
           "@type": "SlotDefinition"
         },
@@ -2342,6 +2470,7 @@
           "comments": [
             "SHA-1 lacks collision resistance, so most consumers should not rely on it."
           ],
+          "slot_uri": "in_toto_linkml:sha1",
           "pattern": "^[a-f0-9]{40}$",
           "@type": "SlotDefinition"
         },
@@ -2351,42 +2480,49 @@
           "comments": [
             "MD5 lacks collision resistance, so most consumers should not accept it."
           ],
+          "slot_uri": "in_toto_linkml:md5",
           "pattern": "^[a-f0-9]{32}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "dir_hash",
           "description": "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64.",
+          "slot_uri": "in_toto_linkml:dir_hash",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "git_commit",
           "description": "The git commit id of a source revision.",
+          "slot_uri": "in_toto_linkml:git_commit",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
         },
         {
           "name": "git_tree",
           "description": "The git tree id of a source revision's content, or of any file tree.",
+          "slot_uri": "in_toto_linkml:git_tree",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
         },
         {
           "name": "git_blob",
           "description": "The git blob id of a file's content.",
+          "slot_uri": "in_toto_linkml:git_blob",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
         },
         {
           "name": "git_tag",
           "description": "The git object id of an annotated tag.",
+          "slot_uri": "in_toto_linkml:git_tag",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
         },
         {
           "name": "additional_digests",
           "description": "The digests under algorithms this class does not name.",
+          "slot_uri": "in_toto_linkml:additional_digests",
           "range": "InTotoAdditionalDigest",
           "multivalued": true,
           "inlined": true,
@@ -2864,6 +3000,7 @@
         {
           "name": "value",
           "description": "The digest under that algorithm, in the encoding the algorithm documents.",
+          "slot_uri": "in_toto_linkml:value",
           "required": true,
           "pattern": "^\\S+$",
           "@type": "SlotDefinition"
@@ -2890,12 +3027,14 @@
         {
           "name": "annotation_key",
           "description": "The annotation's key.",
+          "slot_uri": "in_toto_linkml:annotation_key",
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "annotation_values",
           "description": "The annotation's values.",
+          "slot_uri": "in_toto_linkml:annotation_values",
           "multivalued": true,
           "@type": "SlotDefinition"
         }
@@ -2931,11 +3070,13 @@
         {
           "name": "resource_name",
           "description": "A name for the resource within the attestation that carries it.",
+          "slot_uri": "in_toto_linkml:resource_name",
           "@type": "SlotDefinition"
         },
         {
           "name": "download_location",
           "description": "Where the resource can be fetched, when that differs from its identifying URI.",
+          "slot_uri": "in_toto_linkml:download_location",
           "range": "uri",
           "@type": "SlotDefinition"
         },
@@ -2951,12 +3092,14 @@
           "comments": [
             "The in-toto framework asks for content under 1 KB, so that attestations stay small."
           ],
+          "slot_uri": "in_toto_linkml:content",
           "pattern": "^[A-Za-z0-9+/_-]+={0,2}$",
           "@type": "SlotDefinition"
         },
         {
           "name": "annotations",
           "description": "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.",
+          "slot_uri": "in_toto_linkml:annotations",
           "range": "InTotoAnnotation",
           "multivalued": true,
           "inlined": true,
@@ -3062,6 +3205,7 @@
         {
           "name": "statement_type",
           "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",
+          "slot_uri": "in_toto_linkml:statement_type",
           "range": "uri",
           "required": true,
           "pattern": "^https://in-toto\\.io/Statement/v1$",
@@ -3070,6 +3214,7 @@
         {
           "name": "subject",
           "description": "The artifacts the predicate is about, each with a digest.",
+          "slot_uri": "in_toto_linkml:subject",
           "range": "InTotoStatementSubject",
           "required": true,
           "multivalued": true,
@@ -3081,6 +3226,7 @@
         {
           "name": "predicate_type",
           "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
+          "slot_uri": "in_toto_linkml:predicate_type",
           "range": "uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -3091,6 +3237,7 @@
           "comments": [
             "The attestation's JSON calls this field predicate. The name here keeps it apart from LOKF's predicate, the type of a relation, which a composite schema gives one IRI."
           ],
+          "slot_uri": "in_toto_linkml:statement_predicate",
           "range": "InTotoPredicate",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -3119,6 +3266,7 @@
         {
           "name": "predicate_kind",
           "description": "The kind of predicate, one of this class's descendants.",
+          "slot_uri": "in_toto_linkml:predicate_kind",
           "designates_type": true,
           "range": "string",
           "@type": "SlotDefinition"

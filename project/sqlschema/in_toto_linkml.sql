@@ -439,8 +439,8 @@ CREATE TABLE "InTotoTestResult_passed_tests" (
 	PRIMARY KEY ("InTotoTestResult_id", passed_tests),
 	FOREIGN KEY("InTotoTestResult_id") REFERENCES "InTotoTestResult" (id)
 );
-CREATE INDEX "ix_InTotoTestResult_passed_tests_InTotoTestResult_id" ON "InTotoTestResult_passed_tests" ("InTotoTestResult_id");
 CREATE INDEX "ix_InTotoTestResult_passed_tests_passed_tests" ON "InTotoTestResult_passed_tests" (passed_tests);
+CREATE INDEX "ix_InTotoTestResult_passed_tests_InTotoTestResult_id" ON "InTotoTestResult_passed_tests" ("InTotoTestResult_id");
 
 CREATE TABLE "InTotoTestResult_warned_tests" (
 	"InTotoTestResult_id" INTEGER,
@@ -457,8 +457,8 @@ CREATE TABLE "InTotoTestResult_failed_tests" (
 	PRIMARY KEY ("InTotoTestResult_id", failed_tests),
 	FOREIGN KEY("InTotoTestResult_id") REFERENCES "InTotoTestResult" (id)
 );
-CREATE INDEX "ix_InTotoTestResult_failed_tests_failed_tests" ON "InTotoTestResult_failed_tests" (failed_tests);
 CREATE INDEX "ix_InTotoTestResult_failed_tests_InTotoTestResult_id" ON "InTotoTestResult_failed_tests" ("InTotoTestResult_id");
+CREATE INDEX "ix_InTotoTestResult_failed_tests_failed_tests" ON "InTotoTestResult_failed_tests" (failed_tests);
 
 CREATE TABLE "InTotoLink_step_command" (
 	"InTotoLink_id" INTEGER,
@@ -638,8 +638,8 @@ CREATE TABLE "InTotoAnnotation_annotation_values" (
 	PRIMARY KEY ("InTotoAnnotation_id", annotation_values),
 	FOREIGN KEY("InTotoAnnotation_id") REFERENCES "InTotoAnnotation" (id)
 );
-CREATE INDEX "ix_InTotoAnnotation_annotation_values_annotation_values" ON "InTotoAnnotation_annotation_values" (annotation_values);
 CREATE INDEX "ix_InTotoAnnotation_annotation_values_InTotoAnnotation_id" ON "InTotoAnnotation_annotation_values" ("InTotoAnnotation_id");
+CREATE INDEX "ix_InTotoAnnotation_annotation_values_annotation_values" ON "InTotoAnnotation_annotation_values" (annotation_values);
 
 CREATE TABLE "InTotoObjectEntry_entry_values" (
 	"InTotoObjectEntry_id" INTEGER,
