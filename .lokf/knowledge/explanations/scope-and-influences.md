@@ -16,7 +16,7 @@ sources:
     title: Modules and Left out
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-10-30T21:20:44Z"
 status: draft
 ---
 
@@ -26,7 +26,7 @@ The README says that the schema renders the in-toto Attestation Framework at rel
 
 It maps each predicate to the type URI its statements carry, in `exact_mappings`, and gives `media_type` and `algorithm` the IRIs LOKF gives the same keys. It borrows from no other vocabulary.
 
-It leaves out the envelope that signs a statement and the bundle that collects them, SLSA Provenance and the SLSA Verification Summary, which slsa models, and the bodies of the CycloneDX, SPDX 2 and SPDX 3 predicates, which it names by type URI only. It also leaves out the older predicate versions, VULNS v0.1, and the policy field a verifier may add to a Simple Verification Result.
+It leaves out the envelope that signs a statement and the bundle that collects them, SLSA Provenance and the SLSA Verification Summary, which slsa models, and the bodies of the CycloneDX, SPDX 2 and SPDX 3 predicates, which it names by type URI only. It also leaves out the older predicate versions, VULNS v0.1, and the policy field a verifier may add to a Simple Verification Result. Nor does it take an attestation's JSON as published, so a statement is written in the schema's keys before it validates.[^readme.md]
 
 [^readme.md]: README.md, What it models, Influences, Mappings and Not modelled here
 [^about.md]: docs/about.md, Modules and Left out

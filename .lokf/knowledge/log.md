@@ -2,6 +2,15 @@
 
 ## 2026-10-30
 
+* **Changed**: sentences this run lengthened are split, with no fact changed.
+* **Changed**: the statement's predicate is `predicate` again, a slot the adapt copy renames `in_toto_linkml_predicate`, as `docs/about.md` now says.
+* **Changed**: `InTotoStatement` holds the optional `predicate`, no longer `statement_predicate`.
+* **Changed**: the core now holds the framework's three field types and the statement's `predicate` slot, and the timestamp type left the predicates module; the adapt copy renames `predicate`.
+* **Changed**: the copy holds 31 files, with the pages of CycloneDX, SPDX 2, SPDX 3, SLSA Provenance and the Verification Summary, which give their type URIs.
+* **Changed**: the counts of examples and counter-examples, the ten examples taken from the specification's pages, and the tests that hold them and the vetted type URIs to the pages.
+* **Changed**: the page now says a file is written in the schema's keys, that the URI types check a lowercase scheme and authority, and that Pydantic checks no type's pattern.
+* **Changed**: the watch now copies the five predicate pages it used to leave out, and the tests hold each vetted value to its page.
+* **Changed**: the README now says the schema does not take an attestation's published JSON.
 * **Added**: Build and test (main.yaml), from `.github/workflows/main.yaml`.
 * **Added**: Lint & docs (lint-and-docs.yaml), from `.github/workflows/lint-and-docs.yaml`.
 * **Added**: Semantic release (semantic-release.yml), from `.github/workflows/semantic-release.yml`.

@@ -19,7 +19,7 @@ sources:
     title: the pin, field and vetted-list tests
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-10-30T21:22:17Z"
 status: draft
 ---
 
@@ -33,9 +33,9 @@ status: draft
 - **A copied file differs from its pinned blob**, or the copy holds a file the script does not pin.
 - **A check could not finish**, for example on a network error or a tree listing GitHub cut short. The report names the check and the error, and the other check still runs.
 
-A file the in-toto project adds to `spec/v1/`, `spec/predicates/` or `protos/in_toto_attestation/` is reported for information and does not fail the run, unless the script leaves it out on purpose: the envelope and bundle pages, SLSA's two predicates, the three bill-of-materials predicates, the superseded versions and the template. `tests/test_watch.py` checks each of these reports against stubbed answers.
+A file the in-toto project adds to `spec/v1/`, `spec/predicates/` or `protos/in_toto_attestation/` is reported for information and does not fail the run, unless the script leaves it out on purpose: the envelope and bundle pages, the definitions of SLSA's two predicates, the superseded versions and the template. `tests/test_watch.py` checks each of these reports against stubbed answers.
 
-To replace the copy, take every pinned file from one release, at its path under `src/in_toto_linkml/schema/attestation/`. Never edit them.[^contributing.md] Then move `PINNED_TAG`, `PINNED_COMMIT` and `PINNED_BLOBS` in the script, and the header's `version`, `source` and the `attestation_tag` and `attestation_commit` annotations, and update NOTICE. Run `just gen-project`, `just gen-doc` and `just lokf-adapt`, since the header's values reach the generated files and the adapt copy. Then run `just test`. `tests/test_upstream.py` checks that the header and the script name the same pins, that each file has its pinned hash, that each field of a copied protocol buffer message maps to a slot, and that `InTotoVettedPredicate` holds the predicates page's list.[^test_upstream.py]
+To replace the copy, take every pinned file from one release, at its path under `src/in_toto_linkml/schema/attestation/`. Never edit them.[^contributing.md] Then move `PINNED_TAG`, `PINNED_COMMIT` and `PINNED_BLOBS` in the script, and the header's `version`, `source` and the `attestation_tag` and `attestation_commit` annotations, and update NOTICE. Run `just gen-project`, `just gen-doc` and `just lokf-adapt`, since the header's values reach the generated files and the adapt copy. Then run `just test`. `tests/test_upstream.py` checks that the header and the script name the same pins, that each file has its pinned hash, that each field of a copied protocol buffer message maps to a slot, and that `InTotoVettedPredicate` holds the predicates page's list. It also checks that each value of the list means a type URI its page gives.[^test_upstream.py]
 
 [^check_upstream_release.py]: scripts/check_upstream_release.py, the docstring, check_release, check_copy and main
 [^contributing.md]: CONTRIBUTING.md, the item on the specification copy

@@ -19,13 +19,13 @@ sources:
     title: the class InTotoStatement
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-10-30T21:20:44Z"
 status: draft
 ---
 
 # Statement
 
-The specification calls the statement the middle layer of the attestation, which binds it to a particular subject and identifies the type of its predicate. Its subjects must each carry a digest, and are assumed not to change.[^statement] The schema renders it as `InTotoStatement`, with `statement_type`, `subject`, `predicate_type` and the optional `statement_predicate`.[^in_toto_core]
+The specification calls the statement the middle layer of the attestation, which binds it to a particular subject and identifies the type of its predicate. Its subjects must each carry a digest, and are assumed not to change.[^statement] The schema renders it as `InTotoStatement`, with `statement_type`, `subject`, `predicate_type` and the optional `predicate`, which the adapt copy renames `in_toto_linkml_predicate`.[^in_toto_core]
 
 [^statement]: src/in_toto_linkml/schema/attestation/spec/v1/statement.md, the schema and the fields
 [^in_toto_core]: src/in_toto_linkml/schema/in_toto_core.yaml, InTotoStatement
