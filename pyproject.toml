@@ -61,6 +61,8 @@ skip = [
   "project/*",
   "src/in_toto_linkml/datamodel/in_toto_linkml_pydantic.py",
   "src/in_toto_linkml/datamodel/in_toto_linkml.py",
+  # The in-toto specification, copied as published.
+  "src/in_toto_linkml/schema/attestation/*",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -79,4 +81,5 @@ extend-exclude = [
   "project/*",
   "src/in_toto_linkml/datamodel/in_toto_linkml_pydantic.py",
   "src/in_toto_linkml/datamodel/in_toto_linkml.py",
+  "src/in_toto_linkml/schema/attestation/*",
 ]
