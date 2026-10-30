@@ -47,7 +47,8 @@ types:
       - >-
         The framework recommends a package URL (pkg:) or an SPDX download location
         (git+https:), and allows one that does not resolve.
-    pattern: &in_toto_uri_pattern "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$"
+    pattern: &in_toto_uri_pattern
+      "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$"
 
   in_toto_type_uri:
     typeof: uri
@@ -337,9 +338,10 @@ classes:
             An algorithm that InTotoDigestSet names, by its JSON key or by its field
             name, goes in that field instead.
           - >-
-            A name starts with a lowercase letter, as the framework's own names do, so
-            that SHA256 is not taken for sha256, and it may hold a colon, as go-witness's
-            gitoid:sha256 does. The framework itself sets no rule for other names.
+            A name starts with a lowercase letter, as the framework's own names do,
+            so that SHA256 is not taken for sha256, and it may hold a colon, as
+            go-witness's gitoid:sha256 does. The framework itself sets no rule for
+            other names.
       value:
         slot_uri: in_toto_linkml:value
         description: The digest under that algorithm, in the encoding the algorithm documents.

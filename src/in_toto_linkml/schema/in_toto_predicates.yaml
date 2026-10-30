@@ -676,7 +676,9 @@ enums:
           - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/cyclonedx.md
           - https://cyclonedx.org/
         comments:
-          - The page gives https://cyclonedx.org/bom in its header, and this URI in its example.
+          - >-
+            The page gives https://cyclonedx.org/bom in its header, and this URI in
+            its example.
       LINK:
         description: One step of an in-toto layout, for migration from in-toto 0.9.
         meaning: in_toto:link/v0.3
@@ -711,7 +713,9 @@ enums:
         see_also:
           - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/provenance.md
         comments:
-          - The page gives https://slsa.dev/provenance at version 1.0, and the framework's versioning rule adds the major version.
+          - >-
+            The page gives https://slsa.dev/provenance at version 1.0, and the
+            framework's versioning rule adds the major version.
       SLSA_VERIFICATION_SUMMARY:
         description: >-
           A SLSA verification decision about a software artifact; lmodel/slsa
@@ -725,7 +729,9 @@ enums:
         see_also:
           - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx2.md
         comments:
-          - The page also gives https://spdx.dev/Document, the type URI before it carried a version.
+          - >-
+            The page also gives https://spdx.dev/Document, the type URI before it
+            carried a version.
       SPDX3:
         description: An SPDX 3 bill of materials for software artifacts.
         meaning: https://spdx.dev/Document/v3
