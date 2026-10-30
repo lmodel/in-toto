@@ -6,6 +6,10 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **The comment on the statement's `predicate` slot names each adapt copy's rename.** It said every copy beside LOKF calls the slot `in_toto_linkml_predicate`, but `lokf adapt` prefixes the adapted schema's name, so lmodel/slsa's copy calls it `slsa_predicate`.
+
 ## [0.1.0] - 2026-10-30
 
 ### Added
