@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-30
+
 ### Added
 
 - **A LinkML schema of the in-toto Attestation Framework at release v1.2.0.** The core module holds the statement, the resource descriptor, the digest set and the framework's URI and timestamp types, with the names lmodel/slsa gave the layer, so slsa can import it; the predicates module holds the thirteen vetted predicate types and the eight vetted predicates slsa does not model.
