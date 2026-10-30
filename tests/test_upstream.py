@@ -283,6 +283,34 @@ def test_each_predicate_names_the_type_its_page_gives(cls):
     assert uri in meanings
 
 
+PAGE_BASE = "https://github.com/in-toto/attestation/blob/v1.2.0/"
+
+
+def _stated_uris(page: str) -> set[str]:
+    """The type URIs a predicate page states: each example's predicateType,
+    each Type URI line, and each Type URI line with the major version of the
+    page's Version line, as the framework's versioning rule builds it."""
+    uris = set(re.findall(r'"predicateType":\s*"([^"]+)"', page))
+    typed = re.findall(r"^Type URI: (\S+)$", page, re.M)
+    uris.update(typed)
+    if version := re.search(r"^Version:? v?(\d+)", page, re.M):
+        uris.update(f"{uri}/v{version.group(1)}" for uri in typed)
+    return uris
+
+
+@pytest.mark.parametrize(
+    "value", sorted(VIEW.get_enum("InTotoVettedPredicate").permissible_values)
+)
+def test_each_vetted_value_means_the_uri_its_page_gives(value):
+    """A vetted value names, first in see_also, the in-toto page it renders,
+    and means a type URI that page states."""
+    pv = VIEW.get_enum("InTotoVettedPredicate").permissible_values[value]
+    page_url = pv.see_also[0]
+    assert page_url.startswith(PAGE_BASE + "spec/predicates/")
+    page = (COPY / page_url.removeprefix(PAGE_BASE)).read_text()
+    assert VIEW.expand_curie(pv.meaning) in _stated_uris(page)
+
+
 # ── The pages' own examples ──────────────────────────────────────────────
 
 

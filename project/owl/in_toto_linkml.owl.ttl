@@ -11,55 +11,70 @@ xsd:dateTime a rdfs:Datatype ;
 	owl:equivalentClass _:c14n378 .
 <https://cyclonedx.org/bom/v1.4> a owl:Class ;
 	rdfs:label "CYCLONEDX" ;
-	rdfs:seeAlso <https://cyclonedx.org/> ;
+	rdfs:seeAlso <https://cyclonedx.org/> , <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/cyclonedx.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
-	skos:definition "A CycloneDX bill of materials for software artifacts." .
+	skos:definition "A CycloneDX bill of materials for software artifacts." ;
+	skos:note "The page gives https://cyclonedx.org/bom in its header, and this URI in its example." .
 <https://in-toto.io/attestation/link/v0.3> a owl:Class ;
 	rdfs:label "LINK" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "One step of an in-toto layout, for migration from in-toto 0.9." .
 <https://in-toto.io/attestation/reference/v0.1> a owl:Class ;
 	rdfs:label "REFERENCE" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "References to documents relevant to a resource." .
 <https://in-toto.io/attestation/release/v0.1> a owl:Class ;
 	rdfs:label "RELEASE" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "An artifact that is part of a given release version." .
 <https://in-toto.io/attestation/runtime-trace/v0.1> a owl:Class ;
 	rdfs:label "RUNTIME_TRACE" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "Runtime traces of software supply chain operations." .
 <https://in-toto.io/attestation/scai/v0.3> a owl:Class ;
 	rdfs:label "SCAI" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "Evidence-based assertions about software artifact and supply chain attributes or behaviour." .
 <https://in-toto.io/attestation/svr/v0.1> a owl:Class ;
 	rdfs:label "SIMPLE_VERIFICATION_RESULT" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "Evidence that an artifact was evaluated against one or more policies." .
 <https://in-toto.io/attestation/test-result/v0.1> a owl:Class ;
 	rdfs:label "TEST_RESULT" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "The results of any type of test." .
 <https://in-toto.io/attestation/vulns/v0.2> a owl:Class ;
 	rdfs:label "VULNS" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "The results of a vulnerability scan of software artifacts." .
 <https://slsa.dev/provenance/v1> a owl:Class ;
 	rdfs:label "SLSA_PROVENANCE" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/provenance.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
-	skos:definition "How an artifact or set of artifacts was produced; lmodel/slsa models it." .
+	skos:definition "How an artifact or set of artifacts was produced; lmodel/slsa models it." ;
+	skos:note "The page gives https://slsa.dev/provenance at version 1.0, and the framework's versioning rule adds the major version." .
 <https://slsa.dev/verification_summary/v1> a owl:Class ;
 	rdfs:label "SLSA_VERIFICATION_SUMMARY" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vsa.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "A SLSA verification decision about a software artifact; lmodel/slsa models it." .
 <https://spdx.dev/Document/v2.3> a owl:Class ;
 	rdfs:label "SPDX2" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx2.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
-	skos:definition "An SPDX 2 bill of materials for software artifacts." .
+	skos:definition "An SPDX 2 bill of materials for software artifacts." ;
+	skos:note "The page also gives https://spdx.dev/Document, the type URI before it carried a version." .
 <https://spdx.dev/Document/v3> a owl:Class ;
 	rdfs:label "SPDX3" ;
+	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx3.md> ;
 	rdfs:subClassOf in_toto_linkml:InTotoVettedPredicate ;
 	skos:definition "An SPDX 3 bill of materials for software artifacts." .
 <https://w3id.org/lmodel/in-toto.owl.ttl> dcterms:license "Apache-2.0" ;

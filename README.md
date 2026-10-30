@@ -33,7 +33,7 @@ The [in-toto Attestation Framework](https://github.com/in-toto/attestation) at r
 
 `in_toto_core` holds the statement layer and imports only the LinkML types, so that [lmodel/slsa](https://github.com/lmodel/slsa), which models SLSA Provenance and the SLSA Verification Summary, can import it alone. The class and slot names are the ones slsa gave them.
 
-The schema header's `version` is the framework's release, 1.2.0, and its `source` is the release's tree. [src/in_toto_linkml/schema/attestation/](src/in_toto_linkml/schema/attestation) holds the release's specification pages and protocol buffer definitions, matched to it by git object hash. `tests/test_upstream.py` holds every field of each copied definition to a slot, and the list of vetted predicates to the predicates page. A weekly workflow opens an issue when in-toto/attestation releases again, changes a copied file, or the copy drifts.
+The schema header's `version` is the framework's release, 1.2.0, and its `source` is the release's tree. [src/in_toto_linkml/schema/attestation/](src/in_toto_linkml/schema/attestation) holds the release's specification pages and protocol buffer definitions, matched to it by git object hash. `tests/test_upstream.py` holds every field of each copied definition to a slot, the list of vetted predicates to the predicates page, each vetted type URI to the page that gives it, and the pages' complete examples to the schema. A weekly workflow opens an issue when in-toto/attestation releases again, changes a copied file, or the copy drifts.
 
 v1.2.0 is the latest release. Release tags number the schema's versions.
 

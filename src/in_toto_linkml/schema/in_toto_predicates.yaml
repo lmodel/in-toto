@@ -668,45 +668,76 @@ enums:
         description: A CycloneDX bill of materials for software artifacts.
         meaning: https://cyclonedx.org/bom/v1.4
         see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/cyclonedx.md
           - https://cyclonedx.org/
+        comments:
+          - The page gives https://cyclonedx.org/bom in its header, and this URI in its example.
       LINK:
         description: One step of an in-toto layout, for migration from in-toto 0.9.
         meaning: in_toto:link/v0.3
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md
       REFERENCE:
         description: References to documents relevant to a resource.
         meaning: in_toto:reference/v0.1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md
       RELEASE:
         description: An artifact that is part of a given release version.
         meaning: in_toto:release/v0.1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md
       RUNTIME_TRACE:
         description: Runtime traces of software supply chain operations.
         meaning: in_toto:runtime-trace/v0.1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
       SCAI:
         description: >-
           Evidence-based assertions about software artifact and supply chain
           attributes or behaviour.
         meaning: in_toto:scai/v0.3
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md
       SLSA_PROVENANCE:
         description: >-
           How an artifact or set of artifacts was produced; lmodel/slsa models it.
         meaning: https://slsa.dev/provenance/v1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/provenance.md
+        comments:
+          - The page gives https://slsa.dev/provenance at version 1.0, and the framework's versioning rule adds the major version.
       SLSA_VERIFICATION_SUMMARY:
         description: >-
           A SLSA verification decision about a software artifact; lmodel/slsa
           models it.
         meaning: https://slsa.dev/verification_summary/v1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vsa.md
       SPDX2:
         description: An SPDX 2 bill of materials for software artifacts.
         meaning: https://spdx.dev/Document/v2.3
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx2.md
+        comments:
+          - The page also gives https://spdx.dev/Document, the type URI before it carried a version.
       SPDX3:
         description: An SPDX 3 bill of materials for software artifacts.
         meaning: https://spdx.dev/Document/v3
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx3.md
       SIMPLE_VERIFICATION_RESULT:
         description: Evidence that an artifact was evaluated against one or more policies.
         meaning: in_toto:svr/v0.1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md
       TEST_RESULT:
         description: The results of any type of test.
         meaning: in_toto:test-result/v0.1
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md
       VULNS:
         description: The results of a vulnerability scan of software artifacts.
         meaning: in_toto:vulns/v0.2
+        see_also:
+          - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md

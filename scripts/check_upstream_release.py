@@ -69,6 +69,11 @@ PINNED_BLOBS = {
     "spec/predicates/svr.md": "d7e46a60bb59c6b120b528d8a11bd67b8714ab96",
     "spec/predicates/test-result.md": "74d83c3021010757e56e96cf68bf7a6b11fb86e5",
     "spec/predicates/vulns_02.md": "e76ee55e1bae221434cac8ac5337a4c8fea5c72e",
+    "spec/predicates/cyclonedx.md": "01447e4380e0fb16c5b1ec8bd8f56eb2d87b3da5",
+    "spec/predicates/spdx2.md": "0cf89ce2fa6ec390d90a0330e8eab73dae50c8ad",
+    "spec/predicates/spdx3.md": "23046fd021bf1933d43fe9a899f41cd597dc627e",
+    "spec/predicates/provenance.md": "ef00f08e46af8363fe62f4d569501d3ce37bfc96",
+    "spec/predicates/vsa.md": "f9d1c2dfbba666ec890adc05973a245eb3de338b",
     "protos/in_toto_attestation/v1/statement.proto": "6c55dc7b16d2140912666338e68c43a3075519a1",
     "protos/in_toto_attestation/v1/resource_descriptor.proto": "334b0e0f2ecfd6b41312700d3aa9597d44b332e5",
     "protos/in_toto_attestation/predicates/link/v0/link.proto": "388e0b627dc352c3a8fd7e28e0c56c40fd5d865c",
@@ -87,14 +92,15 @@ WATCHED = ("spec/v1/", "spec/predicates/", "protos/in_toto_attestation/")
 # Files in WATCHED that the copy leaves out on purpose, so that only a file
 # the in-toto project adds is reported. The envelope and the bundle wrap a
 # statement and are outside the model. lmodel/slsa models SLSA Provenance and
-# the Verification Summary. The CycloneDX, SPDX 2 and SPDX 3 predicates carry
-# a whole bill of materials, which the schema names by type URI only. vuln.md
-# and the older predicate versions are superseded by the copied ones, and the
-# template is a page for authors.
+# the Verification Summary, so their definitions are left out; their pages,
+# like those of CycloneDX, SPDX 2 and SPDX 3, are copied because they give the
+# type URIs InTotoVettedPredicate holds. vuln.md and the older predicate
+# versions are superseded by the copied ones, and the template is a page for
+# authors.
 LEFT_OUT = re.compile(
     r"^("
     r"spec/v1/(envelope|bundle)\.md"
-    r"|spec/predicates/(provenance|vsa|cyclonedx|spdx2|spdx3|vuln)\.md"
+    r"|spec/predicates/vuln\.md"
     r"|spec/predicates/template/.*"
     r"|protos/in_toto_attestation/predicates/(provenance|vsa)/.*"
     r"|protos/in_toto_attestation/predicates/(release/v0\.1|vulns/v0\.1)/.*"
