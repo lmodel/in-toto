@@ -8,7 +8,7 @@
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix pav: <http://purl.org/pav/> .
 xsd:dateTime a rdfs:Datatype ;
-	owl:equivalentClass _:c14n372 .
+	owl:equivalentClass _:c14n376 .
 <https://cyclonedx.org/bom/v1.4> a owl:Class ;
 	rdfs:label "CYCLONEDX" ;
 	rdfs:seeAlso <https://cyclonedx.org/> ;
@@ -76,33 +76,33 @@ xsd:dateTime a rdfs:Datatype ;
 in_toto_linkml:InTotoAdditionalDigest a owl:Class ;
 	rdfs:label "InTotoAdditionalDigest" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md> ;
-	rdfs:subClassOf _:c14n24 , _:c14n257 , _:c14n368 , _:c14n380 , _:c14n43 , _:c14n58 ;
+	rdfs:subClassOf _:c14n24 , _:c14n257 , _:c14n372 , _:c14n384 , _:c14n43 , _:c14n60 ;
 	skos:definition "One digest under an algorithm that InTotoDigestSet does not name, such as an SCS's own revision type." ;
 	skos:inScheme in_toto_linkml:in_toto_core ;
 	skos:note "An SCS that does not use cryptographic digests defines a canonical revision type of its own that includes the repository, such as svn_revision_id." , "Each algorithm appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this." , "In the attestation's JSON the algorithm is a key of the digest set beside the named ones, and an algorithm the framework does not define documents how its value is encoded." .
 in_toto_linkml:InTotoAnnotation a owl:Class ;
 	rdfs:label "InTotoAnnotation" ;
-	rdfs:subClassOf _:c14n148 , _:c14n167 , _:c14n296 , _:c14n299 , _:c14n41 ;
+	rdfs:subClassOf _:c14n151 , _:c14n170 , _:c14n297 , _:c14n300 , _:c14n41 ;
 	skos:definition "One vendor-specific annotation on a resource descriptor: a key and its values." ;
 	skos:inScheme in_toto_linkml:in_toto_core ;
 	skos:note "Each key appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this." , "The attestation's JSON allows any JSON value. A string becomes one value and an array one value per item; any other value or item is written as its JSON text, so one value cannot tell a string from a one-item array." .
 in_toto_linkml:InTotoDigestSet a owl:Class ;
 	rdfs:label "InTotoDigestSet" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md> ;
-	rdfs:subClassOf _:c14n100 , _:c14n103 , _:c14n104 , _:c14n117 , _:c14n118 , _:c14n127 , _:c14n134 , _:c14n140 , _:c14n150 , _:c14n152 , _:c14n153 , _:c14n162 , _:c14n168 , _:c14n172 , _:c14n178 , _:c14n182 , _:c14n19 , _:c14n192 , _:c14n213 , _:c14n22 , _:c14n231 , _:c14n232 , _:c14n234 , _:c14n235 , _:c14n236 , _:c14n237 , _:c14n240 , _:c14n248 , _:c14n251 , _:c14n253 , _:c14n255 , _:c14n259 , _:c14n26 , _:c14n266 , _:c14n273 , _:c14n279 , _:c14n281 , _:c14n291 , _:c14n295 , _:c14n3 , _:c14n30 , _:c14n304 , _:c14n31 , _:c14n311 , _:c14n312 , _:c14n315 , _:c14n324 , _:c14n33 , _:c14n330 , _:c14n334 , _:c14n339 , _:c14n351 , _:c14n353 , _:c14n356 , _:c14n357 , _:c14n366 , _:c14n367 , _:c14n370 , _:c14n375 , _:c14n386 , _:c14n390 , _:c14n393 , _:c14n400 , _:c14n401 , _:c14n406 , _:c14n409 , _:c14n411 , _:c14n47 , _:c14n54 , _:c14n66 , _:c14n67 , _:c14n7 , _:c14n73 , _:c14n84 , _:c14n89 ;
+	rdfs:subClassOf _:c14n101 , _:c14n104 , _:c14n105 , _:c14n119 , _:c14n120 , _:c14n128 , _:c14n136 , _:c14n143 , _:c14n153 , _:c14n155 , _:c14n156 , _:c14n165 , _:c14n171 , _:c14n175 , _:c14n180 , _:c14n184 , _:c14n19 , _:c14n194 , _:c14n214 , _:c14n22 , _:c14n232 , _:c14n233 , _:c14n235 , _:c14n236 , _:c14n237 , _:c14n238 , _:c14n241 , _:c14n248 , _:c14n251 , _:c14n253 , _:c14n255 , _:c14n259 , _:c14n26 , _:c14n266 , _:c14n273 , _:c14n279 , _:c14n281 , _:c14n292 , _:c14n296 , _:c14n3 , _:c14n30 , _:c14n305 , _:c14n31 , _:c14n312 , _:c14n313 , _:c14n316 , _:c14n325 , _:c14n33 , _:c14n331 , _:c14n336 , _:c14n343 , _:c14n355 , _:c14n357 , _:c14n360 , _:c14n361 , _:c14n370 , _:c14n371 , _:c14n374 , _:c14n379 , _:c14n390 , _:c14n394 , _:c14n397 , _:c14n404 , _:c14n405 , _:c14n410 , _:c14n413 , _:c14n415 , _:c14n47 , _:c14n54 , _:c14n68 , _:c14n69 , _:c14n75 , _:c14n8 , _:c14n86 , _:c14n91 ;
 	skos:definition "A set of one or more digests over one artifact, keyed by algorithm, from which a consumer picks the algorithm it trusts." ;
 	skos:editorialNote "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present." ;
 	skos:inScheme in_toto_linkml:in_toto_core ;
 	skos:note "A consumer accepts only the algorithms it considers secure and ignores the rest, and two sets match when any accepted algorithm matches." , "SHAKE and BLAKE2 digests can be of any length, and this schema asks for at least 32 bytes, since a shorter digest resists collisions too weakly to identify an artifact." , "The named algorithms take lowercase hexadecimal, and additional_digests holds any other algorithm, such as an SCS's own revision type." .
 in_toto_linkml:InTotoDocument a owl:Class ;
 	rdfs:label "InTotoDocument" ;
-	rdfs:subClassOf _:c14n166 , _:c14n262 , _:c14n55 , _:c14n71 ;
+	rdfs:subClassOf _:c14n169 , _:c14n263 , _:c14n57 , _:c14n73 ;
 	skos:definition "A document that holds in-toto statements and the predicate types they name." ;
 	skos:inScheme <https://w3id.org/lmodel/in-toto> .
 in_toto_linkml:InTotoLink a owl:Class ;
 	rdfs:label "InTotoLink" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n110 , _:c14n16 , _:c14n161 , _:c14n179 , _:c14n186 , _:c14n200 , _:c14n217 , _:c14n229 , _:c14n340 , _:c14n376 , _:c14n5 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n111 , _:c14n16 , _:c14n164 , _:c14n181 , _:c14n188 , _:c14n201 , _:c14n218 , _:c14n230 , _:c14n345 , _:c14n380 , _:c14n5 ;
 	skos:definition "The predicate that records one step of an in-toto layout: the command it ran and the materials it read, for a supply chain that migrates from in-toto 0.9 links." ;
 	skos:exactMatch <https://in-toto.io/attestation/link/v0.3> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -110,47 +110,47 @@ in_toto_linkml:InTotoLink a owl:Class ;
 in_toto_linkml:InTotoLinkMaterial a owl:Class ;
 	rdfs:label "InTotoLinkMaterial" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoResourceDescriptor , _:c14n173 , _:c14n269 , _:c14n316 , _:c14n331 ;
+	rdfs:subClassOf in_toto_linkml:InTotoResourceDescriptor , _:c14n176 , _:c14n269 , _:c14n317 , _:c14n332 ;
 	skos:definition "One material of a link, a resource descriptor with a name and a digest." ;
 	skos:editorialNote "The name is required through a slot condition rather than slot_usage, because resource_name is an attribute of the parent class and the LinkML loader refuses slot_usage on an inherited attribute." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoMonitorLog a owl:Class ;
 	rdfs:label "InTotoMonitorLog" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md> ;
-	rdfs:subClassOf _:c14n123 , _:c14n147 , _:c14n181 , _:c14n216 , _:c14n218 , _:c14n410 , _:c14n95 ;
+	rdfs:subClassOf _:c14n124 , _:c14n150 , _:c14n183 , _:c14n217 , _:c14n219 , _:c14n414 , _:c14n97 ;
 	skos:definition "The events a runtime trace's monitor recorded: processes, network activity and file accesses, at least one of them." ;
 	skos:editorialNote "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoMonitoredProcess a owl:Class ;
 	rdfs:label "InTotoMonitoredProcess" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md> ;
-	rdfs:subClassOf _:c14n189 , _:c14n193 , _:c14n241 , _:c14n245 , _:c14n282 , _:c14n347 , _:c14n358 , _:c14n407 , _:c14n46 ;
+	rdfs:subClassOf _:c14n191 , _:c14n195 , _:c14n242 , _:c14n245 , _:c14n261 , _:c14n282 , _:c14n362 , _:c14n411 , _:c14n46 ;
 	skos:definition "The process a runtime trace watched." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoObjectEntry a owl:Class ;
 	rdfs:label "InTotoObjectEntry" ;
-	rdfs:subClassOf _:c14n11 , _:c14n18 , _:c14n335 , _:c14n341 , _:c14n345 ;
+	rdfs:subClassOf _:c14n11 , _:c14n18 , _:c14n337 , _:c14n346 , _:c14n350 ;
 	skos:definition "One key of a JSON object whose keys the framework leaves to the producer, and the key's values." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
 	skos:note "A string becomes one value and an array one value per item; any other value or item is written as its JSON text, as InTotoAnnotation does." , "Each key appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this." .
 in_toto_linkml:InTotoPredicate a owl:Class ;
 	rdfs:label "InTotoPredicate" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md> ;
-	rdfs:subClassOf _:c14n15 , _:c14n156 , _:c14n275 , _:c14n81 ;
+	rdfs:subClassOf _:c14n15 , _:c14n159 , _:c14n275 , _:c14n83 ;
 	skos:definition "The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind." ;
 	skos:inScheme in_toto_linkml:in_toto_core ;
 	skos:note "The statement's predicate_type names the predicate's type by URI, and each concrete class says which URI it renders. Nothing ties the two, since a schema that imports this module may model a predicate under its own URI." .
 in_toto_linkml:InTotoPredicateType a owl:Class ;
 	rdfs:label "InTotoPredicateType" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md> , <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md> ;
-	rdfs:subClassOf _:c14n0 , _:c14n128 , _:c14n17 , _:c14n194 , _:c14n294 , _:c14n302 , _:c14n317 , _:c14n322 , _:c14n391 , _:c14n394 , _:c14n398 , _:c14n74 ;
+	rdfs:subClassOf _:c14n0 , _:c14n117 , _:c14n129 , _:c14n17 , _:c14n295 , _:c14n303 , _:c14n318 , _:c14n323 , _:c14n395 , _:c14n398 , _:c14n402 , _:c14n76 ;
 	skos:definition "A type of predicate an in-toto statement can carry, named by the URI a statement's predicate_type holds." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
 	skos:note "Anyone can define a predicate type. The in-toto project vets some of them, and vetted_as names which vetted type this one is." , "The type URI includes the predicate's major version and changes when the predicate changes incompatibly; a minor version keeps it." .
 in_toto_linkml:InTotoReference a owl:Class ;
 	rdfs:label "InTotoReference" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n138 , _:c14n221 , _:c14n350 , _:c14n352 , _:c14n48 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n140 , _:c14n222 , _:c14n354 , _:c14n356 , _:c14n48 ;
 	skos:definition "The predicate that points from the subjects, as a whole, to documents about them, such as a bill of materials." ;
 	skos:exactMatch <https://in-toto.io/attestation/reference/v0.1> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -158,13 +158,13 @@ in_toto_linkml:InTotoReference a owl:Class ;
 in_toto_linkml:InTotoReferenceAttester a owl:Class ;
 	rdfs:label "InTotoReferenceAttester" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md> ;
-	rdfs:subClassOf _:c14n155 , _:c14n263 , _:c14n349 ;
+	rdfs:subClassOf _:c14n141 , _:c14n158 , _:c14n353 ;
 	skos:definition "The system that provides the documents a Reference predicate points to." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoReferencedDocument a owl:Class ;
 	rdfs:label "InTotoReferencedDocument" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoResourceDescriptor , _:c14n145 , _:c14n75 ;
+	rdfs:subClassOf in_toto_linkml:InTotoResourceDescriptor , _:c14n148 , _:c14n77 ;
 	skos:definition "One document a Reference predicate points to: a resource descriptor with a download location and a media type." ;
 	skos:editorialNote "Both fields are required through slot conditions rather than slot_usage, because they are attributes of the parent class and the LinkML loader refuses slot_usage on an inherited attribute." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -172,7 +172,7 @@ in_toto_linkml:InTotoReferencedDocument a owl:Class ;
 in_toto_linkml:InTotoRelease a owl:Class ;
 	rdfs:label "InTotoRelease" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n174 , _:c14n246 , _:c14n247 , _:c14n342 , _:c14n36 , _:c14n377 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n177 , _:c14n246 , _:c14n247 , _:c14n347 , _:c14n36 , _:c14n381 ;
 	skos:definition "The predicate that ties the subjects to one release name and version of a package, so that consumers can check what the release should contain." ;
 	skos:exactMatch <https://in-toto.io/attestation/release/v0.1> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -180,15 +180,17 @@ in_toto_linkml:InTotoRelease a owl:Class ;
 in_toto_linkml:InTotoResourceDescriptor a owl:Class ;
 	rdfs:label "InTotoResourceDescriptor" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/resource_descriptor.md> ;
-	rdfs:subClassOf _:c14n108 , _:c14n126 , _:c14n133 , _:c14n146 , _:c14n183 , _:c14n210 , _:c14n226 , _:c14n254 , _:c14n260 , _:c14n27 , _:c14n289 , _:c14n320 , _:c14n34 , _:c14n37 , _:c14n371 , _:c14n374 , _:c14n80 , _:c14n85 , _:c14n87 , _:c14n94 , _:c14n96 ;
+	rdfs:subClassOf _:c14n109 , _:c14n127 , _:c14n134 , _:c14n149 , _:c14n185 , _:c14n227 , _:c14n254 , _:c14n260 , _:c14n27 , _:c14n290 , _:c14n321 , _:c14n34 , _:c14n342 , _:c14n37 , _:c14n375 , _:c14n378 , _:c14n7 , _:c14n82 , _:c14n87 , _:c14n89 , _:c14n96 ;
 	skos:definition "A reference to a software artifact or other resource by URI or digest, or the resource itself as content, with optional metadata." ;
 	skos:editorialNote "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present." ;
 	skos:inScheme in_toto_linkml:in_toto_core ;
 	skos:note "A descriptor carries at least one of a URI, a digest or its content; a field that needs a particular one says so." .
+in_toto_linkml:InTotoResourceUri a rdfs:Datatype ;
+	owl:equivalentClass _:c14n334 .
 in_toto_linkml:InTotoRuntimeTrace a owl:Class ;
 	rdfs:label "InTotoRuntimeTrace" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n143 , _:c14n203 , _:c14n224 , _:c14n271 , _:c14n305 , _:c14n323 , _:c14n338 , _:c14n378 , _:c14n392 , _:c14n45 , _:c14n61 , _:c14n65 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n146 , _:c14n204 , _:c14n225 , _:c14n271 , _:c14n306 , _:c14n324 , _:c14n341 , _:c14n382 , _:c14n396 , _:c14n45 , _:c14n63 , _:c14n67 ;
 	skos:definition "The predicate that records what a monitor traced while a supply chain step, such as a build, ran." ;
 	skos:exactMatch <https://in-toto.io/attestation/runtime-trace/v0.1> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -196,13 +198,13 @@ in_toto_linkml:InTotoRuntimeTrace a owl:Class ;
 in_toto_linkml:InTotoScaiAttributeAssertion a owl:Class ;
 	rdfs:label "InTotoScaiAttributeAssertion" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md> ;
-	rdfs:subClassOf _:c14n102 , _:c14n139 , _:c14n170 , _:c14n207 , _:c14n298 , _:c14n308 , _:c14n321 , _:c14n379 , _:c14n382 , _:c14n53 , _:c14n78 ;
+	rdfs:subClassOf _:c14n103 , _:c14n142 , _:c14n173 , _:c14n209 , _:c14n299 , _:c14n309 , _:c14n322 , _:c14n383 , _:c14n386 , _:c14n53 , _:c14n80 ;
 	skos:definition "One SCAI assertion: an attribute of the subject or its producer, what it applies to, under which conditions, and the evidence for it." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoScaiAttributeReport a owl:Class ;
 	rdfs:label "InTotoScaiAttributeReport" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n114 , _:c14n219 , _:c14n23 , _:c14n40 , _:c14n405 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n115 , _:c14n220 , _:c14n23 , _:c14n40 , _:c14n409 ;
 	skos:definition "The Software Supply Chain Attribute Integrity (SCAI) predicate: assertions about functional attributes of the subjects or their producer, each with the evidence for it." ;
 	skos:exactMatch <https://in-toto.io/attestation/scai/v0.3> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -210,13 +212,13 @@ in_toto_linkml:InTotoScaiAttributeReport a owl:Class ;
 in_toto_linkml:InTotoScanMetadata a owl:Class ;
 	rdfs:label "InTotoScanMetadata" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
-	rdfs:subClassOf _:c14n163 , _:c14n164 , _:c14n238 , _:c14n303 , _:c14n383 , _:c14n72 ;
+	rdfs:subClassOf _:c14n166 , _:c14n167 , _:c14n239 , _:c14n304 , _:c14n387 , _:c14n74 ;
 	skos:definition "When a vulnerability scan ran." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoSimpleVerificationResult a owl:Class ;
 	rdfs:label "InTotoSimpleVerificationResult" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n13 , _:c14n159 , _:c14n180 , _:c14n214 , _:c14n264 , _:c14n301 , _:c14n310 , _:c14n59 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n13 , _:c14n162 , _:c14n182 , _:c14n215 , _:c14n264 , _:c14n302 , _:c14n311 , _:c14n61 ;
 	skos:definition "The predicate that says a verifier evaluated the subjects against one or more policies, and which properties passed." ;
 	skos:exactMatch <https://in-toto.io/attestation/svr/v0.1> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -224,27 +226,27 @@ in_toto_linkml:InTotoSimpleVerificationResult a owl:Class ;
 in_toto_linkml:InTotoStatement a owl:Class ;
 	rdfs:label "InTotoStatement" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md> ;
-	rdfs:subClassOf _:c14n1 , _:c14n130 , _:c14n137 , _:c14n185 , _:c14n208 , _:c14n228 , _:c14n272 , _:c14n397 , _:c14n402 , _:c14n6 , _:c14n77 ;
+	rdfs:subClassOf _:c14n1 , _:c14n131 , _:c14n139 , _:c14n187 , _:c14n229 , _:c14n272 , _:c14n288 , _:c14n401 , _:c14n406 , _:c14n6 , _:c14n79 ;
 	skos:definition "The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself." ;
 	skos:inScheme in_toto_linkml:in_toto_core ;
 	skos:note "A statement is the attestation, and its predicate is one kind of claim about the subjects, such as a test result or build provenance." , "The signature envelope around a statement, and the bundle that collects signed statements, are outside this model." .
 in_toto_linkml:InTotoStatementSubject a owl:Class ;
 	rdfs:label "InTotoStatementSubject" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoResourceDescriptor , _:c14n165 , _:c14n265 , _:c14n325 ;
+	rdfs:subClassOf in_toto_linkml:InTotoResourceDescriptor , _:c14n168 , _:c14n265 , _:c14n326 ;
 	skos:definition "One artifact an in-toto statement is about: a resource descriptor that carries a digest." ;
 	skos:inScheme in_toto_linkml:in_toto_core .
 in_toto_linkml:InTotoSvrVerifier a owl:Class ;
 	rdfs:label "InTotoSvrVerifier" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md> ;
-	rdfs:subClassOf _:c14n119 , _:c14n176 , _:c14n206 ;
+	rdfs:subClassOf _:c14n121 , _:c14n208 , _:c14n365 ;
 	skos:definition "The entity that performed a simple verification." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
 	skos:note "A verifier with configurable policies may add fields of its own that say which policy it applied; this schema does not model them." .
 in_toto_linkml:InTotoTestResult a owl:Class ;
 	rdfs:label "InTotoTestResult" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n111 , _:c14n135 , _:c14n136 , _:c14n2 , _:c14n211 , _:c14n215 , _:c14n225 , _:c14n243 , _:c14n293 , _:c14n306 , _:c14n314 , _:c14n355 , _:c14n362 , _:c14n403 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n112 , _:c14n137 , _:c14n138 , _:c14n2 , _:c14n207 , _:c14n211 , _:c14n216 , _:c14n226 , _:c14n294 , _:c14n307 , _:c14n315 , _:c14n359 , _:c14n366 , _:c14n407 ;
 	skos:definition "The predicate that records the result of one run of a test suite against the subjects, with the names of the tests that passed, warned and failed." ;
 	skos:exactMatch <https://in-toto.io/attestation/test-result/v0.1> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -264,26 +266,28 @@ in_toto_linkml:InTotoTestResultValue\#WARNED a owl:Class ;
 in_toto_linkml:InTotoTestResultValue a owl:Class ;
 	rdfs:label "InTotoTestResultValue" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md> ;
-	owl:unionOf _:c14n313 ;
+	owl:unionOf _:c14n314 ;
 	skos:definition "The result of a test run, as a Test Result predicate records it." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
 	linkml:permissible_values in_toto_linkml:InTotoTestResultValue\#FAILED , in_toto_linkml:InTotoTestResultValue\#PASSED , in_toto_linkml:InTotoTestResultValue\#WARNED .
 in_toto_linkml:InTotoTraceMetadata a owl:Class ;
 	rdfs:label "InTotoTraceMetadata" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md> ;
-	rdfs:subClassOf _:c14n191 , _:c14n252 , _:c14n285 , _:c14n309 , _:c14n346 , _:c14n381 ;
+	rdfs:subClassOf _:c14n193 , _:c14n252 , _:c14n285 , _:c14n310 , _:c14n351 , _:c14n385 ;
 	skos:definition "Other properties of a runtime trace's monitoring event." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoTraceMonitor a owl:Class ;
 	rdfs:label "InTotoTraceMonitor" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md> ;
-	rdfs:subClassOf _:c14n12 , _:c14n125 , _:c14n222 , _:c14n25 , _:c14n292 , _:c14n361 , _:c14n404 , _:c14n79 ;
+	rdfs:subClassOf _:c14n12 , _:c14n126 , _:c14n223 , _:c14n25 , _:c14n293 , _:c14n408 , _:c14n55 , _:c14n81 ;
 	skos:definition "The monitor instance that produced a runtime trace." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
+in_toto_linkml:InTotoTypeUri a rdfs:Datatype ;
+	owl:equivalentClass _:c14n135 .
 in_toto_linkml:InTotoVettedPredicate a owl:Class ;
 	rdfs:label "InTotoVettedPredicate" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md> ;
-	owl:unionOf _:c14n112 ;
+	owl:unionOf _:c14n113 ;
 	skos:definition "The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each with the predicate_type a statement of it carries at the version its page describes." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
 	skos:note "The in-toto project's own types are CURIEs under in_toto. The others are full addresses, because the Python generator writes no namespace for a prefix that only an enum's meaning uses." ;
@@ -291,31 +295,31 @@ in_toto_linkml:InTotoVettedPredicate a owl:Class ;
 in_toto_linkml:InTotoVulnDatabase a owl:Class ;
 	rdfs:label "InTotoVulnDatabase" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
-	rdfs:subClassOf _:c14n121 , _:c14n149 , _:c14n198 , _:c14n233 , _:c14n364 , _:c14n396 , _:c14n42 , _:c14n92 , _:c14n93 ;
+	rdfs:subClassOf _:c14n152 , _:c14n199 , _:c14n234 , _:c14n368 , _:c14n400 , _:c14n42 , _:c14n56 , _:c14n94 , _:c14n95 ;
 	skos:definition "The vulnerability database a scanner used." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoVulnResult a owl:Class ;
 	rdfs:label "InTotoVulnResult" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
-	rdfs:subClassOf _:c14n169 , _:c14n184 , _:c14n249 , _:c14n256 , _:c14n284 , _:c14n287 , _:c14n63 ;
+	rdfs:subClassOf _:c14n172 , _:c14n186 , _:c14n249 , _:c14n256 , _:c14n284 , _:c14n287 , _:c14n65 ;
 	skos:definition "One vulnerability a scanner found." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoVulnScanner a owl:Class ;
 	rdfs:label "InTotoVulnScanner" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
-	rdfs:subClassOf _:c14n10 , _:c14n122 , _:c14n171 , _:c14n188 , _:c14n223 , _:c14n278 , _:c14n297 , _:c14n328 , _:c14n337 , _:c14n68 , _:c14n9 ;
+	rdfs:subClassOf _:c14n10 , _:c14n123 , _:c14n174 , _:c14n190 , _:c14n224 , _:c14n278 , _:c14n298 , _:c14n329 , _:c14n338 , _:c14n340 , _:c14n70 ;
 	skos:definition "The scanner a VULNS predicate records, with its results." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoVulnSeverity a owl:Class ;
 	rdfs:label "InTotoVulnSeverity" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
-	rdfs:subClassOf _:c14n142 , _:c14n250 , _:c14n326 , _:c14n35 , _:c14n57 , _:c14n99 ;
+	rdfs:subClassOf _:c14n100 , _:c14n145 , _:c14n250 , _:c14n327 , _:c14n35 , _:c14n59 ;
 	skos:definition "One severity score of a vulnerability, by one scoring method." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates .
 in_toto_linkml:InTotoVulns a owl:Class ;
 	rdfs:label "InTotoVulns" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md> ;
-	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n197 , _:c14n220 , _:c14n360 , _:c14n369 , _:c14n50 , _:c14n91 ;
+	rdfs:subClassOf in_toto_linkml:InTotoPredicate , _:c14n198 , _:c14n221 , _:c14n364 , _:c14n373 , _:c14n50 , _:c14n93 ;
 	skos:definition "The predicate that records the result of one vulnerability scan of the subjects: the scanner, its database and the vulnerabilities it found." ;
 	skos:exactMatch <https://in-toto.io/attestation/vulns/v0.2> ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
@@ -531,7 +535,7 @@ in_toto_linkml:resource_name a owl:DatatypeProperty ;
 	skos:inScheme in_toto_linkml:in_toto_core .
 in_toto_linkml:resource_uri a owl:DatatypeProperty ;
 	rdfs:label "resource_uri" ;
-	rdfs:range xsd:anyURI ;
+	rdfs:range in_toto_linkml:InTotoResourceUri ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri> ;
 	skos:definition "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference." ;
 	skos:inScheme in_toto_linkml:in_toto_core .
@@ -587,7 +591,8 @@ in_toto_linkml:scanner_uri a owl:DatatypeProperty ;
 in_toto_linkml:scanner_version a owl:DatatypeProperty ;
 	rdfs:label "scanner_version" ;
 	skos:definition "The scanner's version." ;
-	skos:inScheme in_toto_linkml:in_toto_predicates .
+	skos:inScheme in_toto_linkml:in_toto_predicates ;
+	skos:note "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string." .
 in_toto_linkml:severity_method a owl:DatatypeProperty ;
 	rdfs:label "severity_method" ;
 	skos:definition "The scoring method, such as nvd or cvss." ;
@@ -768,450 +773,448 @@ _:c14n10 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:scanner_version .
 _:c14n100 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:severity_method .
+_:c14n101 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha3_384 .
-_:c14n101 rdf:first "sha224" ;
-	rdf:rest _:c14n388 .
-_:c14n102 a owl:Restriction ;
+_:c14n102 rdf:first "sha224" ;
+	rdf:rest _:c14n392 .
+_:c14n103 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:scai_target .
-_:c14n103 a owl:Restriction ;
+_:c14n104 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha256 .
-_:c14n104 a owl:Restriction ;
-	owl:allValuesFrom _:c14n420 ;
+_:c14n105 a owl:Restriction ;
+	owl:allValuesFrom _:c14n439 ;
 	owl:onProperty in_toto_linkml:git_tag .
-_:c14n105 rdf:first <https://in-toto.io/attestation/link/v0.3> ;
-	rdf:rest _:c14n373 .
-_:c14n106 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:traced_network .
+_:c14n106 rdf:first <https://in-toto.io/attestation/link/v0.3> ;
+	rdf:rest _:c14n377 .
 _:c14n107 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:sha3_512 .
+	owl:onProperty in_toto_linkml:traced_network .
 _:c14n108 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:sha3_512 .
+_:c14n109 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:resource_uri .
-_:c14n109 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:shake256 .
 _:c14n11 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:entry_key .
 _:c14n110 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:shake256 .
+_:c14n111 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoObjectEntry ;
 	owl:onProperty in_toto_linkml:step_byproducts .
-_:c14n111 a owl:Restriction ;
+_:c14n112 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:warned_tests .
-_:c14n112 rdf:first <https://cyclonedx.org/bom/v1.4> ;
-	rdf:rest _:c14n105 .
-_:c14n113 rdf:first <https://in-toto.io/attestation/svr/v0.1> ;
+_:c14n113 rdf:first <https://cyclonedx.org/bom/v1.4> ;
+	rdf:rest _:c14n106 .
+_:c14n114 rdf:first <https://in-toto.io/attestation/svr/v0.1> ;
 	rdf:rest _:c14n244 .
-_:c14n114 a owl:Restriction ;
+_:c14n115 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:scai_attributes .
-_:c14n115 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:shake128 .
 _:c14n116 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:traced_processes .
+	owl:onProperty in_toto_linkml:shake128 .
 _:c14n117 a owl:Restriction ;
-	owl:allValuesFrom _:c14n455 ;
-	owl:onProperty in_toto_linkml:sha3_256 .
+	owl:allValuesFrom in_toto_linkml:InTotoTypeUri ;
+	owl:onProperty in_toto_linkml:predicate_type_uri .
 _:c14n118 a owl:Restriction ;
-	owl:allValuesFrom _:c14n442 ;
-	owl:onProperty in_toto_linkml:sha1 .
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:traced_processes .
 _:c14n119 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:svr_verifier_id .
+	owl:allValuesFrom _:c14n488 ;
+	owl:onProperty in_toto_linkml:sha3_256 .
 _:c14n12 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoObjectEntry ;
 	owl:onProperty in_toto_linkml:trace_policy .
 _:c14n120 a owl:Restriction ;
+	owl:allValuesFrom _:c14n454 ;
+	owl:onProperty in_toto_linkml:sha1 .
+_:c14n121 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:svr_verifier_id .
+_:c14n122 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoPredicate ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoPredicate .
-_:c14n121 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:db_uri .
-_:c14n122 a owl:Restriction ;
+_:c14n123 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:scanner_uri .
-_:c14n123 a owl:Restriction ;
+_:c14n124 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
 	owl:onProperty in_toto_linkml:file_access .
-_:c14n124 xsd:pattern "^\\S+$" .
-_:c14n125 a owl:Restriction ;
+_:c14n125 xsd:pattern "^\\S+$" .
+_:c14n126 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:monitor_type .
-_:c14n126 a owl:Restriction ;
+_:c14n127 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:content .
-_:c14n127 a owl:Restriction ;
-	owl:allValuesFrom _:c14n414 ;
-	owl:onProperty in_toto_linkml:git_commit .
 _:c14n128 a owl:Restriction ;
+	owl:allValuesFrom _:c14n436 ;
+	owl:onProperty in_toto_linkml:git_commit .
+_:c14n129 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:predicate_version .
-_:c14n129 rdf:first xsd:string ;
-	rdf:rest _:c14n425 .
 _:c14n13 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:svr_verifier .
-_:c14n130 a owl:Restriction ;
+_:c14n130 rdf:first xsd:string ;
+	rdf:rest _:c14n441 .
+_:c14n131 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:predicate_type .
-_:c14n131 rdf:first "dir_hash" ;
-	rdf:rest _:c14n64 .
-_:c14n132 rdf:first in_toto_linkml:InTotoLink ;
-	rdf:rest _:c14n395 .
-_:c14n133 a owl:Restriction ;
+_:c14n132 rdf:first "dir_hash" ;
+	rdf:rest _:c14n66 .
+_:c14n133 rdf:first in_toto_linkml:InTotoLink ;
+	rdf:rest _:c14n399 .
+_:c14n134 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:annotations .
-_:c14n134 a owl:Restriction ;
-	owl:allValuesFrom _:c14n496 ;
+_:c14n135 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n427 .
+_:c14n136 a owl:Restriction ;
+	owl:allValuesFrom _:c14n481 ;
 	owl:onProperty in_toto_linkml:sha224 .
-_:c14n135 a owl:Restriction ;
+_:c14n137 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:warned_tests .
-_:c14n136 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:test_result .
-_:c14n137 a owl:Restriction ;
-	owl:allValuesFrom _:c14n435 ;
-	owl:onProperty in_toto_linkml:statement_type .
 _:c14n138 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:reference_attester .
+	owl:onProperty in_toto_linkml:test_result .
 _:c14n139 a owl:Restriction ;
+	owl:allValuesFrom _:c14n544 ;
+	owl:onProperty in_toto_linkml:statement_type .
+_:c14n14 a rdfs:Datatype ;
+	owl:oneOf _:c14n243 .
+_:c14n140 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:reference_attester .
+_:c14n141 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoTypeUri ;
+	owl:onProperty in_toto_linkml:reference_attester_id .
+_:c14n142 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scai_target .
-_:c14n14 a rdfs:Datatype ;
-	owl:oneOf _:c14n242 .
-_:c14n140 a owl:Restriction ;
+_:c14n143 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:gost .
-_:c14n141 rdf:first "gitCommit" ;
+_:c14n144 rdf:first "gitCommit" ;
 	rdf:rest _:c14n29 .
-_:c14n142 a owl:Restriction ;
+_:c14n145 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:severity_method .
-_:c14n143 a owl:Restriction ;
+_:c14n146 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoMonitoredProcess ;
 	owl:onProperty in_toto_linkml:monitored_process .
-_:c14n144 rdf:first <https://spdx.dev/Document/v2.3> ;
-	rdf:rest _:c14n329 .
-_:c14n145 a owl:Restriction ;
+_:c14n147 rdf:first <https://spdx.dev/Document/v2.3> ;
+	rdf:rest _:c14n330 .
+_:c14n148 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:media_type .
-_:c14n146 a owl:Restriction ;
+_:c14n149 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:download_location .
-_:c14n147 owl:unionOf _:c14n504 .
-_:c14n148 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:annotation_key .
-_:c14n149 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:db_uri .
 _:c14n15 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:predicate_kind .
-_:c14n150 a owl:Restriction ;
+_:c14n150 owl:unionOf _:c14n538 .
+_:c14n151 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:annotation_key .
+_:c14n152 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:db_uri .
+_:c14n153 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoAdditionalDigest ;
 	owl:onProperty in_toto_linkml:additional_digests .
-_:c14n151 rdf:first "sha512" ;
-	rdf:rest _:c14n209 .
-_:c14n152 a owl:Restriction ;
-	owl:allValuesFrom _:c14n469 ;
+_:c14n154 rdf:first "sha512" ;
+	rdf:rest _:c14n210 .
+_:c14n155 a owl:Restriction ;
+	owl:allValuesFrom _:c14n508 ;
 	owl:onProperty in_toto_linkml:sha512_224 .
-_:c14n153 a owl:Restriction ;
+_:c14n156 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha1 .
-_:c14n154 rdf:first _:c14n86 ;
-	rdf:rest _:c14n438 .
-_:c14n155 a owl:Restriction ;
+_:c14n157 rdf:first _:c14n88 ;
+	rdf:rest _:c14n444 .
+_:c14n158 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:reference_attester_id .
-_:c14n156 a owl:Restriction ;
+_:c14n159 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:predicate_kind .
-_:c14n157 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{2}){0,32}$" .
-_:c14n158 rdf:first "shake128" ;
-	rdf:rest _:c14n318 .
-_:c14n159 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoSvrVerifier ;
-	owl:onProperty in_toto_linkml:svr_verifier .
 _:c14n16 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:step_command .
-_:c14n160 rdf:first <https://in-toto.io/attestation/scai/v0.3> ;
-	rdf:rest _:c14n195 .
-_:c14n161 a owl:Restriction ;
+_:c14n160 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{2}){0,32}$" .
+_:c14n161 rdf:first "shake128" ;
+	rdf:rest _:c14n319 .
+_:c14n162 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoSvrVerifier ;
+	owl:onProperty in_toto_linkml:svr_verifier .
+_:c14n163 rdf:first <https://in-toto.io/attestation/scai/v0.3> ;
+	rdf:rest _:c14n196 .
+_:c14n164 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoLinkMaterial ;
 	owl:onProperty in_toto_linkml:materials .
-_:c14n162 a owl:Restriction ;
+_:c14n165 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:git_tag .
-_:c14n163 a owl:Restriction ;
+_:c14n166 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scan_finished_on .
-_:c14n164 a owl:Restriction ;
+_:c14n167 a owl:Restriction ;
 	owl:allValuesFrom xsd:dateTime ;
 	owl:onProperty in_toto_linkml:scan_started_on .
-_:c14n165 a owl:Restriction ;
+_:c14n168 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:digest .
-_:c14n166 a owl:Restriction ;
+_:c14n169 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoStatement ;
 	owl:onProperty in_toto_linkml:in_toto_statements .
-_:c14n167 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:annotation_key .
-_:c14n168 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:sha256 .
-_:c14n169 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoVulnSeverity ;
-	owl:onProperty in_toto_linkml:vuln_severity .
 _:c14n17 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:predicate_type_uri .
 _:c14n170 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:annotation_key .
+_:c14n171 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:sha256 .
+_:c14n172 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoVulnSeverity ;
+	owl:onProperty in_toto_linkml:vuln_severity .
+_:c14n173 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:scai_attribute .
-_:c14n171 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:vuln_db .
-_:c14n172 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:git_commit .
-_:c14n173 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:resource_name .
 _:c14n174 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:package_id .
-_:c14n175 rdf:first "git_blob" ;
-	rdf:rest _:c14n274 .
+	owl:onProperty in_toto_linkml:vuln_db .
+_:c14n175 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:git_commit .
 _:c14n176 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:svr_verifier_id .
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:resource_name .
 _:c14n177 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:package_id .
+_:c14n178 rdf:first "git_blob" ;
+	rdf:rest _:c14n274 .
+_:c14n179 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:gost .
-_:c14n178 a owl:Restriction ;
-	owl:allValuesFrom _:c14n479 ;
-	owl:onProperty in_toto_linkml:sha3_512 .
-_:c14n179 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoObjectEntry ;
-	owl:onProperty in_toto_linkml:step_environment .
 _:c14n18 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:entry_values .
 _:c14n180 a owl:Restriction ;
+	owl:allValuesFrom _:c14n464 ;
+	owl:onProperty in_toto_linkml:sha3_512 .
+_:c14n181 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoObjectEntry ;
+	owl:onProperty in_toto_linkml:step_environment .
+_:c14n182 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:verified_properties .
-_:c14n181 a owl:Restriction ;
+_:c14n183 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:traced_processes .
-_:c14n182 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:sha3_256 .
-_:c14n183 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:content .
 _:c14n184 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:vuln_id .
+	owl:onProperty in_toto_linkml:sha3_256 .
 _:c14n185 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:content .
+_:c14n186 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:vuln_id .
+_:c14n187 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:subject .
-_:c14n186 a owl:Restriction ;
+_:c14n188 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:step_environment .
-_:c14n187 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:blake2b .
-_:c14n188 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoVulnResult ;
-	owl:onProperty in_toto_linkml:scan_results .
 _:c14n189 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:process_event .
+	owl:onProperty in_toto_linkml:blake2b .
 _:c14n19 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha3_512 .
 _:c14n190 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoVulnResult ;
+	owl:onProperty in_toto_linkml:scan_results .
+_:c14n191 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:process_event .
+_:c14n192 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI ;
 	owl:onProperty in_toto_linkml:resource_uri .
-_:c14n191 a owl:Restriction ;
+_:c14n193 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:build_finished_on .
-_:c14n192 a owl:Restriction ;
+_:c14n194 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:gost .
-_:c14n193 a owl:Restriction ;
+_:c14n195 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI ;
 	owl:onProperty in_toto_linkml:host_id .
-_:c14n194 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:predicate_type_uri .
-_:c14n195 rdf:first <https://slsa.dev/provenance/v1> ;
+_:c14n196 rdf:first <https://slsa.dev/provenance/v1> ;
 	rdf:rest _:c14n44 .
-_:c14n196 xsd:pattern "^[a-f0-9]{32}$" .
-_:c14n197 a owl:Restriction ;
+_:c14n197 xsd:pattern "^[a-f0-9]{32}$" .
+_:c14n198 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:vuln_scanner .
-_:c14n198 a owl:Restriction ;
+_:c14n199 a owl:Restriction ;
 	owl:allValuesFrom xsd:dateTime ;
 	owl:onProperty in_toto_linkml:db_last_update .
-_:c14n199 rdf:first "sha3_256" ;
-	rdf:rest _:c14n202 .
 _:c14n2 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
 	owl:onProperty in_toto_linkml:configuration .
 _:c14n20 xsd:pattern "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+" .
-_:c14n200 a owl:Restriction ;
+_:c14n200 rdf:first "sha3_256" ;
+	rdf:rest _:c14n203 .
+_:c14n201 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:step_name .
-_:c14n201 rdf:first "blake2b" ;
-	rdf:rest _:c14n333 .
-_:c14n202 rdf:first "sha3_384" ;
-	rdf:rest _:c14n399 .
-_:c14n203 a owl:Restriction ;
+_:c14n202 rdf:first "blake2b" ;
+	rdf:rest _:c14n335 .
+_:c14n203 rdf:first "sha3_384" ;
+	rdf:rest _:c14n403 .
+_:c14n204 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoTraceMetadata ;
 	owl:onProperty in_toto_linkml:trace_metadata .
-_:c14n204 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:git_tree .
 _:c14n205 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:sha256 .
+	owl:onProperty in_toto_linkml:git_tree .
 _:c14n206 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:sha256 .
+_:c14n207 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceUri ;
+	owl:onProperty in_toto_linkml:test_run_url .
+_:c14n208 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:svr_verifier_id .
-_:c14n207 a owl:Restriction ;
+_:c14n209 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:scai_attribute .
-_:c14n208 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:predicate_type .
-_:c14n209 rdf:first "sha512_224" ;
-	rdf:rest _:c14n365 .
 _:c14n21 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sha384 .
-_:c14n210 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:resource_uri .
+_:c14n210 rdf:first "sha512_224" ;
+	rdf:rest _:c14n369 .
 _:c14n211 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:test_result .
 _:c14n212 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:blake2s .
-_:c14n213 a owl:Restriction ;
+_:c14n213 rdf:first in_toto_linkml:InTotoResourceUri ;
+	rdf:rest _:c14n447 .
+_:c14n214 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:ripemd160 .
-_:c14n214 a owl:Restriction ;
+_:c14n215 a owl:Restriction ;
 	owl:allValuesFrom xsd:dateTime ;
 	owl:onProperty in_toto_linkml:time_created .
-_:c14n215 a owl:Restriction ;
+_:c14n216 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:passed_tests .
-_:c14n216 a owl:Restriction ;
+_:c14n217 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:traced_network .
-_:c14n217 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:materials .
 _:c14n218 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:traced_network .
+	owl:onProperty in_toto_linkml:materials .
 _:c14n219 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
-	owl:onProperty in_toto_linkml:scai_producer .
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:traced_network .
 _:c14n22 a owl:Restriction ;
-	owl:allValuesFrom _:c14n490 ;
+	owl:allValuesFrom _:c14n491 ;
 	owl:onProperty in_toto_linkml:shake256 .
 _:c14n220 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
+	owl:onProperty in_toto_linkml:scai_producer .
+_:c14n221 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:vuln_scanner .
-_:c14n221 a owl:Restriction ;
+_:c14n222 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoReferenceAttester ;
 	owl:onProperty in_toto_linkml:reference_attester .
-_:c14n222 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:trace_policy .
 _:c14n223 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:scanner_version .
+	owl:onProperty in_toto_linkml:trace_policy .
 _:c14n224 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:scanner_version .
+_:c14n225 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:monitor_log .
-_:c14n225 a owl:Restriction ;
+_:c14n226 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:failed_tests .
-_:c14n226 owl:unionOf _:c14n501 .
-_:c14n227 a owl:Restriction ;
+_:c14n227 owl:unionOf _:c14n541 .
+_:c14n228 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoLink ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoLink .
-_:c14n228 a owl:Restriction ;
+_:c14n229 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:statement_type .
-_:c14n229 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:step_byproducts .
 _:c14n23 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scai_producer .
-_:c14n230 rdf:first "sm3" ;
-	rdf:rest _:c14n300 .
-_:c14n231 a owl:Restriction ;
+_:c14n230 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:step_byproducts .
+_:c14n231 rdf:first "sm3" ;
+	rdf:rest _:c14n301 .
+_:c14n232 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:shake128 .
-_:c14n232 a owl:Restriction ;
+_:c14n233 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:git_commit .
-_:c14n233 a owl:Restriction ;
+_:c14n234 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:db_uri .
-_:c14n234 a owl:Restriction ;
-	owl:allValuesFrom _:c14n482 ;
-	owl:onProperty in_toto_linkml:dir_hash .
 _:c14n235 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:sha384 .
+	owl:allValuesFrom _:c14n478 ;
+	owl:onProperty in_toto_linkml:dir_hash .
 _:c14n236 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:dir_hash .
+	owl:onProperty in_toto_linkml:sha384 .
 _:c14n237 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:shake256 .
+	owl:onProperty in_toto_linkml:dir_hash .
 _:c14n238 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:shake256 .
+_:c14n239 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:scan_started_on .
-_:c14n239 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:sha512_224 .
 _:c14n24 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:value .
 _:c14n240 a owl:Restriction ;
-	owl:allValuesFrom _:c14n485 ;
-	owl:onProperty in_toto_linkml:sha256 .
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:sha512_224 .
 _:c14n241 a owl:Restriction ;
+	owl:allValuesFrom _:c14n494 ;
+	owl:onProperty in_toto_linkml:sha256 .
+_:c14n242 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:process_event .
-_:c14n242 rdf:first "sha256" ;
-	rdf:rest _:c14n101 .
-_:c14n243 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:test_run_url .
+_:c14n243 rdf:first "sha256" ;
+	rdf:rest _:c14n102 .
 _:c14n244 rdf:first <https://in-toto.io/attestation/test-result/v0.1> ;
 	rdf:rest _:c14n39 .
 _:c14n245 a owl:Restriction ;
@@ -1221,10 +1224,10 @@ _:c14n246 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:package_id .
 _:c14n247 a owl:Restriction ;
-	owl:allValuesFrom _:c14n430 ;
+	owl:allValuesFrom _:c14n545 ;
 	owl:onProperty in_toto_linkml:release_purl .
 _:c14n248 a owl:Restriction ;
-	owl:allValuesFrom _:c14n458 ;
+	owl:allValuesFrom _:c14n469 ;
 	owl:onProperty in_toto_linkml:sha3_224 .
 _:c14n249 a owl:Restriction ;
 	owl:minCardinality 1 ;
@@ -1254,10 +1257,10 @@ _:c14n256 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:vuln_severity .
 _:c14n257 a owl:Restriction ;
-	owl:allValuesFrom _:c14n499 ;
+	owl:allValuesFrom _:c14n500 ;
 	owl:onProperty in_toto_linkml:value .
 _:c14n258 rdf:first "ripemd160" ;
-	rdf:rest _:c14n230 .
+	rdf:rest _:c14n231 .
 _:c14n259 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha3_384 .
@@ -1268,14 +1271,14 @@ _:c14n260 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:media_type .
 _:c14n261 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoTypeUri ;
+	owl:onProperty in_toto_linkml:process_type .
+_:c14n262 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sha224 .
-_:c14n262 a owl:Restriction ;
+_:c14n263 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:in_toto_predicate_types .
-_:c14n263 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:reference_attester_id .
 _:c14n264 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:svr_verifier .
@@ -1310,7 +1313,7 @@ _:c14n273 a owl:Restriction ;
 	owl:onProperty in_toto_linkml:sha512_256 .
 _:c14n274 rdf:first "git_tag" ;
 	rdf:rest rdf:nil .
-_:c14n275 owl:unionOf _:c14n132 .
+_:c14n275 owl:unionOf _:c14n133 .
 _:c14n276 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{64})?$" .
 _:c14n277 rdf:first in_toto_linkml:InTotoTestResult ;
 	rdf:rest _:c14n283 .
@@ -1322,9 +1325,9 @@ _:c14n279 a owl:Restriction ;
 	owl:onProperty in_toto_linkml:git_tree .
 _:c14n28 xsd:pattern "^https://in-toto\\.io/Statement/v1$" .
 _:c14n280 rdf:first "gitBlob" ;
-	rdf:rest _:c14n97 .
+	rdf:rest _:c14n98 .
 _:c14n281 a owl:Restriction ;
-	owl:allValuesFrom _:c14n463 ;
+	owl:allValuesFrom _:c14n472 ;
 	owl:onProperty in_toto_linkml:sha512 .
 _:c14n282 a owl:Restriction ;
 	owl:maxCardinality 1 ;
@@ -1343,508 +1346,510 @@ _:c14n286 a owl:Restriction ;
 _:c14n287 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:vuln_id .
-_:c14n288 xsd:pattern "^[A-Za-z0-9+/_-]+={0,2}$" .
-_:c14n289 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoDigestSet ;
-	owl:onProperty in_toto_linkml:digest .
+_:c14n288 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoTypeUri ;
+	owl:onProperty in_toto_linkml:predicate_type .
+_:c14n289 xsd:pattern "^[A-Za-z0-9+/_-]+={0,2}$" .
 _:c14n29 rdf:first "gitTree" ;
 	rdf:rest _:c14n280 .
 _:c14n290 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoDigestSet ;
+	owl:onProperty in_toto_linkml:digest .
+_:c14n291 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sha512_256 .
-_:c14n291 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:blake2s .
 _:c14n292 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:monitor_config_source .
+	owl:onProperty in_toto_linkml:blake2s .
 _:c14n293 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:monitor_config_source .
+_:c14n294 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:test_run_url .
-_:c14n294 a owl:Restriction ;
+_:c14n295 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:predicate_specification .
-_:c14n295 a owl:Restriction ;
+_:c14n296 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha3_512 .
-_:c14n296 a owl:Restriction ;
+_:c14n297 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:annotation_values .
-_:c14n297 a owl:Restriction ;
+_:c14n298 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scanner_uri .
-_:c14n298 a owl:Restriction ;
+_:c14n299 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoObjectEntry ;
 	owl:onProperty in_toto_linkml:scai_conditions .
-_:c14n299 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:annotation_key .
 _:c14n3 a owl:Restriction ;
-	owl:allValuesFrom _:c14n475 ;
+	owl:allValuesFrom _:c14n484 ;
 	owl:onProperty in_toto_linkml:blake2b .
 _:c14n30 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha224 .
-_:c14n300 rdf:first "gost" ;
-	rdf:rest _:c14n385 .
-_:c14n301 a owl:Restriction ;
+_:c14n300 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:annotation_key .
+_:c14n301 rdf:first "gost" ;
+	rdf:rest _:c14n389 .
+_:c14n302 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:verified_properties .
-_:c14n302 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:predicate_type_uri .
 _:c14n303 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:scan_started_on .
+	owl:onProperty in_toto_linkml:predicate_type_uri .
 _:c14n304 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:md5 .
+	owl:onProperty in_toto_linkml:scan_started_on .
 _:c14n305 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:md5 .
+_:c14n306 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoMonitorLog ;
 	owl:onProperty in_toto_linkml:monitor_log .
-_:c14n306 a owl:Restriction ;
+_:c14n307 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:passed_tests .
-_:c14n307 a owl:Restriction ;
+_:c14n308 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoRuntimeTrace ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoRuntimeTrace .
-_:c14n308 a owl:Restriction ;
+_:c14n309 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
 	owl:onProperty in_toto_linkml:scai_evidence .
-_:c14n309 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:build_started_on .
 _:c14n31 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha384 .
 _:c14n310 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:build_started_on .
+_:c14n311 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:time_created .
-_:c14n311 a owl:Restriction ;
+_:c14n312 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha512 .
-_:c14n312 a owl:Restriction ;
+_:c14n313 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:dir_hash .
-_:c14n313 rdf:first in_toto_linkml:InTotoTestResultValue\#PASSED ;
-	rdf:rest _:c14n69 .
-_:c14n314 a owl:Restriction ;
+_:c14n314 rdf:first in_toto_linkml:InTotoTestResultValue\#PASSED ;
+	rdf:rest _:c14n71 .
+_:c14n315 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:configuration .
-_:c14n315 a owl:Restriction ;
+_:c14n316 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sm3 .
-_:c14n316 a owl:Restriction ;
+_:c14n317 a owl:Restriction ;
 	owl:allValuesFrom owl:Thing ;
 	owl:onProperty in_toto_linkml:digest .
-_:c14n317 a owl:Restriction ;
+_:c14n318 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:vetted_as .
-_:c14n318 rdf:first "shake256" ;
-	rdf:rest _:c14n201 .
-_:c14n319 a owl:Restriction ;
-	owl:allValuesFrom owl:Thing ;
-	owl:onProperty in_toto_linkml:additional_digests .
+_:c14n319 rdf:first "shake256" ;
+	rdf:rest _:c14n202 .
 _:c14n32 rdf:first in_toto_linkml:InTotoSimpleVerificationResult ;
 	rdf:rest _:c14n277 .
 _:c14n320 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:media_type .
+	owl:allValuesFrom owl:Thing ;
+	owl:onProperty in_toto_linkml:additional_digests .
 _:c14n321 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:scai_evidence .
+	owl:onProperty in_toto_linkml:media_type .
 _:c14n322 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:scai_evidence .
+_:c14n323 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI ;
 	owl:onProperty in_toto_linkml:predicate_specification .
-_:c14n323 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:trace_metadata .
 _:c14n324 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:sha3_256 .
+	owl:onProperty in_toto_linkml:trace_metadata .
 _:c14n325 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:sha3_256 .
+_:c14n326 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:digest .
-_:c14n326 a owl:Restriction ;
+_:c14n327 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:severity_score .
-_:c14n327 a owl:Restriction ;
+_:c14n328 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoDigestSet ;
 	owl:onProperty in_toto_linkml:digest .
-_:c14n328 a owl:Restriction ;
+_:c14n329 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:vuln_db .
-_:c14n329 rdf:first <https://spdx.dev/Document/v3> ;
-	rdf:rest _:c14n113 .
 _:c14n33 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha512_224 .
-_:c14n330 a owl:Restriction ;
-	owl:allValuesFrom _:c14n488 ;
-	owl:onProperty in_toto_linkml:md5 .
+_:c14n330 rdf:first <https://spdx.dev/Document/v3> ;
+	rdf:rest _:c14n114 .
 _:c14n331 a owl:Restriction ;
+	owl:allValuesFrom _:c14n511 ;
+	owl:onProperty in_toto_linkml:md5 .
+_:c14n332 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:digest .
-_:c14n332 a owl:Restriction ;
+_:c14n333 a owl:Restriction ;
 	owl:allValuesFrom owl:Thing ;
 	owl:onProperty in_toto_linkml:file_access .
-_:c14n333 rdf:first "blake2s" ;
+_:c14n334 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n421 .
+_:c14n335 rdf:first "blake2s" ;
 	rdf:rest _:c14n258 .
-_:c14n334 a owl:Restriction ;
+_:c14n336 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:blake2b .
-_:c14n335 a owl:Restriction ;
+_:c14n337 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:entry_key .
-_:c14n336 a owl:Restriction ;
+_:c14n338 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceUri ;
+	owl:onProperty in_toto_linkml:scanner_uri .
+_:c14n339 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sha1 .
-_:c14n337 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoVulnDatabase ;
-	owl:onProperty in_toto_linkml:vuln_db .
-_:c14n338 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:monitored_process .
-_:c14n339 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:git_tag .
 _:c14n34 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:download_location .
 _:c14n340 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:step_name .
+	owl:allValuesFrom in_toto_linkml:InTotoVulnDatabase ;
+	owl:onProperty in_toto_linkml:vuln_db .
 _:c14n341 a owl:Restriction ;
 	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:entry_key .
+	owl:onProperty in_toto_linkml:monitored_process .
 _:c14n342 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceUri ;
+	owl:onProperty in_toto_linkml:download_location .
+_:c14n343 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:git_tag .
+_:c14n344 rdf:first in_toto_linkml:InTotoTypeUri ;
+	rdf:rest _:c14n450 .
+_:c14n345 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:step_name .
+_:c14n346 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:entry_key .
+_:c14n347 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:package_id .
-_:c14n343 a owl:Restriction ;
+_:c14n348 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoTestResult ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoTestResult .
-_:c14n344 rdf:first in_toto_linkml:InTotoScaiAttributeReport ;
+_:c14n349 rdf:first in_toto_linkml:InTotoScaiAttributeReport ;
 	rdf:rest _:c14n32 .
-_:c14n345 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:entry_values .
-_:c14n346 a owl:Restriction ;
-	owl:allValuesFrom xsd:dateTime ;
-	owl:onProperty in_toto_linkml:build_finished_on .
-_:c14n347 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:process_type .
-_:c14n348 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:git_tag .
-_:c14n349 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:reference_attester_id .
 _:c14n35 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:severity_score .
 _:c14n350 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:entry_values .
+_:c14n351 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty in_toto_linkml:build_finished_on .
+_:c14n352 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:git_tag .
+_:c14n353 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:reference_attester_id .
+_:c14n354 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoReferencedDocument ;
 	owl:onProperty in_toto_linkml:referenced_documents .
-_:c14n351 a owl:Restriction ;
+_:c14n355 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha3_224 .
-_:c14n352 a owl:Restriction ;
+_:c14n356 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:reference_attester .
-_:c14n353 a owl:Restriction ;
-	owl:allValuesFrom _:c14n449 ;
+_:c14n357 a owl:Restriction ;
+	owl:allValuesFrom _:c14n475 ;
 	owl:onProperty in_toto_linkml:sm3 .
-_:c14n354 rdf:first in_toto_linkml:InTotoRuntimeTrace ;
-	rdf:rest _:c14n344 .
-_:c14n355 a owl:Restriction ;
+_:c14n358 rdf:first in_toto_linkml:InTotoRuntimeTrace ;
+	rdf:rest _:c14n349 .
+_:c14n359 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:failed_tests .
-_:c14n356 a owl:Restriction ;
-	owl:allValuesFrom _:c14n423 ;
-	owl:onProperty in_toto_linkml:git_tree .
-_:c14n357 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:additional_digests .
-_:c14n358 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:process_type .
-_:c14n359 rdf:first "dirHash" ;
-	rdf:rest _:c14n141 .
 _:c14n36 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:release_purl .
 _:c14n360 a owl:Restriction ;
+	owl:allValuesFrom _:c14n430 ;
+	owl:onProperty in_toto_linkml:git_tree .
+_:c14n361 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:additional_digests .
+_:c14n362 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:process_type .
+_:c14n363 rdf:first "dirHash" ;
+	rdf:rest _:c14n144 .
+_:c14n364 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:scan_metadata .
-_:c14n361 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:monitor_type .
-_:c14n362 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:test_run_url .
-_:c14n363 rdf:first "md5" ;
-	rdf:rest _:c14n359 .
-_:c14n364 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:db_version .
-_:c14n365 rdf:first "sha512_256" ;
-	rdf:rest _:c14n90 .
+_:c14n365 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoTypeUri ;
+	owl:onProperty in_toto_linkml:svr_verifier_id .
 _:c14n366 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:md5 .
-_:c14n367 a owl:Restriction ;
-	owl:allValuesFrom _:c14n472 ;
-	owl:onProperty in_toto_linkml:blake2s .
+	owl:onProperty in_toto_linkml:test_run_url .
+_:c14n367 rdf:first "md5" ;
+	rdf:rest _:c14n363 .
 _:c14n368 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:algorithm .
-_:c14n369 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoScanMetadata ;
-	owl:onProperty in_toto_linkml:scan_metadata .
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:db_version .
+_:c14n369 rdf:first "sha512_256" ;
+	rdf:rest _:c14n92 .
 _:c14n37 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:resource_uri .
 _:c14n370 a owl:Restriction ;
-	owl:allValuesFrom _:c14n477 ;
-	owl:onProperty in_toto_linkml:gost .
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:md5 .
 _:c14n371 a owl:Restriction ;
+	owl:allValuesFrom _:c14n497 ;
+	owl:onProperty in_toto_linkml:blake2s .
+_:c14n372 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:algorithm .
+_:c14n373 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoScanMetadata ;
+	owl:onProperty in_toto_linkml:scan_metadata .
+_:c14n374 a owl:Restriction ;
+	owl:allValuesFrom _:c14n486 ;
+	owl:onProperty in_toto_linkml:gost .
+_:c14n375 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:media_type .
-_:c14n372 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n129 .
-_:c14n373 rdf:first <https://in-toto.io/attestation/reference/v0.1> ;
-	rdf:rest _:c14n387 .
-_:c14n374 a owl:Restriction ;
+_:c14n376 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n130 .
+_:c14n377 rdf:first <https://in-toto.io/attestation/reference/v0.1> ;
+	rdf:rest _:c14n391 .
+_:c14n378 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoAnnotation ;
 	owl:onProperty in_toto_linkml:annotations .
-_:c14n375 a owl:Restriction ;
+_:c14n379 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha1 .
-_:c14n376 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:step_name .
-_:c14n377 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:release_purl .
-_:c14n378 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:trace_metadata .
-_:c14n379 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:scai_conditions .
 _:c14n38 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sha3_224 .
 _:c14n380 a owl:Restriction ;
-	owl:allValuesFrom _:c14n532 ;
-	owl:onProperty in_toto_linkml:algorithm .
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:step_name .
 _:c14n381 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:build_finished_on .
+	owl:onProperty in_toto_linkml:release_purl .
 _:c14n382 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:scai_attribute .
+	owl:onProperty in_toto_linkml:trace_metadata .
 _:c14n383 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:scan_finished_on .
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:scai_conditions .
 _:c14n384 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:sha3_384 .
-_:c14n385 rdf:first "sha1" ;
-	rdf:rest _:c14n363 .
+	owl:allValuesFrom _:c14n546 ;
+	owl:onProperty in_toto_linkml:algorithm .
+_:c14n385 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:build_finished_on .
 _:c14n386 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:sha512 .
-_:c14n387 rdf:first <https://in-toto.io/attestation/release/v0.1> ;
-	rdf:rest _:c14n51 .
-_:c14n388 rdf:first "sha384" ;
-	rdf:rest _:c14n151 .
-_:c14n389 a owl:Restriction ;
-	rdfs:subClassOf in_toto_linkml:InTotoSimpleVerificationResult ;
-	owl:onProperty in_toto_linkml:predicate_kind ;
-	owl:someValuesFrom in_toto_linkml:InTotoSimpleVerificationResult .
+	owl:onProperty in_toto_linkml:scai_attribute .
+_:c14n387 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:scan_finished_on .
+_:c14n388 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:sha3_384 .
+_:c14n389 rdf:first "sha1" ;
+	rdf:rest _:c14n367 .
 _:c14n39 rdf:first <https://in-toto.io/attestation/vulns/v0.2> ;
 	rdf:rest rdf:nil .
 _:c14n390 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:sha512 .
+_:c14n391 rdf:first <https://in-toto.io/attestation/release/v0.1> ;
+	rdf:rest _:c14n51 .
+_:c14n392 rdf:first "sha384" ;
+	rdf:rest _:c14n154 .
+_:c14n393 a owl:Restriction ;
+	rdfs:subClassOf in_toto_linkml:InTotoSimpleVerificationResult ;
+	owl:onProperty in_toto_linkml:predicate_kind ;
+	owl:someValuesFrom in_toto_linkml:InTotoSimpleVerificationResult .
+_:c14n394 a owl:Restriction ;
+	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha224 .
-_:c14n391 a owl:Restriction ;
+_:c14n395 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:predicate_version .
-_:c14n392 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:trace_monitor .
-_:c14n393 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:blake2s .
-_:c14n394 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoVettedPredicate ;
-	owl:onProperty in_toto_linkml:vetted_as .
-_:c14n395 rdf:first in_toto_linkml:InTotoReference ;
-	rdf:rest _:c14n62 .
 _:c14n396 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:db_last_update .
+	owl:onProperty in_toto_linkml:trace_monitor .
 _:c14n397 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:statement_predicate .
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:blake2s .
 _:c14n398 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:predicate_version .
-_:c14n399 rdf:first "sha3_512" ;
-	rdf:rest _:c14n158 .
+	owl:allValuesFrom in_toto_linkml:InTotoVettedPredicate ;
+	owl:onProperty in_toto_linkml:vetted_as .
+_:c14n399 rdf:first in_toto_linkml:InTotoReference ;
+	rdf:rest _:c14n64 .
 _:c14n4 rdf:first "git_tree" ;
-	rdf:rest _:c14n175 .
+	rdf:rest _:c14n178 .
 _:c14n40 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoScaiAttributeAssertion ;
 	owl:onProperty in_toto_linkml:scai_attributes .
 _:c14n400 a owl:Restriction ;
-	owl:allValuesFrom _:c14n466 ;
-	owl:onProperty in_toto_linkml:shake128 .
-_:c14n401 owl:unionOf _:c14n507 .
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:db_last_update .
+_:c14n401 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:statement_predicate .
 _:c14n402 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:predicate_version .
+_:c14n403 rdf:first "sha3_512" ;
+	rdf:rest _:c14n161 .
+_:c14n404 a owl:Restriction ;
+	owl:allValuesFrom _:c14n461 ;
+	owl:onProperty in_toto_linkml:shake128 .
+_:c14n405 owl:unionOf _:c14n513 .
+_:c14n406 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoPredicate ;
 	owl:onProperty in_toto_linkml:statement_predicate .
-_:c14n403 a owl:Restriction ;
+_:c14n407 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoTestResultValue ;
 	owl:onProperty in_toto_linkml:test_result .
-_:c14n404 a owl:Restriction ;
+_:c14n408 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
 	owl:onProperty in_toto_linkml:monitor_config_source .
-_:c14n405 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:scai_producer .
-_:c14n406 a owl:Restriction ;
-	owl:allValuesFrom _:c14n445 ;
-	owl:onProperty in_toto_linkml:ripemd160 .
-_:c14n407 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:host_id .
-_:c14n408 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:dir_hash .
 _:c14n409 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty in_toto_linkml:git_blob .
+	owl:onProperty in_toto_linkml:scai_producer .
 _:c14n41 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:annotation_values .
 _:c14n410 a owl:Restriction ;
+	owl:allValuesFrom _:c14n457 ;
+	owl:onProperty in_toto_linkml:ripemd160 .
+_:c14n411 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:host_id .
+_:c14n412 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:dir_hash .
+_:c14n413 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty in_toto_linkml:git_blob .
+_:c14n414 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:traced_processes .
-_:c14n411 a owl:Restriction ;
-	owl:allValuesFrom _:c14n446 ;
+_:c14n415 a owl:Restriction ;
+	owl:allValuesFrom _:c14n505 ;
 	owl:onProperty in_toto_linkml:sha3_384 .
-_:c14n412 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
-_:c14n413 rdf:first _:c14n412 ;
+_:c14n416 xsd:pattern "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$" .
+_:c14n417 rdf:first _:c14n416 ;
 	rdf:rest rdf:nil .
-_:c14n414 a rdfs:Datatype ;
+_:c14n418 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n413 .
-_:c14n415 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
-_:c14n416 rdf:first _:c14n415 ;
-	rdf:rest rdf:nil .
-_:c14n417 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n416 .
-_:c14n418 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
+	owl:withRestrictions _:c14n417 .
 _:c14n419 rdf:first _:c14n418 ;
 	rdf:rest rdf:nil .
 _:c14n42 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:db_version .
-_:c14n420 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n419 .
-_:c14n421 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
-_:c14n422 rdf:first _:c14n421 ;
+_:c14n420 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n419 .
+_:c14n421 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n420 .
+_:c14n422 xsd:pattern "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$" .
+_:c14n423 rdf:first _:c14n422 ;
 	rdf:rest rdf:nil .
-_:c14n423 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n422 .
 _:c14n424 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n426 .
+	owl:withRestrictions _:c14n423 .
 _:c14n425 rdf:first _:c14n424 ;
 	rdf:rest rdf:nil .
-_:c14n426 rdf:first _:c14n268 ;
+_:c14n426 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n425 .
+_:c14n427 rdf:first xsd:anyURI ;
+	rdf:rest _:c14n426 .
+_:c14n428 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
+_:c14n429 rdf:first _:c14n428 ;
 	rdf:rest rdf:nil .
-_:c14n427 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n431 .
-_:c14n428 rdf:first _:c14n427 ;
-	rdf:rest rdf:nil .
-_:c14n429 rdf:first xsd:anyURI ;
-	rdf:rest _:c14n428 .
 _:c14n43 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:algorithm .
 _:c14n430 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n429 .
-_:c14n431 rdf:first _:c14n20 ;
-	rdf:rest rdf:nil .
-_:c14n432 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n436 .
-_:c14n433 rdf:first _:c14n432 ;
+	owl:withRestrictions _:c14n429 .
+_:c14n431 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
+_:c14n432 rdf:first _:c14n431 ;
 	rdf:rest rdf:nil .
-_:c14n434 rdf:first xsd:anyURI ;
-	rdf:rest _:c14n433 .
-_:c14n435 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n434 .
-_:c14n436 rdf:first _:c14n28 ;
-	rdf:rest rdf:nil .
-_:c14n437 a rdfs:Datatype ;
+_:c14n433 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n439 .
+	owl:withRestrictions _:c14n432 .
+_:c14n434 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
+_:c14n435 rdf:first _:c14n434 ;
+	rdf:rest rdf:nil .
+_:c14n436 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n435 .
+_:c14n437 xsd:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
 _:c14n438 rdf:first _:c14n437 ;
 	rdf:rest rdf:nil .
-_:c14n439 rdf:first _:c14n76 ;
-	rdf:rest rdf:nil .
+_:c14n439 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n438 .
 _:c14n44 rdf:first <https://slsa.dev/verification_summary/v1> ;
-	rdf:rest _:c14n144 .
-_:c14n440 xsd:pattern "^[a-f0-9]{40}$" .
+	rdf:rest _:c14n147 .
+_:c14n440 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n442 .
 _:c14n441 rdf:first _:c14n440 ;
 	rdf:rest rdf:nil .
-_:c14n442 a rdfs:Datatype ;
+_:c14n442 rdf:first _:c14n268 ;
+	rdf:rest rdf:nil .
+_:c14n443 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n441 .
-_:c14n443 xsd:pattern "^[a-f0-9]{40}$" .
+	owl:withRestrictions _:c14n445 .
 _:c14n444 rdf:first _:c14n443 ;
 	rdf:rest rdf:nil .
-_:c14n445 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n444 .
+_:c14n445 rdf:first _:c14n78 ;
+	rdf:rest rdf:nil .
 _:c14n446 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n447 .
-_:c14n447 rdf:first _:c14n448 ;
+	owl:withRestrictions _:c14n448 .
+_:c14n447 rdf:first _:c14n446 ;
 	rdf:rest rdf:nil .
-_:c14n448 xsd:pattern "^[a-f0-9]{96}$" .
+_:c14n448 rdf:first _:c14n20 ;
+	rdf:rest rdf:nil .
 _:c14n449 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n450 .
+	owl:withRestrictions _:c14n451 .
 _:c14n45 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:monitored_process .
-_:c14n450 rdf:first _:c14n451 ;
+_:c14n450 rdf:first _:c14n449 ;
 	rdf:rest rdf:nil .
-_:c14n451 xsd:pattern "^[a-f0-9]{64}$" .
-_:c14n452 a rdfs:Datatype ;
+_:c14n451 rdf:first _:c14n28 ;
+	rdf:rest rdf:nil .
+_:c14n452 xsd:pattern "^[a-f0-9]{40}$" .
+_:c14n453 rdf:first _:c14n452 ;
+	rdf:rest rdf:nil .
+_:c14n454 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n453 .
-_:c14n453 rdf:first _:c14n454 ;
+_:c14n455 xsd:pattern "^[a-f0-9]{40}$" .
+_:c14n456 rdf:first _:c14n455 ;
 	rdf:rest rdf:nil .
-_:c14n454 xsd:pattern "^[a-f0-9]{64}$" .
-_:c14n455 a rdfs:Datatype ;
+_:c14n457 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n456 .
-_:c14n456 rdf:first _:c14n457 ;
-	rdf:rest rdf:nil .
-_:c14n457 xsd:pattern "^[a-f0-9]{64}$" .
 _:c14n458 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n459 .
@@ -1853,29 +1858,29 @@ _:c14n459 rdf:first _:c14n460 ;
 _:c14n46 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:process_event .
-_:c14n460 xsd:pattern "^[a-f0-9]{56}$" .
+_:c14n460 xsd:pattern "^[a-f0-9]{64}$" .
 _:c14n461 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n462 .
-_:c14n462 rdf:first _:c14n288 ;
+_:c14n462 rdf:first _:c14n463 ;
 	rdf:rest rdf:nil .
-_:c14n463 a rdfs:Datatype ;
+_:c14n463 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" .
+_:c14n464 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n464 .
-_:c14n464 rdf:first _:c14n465 ;
+	owl:withRestrictions _:c14n465 .
+_:c14n465 rdf:first _:c14n466 ;
 	rdf:rest rdf:nil .
-_:c14n465 xsd:pattern "^[a-f0-9]{128}$" .
-_:c14n466 a rdfs:Datatype ;
+_:c14n466 xsd:pattern "^[a-f0-9]{128}$" .
+_:c14n467 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n467 .
-_:c14n467 rdf:first _:c14n468 ;
+	owl:withRestrictions _:c14n468 .
+_:c14n468 rdf:first _:c14n289 ;
 	rdf:rest rdf:nil .
-_:c14n468 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" .
 _:c14n469 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n470 .
 _:c14n47 a owl:Restriction ;
-	owl:allValuesFrom _:c14n452 ;
+	owl:allValuesFrom _:c14n458 ;
 	owl:onProperty in_toto_linkml:sha512_256 .
 _:c14n470 rdf:first _:c14n471 ;
 	rdf:rest rdf:nil .
@@ -1885,289 +1890,317 @@ _:c14n472 a rdfs:Datatype ;
 	owl:withRestrictions _:c14n473 .
 _:c14n473 rdf:first _:c14n474 ;
 	rdf:rest rdf:nil .
-_:c14n474 xsd:pattern "^[a-f0-9]{64}$" .
+_:c14n474 xsd:pattern "^[a-f0-9]{128}$" .
 _:c14n475 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n476 .
-_:c14n476 rdf:first _:c14n157 ;
+_:c14n476 rdf:first _:c14n477 ;
 	rdf:rest rdf:nil .
-_:c14n477 a rdfs:Datatype ;
+_:c14n477 xsd:pattern "^[a-f0-9]{64}$" .
+_:c14n478 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n478 .
-_:c14n478 rdf:first _:c14n276 ;
+	owl:withRestrictions _:c14n479 .
+_:c14n479 rdf:first _:c14n480 ;
 	rdf:rest rdf:nil .
-_:c14n479 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n480 .
 _:c14n48 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:referenced_documents .
-_:c14n480 rdf:first _:c14n481 ;
-	rdf:rest rdf:nil .
-_:c14n481 xsd:pattern "^[a-f0-9]{128}$" .
-_:c14n482 a rdfs:Datatype ;
+_:c14n480 xsd:pattern "^[a-f0-9]{64}$" .
+_:c14n481 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n483 .
-_:c14n483 rdf:first _:c14n484 ;
+	owl:withRestrictions _:c14n482 .
+_:c14n482 rdf:first _:c14n483 ;
 	rdf:rest rdf:nil .
-_:c14n484 xsd:pattern "^[a-f0-9]{64}$" .
-_:c14n485 a rdfs:Datatype ;
+_:c14n483 xsd:pattern "^[a-f0-9]{56}$" .
+_:c14n484 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n486 .
-_:c14n486 rdf:first _:c14n487 ;
+	owl:withRestrictions _:c14n485 .
+_:c14n485 rdf:first _:c14n160 ;
 	rdf:rest rdf:nil .
-_:c14n487 xsd:pattern "^[a-f0-9]{64}$" .
+_:c14n486 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n487 .
+_:c14n487 rdf:first _:c14n276 ;
+	rdf:rest rdf:nil .
 _:c14n488 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n489 .
-_:c14n489 rdf:first _:c14n196 ;
+_:c14n489 rdf:first _:c14n490 ;
 	rdf:rest rdf:nil .
 _:c14n49 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoRelease ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoRelease .
-_:c14n490 a rdfs:Datatype ;
+_:c14n490 xsd:pattern "^[a-f0-9]{64}$" .
+_:c14n491 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n491 .
-_:c14n491 rdf:first _:c14n492 ;
+	owl:withRestrictions _:c14n492 .
+_:c14n492 rdf:first _:c14n493 ;
 	rdf:rest rdf:nil .
-_:c14n492 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" .
-_:c14n493 a rdfs:Datatype ;
+_:c14n493 xsd:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" .
+_:c14n494 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n494 .
-_:c14n494 rdf:first _:c14n495 ;
+	owl:withRestrictions _:c14n495 .
+_:c14n495 rdf:first _:c14n496 ;
 	rdf:rest rdf:nil .
-_:c14n495 xsd:pattern "^[a-f0-9]{96}$" .
-_:c14n496 a rdfs:Datatype ;
+_:c14n496 xsd:pattern "^[a-f0-9]{64}$" .
+_:c14n497 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n497 .
-_:c14n497 rdf:first _:c14n498 ;
+	owl:withRestrictions _:c14n498 .
+_:c14n498 rdf:first _:c14n499 ;
 	rdf:rest rdf:nil .
-_:c14n498 xsd:pattern "^[a-f0-9]{56}$" .
-_:c14n499 a rdfs:Datatype ;
-	owl:onDatatype xsd:string ;
-	owl:withRestrictions _:c14n500 .
+_:c14n499 xsd:pattern "^[a-f0-9]{64}$" .
 _:c14n5 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:step_command .
 _:c14n50 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoVulnScanner ;
 	owl:onProperty in_toto_linkml:vuln_scanner .
-_:c14n500 rdf:first _:c14n124 ;
+_:c14n500 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n501 .
+_:c14n501 rdf:first _:c14n125 ;
 	rdf:rest rdf:nil .
-_:c14n501 rdf:first _:c14n190 ;
-	rdf:rest _:c14n502 .
-_:c14n502 rdf:first _:c14n327 ;
-	rdf:rest _:c14n503 .
-_:c14n503 rdf:first _:c14n60 ;
+_:c14n502 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n503 .
+_:c14n503 rdf:first _:c14n504 ;
 	rdf:rest rdf:nil .
-_:c14n504 rdf:first _:c14n116 ;
-	rdf:rest _:c14n505 .
-_:c14n505 rdf:first _:c14n106 ;
-	rdf:rest _:c14n506 .
-_:c14n506 rdf:first _:c14n332 ;
+_:c14n504 xsd:pattern "^[a-f0-9]{96}$" .
+_:c14n505 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n506 .
+_:c14n506 rdf:first _:c14n507 ;
 	rdf:rest rdf:nil .
-_:c14n507 rdf:first _:c14n205 ;
-	rdf:rest _:c14n508 .
-_:c14n508 rdf:first _:c14n261 ;
-	rdf:rest _:c14n509 .
-_:c14n509 rdf:first _:c14n21 ;
-	rdf:rest _:c14n510 .
+_:c14n507 xsd:pattern "^[a-f0-9]{96}$" .
+_:c14n508 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n509 .
+_:c14n509 rdf:first _:c14n510 ;
+	rdf:rest rdf:nil .
 _:c14n51 rdf:first <https://in-toto.io/attestation/runtime-trace/v0.1> ;
-	rdf:rest _:c14n160 .
-_:c14n510 rdf:first _:c14n88 ;
-	rdf:rest _:c14n511 .
-_:c14n511 rdf:first _:c14n239 ;
-	rdf:rest _:c14n512 .
-_:c14n512 rdf:first _:c14n290 ;
-	rdf:rest _:c14n513 .
-_:c14n513 rdf:first _:c14n38 ;
+	rdf:rest _:c14n163 .
+_:c14n510 xsd:pattern "^[a-f0-9]{56}$" .
+_:c14n511 a rdfs:Datatype ;
+	owl:onDatatype xsd:string ;
+	owl:withRestrictions _:c14n512 .
+_:c14n512 rdf:first _:c14n197 ;
+	rdf:rest rdf:nil .
+_:c14n513 rdf:first _:c14n206 ;
 	rdf:rest _:c14n514 .
-_:c14n514 rdf:first _:c14n286 ;
+_:c14n514 rdf:first _:c14n262 ;
 	rdf:rest _:c14n515 .
-_:c14n515 rdf:first _:c14n384 ;
+_:c14n515 rdf:first _:c14n21 ;
 	rdf:rest _:c14n516 .
-_:c14n516 rdf:first _:c14n107 ;
+_:c14n516 rdf:first _:c14n90 ;
 	rdf:rest _:c14n517 .
-_:c14n517 rdf:first _:c14n115 ;
+_:c14n517 rdf:first _:c14n240 ;
 	rdf:rest _:c14n518 .
-_:c14n518 rdf:first _:c14n109 ;
+_:c14n518 rdf:first _:c14n291 ;
 	rdf:rest _:c14n519 .
-_:c14n519 rdf:first _:c14n187 ;
+_:c14n519 rdf:first _:c14n38 ;
 	rdf:rest _:c14n520 .
 _:c14n52 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sm3 .
-_:c14n520 rdf:first _:c14n212 ;
+_:c14n520 rdf:first _:c14n286 ;
 	rdf:rest _:c14n521 .
-_:c14n521 rdf:first _:c14n83 ;
+_:c14n521 rdf:first _:c14n388 ;
 	rdf:rest _:c14n522 .
-_:c14n522 rdf:first _:c14n52 ;
+_:c14n522 rdf:first _:c14n108 ;
 	rdf:rest _:c14n523 .
-_:c14n523 rdf:first _:c14n177 ;
+_:c14n523 rdf:first _:c14n116 ;
 	rdf:rest _:c14n524 .
-_:c14n524 rdf:first _:c14n336 ;
+_:c14n524 rdf:first _:c14n110 ;
 	rdf:rest _:c14n525 .
-_:c14n525 rdf:first _:c14n267 ;
+_:c14n525 rdf:first _:c14n189 ;
 	rdf:rest _:c14n526 .
-_:c14n526 rdf:first _:c14n408 ;
+_:c14n526 rdf:first _:c14n212 ;
 	rdf:rest _:c14n527 .
-_:c14n527 rdf:first _:c14n82 ;
+_:c14n527 rdf:first _:c14n85 ;
 	rdf:rest _:c14n528 .
-_:c14n528 rdf:first _:c14n204 ;
+_:c14n528 rdf:first _:c14n52 ;
 	rdf:rest _:c14n529 .
-_:c14n529 rdf:first _:c14n8 ;
+_:c14n529 rdf:first _:c14n179 ;
 	rdf:rest _:c14n530 .
 _:c14n53 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scai_evidence .
-_:c14n530 rdf:first _:c14n348 ;
+_:c14n530 rdf:first _:c14n339 ;
 	rdf:rest _:c14n531 .
-_:c14n531 rdf:first _:c14n319 ;
+_:c14n531 rdf:first _:c14n267 ;
+	rdf:rest _:c14n532 .
+_:c14n532 rdf:first _:c14n412 ;
+	rdf:rest _:c14n533 .
+_:c14n533 rdf:first _:c14n84 ;
+	rdf:rest _:c14n534 .
+_:c14n534 rdf:first _:c14n205 ;
+	rdf:rest _:c14n535 .
+_:c14n535 rdf:first _:c14n9 ;
+	rdf:rest _:c14n536 .
+_:c14n536 rdf:first _:c14n352 ;
+	rdf:rest _:c14n537 .
+_:c14n537 rdf:first _:c14n320 ;
 	rdf:rest rdf:nil .
-_:c14n532 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n154 .
+_:c14n538 rdf:first _:c14n118 ;
+	rdf:rest _:c14n539 .
+_:c14n539 rdf:first _:c14n107 ;
+	rdf:rest _:c14n540 .
 _:c14n54 a owl:Restriction ;
-	owl:allValuesFrom _:c14n493 ;
+	owl:allValuesFrom _:c14n502 ;
 	owl:onProperty in_toto_linkml:sha384 .
+_:c14n540 rdf:first _:c14n333 ;
+	rdf:rest rdf:nil .
+_:c14n541 rdf:first _:c14n192 ;
+	rdf:rest _:c14n542 .
+_:c14n542 rdf:first _:c14n328 ;
+	rdf:rest _:c14n543 .
+_:c14n543 rdf:first _:c14n62 ;
+	rdf:rest rdf:nil .
+_:c14n544 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n344 .
+_:c14n545 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n213 .
+_:c14n546 a rdfs:Datatype ;
+	owl:intersectionOf _:c14n157 .
 _:c14n55 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoTypeUri ;
+	owl:onProperty in_toto_linkml:monitor_type .
+_:c14n56 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceUri ;
+	owl:onProperty in_toto_linkml:db_uri .
+_:c14n57 a owl:Restriction ;
 	owl:allValuesFrom in_toto_linkml:InTotoPredicateType ;
 	owl:onProperty in_toto_linkml:in_toto_predicate_types .
-_:c14n56 rdf:first in_toto_linkml:InTotoTestResultValue\#FAILED ;
+_:c14n58 rdf:first in_toto_linkml:InTotoTestResultValue\#FAILED ;
 	rdf:rest rdf:nil .
-_:c14n57 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:severity_score .
-_:c14n58 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:value .
 _:c14n59 a owl:Restriction ;
 	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:time_created .
+	owl:onProperty in_toto_linkml:severity_score .
 _:c14n6 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:statement_type .
 _:c14n60 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:value .
+_:c14n61 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:time_created .
+_:c14n62 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:content .
-_:c14n61 a owl:Restriction ;
+_:c14n63 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:monitor_log .
-_:c14n62 rdf:first in_toto_linkml:InTotoRelease ;
-	rdf:rest _:c14n354 .
-_:c14n63 a owl:Restriction ;
+_:c14n64 rdf:first in_toto_linkml:InTotoRelease ;
+	rdf:rest _:c14n358 .
+_:c14n65 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:vuln_annotations .
-_:c14n64 rdf:first "git_commit" ;
+_:c14n66 rdf:first "git_commit" ;
 	rdf:rest _:c14n4 .
-_:c14n65 a owl:Restriction ;
+_:c14n67 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:trace_monitor .
-_:c14n66 a owl:Restriction ;
+_:c14n68 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sha512_256 .
-_:c14n67 a owl:Restriction ;
+_:c14n69 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:sha512_224 .
-_:c14n68 a owl:Restriction ;
+_:c14n7 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceUri ;
+	owl:onProperty in_toto_linkml:resource_uri .
+_:c14n70 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scanner_version .
-_:c14n69 rdf:first in_toto_linkml:InTotoTestResultValue\#WARNED ;
-	rdf:rest _:c14n56 .
-_:c14n7 a owl:Restriction ;
-	owl:allValuesFrom _:c14n417 ;
-	owl:onProperty in_toto_linkml:git_blob .
-_:c14n70 a owl:Restriction ;
+_:c14n71 rdf:first in_toto_linkml:InTotoTestResultValue\#WARNED ;
+	rdf:rest _:c14n58 .
+_:c14n72 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoVulns ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoVulns .
-_:c14n71 a owl:Restriction ;
+_:c14n73 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:in_toto_statements .
-_:c14n72 a owl:Restriction ;
+_:c14n74 a owl:Restriction ;
 	owl:allValuesFrom xsd:dateTime ;
 	owl:onProperty in_toto_linkml:scan_finished_on .
-_:c14n73 a owl:Restriction ;
+_:c14n75 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:git_blob .
-_:c14n74 a owl:Restriction ;
+_:c14n76 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:predicate_specification .
-_:c14n75 a owl:Restriction ;
+_:c14n77 a owl:Restriction ;
 	owl:allValuesFrom xsd:anyURI ;
 	owl:onProperty in_toto_linkml:download_location .
-_:c14n76 xsd:pattern "^[a-z][A-Za-z0-9_.:-]*$" .
-_:c14n77 a owl:Restriction ;
+_:c14n78 xsd:pattern "^[a-z][A-Za-z0-9_.:-]*$" .
+_:c14n79 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:statement_predicate .
-_:c14n78 a owl:Restriction ;
-	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
-	owl:onProperty in_toto_linkml:scai_target .
-_:c14n79 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty in_toto_linkml:monitor_type .
 _:c14n8 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
+	owl:allValuesFrom _:c14n433 ;
 	owl:onProperty in_toto_linkml:git_blob .
 _:c14n80 a owl:Restriction ;
+	owl:allValuesFrom in_toto_linkml:InTotoResourceDescriptor ;
+	owl:onProperty in_toto_linkml:scai_target .
+_:c14n81 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty in_toto_linkml:monitor_type .
+_:c14n82 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:digest .
-_:c14n81 a owl:Restriction ;
+_:c14n83 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:predicate_kind .
-_:c14n82 a owl:Restriction ;
+_:c14n84 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:git_commit .
-_:c14n83 a owl:Restriction ;
+_:c14n85 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:ripemd160 .
-_:c14n84 a owl:Restriction ;
+_:c14n86 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:sm3 .
-_:c14n85 a owl:Restriction ;
-	owl:allValuesFrom _:c14n461 ;
-	owl:onProperty in_toto_linkml:content .
-_:c14n86 a rdfs:Datatype ;
-	owl:datatypeComplementOf _:c14n14 .
 _:c14n87 a owl:Restriction ;
+	owl:allValuesFrom _:c14n467 ;
+	owl:onProperty in_toto_linkml:content .
+_:c14n88 a rdfs:Datatype ;
+	owl:datatypeComplementOf _:c14n14 .
+_:c14n89 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:resource_name .
-_:c14n88 a owl:Restriction ;
+_:c14n9 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty in_toto_linkml:git_blob .
+_:c14n90 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty in_toto_linkml:sha512 .
-_:c14n89 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty in_toto_linkml:git_tree .
-_:c14n9 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:scanner_uri .
-_:c14n90 rdf:first "sha3_224" ;
-	rdf:rest _:c14n199 .
 _:c14n91 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty in_toto_linkml:git_tree .
+_:c14n92 rdf:first "sha3_224" ;
+	rdf:rest _:c14n200 .
+_:c14n93 a owl:Restriction ;
+	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:scan_metadata .
-_:c14n92 a owl:Restriction ;
+_:c14n94 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty in_toto_linkml:db_version .
-_:c14n93 a owl:Restriction ;
+_:c14n95 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty in_toto_linkml:db_last_update .
-_:c14n94 a owl:Restriction ;
+_:c14n96 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:resource_name .
-_:c14n95 a owl:Restriction ;
+_:c14n97 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty in_toto_linkml:file_access .
-_:c14n96 a owl:Restriction ;
-	owl:allValuesFrom xsd:anyURI ;
-	owl:onProperty in_toto_linkml:download_location .
-_:c14n97 rdf:first "gitTag" ;
-	rdf:rest _:c14n131 .
-_:c14n98 a owl:Restriction ;
+_:c14n98 rdf:first "gitTag" ;
+	rdf:rest _:c14n132 .
+_:c14n99 a owl:Restriction ;
 	rdfs:subClassOf in_toto_linkml:InTotoReference ;
 	owl:onProperty in_toto_linkml:predicate_kind ;
 	owl:someValuesFrom in_toto_linkml:InTotoReference .
-_:c14n99 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty in_toto_linkml:severity_method .
 

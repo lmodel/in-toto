@@ -4,8 +4,8 @@ name: in_toto_core
 title: in-toto attestation core
 description: >-
   The layers of an in-toto attestation that every predicate shares: the
-  statement, the resource descriptor and the digest set, and the base class of
-  every predicate.
+  statement, the resource descriptor and the digest set, the framework's field
+  types, and the base class of every predicate.
 license: Apache-2.0
 see_also:
   - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/README.md
@@ -17,6 +17,9 @@ comments:
     Every attribute names its IRI in slot_uri, because `lokf adapt` folds an
     imported module into the importer's copy without one, and the attribute
     would then take the importer's default prefix (lokf issue 168).
+  - >-
+    Each type names the base its typeof already gives, because the SQL generator
+    reads base alone and reports a type without one.
 
 default_prefix: in_toto_linkml
 default_range: string
@@ -26,9 +29,54 @@ prefixes:
   in_toto_linkml: https://w3id.org/lmodel/in-toto/
   dcat: http://www.w3.org/ns/dcat#
   spdx: http://spdx.org/rdf/terms#
+  xsd: http://www.w3.org/2001/XMLSchema#
 
 imports:
   - linkml:types
+
+types:
+  in_toto_resource_uri:
+    typeof: uri
+    base: URI
+    description: >-
+      A URI that identifies or locates a resource, such as a package URL or a git
+      repository address, with its scheme and authority in lowercase.
+    see_also:
+      - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri
+    comments:
+      - >-
+        The framework recommends a package URL (pkg:) or an SPDX download location
+        (git+https:), and allows one that does not resolve.
+    pattern: &in_toto_uri_pattern "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$"
+
+  in_toto_type_uri:
+    typeof: uri
+    base: URI
+    description: >-
+      A URI that names a type, such as a statement's or a predicate's, with its
+      scheme and authority in lowercase.
+    see_also:
+      - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#typeuri
+    comments:
+      - >-
+        The framework asks that it carry a version and registers none, since the
+        namespace of a URI keeps two types apart.
+    pattern: *in_toto_uri_pattern
+
+  in_toto_timestamp:
+    typeof: string
+    base: str
+    uri: xsd:dateTime
+    description: >-
+      A point in time in RFC 3339 format in the UTC time zone, written with a
+      trailing Z, such as 1985-04-12T23:20:50.52Z.
+    see_also:
+      - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#timestamp
+    comments:
+      - >-
+        It extends string rather than datetime, because the LinkML Python runtime
+        writes a datetime's Z as +00:00, which the framework does not allow.
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
 
 slots:
   resource_uri:
@@ -38,7 +86,7 @@ slots:
     see_also:
       - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri
     slot_uri: in_toto_linkml:resource_uri
-    range: uri
+    range: in_toto_resource_uri
 
   digest:
     description: The cryptographic digests of a resource's content, keyed by algorithm.
@@ -329,7 +377,7 @@ classes:
         slot_uri: in_toto_linkml:download_location
         description: >-
           Where the resource can be fetched, when that differs from its identifying URI.
-        range: uri
+        range: in_toto_resource_uri
       media_type:
         description: The IANA media type of the resource's content.
         slot_uri: dcat:mediaType
@@ -385,7 +433,7 @@ classes:
       statement_type:
         slot_uri: in_toto_linkml:statement_type
         description: The in-toto statement type, always https://in-toto.io/Statement/v1.
-        range: uri
+        range: in_toto_type_uri
         required: true
         pattern: "^https://in-toto\\.io/Statement/v1$"
       subject:
@@ -402,7 +450,7 @@ classes:
         description: >-
           The URI that names the predicate's type and so its schema, such as
           https://in-toto.io/attestation/test-result/v0.1.
-        range: uri
+        range: in_toto_type_uri
         required: true
       statement_predicate:
         slot_uri: in_toto_linkml:statement_predicate

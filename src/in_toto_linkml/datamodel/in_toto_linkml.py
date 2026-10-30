@@ -72,11 +72,27 @@ DEFAULT_ = IN_TOTO_LINKML
 
 
 # Types
+class InTotoResourceUri(Uri):
+    """ A URI that identifies or locates a resource, such as a package URL or a git repository address, with its scheme and authority in lowercase. """
+    type_class_uri = XSD["anyURI"]
+    type_class_curie = "xsd:anyURI"
+    type_name = "in_toto_resource_uri"
+    type_model_uri = IN_TOTO_LINKML.InTotoResourceUri
+
+
+class InTotoTypeUri(Uri):
+    """ A URI that names a type, such as a statement's or a predicate's, with its scheme and authority in lowercase. """
+    type_class_uri = XSD["anyURI"]
+    type_class_curie = "xsd:anyURI"
+    type_name = "in_toto_type_uri"
+    type_model_uri = IN_TOTO_LINKML.InTotoTypeUri
+
+
 class InTotoTimestamp(String):
     """ A point in time in RFC 3339 format in the UTC time zone, written with a trailing Z, such as 1985-04-12T23:20:50.52Z. """
     type_class_uri = XSD["dateTime"]
     type_class_curie = "xsd:dateTime"
-    type_name = "InTotoTimestamp"
+    type_name = "in_toto_timestamp"
     type_model_uri = IN_TOTO_LINKML.InTotoTimestamp
 
 
@@ -294,17 +310,17 @@ class InTotoResourceDescriptor(YAMLRoot):
     class_name: ClassVar[str] = "InTotoResourceDescriptor"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoResourceDescriptor
 
-    resource_uri: Optional[Union[str, URI]] = None
+    resource_uri: Optional[Union[str, InTotoResourceUri]] = None
     digest: Optional[Union[dict, InTotoDigestSet]] = None
     resource_name: Optional[str] = None
-    download_location: Optional[Union[str, URI]] = None
+    download_location: Optional[Union[str, InTotoResourceUri]] = None
     media_type: Optional[str] = None
     content: Optional[str] = None
     annotations: Optional[Union[Union[dict, InTotoAnnotation], list[Union[dict, InTotoAnnotation]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.resource_uri is not None and not isinstance(self.resource_uri, URI):
-            self.resource_uri = URI(self.resource_uri)
+        if self.resource_uri is not None and not isinstance(self.resource_uri, InTotoResourceUri):
+            self.resource_uri = InTotoResourceUri(self.resource_uri)
 
         if self.digest is not None and not isinstance(self.digest, InTotoDigestSet):
             self.digest = InTotoDigestSet(**as_dict(self.digest))
@@ -312,8 +328,8 @@ class InTotoResourceDescriptor(YAMLRoot):
         if self.resource_name is not None and not isinstance(self.resource_name, str):
             self.resource_name = str(self.resource_name)
 
-        if self.download_location is not None and not isinstance(self.download_location, URI):
-            self.download_location = URI(self.download_location)
+        if self.download_location is not None and not isinstance(self.download_location, InTotoResourceUri):
+            self.download_location = InTotoResourceUri(self.download_location)
 
         if self.media_type is not None and not isinstance(self.media_type, str):
             self.media_type = str(self.media_type)
@@ -362,16 +378,16 @@ class InTotoStatement(YAMLRoot):
     class_name: ClassVar[str] = "InTotoStatement"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoStatement
 
-    statement_type: Union[str, URI] = None
+    statement_type: Union[str, InTotoTypeUri] = None
     subject: Union[Union[dict, InTotoStatementSubject], list[Union[dict, InTotoStatementSubject]]] = None
-    predicate_type: Union[str, URI] = None
+    predicate_type: Union[str, InTotoTypeUri] = None
     statement_predicate: Optional[Union[dict, "InTotoPredicate"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.statement_type):
             self.MissingRequiredField("statement_type")
-        if not isinstance(self.statement_type, URI):
-            self.statement_type = URI(self.statement_type)
+        if not isinstance(self.statement_type, InTotoTypeUri):
+            self.statement_type = InTotoTypeUri(self.statement_type)
 
         if self._is_empty(self.subject):
             self.MissingRequiredField("subject")
@@ -381,8 +397,8 @@ class InTotoStatement(YAMLRoot):
 
         if self._is_empty(self.predicate_type):
             self.MissingRequiredField("predicate_type")
-        if not isinstance(self.predicate_type, URI):
-            self.predicate_type = URI(self.predicate_type)
+        if not isinstance(self.predicate_type, InTotoTypeUri):
+            self.predicate_type = InTotoTypeUri(self.predicate_type)
 
         if self.statement_predicate is not None and not isinstance(self.statement_predicate, InTotoPredicate):
             self.statement_predicate = InTotoPredicate(**as_dict(self.statement_predicate))
@@ -440,7 +456,7 @@ class InTotoPredicateType(YAMLRoot):
     class_name: ClassVar[str] = "InTotoPredicateType"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoPredicateType
 
-    predicate_type_uri: Union[str, URI] = None
+    predicate_type_uri: Union[str, InTotoTypeUri] = None
     predicate_version: Optional[str] = None
     predicate_specification: Optional[Union[str, URI]] = None
     vetted_as: Optional[Union[str, "InTotoVettedPredicate"]] = None
@@ -448,8 +464,8 @@ class InTotoPredicateType(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.predicate_type_uri):
             self.MissingRequiredField("predicate_type_uri")
-        if not isinstance(self.predicate_type_uri, URI):
-            self.predicate_type_uri = URI(self.predicate_type_uri)
+        if not isinstance(self.predicate_type_uri, InTotoTypeUri):
+            self.predicate_type_uri = InTotoTypeUri(self.predicate_type_uri)
 
         if self.predicate_version is not None and not isinstance(self.predicate_version, str):
             self.predicate_version = str(self.predicate_version)
@@ -506,7 +522,7 @@ class InTotoTestResult(InTotoPredicate):
 
     test_result: Union[str, "InTotoTestResultValue"] = None
     configuration: Union[Union[dict, InTotoResourceDescriptor], list[Union[dict, InTotoResourceDescriptor]]] = None
-    test_run_url: Optional[Union[str, URI]] = None
+    test_run_url: Optional[Union[str, InTotoResourceUri]] = None
     passed_tests: Optional[Union[str, list[str]]] = empty_list()
     warned_tests: Optional[Union[str, list[str]]] = empty_list()
     failed_tests: Optional[Union[str, list[str]]] = empty_list()
@@ -523,8 +539,8 @@ class InTotoTestResult(InTotoPredicate):
             self.configuration = [self.configuration] if self.configuration is not None else []
         self.configuration = [v if isinstance(v, InTotoResourceDescriptor) else InTotoResourceDescriptor(**as_dict(v)) for v in self.configuration]
 
-        if self.test_run_url is not None and not isinstance(self.test_run_url, URI):
-            self.test_run_url = URI(self.test_run_url)
+        if self.test_run_url is not None and not isinstance(self.test_run_url, InTotoResourceUri):
+            self.test_run_url = InTotoResourceUri(self.test_run_url)
 
         if not isinstance(self.passed_tests, list):
             self.passed_tests = [self.passed_tests] if self.passed_tests is not None else []
@@ -592,13 +608,13 @@ class InTotoSvrVerifier(YAMLRoot):
     class_name: ClassVar[str] = "InTotoSvrVerifier"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoSvrVerifier
 
-    svr_verifier_id: Union[str, URI] = None
+    svr_verifier_id: Union[str, InTotoTypeUri] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.svr_verifier_id):
             self.MissingRequiredField("svr_verifier_id")
-        if not isinstance(self.svr_verifier_id, URI):
-            self.svr_verifier_id = URI(self.svr_verifier_id)
+        if not isinstance(self.svr_verifier_id, InTotoTypeUri):
+            self.svr_verifier_id = InTotoTypeUri(self.svr_verifier_id)
 
         super().__post_init__(**kwargs)
 
@@ -773,13 +789,13 @@ class InTotoReferenceAttester(YAMLRoot):
     class_name: ClassVar[str] = "InTotoReferenceAttester"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoReferenceAttester
 
-    reference_attester_id: Union[str, URI] = None
+    reference_attester_id: Union[str, InTotoTypeUri] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.reference_attester_id):
             self.MissingRequiredField("reference_attester_id")
-        if not isinstance(self.reference_attester_id, URI):
-            self.reference_attester_id = URI(self.reference_attester_id)
+        if not isinstance(self.reference_attester_id, InTotoTypeUri):
+            self.reference_attester_id = InTotoTypeUri(self.reference_attester_id)
 
         super().__post_init__(**kwargs)
 
@@ -809,14 +825,14 @@ class InTotoRelease(InTotoPredicate):
     class_name: ClassVar[str] = "InTotoRelease"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoRelease
 
-    release_purl: Union[str, URI] = None
+    release_purl: Union[str, InTotoResourceUri] = None
     package_id: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.release_purl):
             self.MissingRequiredField("release_purl")
-        if not isinstance(self.release_purl, URI):
-            self.release_purl = URI(self.release_purl)
+        if not isinstance(self.release_purl, InTotoResourceUri):
+            self.release_purl = InTotoResourceUri(self.release_purl)
 
         if self.package_id is not None and not isinstance(self.package_id, str):
             self.package_id = str(self.package_id)
@@ -877,15 +893,15 @@ class InTotoTraceMonitor(YAMLRoot):
     class_name: ClassVar[str] = "InTotoTraceMonitor"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoTraceMonitor
 
-    monitor_type: Union[str, URI] = None
+    monitor_type: Union[str, InTotoTypeUri] = None
     monitor_config_source: Optional[Union[dict, InTotoResourceDescriptor]] = None
     trace_policy: Optional[Union[Union[dict, InTotoObjectEntry], list[Union[dict, InTotoObjectEntry]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.monitor_type):
             self.MissingRequiredField("monitor_type")
-        if not isinstance(self.monitor_type, URI):
-            self.monitor_type = URI(self.monitor_type)
+        if not isinstance(self.monitor_type, InTotoTypeUri):
+            self.monitor_type = InTotoTypeUri(self.monitor_type)
 
         if self.monitor_config_source is not None and not isinstance(self.monitor_config_source, InTotoResourceDescriptor):
             self.monitor_config_source = InTotoResourceDescriptor(**as_dict(self.monitor_config_source))
@@ -908,7 +924,7 @@ class InTotoMonitoredProcess(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoMonitoredProcess
 
     host_id: Union[str, URI] = None
-    process_type: Union[str, URI] = None
+    process_type: Union[str, InTotoTypeUri] = None
     process_event: str = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -919,8 +935,8 @@ class InTotoMonitoredProcess(YAMLRoot):
 
         if self._is_empty(self.process_type):
             self.MissingRequiredField("process_type")
-        if not isinstance(self.process_type, URI):
-            self.process_type = URI(self.process_type)
+        if not isinstance(self.process_type, InTotoTypeUri):
+            self.process_type = InTotoTypeUri(self.process_type)
 
         if self._is_empty(self.process_event):
             self.MissingRequiredField("process_event")
@@ -1030,7 +1046,7 @@ class InTotoVulnScanner(YAMLRoot):
     class_name: ClassVar[str] = "InTotoVulnScanner"
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoVulnScanner
 
-    scanner_uri: Union[str, URI] = None
+    scanner_uri: Union[str, InTotoResourceUri] = None
     scan_results: Union[Union[dict, "InTotoVulnResult"], list[Union[dict, "InTotoVulnResult"]]] = None
     scanner_version: Optional[str] = None
     vuln_db: Optional[Union[dict, "InTotoVulnDatabase"]] = None
@@ -1038,8 +1054,8 @@ class InTotoVulnScanner(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.scanner_uri):
             self.MissingRequiredField("scanner_uri")
-        if not isinstance(self.scanner_uri, URI):
-            self.scanner_uri = URI(self.scanner_uri)
+        if not isinstance(self.scanner_uri, InTotoResourceUri):
+            self.scanner_uri = InTotoResourceUri(self.scanner_uri)
 
         if self._is_empty(self.scan_results):
             self.MissingRequiredField("scan_results")
@@ -1067,7 +1083,7 @@ class InTotoVulnDatabase(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = IN_TOTO_LINKML.InTotoVulnDatabase
 
     db_last_update: Union[str, InTotoTimestamp] = None
-    db_uri: Optional[Union[str, URI]] = None
+    db_uri: Optional[Union[str, InTotoResourceUri]] = None
     db_version: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1076,8 +1092,8 @@ class InTotoVulnDatabase(YAMLRoot):
         if not isinstance(self.db_last_update, InTotoTimestamp):
             self.db_last_update = InTotoTimestamp(self.db_last_update)
 
-        if self.db_uri is not None and not isinstance(self.db_uri, URI):
-            self.db_uri = URI(self.db_uri)
+        if self.db_uri is not None and not isinstance(self.db_uri, InTotoResourceUri):
+            self.db_uri = InTotoResourceUri(self.db_uri)
 
         if self.db_version is not None and not isinstance(self.db_version, str):
             self.db_version = str(self.db_version)
@@ -1262,7 +1278,7 @@ class slots:
     pass
 
 slots.resource_uri = Slot(uri=IN_TOTO_LINKML.resource_uri, name="resource_uri", curie=IN_TOTO_LINKML.curie('resource_uri'),
-                   model_uri=IN_TOTO_LINKML.resource_uri, domain=None, range=Optional[Union[str, URI]])
+                   model_uri=IN_TOTO_LINKML.resource_uri, domain=None, range=Optional[Union[str, InTotoResourceUri]])
 
 slots.digest = Slot(uri=IN_TOTO_LINKML.digest, name="digest", curie=IN_TOTO_LINKML.curie('digest'),
                    model_uri=IN_TOTO_LINKML.digest, domain=None, range=Optional[Union[dict, InTotoDigestSet]])
@@ -1390,7 +1406,7 @@ slots.inTotoResourceDescriptor__resource_name = Slot(uri=IN_TOTO_LINKML.resource
                    model_uri=IN_TOTO_LINKML.inTotoResourceDescriptor__resource_name, domain=None, range=Optional[str])
 
 slots.inTotoResourceDescriptor__download_location = Slot(uri=IN_TOTO_LINKML.download_location, name="inTotoResourceDescriptor__download_location", curie=IN_TOTO_LINKML.curie('download_location'),
-                   model_uri=IN_TOTO_LINKML.inTotoResourceDescriptor__download_location, domain=None, range=Optional[Union[str, URI]])
+                   model_uri=IN_TOTO_LINKML.inTotoResourceDescriptor__download_location, domain=None, range=Optional[Union[str, InTotoResourceUri]])
 
 slots.inTotoResourceDescriptor__media_type = Slot(uri=DCAT.mediaType, name="inTotoResourceDescriptor__media_type", curie=DCAT.curie('mediaType'),
                    model_uri=IN_TOTO_LINKML.inTotoResourceDescriptor__media_type, domain=None, range=Optional[str])
@@ -1403,14 +1419,14 @@ slots.inTotoResourceDescriptor__annotations = Slot(uri=IN_TOTO_LINKML.annotation
                    model_uri=IN_TOTO_LINKML.inTotoResourceDescriptor__annotations, domain=None, range=Optional[Union[Union[dict, InTotoAnnotation], list[Union[dict, InTotoAnnotation]]]])
 
 slots.inTotoStatement__statement_type = Slot(uri=IN_TOTO_LINKML.statement_type, name="inTotoStatement__statement_type", curie=IN_TOTO_LINKML.curie('statement_type'),
-                   model_uri=IN_TOTO_LINKML.inTotoStatement__statement_type, domain=None, range=Union[str, URI],
+                   model_uri=IN_TOTO_LINKML.inTotoStatement__statement_type, domain=None, range=Union[str, InTotoTypeUri],
                    pattern=re.compile(r'^https://in-toto\.io/Statement/v1$'))
 
 slots.inTotoStatement__subject = Slot(uri=IN_TOTO_LINKML.subject, name="inTotoStatement__subject", curie=IN_TOTO_LINKML.curie('subject'),
                    model_uri=IN_TOTO_LINKML.inTotoStatement__subject, domain=None, range=Union[Union[dict, InTotoStatementSubject], list[Union[dict, InTotoStatementSubject]]])
 
 slots.inTotoStatement__predicate_type = Slot(uri=IN_TOTO_LINKML.predicate_type, name="inTotoStatement__predicate_type", curie=IN_TOTO_LINKML.curie('predicate_type'),
-                   model_uri=IN_TOTO_LINKML.inTotoStatement__predicate_type, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoStatement__predicate_type, domain=None, range=Union[str, InTotoTypeUri])
 
 slots.inTotoStatement__statement_predicate = Slot(uri=IN_TOTO_LINKML.statement_predicate, name="inTotoStatement__statement_predicate", curie=IN_TOTO_LINKML.curie('statement_predicate'),
                    model_uri=IN_TOTO_LINKML.inTotoStatement__statement_predicate, domain=None, range=Optional[Union[dict, InTotoPredicate]])
@@ -1419,7 +1435,7 @@ slots.inTotoPredicate__predicate_kind = Slot(uri=IN_TOTO_LINKML.predicate_kind, 
                    model_uri=IN_TOTO_LINKML.inTotoPredicate__predicate_kind, domain=None, range=Optional[str])
 
 slots.inTotoPredicateType__predicate_type_uri = Slot(uri=IN_TOTO_LINKML.predicate_type_uri, name="inTotoPredicateType__predicate_type_uri", curie=IN_TOTO_LINKML.curie('predicate_type_uri'),
-                   model_uri=IN_TOTO_LINKML.inTotoPredicateType__predicate_type_uri, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoPredicateType__predicate_type_uri, domain=None, range=Union[str, InTotoTypeUri])
 
 slots.inTotoPredicateType__predicate_version = Slot(uri=IN_TOTO_LINKML.predicate_version, name="inTotoPredicateType__predicate_version", curie=IN_TOTO_LINKML.curie('predicate_version'),
                    model_uri=IN_TOTO_LINKML.inTotoPredicateType__predicate_version, domain=None, range=Optional[str])
@@ -1443,7 +1459,7 @@ slots.inTotoTestResult__configuration = Slot(uri=IN_TOTO_LINKML.configuration, n
                    model_uri=IN_TOTO_LINKML.inTotoTestResult__configuration, domain=None, range=Union[Union[dict, InTotoResourceDescriptor], list[Union[dict, InTotoResourceDescriptor]]])
 
 slots.inTotoTestResult__test_run_url = Slot(uri=IN_TOTO_LINKML.test_run_url, name="inTotoTestResult__test_run_url", curie=IN_TOTO_LINKML.curie('test_run_url'),
-                   model_uri=IN_TOTO_LINKML.inTotoTestResult__test_run_url, domain=None, range=Optional[Union[str, URI]])
+                   model_uri=IN_TOTO_LINKML.inTotoTestResult__test_run_url, domain=None, range=Optional[Union[str, InTotoResourceUri]])
 
 slots.inTotoTestResult__passed_tests = Slot(uri=IN_TOTO_LINKML.passed_tests, name="inTotoTestResult__passed_tests", curie=IN_TOTO_LINKML.curie('passed_tests'),
                    model_uri=IN_TOTO_LINKML.inTotoTestResult__passed_tests, domain=None, range=Optional[Union[str, list[str]]])
@@ -1464,7 +1480,7 @@ slots.inTotoSimpleVerificationResult__verified_properties = Slot(uri=IN_TOTO_LIN
                    model_uri=IN_TOTO_LINKML.inTotoSimpleVerificationResult__verified_properties, domain=None, range=Union[str, list[str]])
 
 slots.inTotoSvrVerifier__svr_verifier_id = Slot(uri=IN_TOTO_LINKML.svr_verifier_id, name="inTotoSvrVerifier__svr_verifier_id", curie=IN_TOTO_LINKML.curie('svr_verifier_id'),
-                   model_uri=IN_TOTO_LINKML.inTotoSvrVerifier__svr_verifier_id, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoSvrVerifier__svr_verifier_id, domain=None, range=Union[str, InTotoTypeUri])
 
 slots.inTotoScaiAttributeReport__scai_attributes = Slot(uri=IN_TOTO_LINKML.scai_attributes, name="inTotoScaiAttributeReport__scai_attributes", curie=IN_TOTO_LINKML.curie('scai_attributes'),
                    model_uri=IN_TOTO_LINKML.inTotoScaiAttributeReport__scai_attributes, domain=None, range=Union[Union[dict, InTotoScaiAttributeAssertion], list[Union[dict, InTotoScaiAttributeAssertion]]])
@@ -1506,10 +1522,10 @@ slots.inTotoReference__referenced_documents = Slot(uri=IN_TOTO_LINKML.referenced
                    model_uri=IN_TOTO_LINKML.inTotoReference__referenced_documents, domain=None, range=Union[Union[dict, InTotoReferencedDocument], list[Union[dict, InTotoReferencedDocument]]])
 
 slots.inTotoReferenceAttester__reference_attester_id = Slot(uri=IN_TOTO_LINKML.reference_attester_id, name="inTotoReferenceAttester__reference_attester_id", curie=IN_TOTO_LINKML.curie('reference_attester_id'),
-                   model_uri=IN_TOTO_LINKML.inTotoReferenceAttester__reference_attester_id, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoReferenceAttester__reference_attester_id, domain=None, range=Union[str, InTotoTypeUri])
 
 slots.inTotoRelease__release_purl = Slot(uri=IN_TOTO_LINKML.release_purl, name="inTotoRelease__release_purl", curie=IN_TOTO_LINKML.curie('release_purl'),
-                   model_uri=IN_TOTO_LINKML.inTotoRelease__release_purl, domain=None, range=Union[str, URI],
+                   model_uri=IN_TOTO_LINKML.inTotoRelease__release_purl, domain=None, range=Union[str, InTotoResourceUri],
                    pattern=re.compile(r'^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+'))
 
 slots.inTotoRelease__package_id = Slot(uri=IN_TOTO_LINKML.package_id, name="inTotoRelease__package_id", curie=IN_TOTO_LINKML.curie('package_id'),
@@ -1528,7 +1544,7 @@ slots.inTotoRuntimeTrace__trace_metadata = Slot(uri=IN_TOTO_LINKML.trace_metadat
                    model_uri=IN_TOTO_LINKML.inTotoRuntimeTrace__trace_metadata, domain=None, range=Optional[Union[dict, InTotoTraceMetadata]])
 
 slots.inTotoTraceMonitor__monitor_type = Slot(uri=IN_TOTO_LINKML.monitor_type, name="inTotoTraceMonitor__monitor_type", curie=IN_TOTO_LINKML.curie('monitor_type'),
-                   model_uri=IN_TOTO_LINKML.inTotoTraceMonitor__monitor_type, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoTraceMonitor__monitor_type, domain=None, range=Union[str, InTotoTypeUri])
 
 slots.inTotoTraceMonitor__monitor_config_source = Slot(uri=IN_TOTO_LINKML.monitor_config_source, name="inTotoTraceMonitor__monitor_config_source", curie=IN_TOTO_LINKML.curie('monitor_config_source'),
                    model_uri=IN_TOTO_LINKML.inTotoTraceMonitor__monitor_config_source, domain=None, range=Optional[Union[dict, InTotoResourceDescriptor]])
@@ -1540,7 +1556,7 @@ slots.inTotoMonitoredProcess__host_id = Slot(uri=IN_TOTO_LINKML.host_id, name="i
                    model_uri=IN_TOTO_LINKML.inTotoMonitoredProcess__host_id, domain=None, range=Union[str, URI])
 
 slots.inTotoMonitoredProcess__process_type = Slot(uri=IN_TOTO_LINKML.process_type, name="inTotoMonitoredProcess__process_type", curie=IN_TOTO_LINKML.curie('process_type'),
-                   model_uri=IN_TOTO_LINKML.inTotoMonitoredProcess__process_type, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoMonitoredProcess__process_type, domain=None, range=Union[str, InTotoTypeUri])
 
 slots.inTotoMonitoredProcess__process_event = Slot(uri=IN_TOTO_LINKML.process_event, name="inTotoMonitoredProcess__process_event", curie=IN_TOTO_LINKML.curie('process_event'),
                    model_uri=IN_TOTO_LINKML.inTotoMonitoredProcess__process_event, domain=None, range=str)
@@ -1567,7 +1583,7 @@ slots.inTotoVulns__scan_metadata = Slot(uri=IN_TOTO_LINKML.scan_metadata, name="
                    model_uri=IN_TOTO_LINKML.inTotoVulns__scan_metadata, domain=None, range=Union[dict, InTotoScanMetadata])
 
 slots.inTotoVulnScanner__scanner_uri = Slot(uri=IN_TOTO_LINKML.scanner_uri, name="inTotoVulnScanner__scanner_uri", curie=IN_TOTO_LINKML.curie('scanner_uri'),
-                   model_uri=IN_TOTO_LINKML.inTotoVulnScanner__scanner_uri, domain=None, range=Union[str, URI])
+                   model_uri=IN_TOTO_LINKML.inTotoVulnScanner__scanner_uri, domain=None, range=Union[str, InTotoResourceUri])
 
 slots.inTotoVulnScanner__scanner_version = Slot(uri=IN_TOTO_LINKML.scanner_version, name="inTotoVulnScanner__scanner_version", curie=IN_TOTO_LINKML.curie('scanner_version'),
                    model_uri=IN_TOTO_LINKML.inTotoVulnScanner__scanner_version, domain=None, range=Optional[str])
@@ -1579,7 +1595,7 @@ slots.inTotoVulnScanner__scan_results = Slot(uri=IN_TOTO_LINKML.scan_results, na
                    model_uri=IN_TOTO_LINKML.inTotoVulnScanner__scan_results, domain=None, range=Union[Union[dict, InTotoVulnResult], list[Union[dict, InTotoVulnResult]]])
 
 slots.inTotoVulnDatabase__db_uri = Slot(uri=IN_TOTO_LINKML.db_uri, name="inTotoVulnDatabase__db_uri", curie=IN_TOTO_LINKML.curie('db_uri'),
-                   model_uri=IN_TOTO_LINKML.inTotoVulnDatabase__db_uri, domain=None, range=Optional[Union[str, URI]])
+                   model_uri=IN_TOTO_LINKML.inTotoVulnDatabase__db_uri, domain=None, range=Optional[Union[str, InTotoResourceUri]])
 
 slots.inTotoVulnDatabase__db_version = Slot(uri=IN_TOTO_LINKML.db_version, name="inTotoVulnDatabase__db_version", curie=IN_TOTO_LINKML.curie('db_version'),
                    model_uri=IN_TOTO_LINKML.inTotoVulnDatabase__db_version, domain=None, range=Optional[str])

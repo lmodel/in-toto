@@ -352,13 +352,49 @@
       "@type": "TypeDefinition"
     },
     {
-      "name": "InTotoTimestamp",
+      "name": "in_toto_resource_uri",
+      "definition_uri": "https://w3id.org/lmodel/in-toto/InTotoResourceUri",
+      "description": "A URI that identifies or locates a resource, such as a package URL or a git repository address, with its scheme and authority in lowercase.",
+      "comments": [
+        "The framework recommends a package URL (pkg:) or an SPDX download location (git+https:), and allows one that does not resolve."
+      ],
+      "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "see_also": [
+        "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri"
+      ],
+      "typeof": "uri",
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "in_toto_type_uri",
+      "definition_uri": "https://w3id.org/lmodel/in-toto/InTotoTypeUri",
+      "description": "A URI that names a type, such as a statement's or a predicate's, with its scheme and authority in lowercase.",
+      "comments": [
+        "The framework asks that it carry a version and registers none, since the namespace of a URI keeps two types apart."
+      ],
+      "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "see_also": [
+        "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#typeuri"
+      ],
+      "typeof": "uri",
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "in_toto_timestamp",
       "definition_uri": "https://w3id.org/lmodel/in-toto/InTotoTimestamp",
       "description": "A point in time in RFC 3339 format in the UTC time zone, written with a trailing Z, such as 1985-04-12T23:20:50.52Z.",
       "comments": [
         "It extends string rather than datetime, because the LinkML Python runtime writes a datetime's Z as +00:00, which the framework does not allow."
       ],
-      "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#timestamp"
       ],
@@ -493,7 +529,7 @@
       "domain_of": [
         "InTotoResourceDescriptor"
       ],
-      "range": "uri",
+      "range": "in_toto_resource_uri",
       "@type": "SlotDefinition"
     },
     {
@@ -1122,7 +1158,7 @@
       "domain_of": [
         "InTotoResourceDescriptor"
       ],
-      "range": "uri",
+      "range": "in_toto_resource_uri",
       "@type": "SlotDefinition"
     },
     {
@@ -1193,7 +1229,7 @@
       "domain_of": [
         "InTotoStatement"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "pattern": "^https://in-toto\\.io/Statement/v1$",
       "@type": "SlotDefinition"
@@ -1232,7 +1268,7 @@
       "domain_of": [
         "InTotoStatement"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1284,7 +1320,7 @@
       "domain_of": [
         "InTotoPredicateType"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1396,7 +1432,7 @@
       "domain_of": [
         "InTotoTestResult"
       ],
-      "range": "uri",
+      "range": "in_toto_resource_uri",
       "@type": "SlotDefinition"
     },
     {
@@ -1470,7 +1506,7 @@
       "domain_of": [
         "InTotoSimpleVerificationResult"
       ],
-      "range": "InTotoTimestamp",
+      "range": "in_toto_timestamp",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1499,7 +1535,7 @@
       "domain_of": [
         "InTotoSvrVerifier"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1722,7 +1758,7 @@
       "domain_of": [
         "InTotoReferenceAttester"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1739,7 +1775,7 @@
       "domain_of": [
         "InTotoRelease"
       ],
-      "range": "uri",
+      "range": "in_toto_resource_uri",
       "required": true,
       "pattern": "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+",
       "@type": "SlotDefinition"
@@ -1830,7 +1866,7 @@
       "domain_of": [
         "InTotoTraceMonitor"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1889,7 +1925,7 @@
       "domain_of": [
         "InTotoMonitoredProcess"
       ],
-      "range": "uri",
+      "range": "in_toto_type_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -1964,7 +2000,7 @@
       "domain_of": [
         "InTotoTraceMetadata"
       ],
-      "range": "InTotoTimestamp",
+      "range": "in_toto_timestamp",
       "@type": "SlotDefinition"
     },
     {
@@ -1977,7 +2013,7 @@
       "domain_of": [
         "InTotoTraceMetadata"
       ],
-      "range": "InTotoTimestamp",
+      "range": "in_toto_timestamp",
       "@type": "SlotDefinition"
     },
     {
@@ -2022,13 +2058,16 @@
       "domain_of": [
         "InTotoVulnScanner"
       ],
-      "range": "uri",
+      "range": "in_toto_resource_uri",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "inTotoVulnScanner__scanner_version",
       "description": "The scanner's version.",
+      "comments": [
+        "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string."
+      ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
       "slot_uri": "https://w3id.org/lmodel/in-toto/scanner_version",
       "alias": "scanner_version",
@@ -2081,7 +2120,7 @@
       "domain_of": [
         "InTotoVulnDatabase"
       ],
-      "range": "uri",
+      "range": "in_toto_resource_uri",
       "@type": "SlotDefinition"
     },
     {
@@ -2107,7 +2146,7 @@
       "domain_of": [
         "InTotoVulnDatabase"
       ],
-      "range": "InTotoTimestamp",
+      "range": "in_toto_timestamp",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -2196,7 +2235,7 @@
       "domain_of": [
         "InTotoScanMetadata"
       ],
-      "range": "InTotoTimestamp",
+      "range": "in_toto_timestamp",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -2210,7 +2249,7 @@
       "domain_of": [
         "InTotoScanMetadata"
       ],
-      "range": "InTotoTimestamp",
+      "range": "in_toto_timestamp",
       "required": true,
       "@type": "SlotDefinition"
     },
@@ -3082,7 +3121,7 @@
           "name": "download_location",
           "description": "Where the resource can be fetched, when that differs from its identifying URI.",
           "slot_uri": "in_toto_linkml:download_location",
-          "range": "uri",
+          "range": "in_toto_resource_uri",
           "@type": "SlotDefinition"
         },
         {
@@ -3211,7 +3250,7 @@
           "name": "statement_type",
           "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",
           "slot_uri": "in_toto_linkml:statement_type",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "pattern": "^https://in-toto\\.io/Statement/v1$",
           "@type": "SlotDefinition"
@@ -3232,7 +3271,7 @@
           "name": "predicate_type",
           "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
           "slot_uri": "in_toto_linkml:predicate_type",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -3304,7 +3343,7 @@
         {
           "name": "predicate_type_uri",
           "description": "The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -3407,7 +3446,7 @@
         {
           "name": "test_run_url",
           "description": "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it.",
-          "range": "uri",
+          "range": "in_toto_resource_uri",
           "@type": "SlotDefinition"
         },
         {
@@ -3470,7 +3509,7 @@
         {
           "name": "time_created",
           "description": "When the verification took place.",
-          "range": "InTotoTimestamp",
+          "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -3504,7 +3543,7 @@
         {
           "name": "svr_verifier_id",
           "description": "The URI that identifies the verifier, versioned when its verification logic changes materially.",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -3785,7 +3824,7 @@
         {
           "name": "reference_attester_id",
           "description": "The URI that identifies the system.",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -3884,7 +3923,7 @@
           "comments": [
             "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does."
           ],
-          "range": "uri",
+          "range": "in_toto_resource_uri",
           "required": true,
           "pattern": "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+",
           "@type": "SlotDefinition"
@@ -3975,7 +4014,7 @@
         {
           "name": "monitor_type",
           "description": "The URI of the monitor's type.",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -4024,7 +4063,7 @@
         {
           "name": "process_type",
           "description": "The URI of the type of process, such as the build type when the monitor watched a build.",
-          "range": "uri",
+          "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
         },
@@ -4136,13 +4175,13 @@
         {
           "name": "build_started_on",
           "description": "When the monitored build started.",
-          "range": "InTotoTimestamp",
+          "range": "in_toto_timestamp",
           "@type": "SlotDefinition"
         },
         {
           "name": "build_finished_on",
           "description": "When the monitored build finished.",
-          "range": "InTotoTimestamp",
+          "range": "in_toto_timestamp",
           "@type": "SlotDefinition"
         }
       ],
@@ -4210,13 +4249,16 @@
         {
           "name": "scanner_uri",
           "description": "The URI that identifies the scanner's source.",
-          "range": "uri",
+          "range": "in_toto_resource_uri",
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "scanner_version",
           "description": "The scanner's version.",
+          "comments": [
+            "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string."
+          ],
           "@type": "SlotDefinition"
         },
         {
@@ -4258,7 +4300,7 @@
         {
           "name": "db_uri",
           "description": "The URI that identifies the database's source.",
-          "range": "uri",
+          "range": "in_toto_resource_uri",
           "@type": "SlotDefinition"
         },
         {
@@ -4269,7 +4311,7 @@
         {
           "name": "db_last_update",
           "description": "When the database was last updated.",
-          "range": "InTotoTimestamp",
+          "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -4368,14 +4410,14 @@
         {
           "name": "scan_started_on",
           "description": "When the scan started.",
-          "range": "InTotoTimestamp",
+          "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "scan_finished_on",
           "description": "When the scan finished.",
-          "range": "InTotoTimestamp",
+          "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
         }

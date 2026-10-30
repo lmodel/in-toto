@@ -46,6 +46,10 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
+<InTotoResourceUri> IRI
+
+<InTotoTypeUri> IRI
+
 <InTotoTimestamp> xsd:dateTime
 
 <InTotoAdditionalDigest> CLOSED {
@@ -127,7 +131,7 @@ linkml:Sparqlpath xsd:string
 
 <InTotoMonitoredProcess> CLOSED {
     (  $<InTotoMonitoredProcess_tes> (  <host_id> @linkml:Uri ;
-          <process_type> @linkml:Uri ;
+          <process_type> @<InTotoTypeUri> ;
           <process_event> @linkml:String
        ) ;
        rdf:type [ <InTotoMonitoredProcess> ] ?
@@ -163,7 +167,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoPredicateType> CLOSED {
-    (  $<InTotoPredicateType_tes> (  <predicate_type_uri> @linkml:Uri ;
+    (  $<InTotoPredicateType_tes> (  <predicate_type_uri> @<InTotoTypeUri> ;
           <predicate_version> @linkml:String ? ;
           <predicate_specification> @linkml:Uri ? ;
           <vetted_as> [ <https://cyclonedx.org/bom/v1.4> <https://in-toto.io/attestation/link/v0.3>
@@ -188,7 +192,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoReferenceAttester> CLOSED {
-    (  $<InTotoReferenceAttester_tes> <reference_attester_id> @linkml:Uri ;
+    (  $<InTotoReferenceAttester_tes> <reference_attester_id> @<InTotoTypeUri> ;
        rdf:type [ <InTotoReferenceAttester> ] ?
     )
 }
@@ -204,7 +208,7 @@ linkml:Sparqlpath xsd:string
 <InTotoRelease> CLOSED {
     (  $<InTotoRelease_tes> (  &<InTotoPredicate_tes> ;
           rdf:type [ <InTotoPredicate> ] ? ;
-          <release_purl> @linkml:Uri ;
+          <release_purl> @<InTotoResourceUri> ;
           <package_id> @linkml:String ?
        ) ;
        rdf:type [ <InTotoRelease> ] ?
@@ -213,10 +217,10 @@ linkml:Sparqlpath xsd:string
 
 <InTotoResourceDescriptor>  (
     CLOSED {
-       (  $<InTotoResourceDescriptor_tes> (  <resource_uri> @linkml:Uri ? ;
+       (  $<InTotoResourceDescriptor_tes> (  <resource_uri> @<InTotoResourceUri> ? ;
              <digest> @<InTotoDigestSet> ? ;
              <resource_name> @linkml:String ? ;
-             <download_location> @linkml:Uri ? ;
+             <download_location> @<InTotoResourceUri> ? ;
              dcat:mediaType @linkml:String ? ;
              <content> @linkml:String ? ;
              <annotations> @<InTotoAnnotation> *
@@ -278,9 +282,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoStatement> CLOSED {
-    (  $<InTotoStatement_tes> (  <statement_type> @linkml:Uri ;
+    (  $<InTotoStatement_tes> (  <statement_type> @<InTotoTypeUri> ;
           <subject> @<InTotoStatementSubject> + ;
-          <predicate_type> @linkml:Uri ;
+          <predicate_type> @<InTotoTypeUri> ;
           <statement_predicate> @<InTotoPredicate> ?
        ) ;
        rdf:type [ <InTotoStatement> ] ?
@@ -297,7 +301,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoSvrVerifier> CLOSED {
-    (  $<InTotoSvrVerifier_tes> <svr_verifier_id> @linkml:Uri ;
+    (  $<InTotoSvrVerifier_tes> <svr_verifier_id> @<InTotoTypeUri> ;
        rdf:type [ <InTotoSvrVerifier> ] ?
     )
 }
@@ -309,7 +313,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#WARNED>
              <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#FAILED> ] ;
           <configuration> @<InTotoResourceDescriptor> + ;
-          <test_run_url> @linkml:Uri ? ;
+          <test_run_url> @<InTotoResourceUri> ? ;
           <passed_tests> @linkml:String * ;
           <warned_tests> @linkml:String * ;
           <failed_tests> @linkml:String *
@@ -327,7 +331,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoTraceMonitor> CLOSED {
-    (  $<InTotoTraceMonitor_tes> (  <monitor_type> @linkml:Uri ;
+    (  $<InTotoTraceMonitor_tes> (  <monitor_type> @<InTotoTypeUri> ;
           <monitor_config_source> @<InTotoResourceDescriptor> ? ;
           <trace_policy> @<InTotoObjectEntry> *
        ) ;
@@ -336,7 +340,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoVulnDatabase> CLOSED {
-    (  $<InTotoVulnDatabase_tes> (  <db_uri> @linkml:Uri ? ;
+    (  $<InTotoVulnDatabase_tes> (  <db_uri> @<InTotoResourceUri> ? ;
           <db_version> @linkml:String ? ;
           <db_last_update> @<InTotoTimestamp>
        ) ;
@@ -364,7 +368,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InTotoVulnScanner> CLOSED {
-    (  $<InTotoVulnScanner_tes> (  <scanner_uri> @linkml:Uri ;
+    (  $<InTotoVulnScanner_tes> (  <scanner_uri> @<InTotoResourceUri> ;
           <scanner_version> @linkml:String ? ;
           <vuln_db> @<InTotoVulnDatabase> ? ;
           <scan_results> @<InTotoVulnResult> +

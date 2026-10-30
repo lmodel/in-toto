@@ -8,11 +8,13 @@ project's own words.
 ## Modules
 
 `in_toto_core` holds the statement, the resource descriptor, the digest set
-and the base of every predicate, and imports only the LinkML types.
-`in_toto_predicates` imports the core and holds the predicate types and the
-eight vetted predicates. The umbrella `in_toto_linkml` adds only the document
-root. lmodel/slsa imports the core alone and models SLSA's own predicates on
-the same base.
+and the base of every predicate, and imports only the LinkML types. It also
+holds the framework's field types: `in_toto_resource_uri`, `in_toto_type_uri`
+and `in_toto_timestamp`, which check that a URI's scheme and authority are
+lowercase and that a time is in UTC. `in_toto_predicates` imports the core and
+holds the predicate types and the eight vetted predicates. The umbrella
+`in_toto_linkml` adds only the document root. lmodel/slsa imports the core
+alone and models SLSA's own predicates on the same base and field types.
 
 ## Names
 

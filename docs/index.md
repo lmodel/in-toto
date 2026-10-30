@@ -24,8 +24,9 @@ less:
   they read an empty required list, such as a scan's empty `scan_results`, as
   a missing one.
 - The Pydantic models also check the patterns a field carries itself, such as
-  the digest lengths and `release_purl`. They do not check the pattern of the
-  `InTotoTimestamp` type.
+  the digest lengths and `release_purl`. They do not check a type's pattern:
+  that a timestamp is in UTC, or that a URI's scheme and authority are
+  lowercase.
 - Neither checks a class's `any_of` or `all_of` conditions: that a digest set
   holds one digest at least, that a resource descriptor has a URI, a digest or
   content, that a monitor log records something, and that a link's material
@@ -39,7 +40,6 @@ No check covers these rules:
   unique;
 - that a statement's `predicate_type` is the type URI of the predicate its
   `predicate_kind` names;
-- that a URI is case-normalized as RFC 3986 asks, and that a timestamp is a
-  real date and time;
+- that a timestamp is a real date and time;
 - that a release's package URL carries no qualifiers or subpath unless its
   type needs them, and that inline content stays under 1 KB.

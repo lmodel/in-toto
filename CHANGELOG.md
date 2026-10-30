@@ -8,7 +8,7 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Added
 
-- **A LinkML schema of the in-toto Attestation Framework at release v1.2.0.** The core module holds the statement, the resource descriptor and the digest set with the names lmodel/slsa gave them, so slsa can import it; the predicates module holds the thirteen vetted predicate types and the eight vetted predicates slsa does not model.
+- **A LinkML schema of the in-toto Attestation Framework at release v1.2.0.** The core module holds the statement, the resource descriptor, the digest set and the framework's URI and timestamp types, with the names lmodel/slsa gave the layer, so slsa can import it; the predicates module holds the thirteen vetted predicate types and the eight vetted predicates slsa does not model.
 - **A copy of the framework's specification pages and protocol buffer definitions at v1.2.0, and a weekly upstream watch.** Tests hold every field of the copied definitions to a slot, and the watch reports a new release, a changed or dropped file, or a drifted copy.
 - **`.lokf/in-toto.yaml`, the schema's `lokf adapt` copy, rooted on the predicate type.** The knowledge release attaches it as `schema-<tag>-in-toto.yaml`, and tests hold its names apart from those of the Linked Open Knowledge Format (LOKF) and the released neighbours' copies, except for the layer slsa v0.7.0 still defines.
 - **An example of each class and a counter-example for each constraint**, held to the validator by `just test`.

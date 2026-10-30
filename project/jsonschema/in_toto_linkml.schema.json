@@ -781,6 +781,7 @@
                 "download_location": {
                     "description": "Where the resource can be fetched, when that differs from its identifying URI.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -803,6 +804,7 @@
                 "resource_uri": {
                     "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -904,6 +906,7 @@
                 "process_type": {
                     "description": "The URI of the type of process, such as the build type when the monitor watched a build.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 }
             },
@@ -973,6 +976,7 @@
                 "predicate_type_uri": {
                     "description": "The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 },
                 "predicate_version": {
@@ -1041,6 +1045,7 @@
                 "reference_attester_id": {
                     "description": "The URI that identifies the system.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 }
             },
@@ -1117,6 +1122,7 @@
                 "download_location": {
                     "description": "Where the resource can be fetched, when that differs from its identifying URI.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1139,6 +1145,7 @@
                 "resource_uri": {
                     "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1263,6 +1270,7 @@
                 "download_location": {
                     "description": "Where the resource can be fetched, when that differs from its identifying URI.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1285,6 +1293,7 @@
                 "resource_uri": {
                     "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1495,6 +1504,7 @@
                 "predicate_type": {
                     "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 },
                 "statement_predicate": {
@@ -1581,6 +1591,7 @@
                 "download_location": {
                     "description": "Where the resource can be fetched, when that differs from its identifying URI.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1603,6 +1614,7 @@
                 "resource_uri": {
                     "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1622,6 +1634,7 @@
                 "svr_verifier_id": {
                     "description": "The URI that identifies the verifier, versioned when its verification logic changes materially.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 }
             },
@@ -1679,6 +1692,7 @@
                 "test_run_url": {
                     "description": "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1754,6 +1768,7 @@
                 "monitor_type": {
                     "description": "The URI of the monitor's type.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 },
                 "trace_policy": {
@@ -1805,6 +1820,7 @@
                 "db_uri": {
                     "description": "The URI that identifies the database's source.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": [
                         "string",
                         "null"
@@ -1871,6 +1887,7 @@
                 "scanner_uri": {
                     "description": "The URI that identifies the scanner's source.",
                     "format": "uri",
+                    "pattern": "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$",
                     "type": "string"
                 },
                 "scanner_version": {

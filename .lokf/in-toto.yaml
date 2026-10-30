@@ -31,8 +31,8 @@ prefixes:
   in_toto_linkml: https://w3id.org/lmodel/in-toto/
   dcat: http://www.w3.org/ns/dcat#
   spdx: http://spdx.org/rdf/terms#
-  in_toto: https://in-toto.io/attestation/
   xsd: http://www.w3.org/2001/XMLSchema#
+  in_toto: https://in-toto.io/attestation/
 imports:
 - linkml:types
 - lokf
@@ -385,7 +385,7 @@ classes:
       download_location:
         slot_uri: in_toto_linkml:download_location
         description: Where the resource can be fetched, when that differs from its identifying URI.
-        range: uri
+        range: in_toto_resource_uri
       media_type:
         description: The IANA media type of the resource's content.
         slot_uri: dcat:mediaType
@@ -442,7 +442,7 @@ classes:
       statement_type:
         slot_uri: in_toto_linkml:statement_type
         description: The in-toto statement type, always https://in-toto.io/Statement/v1.
-        range: uri
+        range: in_toto_type_uri
         required: true
         pattern: ^https://in-toto\.io/Statement/v1$
       subject:
@@ -457,7 +457,7 @@ classes:
       predicate_type:
         slot_uri: in_toto_linkml:predicate_type
         description: The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
-        range: uri
+        range: in_toto_type_uri
         required: true
       statement_predicate:
         slot_uri: in_toto_linkml:statement_predicate
@@ -497,7 +497,7 @@ classes:
     attributes:
       predicate_type_uri:
         description: The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.
-        range: uri
+        range: in_toto_type_uri
         required: true
       predicate_version:
         description: The version of the predicate's specification, as its page states it, such as 0.1.0.
@@ -549,7 +549,7 @@ classes:
       test_run_url:
         description: Where the test run can be read, such as a CI run that holds its logs; the verifier
           works out how to read it.
-        range: uri
+        range: in_toto_resource_uri
       passed_tests:
         description: The names of the tests that passed.
         multivalued: true
@@ -581,7 +581,7 @@ classes:
         inlined: true
       time_created:
         description: When the verification took place.
-        range: InTotoTimestamp
+        range: in_toto_timestamp
         required: true
       verified_properties:
         description: The properties of the subjects that passed verification, scoped to the framework
@@ -599,7 +599,7 @@ classes:
       svr_verifier_id:
         description: The URI that identifies the verifier, versioned when its verification logic changes
           materially.
-        range: uri
+        range: in_toto_type_uri
         required: true
   InTotoScaiAttributeReport:
     is_a: InTotoPredicate
@@ -739,7 +739,7 @@ classes:
     attributes:
       reference_attester_id:
         description: The URI that identifies the system.
-        range: uri
+        range: in_toto_type_uri
         required: true
   InTotoReferencedDocument:
     is_a: InTotoResourceDescriptor
@@ -779,7 +779,7 @@ classes:
       release_purl:
         description: The package URL that names the release, with its version and, unless the package
           type needs them, no qualifiers or subpath.
-        range: uri
+        range: in_toto_resource_uri
         required: true
         pattern: ^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+
         comments:
@@ -825,7 +825,7 @@ classes:
     attributes:
       monitor_type:
         description: The URI of the monitor's type.
-        range: uri
+        range: in_toto_type_uri
         required: true
       monitor_config_source:
         description: The monitor's configuration.
@@ -850,7 +850,7 @@ classes:
       process_type:
         description: The URI of the type of process, such as the build type when the monitor watched a
           build.
-        range: uri
+        range: in_toto_type_uri
         required: true
       process_event:
         description: The job or task the attestation is about.
@@ -902,10 +902,10 @@ classes:
     attributes:
       build_started_on:
         description: When the monitored build started.
-        range: InTotoTimestamp
+        range: in_toto_timestamp
       build_finished_on:
         description: When the monitored build finished.
-        range: InTotoTimestamp
+        range: in_toto_timestamp
   InTotoVulns:
     is_a: InTotoPredicate
     description: 'The predicate that records the result of one vulnerability scan of the subjects: the
@@ -934,10 +934,13 @@ classes:
     attributes:
       scanner_uri:
         description: The URI that identifies the scanner's source.
-        range: uri
+        range: in_toto_resource_uri
         required: true
       scanner_version:
         description: The scanner's version.
+        comments:
+        - The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema
+          takes any string.
       vuln_db:
         description: The vulnerability database the scanner used.
         range: InTotoVulnDatabase
@@ -956,12 +959,12 @@ classes:
     attributes:
       db_uri:
         description: The URI that identifies the database's source.
-        range: uri
+        range: in_toto_resource_uri
       db_version:
         description: The database's version.
       db_last_update:
         description: When the database was last updated.
-        range: InTotoTimestamp
+        range: in_toto_timestamp
         required: true
   InTotoVulnResult:
     description: One vulnerability a scanner found.
@@ -1002,11 +1005,11 @@ classes:
     attributes:
       scan_started_on:
         description: When the scan started.
-        range: InTotoTimestamp
+        range: in_toto_timestamp
         required: true
       scan_finished_on:
         description: When the scan finished.
-        range: InTotoTimestamp
+        range: in_toto_timestamp
         required: true
   InTotoDocument:
     description: A document that holds in-toto statements and the predicate types they name.
@@ -1030,7 +1033,7 @@ slots:
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri
     slot_uri: in_toto_linkml:resource_uri
-    range: uri
+    range: in_toto_resource_uri
   digest:
     description: The cryptographic digests of a resource's content, keyed by algorithm.
     see_also:
@@ -1038,6 +1041,41 @@ slots:
     slot_uri: in_toto_linkml:digest
     range: InTotoDigestSet
     inlined: true
+types:
+  in_toto_resource_uri:
+    typeof: uri
+    base: URI
+    description: A URI that identifies or locates a resource, such as a package URL or a git repository
+      address, with its scheme and authority in lowercase.
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri
+    comments:
+    - The framework recommends a package URL (pkg:) or an SPDX download location (git+https:), and allows
+      one that does not resolve.
+    pattern: ^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$
+  in_toto_type_uri:
+    typeof: uri
+    base: URI
+    description: A URI that names a type, such as a statement's or a predicate's, with its scheme and
+      authority in lowercase.
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#typeuri
+    comments:
+    - The framework asks that it carry a version and registers none, since the namespace of a URI keeps
+      two types apart.
+    pattern: ^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$
+  in_toto_timestamp:
+    typeof: string
+    base: str
+    uri: xsd:dateTime
+    description: A point in time in RFC 3339 format in the UTC time zone, written with a trailing Z, such
+      as 1985-04-12T23:20:50.52Z.
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#timestamp
+    comments:
+    - It extends string rather than datetime, because the LinkML Python runtime writes a datetime's Z
+      as +00:00, which the framework does not allow.
+    pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?Z$
 enums:
   InTotoTestResultValue:
     description: The result of a test run, as a Test Result predicate records it.
@@ -1101,18 +1139,6 @@ enums:
       VULNS:
         description: The results of a vulnerability scan of software artifacts.
         meaning: in_toto:vulns/v0.2
-types:
-  InTotoTimestamp:
-    typeof: string
-    uri: xsd:dateTime
-    description: A point in time in RFC 3339 format in the UTC time zone, written with a trailing Z, such
-      as 1985-04-12T23:20:50.52Z.
-    see_also:
-    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#timestamp
-    comments:
-    - It extends string rather than datetime, because the LinkML Python runtime writes a datetime's Z
-      as +00:00, which the framework does not allow.
-    pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?Z$
 notes:
 - 'Adapted for LOKF by `lokf adapt`. re-rooted on lokf:Concept: InTotoPredicateType; designators demoted:
   predicate_kind.'
