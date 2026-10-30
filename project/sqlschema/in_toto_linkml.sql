@@ -484,8 +484,8 @@ CREATE TABLE "InTotoMonitorLog_traced_network" (
 	PRIMARY KEY ("InTotoMonitorLog_id", traced_network),
 	FOREIGN KEY("InTotoMonitorLog_id") REFERENCES "InTotoMonitorLog" (id)
 );
-CREATE INDEX "ix_InTotoMonitorLog_traced_network_traced_network" ON "InTotoMonitorLog_traced_network" (traced_network);
 CREATE INDEX "ix_InTotoMonitorLog_traced_network_InTotoMonitorLog_id" ON "InTotoMonitorLog_traced_network" ("InTotoMonitorLog_id");
+CREATE INDEX "ix_InTotoMonitorLog_traced_network_traced_network" ON "InTotoMonitorLog_traced_network" (traced_network);
 
 CREATE TABLE "InTotoStatementSubject" (
 	id INTEGER NOT NULL,
@@ -561,8 +561,8 @@ CREATE TABLE "InTotoSimpleVerificationResult_verified_properties" (
 	PRIMARY KEY ("InTotoSimpleVerificationResult_id", verified_properties),
 	FOREIGN KEY("InTotoSimpleVerificationResult_id") REFERENCES "InTotoSimpleVerificationResult" (id)
 );
-CREATE INDEX "ix_InTotoSimpleVerificationResult_verified_properties_verified_properties" ON "InTotoSimpleVerificationResult_verified_properties" (verified_properties);
 CREATE INDEX "ix_InTotoSimpleVerificationResult_verified_properties_InTotoSimpleVerificationResult_id" ON "InTotoSimpleVerificationResult_verified_properties" ("InTotoSimpleVerificationResult_id");
+CREATE INDEX "ix_InTotoSimpleVerificationResult_verified_properties_verified_properties" ON "InTotoSimpleVerificationResult_verified_properties" (verified_properties);
 
 CREATE TABLE "InTotoAnnotation" (
 	id INTEGER NOT NULL,
@@ -638,8 +638,8 @@ CREATE TABLE "InTotoAnnotation_annotation_values" (
 	PRIMARY KEY ("InTotoAnnotation_id", annotation_values),
 	FOREIGN KEY("InTotoAnnotation_id") REFERENCES "InTotoAnnotation" (id)
 );
-CREATE INDEX "ix_InTotoAnnotation_annotation_values_annotation_values" ON "InTotoAnnotation_annotation_values" (annotation_values);
 CREATE INDEX "ix_InTotoAnnotation_annotation_values_InTotoAnnotation_id" ON "InTotoAnnotation_annotation_values" ("InTotoAnnotation_id");
+CREATE INDEX "ix_InTotoAnnotation_annotation_values_annotation_values" ON "InTotoAnnotation_annotation_values" (annotation_values);
 
 CREATE TABLE "InTotoObjectEntry_entry_values" (
 	"InTotoObjectEntry_id" INTEGER,

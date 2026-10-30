@@ -61,8 +61,11 @@ skip = [
   "project/*",
   "src/in_toto_linkml/datamodel/in_toto_linkml_pydantic.py",
   "src/in_toto_linkml/datamodel/in_toto_linkml.py",
-  # The in-toto specification, copied as published.
+  # The in-toto specification and the neighbours' adapt copies, copied as
+  # published, and files copied in by the KTL sidecar sync, not by hand.
   "src/in_toto_linkml/schema/attestation/*",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -82,4 +85,6 @@ extend-exclude = [
   "src/in_toto_linkml/datamodel/in_toto_linkml_pydantic.py",
   "src/in_toto_linkml/datamodel/in_toto_linkml.py",
   "src/in_toto_linkml/schema/attestation/*",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
 ]
