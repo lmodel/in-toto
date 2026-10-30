@@ -26,7 +26,15 @@ status: draft
 
 # The in-toto specification copy
 
-`src/in_toto_linkml/schema/attestation/` holds 31 files from in-toto/attestation at the tag `v1.2.0`, commit `df02077bf972`, at the paths they have there: the `LICENSE`, seven pages of `spec/v1/`, the predicates page and the pages of all thirteen vetted predicates under `spec/predicates/`, the statement and resource descriptor definitions under `protos/in_toto_attestation/v1/`, and the definitions of seven of the predicates under `protos/in_toto_attestation/predicates/`. Runtime Trace publishes none. `scripts/check_upstream_release.py` pins each file's git object hash.[^check_upstream_release.py]
+`src/in_toto_linkml/schema/attestation/` holds 31 files from in-toto/attestation at the tag `v1.2.0`, commit `df02077bf972`, each at the path it has there:
+
+- the `LICENSE`;
+- seven pages of `spec/v1/`;
+- the predicates page and the pages of all thirteen vetted predicates under `spec/predicates/`;
+- the statement and resource descriptor definitions under `protos/in_toto_attestation/v1/`;
+- the definitions of seven of the predicates under `protos/in_toto_attestation/predicates/`.
+
+Runtime Trace publishes no definition. `scripts/check_upstream_release.py` pins each file's git object hash.[^check_upstream_release.py]
 
 The script leaves out, on purpose, the envelope and bundle pages, the SLSA Provenance and Verification Summary definitions, the superseded VULNS v0.1 page and older predicate versions, and the authors' template. NOTICE says that the files are the in-toto project's under the Apache License 2.0, and that the tests read them and nothing changes them.[^notice]
 

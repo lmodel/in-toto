@@ -21,7 +21,7 @@ status: draft
 
 Run `linkml-validate -s src/in_toto_linkml/schema/in_toto_linkml.yaml -C InTotoStatement attestation.yaml`, naming the class the file holds. It checks the file against the JSON Schema the validator generates from the schema, and `tests/test_data.py` holds every example to the same check.[^docs-index.md]
 
-Write the file in the schema's keys, not as the attestation's JSON is published. The page names three differences:
+Write the file in the schema's keys, not as the attestation's JSON is published. The documentation names three differences:
 
 - the keys are in snake case, such as `predicate_type` for `predicateType`, `git_commit` for `gitCommit` and `statement_type` for `_type`;
 - a JSON object whose keys the producer chooses, such as a digest set's other algorithms or a descriptor's annotations, becomes a list of key and value entries;
@@ -29,7 +29,7 @@ Write the file in the schema's keys, not as the attestation's JSON is published.
 
 The examples whose file names hold `-page-` are the specification's own examples, written this way.
 
-Validate a file before loading it into either model in `src/in_toto_linkml/datamodel/`. The page says that the models LinkML 1.12.1 generates check less:
+Validate a file before loading it into either model in `src/in_toto_linkml/datamodel/`. The documentation says that the models LinkML 1.12.1 generates check less:
 
 - the dataclasses check required fields and enum values, but no pattern, and read an empty required list, such as a scan's empty `scan_results`, as a missing one;
 - the Pydantic models also check the patterns a field carries itself, such as the digest lengths and `release_purl`, but not a type's pattern: that a timestamp is in UTC, or that a URI's scheme and authority are lowercase;

@@ -17,7 +17,7 @@ status: draft
 
 # AI covenant
 
-`AI_COVENANT.md` says that everything a contributor submits is theirs, whatever tools helped make it, and that they must understand, verify and defend it.[^ai_covenant.md] Its note for this project says that the repository models someone else's framework, the in-toto Attestation Framework. So the failure mode to guard against is a field, rule or predicate that a model produced and presented as what the framework says. Three rules follow:
+`AI_COVENANT.md` says that everything a contributor submits is theirs, whatever tools helped make it, and that they must understand, verify and defend it.[^ai_covenant.md] Its note for this project says that the repository models someone else's framework, the in-toto Attestation Framework. So the failure mode to guard against is a field, rule or predicate that an AI model produced and presented as what the framework says. Three rules follow:
 
 - an element under `src/in_toto_linkml/schema/` says what the specification says, in the project's own words, with the specification page cited in the pull request;
 - the specification copy under `src/in_toto_linkml/schema/attestation/` is upstream text, never edited, only replaced from one release;

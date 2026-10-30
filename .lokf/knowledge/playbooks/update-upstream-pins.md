@@ -25,7 +25,7 @@ status: draft
 
 # Update the upstream pins
 
-`scripts/check_upstream_release.py` runs every Monday in [Upstream watch](../workflows/upstream-watch.md) with the standard library alone. It asks the GitHub API for in-toto/attestation's latest release, the commit the pinned tag names, and the repository's file tree at the pinned commit and at the latest release. It exits 1, and the workflow opens or updates an issue, on each of these findings.[^check_upstream_release.py]
+`scripts/check_upstream_release.py` runs every Monday in [Upstream watch](../workflows/upstream-watch.md) with the standard library alone. It asks the GitHub API for in-toto/attestation's latest release, the commit the pinned tag names, and the repository's file tree at the pinned commit and at the latest release. On each of these findings, it exits 1 and the workflow opens or updates an issue.[^check_upstream_release.py]
 
 - **in-toto/attestation has a newer release** than v1.2.0. Read its changelog and the pages it changes, decide whether the schema moves to it, and replace the copy from that release.
 - **A newer release changes a pinned file** or **no longer holds one**. Replace the file from that tag, or find where the in-toto project now publishes it.
@@ -33,9 +33,15 @@ status: draft
 - **A copied file differs from its pinned blob**, or the copy holds a file the script does not pin.
 - **A check could not finish**, for example on a network error or a tree listing GitHub cut short. The report names the check and the error, and the other check still runs.
 
-A file the in-toto project adds to `spec/v1/`, `spec/predicates/` or `protos/in_toto_attestation/` is reported for information and does not fail the run, unless the script leaves it out on purpose: the envelope and bundle pages, the definitions of SLSA's two predicates, the superseded versions and the template. `tests/test_watch.py` checks each of these reports against stubbed answers.
+The script reports a file the in-toto project adds to `spec/v1/`, `spec/predicates/` or `protos/in_toto_attestation/` for information, and the run does not fail. It skips a file of the kinds it leaves out on purpose: the envelope and bundle pages, the definitions of SLSA's two predicates, the superseded versions and the template. `tests/test_watch.py` checks each of these reports against stubbed answers.
 
-To replace the copy, take every pinned file from one release, at its path under `src/in_toto_linkml/schema/attestation/`. Never edit them.[^contributing.md] Then move `PINNED_TAG`, `PINNED_COMMIT` and `PINNED_BLOBS` in the script, and the header's `version`, `source` and the `attestation_tag` and `attestation_commit` annotations, and update NOTICE. Run `just gen-project`, `just gen-doc` and `just lokf-adapt`, since the header's values reach the generated files and the adapt copy. Then run `just test`. `tests/test_upstream.py` checks that the header and the script name the same pins, that each file has its pinned hash, that each field of a copied protocol buffer message maps to a slot, and that `InTotoVettedPredicate` holds the predicates page's list. It also checks that each value of the list means a type URI its page gives.[^test_upstream.py]
+To replace the copy, take every pinned file from one release, at its path under `src/in_toto_linkml/schema/attestation/`. Never edit them.[^contributing.md] Then move `PINNED_TAG`, `PINNED_COMMIT` and `PINNED_BLOBS` in the script, and the header's `version`, `source` and the `attestation_tag` and `attestation_commit` annotations, and update NOTICE. Run `just gen-project`, `just gen-doc` and `just lokf-adapt`, since the generated files and the adapt copy carry the header's values. Then run `just test`. `tests/test_upstream.py` checks that:
+
+- the header and the script name the same pins;
+- each file has its pinned hash;
+- each field of a copied protocol buffer message maps to a slot;
+- `InTotoVettedPredicate` holds the predicates page's list;
+- each value of the list means a type URI its page gives.[^test_upstream.py]
 
 [^check_upstream_release.py]: scripts/check_upstream_release.py, the docstring, check_release, check_copy and main
 [^contributing.md]: CONTRIBUTING.md, the item on the specification copy

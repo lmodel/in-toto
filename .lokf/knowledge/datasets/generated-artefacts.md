@@ -41,7 +41,7 @@ Every file here is generated from the schema's modules under `src/in_toto_linkml
 
 `just gen-doc` writes `docs/schema/in_toto_linkml.yaml` and the element pages under `docs/elements/`, which git ignores and the website builds. `just lokf-adapt` writes `.lokf/in-toto.yaml`.
 
-The pre-commit hooks leave these folders alone, with the specification copy, the neighbours' copies and the sidecar's scripts, because no hook may rewrite a file the repository does not write by hand.[^pre-commit-config.yaml]
+The pre-commit hooks leave alone these folders, the specification copy, the neighbours' copies and the sidecar's scripts, because no hook may rewrite a file the repository does not write by hand.[^pre-commit-config.yaml]
 
 [^justfile]: justfile, the gen-project and gen-doc recipes
 [^generators.yaml]: .linkml/generators.yaml, excludes and generator_args

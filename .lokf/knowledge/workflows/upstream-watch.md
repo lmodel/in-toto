@@ -17,6 +17,6 @@ status: draft
 
 # Upstream watch (upstream-watch.yaml)
 
-`.github/workflows/upstream-watch.yaml` is the workflow named "Upstream watch". It runs every Monday at 07:00 UTC and by hand, since nothing in a pull request can change what it checks.[^upstream-watch.yaml] Its one job, `attestation-copy`, reads the checkout and holds `issues: write`. It runs `scripts/check_upstream_release.py` on the runner's Python, and on a finding `.github/scripts/report-issue.sh` opens the issue titled "Upstream watch: the in-toto Attestation Framework has changed" or comments on the open one. [Update the upstream pins](../playbooks/update-upstream-pins.md) says what each finding asks for.
+`.github/workflows/upstream-watch.yaml` is the workflow named "Upstream watch". It runs every Monday at 07:00 UTC and by hand, since nothing in a pull request can change what it checks.[^upstream-watch.yaml] Its one job, `attestation-copy`, reads the checkout and holds `issues: write`. It runs `scripts/check_upstream_release.py` on the runner's Python. On a finding, `.github/scripts/report-issue.sh` opens the issue titled "Upstream watch: the in-toto Attestation Framework has changed" or comments on the open one. [Update the upstream pins](../playbooks/update-upstream-pins.md) says what each finding asks for.
 
 [^upstream-watch.yaml]: .github/workflows/upstream-watch.yaml, the header comment, the on key and the jobs

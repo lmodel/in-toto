@@ -23,9 +23,9 @@ status: draft
 
 # The in-toto Attestation Framework
 
-The in-toto project publishes the in-toto Attestation Framework at <https://github.com/in-toto/attestation>. Its v1 specification describes an attestation in layers: the predicate, the statement that binds it to its subjects, the envelope that signs the statement, and the bundle that collects attestations.[^spec-readme] The statement's `_type` is always `https://in-toto.io/Statement/v1`, its `subject` lists the artifacts it applies to, each with a digest and matched by digest alone, and its `predicateType` names the predicate's type by URI.[^statement.md]
+The in-toto project publishes the in-toto Attestation Framework at <https://github.com/in-toto/attestation>. Its v1 specification describes an attestation in layers: the predicate, the statement that binds it to its subjects, the envelope that signs the statement, and the bundle that collects attestations.[^spec-readme] The statement's `_type` is always `https://in-toto.io/Statement/v1`. Its `subject` lists the artifacts it applies to, each with a digest and matched by digest alone, and its `predicateType` names the predicate's type by URI.[^statement.md]
 
-Release v1.2.0 of March 18, 2026 is the one the schema renders. Its changelog says that v1.2 widened the envelope's allowed payload types, and that v1.1 clarified that subjects are immutable and that a non-cryptographic digest is acceptable.[^changelog] The schema leaves the envelope and the bundle out. [The in-toto specification copy](../datasets/attestation-copy.md) holds the pages it renders.
+The schema renders release v1.2.0, of March 18, 2026. Its changelog says that v1.2 widened the envelope's allowed payload types, and that v1.1 clarified that subjects are immutable and that a non-cryptographic digest is acceptable.[^changelog] The schema leaves the envelope and the bundle out. [The in-toto specification copy](../datasets/attestation-copy.md) holds the pages it renders.
 
 [^spec-readme]: src/in_toto_linkml/schema/attestation/spec/v1/README.md, the overview
 [^statement.md]: src/in_toto_linkml/schema/attestation/spec/v1/statement.md, the fields

@@ -22,11 +22,19 @@ status: draft
 
 # Scope, influences and mappings
 
-The README says that the schema renders the in-toto Attestation Framework at release v1.2.0: the statement, the resource descriptor and the digest set, the predicate types, and eight vetted predicates.[^readme.md] Its one influence is lmodel/slsa, whose module layout, release asset and governance files it follows, and whose names for the statement layer it keeps, so that slsa can import the core module alone.[^about.md]
+The README says that the schema renders the in-toto Attestation Framework at release v1.2.0: the statement, the resource descriptor and the digest set, the predicate types, and eight vetted predicates.[^readme.md] Its one influence is lmodel/slsa. It follows slsa's module layout, release asset and governance files, and keeps slsa's names for the statement layer, so that slsa can import the core module alone.[^about.md]
 
 It maps each predicate to the type URI its statements carry, in `exact_mappings`, and gives `media_type` and `algorithm` the IRIs LOKF gives the same keys. It borrows from no other vocabulary.
 
-It leaves out the envelope that signs a statement and the bundle that collects them, SLSA Provenance and the SLSA Verification Summary, which slsa models, and the bodies of the CycloneDX, SPDX 2 and SPDX 3 predicates, which it names by type URI only. It also leaves out the older predicate versions, VULNS v0.1, and the policy field a verifier may add to a Simple Verification Result. Nor does it take an attestation's JSON as published, so a statement is written in the schema's keys before it validates.[^readme.md]
+It leaves out:
+
+- the envelope that signs a statement and the bundle that collects them;
+- SLSA Provenance and the SLSA Verification Summary, which slsa models;
+- the bodies of the CycloneDX, SPDX 2 and SPDX 3 predicates, which it names by type URI only;
+- the older predicate versions and VULNS v0.1;
+- the policy field a verifier may add to a Simple Verification Result.
+
+Nor does it take an attestation's JSON as published, so a statement is written in the schema's keys before it validates.[^readme.md]
 
 [^readme.md]: README.md, What it models, Influences, Mappings and Not modelled here
 [^about.md]: docs/about.md, Modules and Left out

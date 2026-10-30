@@ -28,7 +28,7 @@ verified:
 
 # Predicate type
 
-A statement names its predicate's type with a TypeURI, a case-normalized URI that should resolve to a description and include a version number. The specification adds that type URIs are not registered, since URIs' own namespacing prevents collisions.[^field_types] The schema renders a predicate type as `InTotoPredicateType`, with `predicate_type_uri`, `predicate_version`, `predicate_specification` and `vetted_as`, and its adapt copy roots this class on `Concept`, so a concept can be a predicate type.[^in_toto_predicates] The bundle describes the vetted ones under [predicate types](../predicate-types/index.md).
+A statement names its predicate's type with a TypeURI, a case-normalized URI that should resolve to a description and include a version number. The specification adds that type URIs are not registered, since URIs' own namespacing prevents collisions.[^field_types] The schema renders a predicate type as `InTotoPredicateType`, with `predicate_type_uri`, `predicate_version`, `predicate_specification` and `vetted_as`. Its adapt copy roots this class on `Concept`, so a concept can be a predicate type.[^in_toto_predicates] The bundle describes the vetted ones under [predicate types](../predicate-types/index.md).
 
 [^field_types]: src/in_toto_linkml/schema/attestation/spec/v1/field_types.md, TypeURI
 [^in_toto_predicates]: src/in_toto_linkml/schema/in_toto_predicates.yaml, InTotoPredicateType

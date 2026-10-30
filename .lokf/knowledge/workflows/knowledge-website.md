@@ -20,7 +20,7 @@ verified:
 
 # Knowledge website (knowledge-website.yaml)
 
-`.github/workflows/knowledge-website.yaml` is the workflow named "Knowledge website", a copy of the ktl-website template. It runs on a push to the default branch, every Monday at 05:23 UTC, by hand, and on a pull request that touches `website/`, `.lokf/`, the README, `docs/`, the changelog, `llms.txt`, a justfile, a `pyproject.toml` or a `uv.lock`.[^knowledge-website.yaml] Its `build` job runs under a read-only token. It:
+`.github/workflows/knowledge-website.yaml` is the workflow named "Knowledge website", a copy of the ktl-website template. It runs on a push to the default branch, every Monday at 05:23 UTC and by hand. It also runs on a pull request that touches `website/`, `.lokf/`, the README, `docs/`, the changelog, `llms.txt`, a justfile, a `pyproject.toml` or a `uv.lock`.[^knowledge-website.yaml] Its `build` job runs under a read-only token. It:
 
 - checks the repository out with its full history;
 - installs the sidecar's toolkit with `uv sync --locked`;

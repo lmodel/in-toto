@@ -2,6 +2,7 @@
 
 ## 2026-10-30
 
+* **Prose**: reworded 18 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Changed**: sentences this run lengthened are split, with no fact changed.
 * **Changed**: the statement's predicate is `predicate` again, a slot the adapt copy renames `in_toto_linkml_predicate`, as `docs/about.md` now says.
 * **Changed**: `InTotoStatement` holds the optional `predicate`, no longer `statement_predicate`.

@@ -110,7 +110,7 @@ verified:
 
 # Knowledge sources
 
-Steady-state refresh runs re-verify these sources instead of discovering them again. Update this map whenever the repository's knowledge geography changes.
+Each refresh run after the first re-verifies these sources instead of discovering them again. Update this map whenever the layout of the repository's sources changes.
 
 Each concept names the file or folder it derives from by its path from the repository root, in `resource` and in `sources`. `knowledge-report.sh worklist` lists the concepts whose source moved since their stamp.
 
@@ -133,4 +133,4 @@ Each concept names the file or folder it derives from by its path from the repos
 | `SECURITY.md`, `.github/dependabot.yml` | `policies/security-policy` | re-read the table of surfaces and the settings not yet in force |
 | `AI_COVENANT.md` | `policies/ai-covenant` | re-read the project note and the section on agent automation |
 
-The paths under `exclusions` were looked at and left out, each for the reason it gives. They are governance text, tooling settings, template text, package plumbing, the pointer for agents, and the sidecar's own files. Of the sidecar's files, the domain schema, the justfile's `schema :=` line and the `[tool.lokf]` table are sources.
+The paths under `exclusions` were looked at and left out, each for the reason it gives. They are governance text, tooling settings, template text, package plumbing, the pointer for agents, and the sidecar's files. Of the sidecar's files, the domain schema, the justfile's `schema :=` line and the `[tool.lokf]` table are sources.
