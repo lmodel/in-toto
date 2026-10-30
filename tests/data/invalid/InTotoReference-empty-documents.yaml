@@ -1,0 +1,5 @@
+# Fails at: /referenced_documents
+# Invalid: a reference points to one document at least.
+reference_attester:
+  reference_attester_id: https://github.com/example/app/actions
+referenced_documents: []

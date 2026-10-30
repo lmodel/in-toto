@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a link's material carries its digest.
+resource_name: Makefile
+resource_uri: https://example.com/Makefile

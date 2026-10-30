@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a link's material carries its name.
+digest:
+  sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef

@@ -1,0 +1,14 @@
+# A scanner, its database and one result with an annotation.
+scanner_uri: pkg:github/aquasecurity/trivy@244fd47e07d1004f0aed9
+scanner_version: 0.19.2
+vuln_db:
+  db_last_update: "2021-08-06T12:00:00Z"
+scan_results:
+  - vuln_id: GHSA-fxph-q3j8-mv87
+    vuln_severity:
+      - severity_method: cvss_score
+        severity_score: "9.8"
+    vuln_annotations:
+      - entry_key: fixed_in
+        entry_values:
+          - 2.8.2

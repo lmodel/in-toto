@@ -1,0 +1,4 @@
+# One vendor-specific annotation on a resource descriptor.
+annotation_key: source_refs
+annotation_values:
+  - refs/heads/main

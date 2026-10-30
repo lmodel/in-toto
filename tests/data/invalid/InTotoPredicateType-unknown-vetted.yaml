@@ -1,0 +1,4 @@
+# Fails at: /vetted_as
+# Invalid: vetted_as names one of the thirteen vetted predicates.
+predicate_type_uri: https://in-toto.io/attestation/example/v1
+vetted_as: EXAMPLE

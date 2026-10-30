@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a link names its step.
+step_command:
+  - make

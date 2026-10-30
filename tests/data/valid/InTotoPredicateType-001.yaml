@@ -1,0 +1,5 @@
+# The Test Result predicate type, which the in-toto project has vetted.
+predicate_type_uri: https://in-toto.io/attestation/test-result/v0.1
+predicate_version: 0.1.0
+predicate_specification: https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md
+vetted_as: TEST_RESULT

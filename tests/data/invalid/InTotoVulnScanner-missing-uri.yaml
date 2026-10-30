@@ -1,0 +1,3 @@
+# Fails at: /
+# Invalid: a scanner is named by its source's URI.
+scan_results: []

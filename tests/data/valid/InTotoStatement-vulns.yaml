@@ -1,0 +1,24 @@
+# A VULNS attestation: one scan, its database and the vulnerability it found.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://in-toto.io/attestation/vulns/v0.2
+statement_predicate:
+  predicate_kind: InTotoVulns
+  vuln_scanner:
+    scanner_uri: pkg:github/aquasecurity/trivy@244fd47e07d1004f0aed9
+    scanner_version: 0.19.2
+    vuln_db:
+      db_uri: pkg:github/aquasecurity/trivy-db/commit/4c76bb580b2736d67751410fa4ab66d2b6b9b27d
+      db_version: v1-2021080612
+      db_last_update: "2021-08-06T12:00:00Z"
+    scan_results:
+      - vuln_id: CVE-2017-5645
+        vuln_severity:
+          - severity_method: nvd
+            severity_score: "9.8"
+  scan_metadata:
+    scan_started_on: "2021-08-06T17:45:50Z"
+    scan_finished_on: "2021-08-06T17:50:42Z"

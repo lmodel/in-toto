@@ -1,0 +1,21 @@
+# A link attestation: the build step, its command and the material it read.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://in-toto.io/attestation/link/v0.3
+statement_predicate:
+  predicate_kind: InTotoLink
+  step_name: build
+  step_command:
+    - make
+    - dist
+  materials:
+    - resource_name: src/main.c
+      digest:
+        sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+  step_byproducts:
+    - entry_key: return-value
+      entry_values:
+        - "0"

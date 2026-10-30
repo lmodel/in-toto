@@ -1,0 +1,3 @@
+# A predicate type nobody vetted: npm's publish attestation.
+predicate_type_uri: https://github.com/npm/attestation/tree/main/specs/publish/v0.1
+predicate_specification: https://github.com/npm/attestation/tree/main/specs/publish/v0.1

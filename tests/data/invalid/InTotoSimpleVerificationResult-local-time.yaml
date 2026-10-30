@@ -1,0 +1,7 @@
+# Fails at: /time_created
+# Invalid: a timestamp is in UTC and ends in Z.
+svr_verifier:
+  svr_verifier_id: https://verifier.example.com/policy-engine/v2
+time_created: "2026-03-18T12:00:00+01:00"
+verified_properties:
+  - SLSA_BUILD_LEVEL_3

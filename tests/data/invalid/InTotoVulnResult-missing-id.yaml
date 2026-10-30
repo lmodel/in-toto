@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: a vulnerability is named by its identifier.
+vuln_severity:
+  - severity_method: nvd
+    severity_score: "9.8"

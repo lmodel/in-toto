@@ -1,0 +1,15 @@
+# A simple verification result: which properties a verifier found.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://in-toto.io/attestation/svr/v0.1
+statement_predicate:
+  predicate_kind: InTotoSimpleVerificationResult
+  svr_verifier:
+    svr_verifier_id: https://verifier.example.com/policy-engine/v2
+  time_created: "2026-03-18T12:00:00Z"
+  verified_properties:
+    - SLSA_BUILD_LEVEL_3
+    - SLSA_SOURCE_LEVEL_3

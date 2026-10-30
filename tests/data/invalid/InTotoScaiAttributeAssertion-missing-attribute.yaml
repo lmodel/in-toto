@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: an assertion names the attribute it asserts.
+scai_target:
+  resource_uri: https://example.com/app.tar.gz

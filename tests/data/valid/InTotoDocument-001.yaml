@@ -1,0 +1,15 @@
+# A document with one statement and the predicate type it names.
+in_toto_statements:
+  - statement_type: https://in-toto.io/Statement/v1
+    subject:
+      - resource_name: app.tar.gz
+        digest:
+          sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+    predicate_type: https://in-toto.io/attestation/release/v0.1
+    statement_predicate:
+      predicate_kind: InTotoRelease
+      release_purl: pkg:npm/example-app@1.0.0
+in_toto_predicate_types:
+  - predicate_type_uri: https://in-toto.io/attestation/release/v0.1
+    predicate_version: "0.2"
+    vetted_as: RELEASE

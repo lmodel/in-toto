@@ -143,9 +143,9 @@ def test_a_truncated_tree_is_reported_as_unfinished(watch, tmp_path):
     """A listing GitHub cut short cannot prove a file is gone, so the check
     stops instead of reporting it dropped."""
     answers = _answers(watch, watch.PINNED_TAG)
-    answers[f"{watch.API}/git/trees/{watch.PINNED_COMMIT}?recursive=1"][
-        "truncated"
-    ] = True
+    answers[f"{watch.API}/git/trees/{watch.PINNED_COMMIT}?recursive=1"]["truncated"] = (
+        True
+    )
     _stub(watch, answers)
     code, text = _run(watch, tmp_path)
     assert code == 1

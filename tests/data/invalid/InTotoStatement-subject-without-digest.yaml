@@ -1,0 +1,7 @@
+# Fails at: /subject/0
+# Invalid: each subject carries a digest, since subjects are matched by digest.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    resource_uri: https://example.com/app.tar.gz
+predicate_type: https://example.com/attestation/reviewed/v1

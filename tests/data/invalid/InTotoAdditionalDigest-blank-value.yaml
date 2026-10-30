@@ -1,0 +1,4 @@
+# Fails at: /value
+# Invalid: a digest's value holds no white space.
+algorithm: svn_revision_id
+value: two words

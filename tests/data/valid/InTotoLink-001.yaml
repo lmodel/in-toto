@@ -1,0 +1,12 @@
+# The build step of an in-toto layout.
+step_name: build
+step_command:
+  - make
+materials:
+  - resource_name: Makefile
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+step_environment:
+  - entry_key: CC
+    entry_values:
+      - gcc

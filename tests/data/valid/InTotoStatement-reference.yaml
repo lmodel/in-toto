@@ -1,0 +1,16 @@
+# A reference attestation: the subject's SBOM, by location and digest.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://in-toto.io/attestation/reference/v0.1
+statement_predicate:
+  predicate_kind: InTotoReference
+  reference_attester:
+    reference_attester_id: https://github.com/example/app/actions
+  referenced_documents:
+    - download_location: https://example.com/app.spdx.json
+      media_type: application/spdx+json
+      digest:
+        sha256: abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890

@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: an annotation names its key.
+annotation_values:
+  - refs/heads/main

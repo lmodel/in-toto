@@ -1,0 +1,18 @@
+# A SCAI attribute report: the artifact has an SBOM, with the SBOM as evidence.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://in-toto.io/attestation/scai/v0.3
+statement_predicate:
+  predicate_kind: InTotoScaiAttributeReport
+  scai_attributes:
+    - scai_attribute: HAS_SBOM
+      scai_evidence:
+        resource_name: app.spdx.json
+        media_type: application/spdx+json
+        digest:
+          sha256: abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890
+  scai_producer:
+    resource_uri: https://github.com/example/app/.github/workflows/release.yml
