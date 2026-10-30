@@ -15,6 +15,10 @@ exclude = [
   # This schema's namespace. A term IRI is an identifier that merely looks
   # like a URL; a 404 on one is valid by design.
   '^https://w3id\.org/lmodel/in-toto/',
+  # The type URIs in-toto's predicates page gives CycloneDX and SPDX, which
+  # the predicate-type concepts carry. Each is an identifier, and answers 404.
+  '^https://cyclonedx\.org/bom/v1\.4$',
+  '^https://spdx\.dev/Document/v(?:2\.3|3)$',
   # The documentation site, which answers once the knowledge-website
   # workflow first deploys it to Pages. Drop this then.
   '^https://lmodel\.github\.io/in-toto',
