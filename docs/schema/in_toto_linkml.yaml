@@ -1,0 +1,3156 @@
+name: in_toto_linkml
+annotations:
+  attestation_tag:
+    tag: attestation_tag
+    value: v1.2.0
+  attestation_commit:
+    tag: attestation_commit
+    value: df02077bf97218a8860a5c534eff1f1381f56984
+description: 'A LinkML model of the in-toto Attestation Framework: the statement that
+  binds an attestation to its subjects, the resource descriptor and digest set that
+  identify an artifact, the predicate types the in-toto project has vetted, and the
+  vetted predicates that no other lmodel schema models.'
+title: in-toto Attestation Framework
+comments:
+- The version is the release of in-toto/attestation the model renders, and the specification
+  pages and protocol buffer definitions of that release are copied to src/in_toto_linkml/schema/attestation/
+  at the tag and commit in the annotations. The release tags are the schema's own
+  versions, and scripts/check_upstream_release.py reads the same pins and reports
+  when the in-toto project releases again or the copy drifts.
+- in_toto_core imports only the LinkML types, in_toto_predicates imports the core,
+  and this file adds only the document root, so an importer can take one module. lmodel/slsa
+  imports the core and models SLSA's own predicates.
+source: https://github.com/in-toto/attestation/tree/v1.2.0
+see_also:
+- https://lmodel.github.io/in-toto
+- https://github.com/in-toto/attestation/blob/v1.2.0/spec/README.md
+- https://in-toto.io/
+id: https://w3id.org/lmodel/in-toto
+version: 1.2.0
+imports:
+- linkml:types
+- ./in_toto_core
+- ./in_toto_predicates
+license: Apache-2.0
+prefixes:
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  in_toto_linkml:
+    prefix_prefix: in_toto_linkml
+    prefix_reference: https://w3id.org/lmodel/in-toto/
+default_prefix: in_toto_linkml
+default_range: string
+types:
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  InTotoTimestamp:
+    name: InTotoTimestamp
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoTimestamp
+    description: A point in time in RFC 3339 format in the UTC time zone, written
+      with a trailing Z, such as 1985-04-12T23:20:50.52Z.
+    comments:
+    - It extends string rather than datetime, because the LinkML Python runtime writes
+      a datetime's Z as +00:00, which the framework does not allow.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#timestamp
+    typeof: string
+    base: str
+    uri: xsd:dateTime
+    pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?Z$
+enums:
+  InTotoTestResultValue:
+    name: InTotoTestResultValue
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoTestResultValue
+    description: The result of a test run, as a Test Result predicate records it.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md
+    permissible_values:
+      PASSED:
+        text: PASSED
+        description: The run passed.
+      WARNED:
+        text: WARNED
+        description: The run passed with warnings.
+      FAILED:
+        text: FAILED
+        description: The run failed.
+  InTotoVettedPredicate:
+    name: InTotoVettedPredicate
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoVettedPredicate
+    description: The thirteen predicate types the in-toto project lists as vetted
+      at release v1.2.0, each with the predicate_type a statement of it carries at
+      the version its page describes.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md
+    permissible_values:
+      CYCLONEDX:
+        text: CYCLONEDX
+        description: A CycloneDX bill of materials for software artifacts.
+        meaning: https://cyclonedx.org/bom/v1.4
+        see_also:
+        - https://cyclonedx.org/
+      LINK:
+        text: LINK
+        description: One step of an in-toto layout, for migration from in-toto 0.9.
+        meaning: in_toto:link/v0.3
+      REFERENCE:
+        text: REFERENCE
+        description: References to documents relevant to a resource.
+        meaning: in_toto:reference/v0.1
+      RELEASE:
+        text: RELEASE
+        description: An artifact that is part of a given release version.
+        meaning: in_toto:release/v0.1
+      RUNTIME_TRACE:
+        text: RUNTIME_TRACE
+        description: Runtime traces of software supply chain operations.
+        meaning: in_toto:runtime-trace/v0.1
+      SCAI:
+        text: SCAI
+        description: Evidence-based assertions about software artifact and supply
+          chain attributes or behaviour.
+        meaning: in_toto:scai/v0.3
+      SLSA_PROVENANCE:
+        text: SLSA_PROVENANCE
+        description: How an artifact or set of artifacts was produced; lmodel/slsa
+          models it.
+        meaning: https://slsa.dev/provenance/v1
+      SLSA_VERIFICATION_SUMMARY:
+        text: SLSA_VERIFICATION_SUMMARY
+        description: A SLSA verification decision about a software artifact; lmodel/slsa
+          models it.
+        meaning: https://slsa.dev/verification_summary/v1
+      SPDX2:
+        text: SPDX2
+        description: An SPDX 2 bill of materials for software artifacts.
+        meaning: https://spdx.dev/Document/v2.3
+      SPDX3:
+        text: SPDX3
+        description: An SPDX 3 bill of materials for software artifacts.
+        meaning: https://spdx.dev/Document/v3
+      SIMPLE_VERIFICATION_RESULT:
+        text: SIMPLE_VERIFICATION_RESULT
+        description: Evidence that an artifact was evaluated against one or more policies.
+        meaning: in_toto:svr/v0.1
+      TEST_RESULT:
+        text: TEST_RESULT
+        description: The results of any type of test.
+        meaning: in_toto:test-result/v0.1
+      VULNS:
+        text: VULNS
+        description: The results of a vulnerability scan of software artifacts.
+        meaning: in_toto:vulns/v0.2
+slots:
+  resource_uri:
+    name: resource_uri
+    definition_uri: https://w3id.org/lmodel/in-toto/resource_uri
+    description: The URI that identifies a resource, such as a package URL, a git
+      repository address or an OCI image reference.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri
+    mappings:
+    - in_toto_linkml:resource_uri
+    slot_uri: in_toto_linkml:resource_uri
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: uri
+  digest:
+    name: digest
+    definition_uri: https://w3id.org/lmodel/in-toto/digest
+    description: The cryptographic digests of a resource's content, keyed by algorithm.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
+    mappings:
+    - in_toto_linkml:digest
+    slot_uri: in_toto_linkml:digest
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: InTotoDigestSet
+    inlined: true
+    inlined_as_list: true
+  inTotoDocument__in_toto_statements:
+    name: inTotoDocument__in_toto_statements
+    description: The statements, each an in-toto attestation without its envelope.
+    from_schema: https://w3id.org/lmodel/in-toto
+    slot_uri: in_toto_linkml:in_toto_statements
+    alias: in_toto_statements
+    owner: InTotoDocument
+    domain_of:
+    - InTotoDocument
+    range: InTotoStatement
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoDocument__in_toto_predicate_types:
+    name: inTotoDocument__in_toto_predicate_types
+    description: The predicate types.
+    from_schema: https://w3id.org/lmodel/in-toto
+    slot_uri: in_toto_linkml:in_toto_predicate_types
+    alias: in_toto_predicate_types
+    owner: InTotoDocument
+    domain_of:
+    - InTotoDocument
+    range: InTotoPredicateType
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoDigestSet__sha256:
+    name: inTotoDigestSet__sha256
+    description: The SHA-256 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha256
+    alias: sha256
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}$
+  inTotoDigestSet__sha224:
+    name: inTotoDigestSet__sha224
+    description: The SHA-224 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha224
+    alias: sha224
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{56}$
+  inTotoDigestSet__sha384:
+    name: inTotoDigestSet__sha384
+    description: The SHA-384 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha384
+    alias: sha384
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{96}$
+  inTotoDigestSet__sha512:
+    name: inTotoDigestSet__sha512
+    description: The SHA-512 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha512
+    alias: sha512
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{128}$
+  inTotoDigestSet__sha512_224:
+    name: inTotoDigestSet__sha512_224
+    description: The SHA-512/224 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha512_224
+    alias: sha512_224
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{56}$
+  inTotoDigestSet__sha512_256:
+    name: inTotoDigestSet__sha512_256
+    description: The SHA-512/256 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha512_256
+    alias: sha512_256
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}$
+  inTotoDigestSet__sha3_224:
+    name: inTotoDigestSet__sha3_224
+    description: The SHA3-224 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha3_224
+    alias: sha3_224
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{56}$
+  inTotoDigestSet__sha3_256:
+    name: inTotoDigestSet__sha3_256
+    description: The SHA3-256 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha3_256
+    alias: sha3_256
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}$
+  inTotoDigestSet__sha3_384:
+    name: inTotoDigestSet__sha3_384
+    description: The SHA3-384 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha3_384
+    alias: sha3_384
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{96}$
+  inTotoDigestSet__sha3_512:
+    name: inTotoDigestSet__sha3_512
+    description: The SHA3-512 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha3_512
+    alias: sha3_512
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{128}$
+  inTotoDigestSet__shake128:
+    name: inTotoDigestSet__shake128
+    description: The SHAKE128 digest of the artifact, of at least 32 bytes.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:shake128
+    alias: shake128
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
+  inTotoDigestSet__shake256:
+    name: inTotoDigestSet__shake256
+    description: The SHAKE256 digest of the artifact, of at least 32 bytes.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:shake256
+    alias: shake256
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
+  inTotoDigestSet__blake2b:
+    name: inTotoDigestSet__blake2b
+    description: The BLAKE2b digest of the artifact, of 32 to 64 bytes.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:blake2b
+    alias: blake2b
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}([a-f0-9]{2}){0,32}$
+  inTotoDigestSet__blake2s:
+    name: inTotoDigestSet__blake2s
+    description: The BLAKE2s digest of the artifact, at its full 32 bytes.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:blake2s
+    alias: blake2s
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}$
+  inTotoDigestSet__ripemd160:
+    name: inTotoDigestSet__ripemd160
+    description: The RIPEMD-160 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:ripemd160
+    alias: ripemd160
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{40}$
+  inTotoDigestSet__sm3:
+    name: inTotoDigestSet__sm3
+    description: The SM3 digest of the artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sm3
+    alias: sm3
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}$
+  inTotoDigestSet__gost:
+    name: inTotoDigestSet__gost
+    description: The GOST R 34.11 digest of the artifact, of 256 or 512 bits.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:gost
+    alias: gost
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}([a-f0-9]{64})?$
+  inTotoDigestSet__sha1:
+    name: inTotoDigestSet__sha1
+    description: The SHA-1 digest of the artifact.
+    comments:
+    - SHA-1 lacks collision resistance, so most consumers should not rely on it.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:sha1
+    alias: sha1
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{40}$
+  inTotoDigestSet__md5:
+    name: inTotoDigestSet__md5
+    description: The MD5 digest of the artifact.
+    comments:
+    - MD5 lacks collision resistance, so most consumers should not accept it.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:md5
+    alias: md5
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{32}$
+  inTotoDigestSet__dir_hash:
+    name: inTotoDigestSet__dir_hash
+    description: A digest over a directory's content by the dirhash Hash1 function,
+      in lowercase hexadecimal rather than base64.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:dir_hash
+    alias: dir_hash
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{64}$
+  inTotoDigestSet__git_commit:
+    name: inTotoDigestSet__git_commit
+    description: The git commit id of a source revision.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:git_commit
+    alias: git_commit
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+  inTotoDigestSet__git_tree:
+    name: inTotoDigestSet__git_tree
+    description: The git tree id of a source revision's content, or of any file tree.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:git_tree
+    alias: git_tree
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+  inTotoDigestSet__git_blob:
+    name: inTotoDigestSet__git_blob
+    description: The git blob id of a file's content.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:git_blob
+    alias: git_blob
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+  inTotoDigestSet__git_tag:
+    name: inTotoDigestSet__git_tag
+    description: The git object id of an annotated tag.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:git_tag
+    alias: git_tag
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: string
+    pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+  inTotoDigestSet__additional_digests:
+    name: inTotoDigestSet__additional_digests
+    description: The digests under algorithms this class does not name.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:additional_digests
+    alias: additional_digests
+    owner: InTotoDigestSet
+    domain_of:
+    - InTotoDigestSet
+    range: InTotoAdditionalDigest
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    minimum_cardinality: 1
+  inTotoAdditionalDigest__algorithm:
+    name: inTotoAdditionalDigest__algorithm
+    description: The algorithm's name, as the key the attestation's JSON uses, such
+      as svn_revision_id.
+    comments:
+    - An algorithm that InTotoDigestSet names, by its JSON key or by its field name,
+      goes in that field instead.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    mappings:
+    - spdx:algorithm
+    slot_uri: spdx:algorithm
+    alias: algorithm
+    owner: InTotoAdditionalDigest
+    domain_of:
+    - InTotoAdditionalDigest
+    range: string
+    required: true
+    pattern: ^[a-z][A-Za-z0-9_]*$
+    none_of:
+    - equals_string_in: &id001
+      - sha256
+      - sha224
+      - sha384
+      - sha512
+      - sha512_224
+      - sha512_256
+      - sha3_224
+      - sha3_256
+      - sha3_384
+      - sha3_512
+      - shake128
+      - shake256
+      - blake2b
+      - blake2s
+      - ripemd160
+      - sm3
+      - gost
+      - sha1
+      - md5
+      - dirHash
+      - gitCommit
+      - gitTree
+      - gitBlob
+      - gitTag
+      - dir_hash
+      - git_commit
+      - git_tree
+      - git_blob
+      - git_tag
+  inTotoAdditionalDigest__value:
+    name: inTotoAdditionalDigest__value
+    description: The digest under that algorithm, in the encoding the algorithm documents.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:value
+    alias: value
+    owner: InTotoAdditionalDigest
+    domain_of:
+    - InTotoAdditionalDigest
+    range: string
+    required: true
+    pattern: ^\S+$
+  inTotoAnnotation__annotation_key:
+    name: inTotoAnnotation__annotation_key
+    description: The annotation's key.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:annotation_key
+    alias: annotation_key
+    owner: InTotoAnnotation
+    domain_of:
+    - InTotoAnnotation
+    range: string
+    required: true
+  inTotoAnnotation__annotation_values:
+    name: inTotoAnnotation__annotation_values
+    description: The annotation's values.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:annotation_values
+    alias: annotation_values
+    owner: InTotoAnnotation
+    domain_of:
+    - InTotoAnnotation
+    range: string
+    multivalued: true
+  inTotoResourceDescriptor__resource_name:
+    name: inTotoResourceDescriptor__resource_name
+    description: A name for the resource within the attestation that carries it.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:resource_name
+    alias: resource_name
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: string
+  inTotoResourceDescriptor__download_location:
+    name: inTotoResourceDescriptor__download_location
+    description: Where the resource can be fetched, when that differs from its identifying
+      URI.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:download_location
+    alias: download_location
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: uri
+  inTotoResourceDescriptor__media_type:
+    name: inTotoResourceDescriptor__media_type
+    description: The IANA media type of the resource's content.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    mappings:
+    - dcat:mediaType
+    slot_uri: dcat:mediaType
+    alias: media_type
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: string
+  inTotoResourceDescriptor__content:
+    name: inTotoResourceDescriptor__content
+    description: The resource's content itself, base64-encoded, for a resource small
+      enough to carry inline.
+    comments:
+    - The in-toto framework asks for content under 1 KB, so that attestations stay
+      small.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:content
+    alias: content
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: string
+    pattern: ^[A-Za-z0-9+/_-]+={0,2}$
+  inTotoResourceDescriptor__annotations:
+    name: inTotoResourceDescriptor__annotations
+    description: Vendor-specific annotations on the resource, such as the source references
+      a SLSA Source Verification Summary records.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:annotations
+    alias: annotations
+    owner: InTotoResourceDescriptor
+    domain_of:
+    - InTotoResourceDescriptor
+    range: InTotoAnnotation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoStatement__statement_type:
+    name: inTotoStatement__statement_type
+    description: The in-toto statement type, always https://in-toto.io/Statement/v1.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:statement_type
+    alias: statement_type
+    owner: InTotoStatement
+    domain_of:
+    - InTotoStatement
+    range: uri
+    required: true
+    pattern: ^https://in-toto\.io/Statement/v1$
+  inTotoStatement__subject:
+    name: inTotoStatement__subject
+    description: The artifacts the predicate is about, each with a digest.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:subject
+    alias: subject
+    owner: InTotoStatement
+    domain_of:
+    - InTotoStatement
+    range: InTotoStatementSubject
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    minimum_cardinality: 1
+  inTotoStatement__predicate_type:
+    name: inTotoStatement__predicate_type
+    description: The URI that names the predicate's type and so its schema, such as
+      https://in-toto.io/attestation/test-result/v0.1.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:predicate_type
+    alias: predicate_type
+    owner: InTotoStatement
+    domain_of:
+    - InTotoStatement
+    range: uri
+    required: true
+  inTotoStatement__statement_predicate:
+    name: inTotoStatement__statement_predicate
+    description: The predicate, one of the kinds this schema or an importing one models;
+      predicate_kind names which. Unset means the same as empty.
+    comments:
+    - The attestation's JSON calls this field predicate. The name here keeps it apart
+      from LOKF's predicate, the type of a relation, which a composite schema gives
+      one IRI.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:statement_predicate
+    alias: statement_predicate
+    owner: InTotoStatement
+    domain_of:
+    - InTotoStatement
+    range: InTotoPredicate
+    inlined: true
+    inlined_as_list: true
+  inTotoPredicate__predicate_kind:
+    name: inTotoPredicate__predicate_kind
+    description: The kind of predicate, one of this class's descendants.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slot_uri: in_toto_linkml:predicate_kind
+    designates_type: true
+    alias: predicate_kind
+    owner: InTotoPredicate
+    domain_of:
+    - InTotoPredicate
+    range: string
+  inTotoPredicateType__predicate_type_uri:
+    name: inTotoPredicateType__predicate_type_uri
+    description: The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:predicate_type_uri
+    alias: predicate_type_uri
+    owner: InTotoPredicateType
+    domain_of:
+    - InTotoPredicateType
+    range: uri
+    required: true
+  inTotoPredicateType__predicate_version:
+    name: inTotoPredicateType__predicate_version
+    description: The version of the predicate's specification, as its page states
+      it, such as 0.1.0.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:predicate_version
+    alias: predicate_version
+    owner: InTotoPredicateType
+    domain_of:
+    - InTotoPredicateType
+    range: string
+  inTotoPredicateType__predicate_specification:
+    name: inTotoPredicateType__predicate_specification
+    description: The page that specifies the predicate.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:predicate_specification
+    alias: predicate_specification
+    owner: InTotoPredicateType
+    domain_of:
+    - InTotoPredicateType
+    range: uri
+  inTotoPredicateType__vetted_as:
+    name: inTotoPredicateType__vetted_as
+    description: The vetted predicate this type is, when the in-toto project vetted
+      it.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:vetted_as
+    alias: vetted_as
+    owner: InTotoPredicateType
+    domain_of:
+    - InTotoPredicateType
+    range: InTotoVettedPredicate
+  inTotoObjectEntry__entry_key:
+    name: inTotoObjectEntry__entry_key
+    description: The object's key.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:entry_key
+    alias: entry_key
+    owner: InTotoObjectEntry
+    domain_of:
+    - InTotoObjectEntry
+    range: string
+    required: true
+  inTotoObjectEntry__entry_values:
+    name: inTotoObjectEntry__entry_values
+    description: The key's values.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:entry_values
+    alias: entry_values
+    owner: InTotoObjectEntry
+    domain_of:
+    - InTotoObjectEntry
+    range: string
+    multivalued: true
+  inTotoTestResult__test_result:
+    name: inTotoTestResult__test_result
+    description: The result of the test run.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:test_result
+    alias: test_result
+    owner: InTotoTestResult
+    domain_of:
+    - InTotoTestResult
+    range: InTotoTestResultValue
+    required: true
+  inTotoTestResult__configuration:
+    name: inTotoTestResult__configuration
+    description: The configuration the test run used.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:configuration
+    alias: configuration
+    owner: InTotoTestResult
+    domain_of:
+    - InTotoTestResult
+    range: InTotoResourceDescriptor
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoTestResult__test_run_url:
+    name: inTotoTestResult__test_run_url
+    description: Where the test run can be read, such as a CI run that holds its logs;
+      the verifier works out how to read it.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:test_run_url
+    alias: test_run_url
+    owner: InTotoTestResult
+    domain_of:
+    - InTotoTestResult
+    range: uri
+  inTotoTestResult__passed_tests:
+    name: inTotoTestResult__passed_tests
+    description: The names of the tests that passed.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:passed_tests
+    alias: passed_tests
+    owner: InTotoTestResult
+    domain_of:
+    - InTotoTestResult
+    range: string
+    multivalued: true
+  inTotoTestResult__warned_tests:
+    name: inTotoTestResult__warned_tests
+    description: The names of the tests that expressed a warning.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:warned_tests
+    alias: warned_tests
+    owner: InTotoTestResult
+    domain_of:
+    - InTotoTestResult
+    range: string
+    multivalued: true
+  inTotoTestResult__failed_tests:
+    name: inTotoTestResult__failed_tests
+    description: The names of the tests that failed.
+    comments:
+    - Producer and consumer agree on what a test name means; a policy can check that
+      test_result and failed_tests meet its requirements.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:failed_tests
+    alias: failed_tests
+    owner: InTotoTestResult
+    domain_of:
+    - InTotoTestResult
+    range: string
+    multivalued: true
+  inTotoSimpleVerificationResult__svr_verifier:
+    name: inTotoSimpleVerificationResult__svr_verifier
+    description: The entity that performed the verification.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:svr_verifier
+    alias: svr_verifier
+    owner: InTotoSimpleVerificationResult
+    domain_of:
+    - InTotoSimpleVerificationResult
+    range: InTotoSvrVerifier
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoSimpleVerificationResult__time_created:
+    name: inTotoSimpleVerificationResult__time_created
+    description: When the verification took place.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:time_created
+    alias: time_created
+    owner: InTotoSimpleVerificationResult
+    domain_of:
+    - InTotoSimpleVerificationResult
+    range: InTotoTimestamp
+    required: true
+  inTotoSimpleVerificationResult__verified_properties:
+    name: inTotoSimpleVerificationResult__verified_properties
+    description: The properties of the subjects that passed verification, scoped to
+      the framework or policy verified, such as SLSA_BUILD_LEVEL_3.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:verified_properties
+    alias: verified_properties
+    owner: InTotoSimpleVerificationResult
+    domain_of:
+    - InTotoSimpleVerificationResult
+    range: string
+    required: true
+    multivalued: true
+  inTotoSvrVerifier__svr_verifier_id:
+    name: inTotoSvrVerifier__svr_verifier_id
+    description: The URI that identifies the verifier, versioned when its verification
+      logic changes materially.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:svr_verifier_id
+    alias: svr_verifier_id
+    owner: InTotoSvrVerifier
+    domain_of:
+    - InTotoSvrVerifier
+    range: uri
+    required: true
+  inTotoScaiAttributeReport__scai_attributes:
+    name: inTotoScaiAttributeReport__scai_attributes
+    description: One or more attribute assertions about the subjects.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scai_attributes
+    alias: scai_attributes
+    owner: InTotoScaiAttributeReport
+    domain_of:
+    - InTotoScaiAttributeReport
+    range: InTotoScaiAttributeAssertion
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    minimum_cardinality: 1
+  inTotoScaiAttributeReport__scai_producer:
+    name: inTotoScaiAttributeReport__scai_producer
+    description: The producer of the subjects, where that applies.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scai_producer
+    alias: scai_producer
+    owner: InTotoScaiAttributeReport
+    domain_of:
+    - InTotoScaiAttributeReport
+    range: InTotoResourceDescriptor
+    inlined: true
+    inlined_as_list: true
+  inTotoScaiAttributeAssertion__scai_attribute:
+    name: inTotoScaiAttributeAssertion__scai_attribute
+    description: The functional feature asserted, in a form the producer and consumer
+      agree on.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scai_attribute
+    alias: scai_attribute
+    owner: InTotoScaiAttributeAssertion
+    domain_of:
+    - InTotoScaiAttributeAssertion
+    range: string
+    required: true
+  inTotoScaiAttributeAssertion__scai_target:
+    name: inTotoScaiAttributeAssertion__scai_target
+    description: The artifact or metadata object the attribute applies to.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scai_target
+    alias: scai_target
+    owner: InTotoScaiAttributeAssertion
+    domain_of:
+    - InTotoScaiAttributeAssertion
+    range: InTotoResourceDescriptor
+    inlined: true
+    inlined_as_list: true
+  inTotoScaiAttributeAssertion__scai_conditions:
+    name: inTotoScaiAttributeAssertion__scai_conditions
+    description: The conditions under which the attribute arises.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scai_conditions
+    alias: scai_conditions
+    owner: InTotoScaiAttributeAssertion
+    domain_of:
+    - InTotoScaiAttributeAssertion
+    range: InTotoObjectEntry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoScaiAttributeAssertion__scai_evidence:
+    name: inTotoScaiAttributeAssertion__scai_evidence
+    description: The evidence, authenticated where possible, for the asserted attribute.
+    comments:
+    - Without evidence a consumer may judge the assertion by who produced the attestation.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scai_evidence
+    alias: scai_evidence
+    owner: InTotoScaiAttributeAssertion
+    domain_of:
+    - InTotoScaiAttributeAssertion
+    range: InTotoResourceDescriptor
+    inlined: true
+    inlined_as_list: true
+  inTotoLink__step_name:
+    name: inTotoLink__step_name
+    description: The name of the step, which a layout uses to find the link metadata
+      it verifies.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:step_name
+    alias: step_name
+    owner: InTotoLink
+    domain_of:
+    - InTotoLink
+    range: string
+    required: true
+  inTotoLink__step_command:
+    name: inTotoLink__step_command
+    description: The command the step ran, and its arguments; possibly empty.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:step_command
+    alias: step_command
+    owner: InTotoLink
+    domain_of:
+    - InTotoLink
+    range: string
+    multivalued: true
+  inTotoLink__materials:
+    name: inTotoLink__materials
+    description: The artifacts the step read.
+    comments:
+    - Each material's resource_name is unique among them; the validator does not check
+      this.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:materials
+    alias: materials
+    owner: InTotoLink
+    domain_of:
+    - InTotoLink
+    range: InTotoLinkMaterial
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoLink__step_byproducts:
+    name: inTotoLink__step_byproducts
+    description: What else the step recorded, such as its standard output, in keys
+      the in-toto specification describes.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:step_byproducts
+    alias: step_byproducts
+    owner: InTotoLink
+    domain_of:
+    - InTotoLink
+    range: InTotoObjectEntry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoLink__step_environment:
+    name: inTotoLink__step_environment
+    description: The environment the step ran in, in keys the producer chooses.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:step_environment
+    alias: step_environment
+    owner: InTotoLink
+    domain_of:
+    - InTotoLink
+    range: InTotoObjectEntry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoReference__reference_attester:
+    name: inTotoReference__reference_attester
+    description: The system that provides the documents.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:reference_attester
+    alias: reference_attester
+    owner: InTotoReference
+    domain_of:
+    - InTotoReference
+    range: InTotoReferenceAttester
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoReference__referenced_documents:
+    name: inTotoReference__referenced_documents
+    description: The documents referred to.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:referenced_documents
+    alias: referenced_documents
+    owner: InTotoReference
+    domain_of:
+    - InTotoReference
+    range: InTotoReferencedDocument
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    minimum_cardinality: 1
+  inTotoReferenceAttester__reference_attester_id:
+    name: inTotoReferenceAttester__reference_attester_id
+    description: The URI that identifies the system.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:reference_attester_id
+    alias: reference_attester_id
+    owner: InTotoReferenceAttester
+    domain_of:
+    - InTotoReferenceAttester
+    range: uri
+    required: true
+  inTotoRelease__release_purl:
+    name: inTotoRelease__release_purl
+    description: The package URL that names the release, with its version and, unless
+      the package type needs them, no qualifiers or subpath.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:release_purl
+    alias: release_purl
+    owner: InTotoRelease
+    domain_of:
+    - InTotoRelease
+    range: uri
+    required: true
+    pattern: ^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+
+  inTotoRelease__package_id:
+    name: inTotoRelease__package_id
+    description: A stable identifier for the package that does not change between
+      releases, so that a consumer can tell a renamed package from a reused name.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:package_id
+    alias: package_id
+    owner: InTotoRelease
+    domain_of:
+    - InTotoRelease
+    range: string
+  inTotoRuntimeTrace__trace_monitor:
+    name: inTotoRuntimeTrace__trace_monitor
+    description: The monitor instance that traced the run.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:trace_monitor
+    alias: trace_monitor
+    owner: InTotoRuntimeTrace
+    domain_of:
+    - InTotoRuntimeTrace
+    range: InTotoTraceMonitor
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoRuntimeTrace__monitored_process:
+    name: inTotoRuntimeTrace__monitored_process
+    description: The process the monitor watched.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:monitored_process
+    alias: monitored_process
+    owner: InTotoRuntimeTrace
+    domain_of:
+    - InTotoRuntimeTrace
+    range: InTotoMonitoredProcess
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoRuntimeTrace__monitor_log:
+    name: inTotoRuntimeTrace__monitor_log
+    description: The events the monitor traced.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:monitor_log
+    alias: monitor_log
+    owner: InTotoRuntimeTrace
+    domain_of:
+    - InTotoRuntimeTrace
+    range: InTotoMonitorLog
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoRuntimeTrace__trace_metadata:
+    name: inTotoRuntimeTrace__trace_metadata
+    description: Other properties of the monitoring event.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:trace_metadata
+    alias: trace_metadata
+    owner: InTotoRuntimeTrace
+    domain_of:
+    - InTotoRuntimeTrace
+    range: InTotoTraceMetadata
+    inlined: true
+    inlined_as_list: true
+  inTotoTraceMonitor__monitor_type:
+    name: inTotoTraceMonitor__monitor_type
+    description: The URI of the monitor's type.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:monitor_type
+    alias: monitor_type
+    owner: InTotoTraceMonitor
+    domain_of:
+    - InTotoTraceMonitor
+    range: uri
+    required: true
+  inTotoTraceMonitor__monitor_config_source:
+    name: inTotoTraceMonitor__monitor_config_source
+    description: The monitor's configuration.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:monitor_config_source
+    alias: monitor_config_source
+    owner: InTotoTraceMonitor
+    domain_of:
+    - InTotoTraceMonitor
+    range: InTotoResourceDescriptor
+    inlined: true
+    inlined_as_list: true
+  inTotoTraceMonitor__trace_policy:
+    name: inTotoTraceMonitor__trace_policy
+    description: The trace policy the monitor applied, in the monitor's own format,
+      which monitor_type names.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:trace_policy
+    alias: trace_policy
+    owner: InTotoTraceMonitor
+    domain_of:
+    - InTotoTraceMonitor
+    range: InTotoObjectEntry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoMonitoredProcess__host_id:
+    name: inTotoMonitoredProcess__host_id
+    description: The URI that identifies the host the process ran on.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:host_id
+    alias: host_id
+    owner: InTotoMonitoredProcess
+    domain_of:
+    - InTotoMonitoredProcess
+    range: uri
+    required: true
+  inTotoMonitoredProcess__process_type:
+    name: inTotoMonitoredProcess__process_type
+    description: The URI of the type of process, such as the build type when the monitor
+      watched a build.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:process_type
+    alias: process_type
+    owner: InTotoMonitoredProcess
+    domain_of:
+    - InTotoMonitoredProcess
+    range: uri
+    required: true
+  inTotoMonitoredProcess__process_event:
+    name: inTotoMonitoredProcess__process_event
+    description: The job or task the attestation is about.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:process_event
+    alias: process_event
+    owner: InTotoMonitoredProcess
+    domain_of:
+    - InTotoMonitoredProcess
+    range: string
+    required: true
+  inTotoMonitorLog__traced_processes:
+    name: inTotoMonitorLog__traced_processes
+    description: The processes the monitor observed, one JSON object each, written
+      as its JSON text, in a format monitor_type determines.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:traced_processes
+    alias: traced_processes
+    owner: InTotoMonitorLog
+    domain_of:
+    - InTotoMonitorLog
+    range: string
+    multivalued: true
+  inTotoMonitorLog__traced_network:
+    name: inTotoMonitorLog__traced_network
+    description: The network activity the monitor observed, one JSON object each,
+      written as its JSON text, in a format monitor_type determines.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:traced_network
+    alias: traced_network
+    owner: InTotoMonitorLog
+    domain_of:
+    - InTotoMonitorLog
+    range: string
+    multivalued: true
+  inTotoMonitorLog__file_access:
+    name: inTotoMonitorLog__file_access
+    description: The files the run accessed, each with its path and digests; one file
+      may appear more than once, with different digests if it changed.
+    comments:
+    - A monitor that cannot pause the build, such as one that uses eBPF, guarantees
+      less about these digests than one that can.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:file_access
+    alias: file_access
+    owner: InTotoMonitorLog
+    domain_of:
+    - InTotoMonitorLog
+    range: InTotoResourceDescriptor
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoTraceMetadata__build_started_on:
+    name: inTotoTraceMetadata__build_started_on
+    description: When the monitored build started.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:build_started_on
+    alias: build_started_on
+    owner: InTotoTraceMetadata
+    domain_of:
+    - InTotoTraceMetadata
+    range: InTotoTimestamp
+  inTotoTraceMetadata__build_finished_on:
+    name: inTotoTraceMetadata__build_finished_on
+    description: When the monitored build finished.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:build_finished_on
+    alias: build_finished_on
+    owner: InTotoTraceMetadata
+    domain_of:
+    - InTotoTraceMetadata
+    range: InTotoTimestamp
+  inTotoVulns__vuln_scanner:
+    name: inTotoVulns__vuln_scanner
+    description: The scanner that ran, its version and the database it used.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:vuln_scanner
+    alias: vuln_scanner
+    owner: InTotoVulns
+    domain_of:
+    - InTotoVulns
+    range: InTotoVulnScanner
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoVulns__scan_metadata:
+    name: inTotoVulns__scan_metadata
+    description: When the scan ran.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scan_metadata
+    alias: scan_metadata
+    owner: InTotoVulns
+    domain_of:
+    - InTotoVulns
+    range: InTotoScanMetadata
+    required: true
+    inlined: true
+    inlined_as_list: true
+  inTotoVulnScanner__scanner_uri:
+    name: inTotoVulnScanner__scanner_uri
+    description: The URI that identifies the scanner's source.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scanner_uri
+    alias: scanner_uri
+    owner: InTotoVulnScanner
+    domain_of:
+    - InTotoVulnScanner
+    range: uri
+    required: true
+  inTotoVulnScanner__scanner_version:
+    name: inTotoVulnScanner__scanner_version
+    description: The scanner's version.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scanner_version
+    alias: scanner_version
+    owner: InTotoVulnScanner
+    domain_of:
+    - InTotoVulnScanner
+    range: string
+  inTotoVulnScanner__vuln_db:
+    name: inTotoVulnScanner__vuln_db
+    description: The vulnerability database the scanner used.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:vuln_db
+    alias: vuln_db
+    owner: InTotoVulnScanner
+    domain_of:
+    - InTotoVulnScanner
+    range: InTotoVulnDatabase
+    inlined: true
+    inlined_as_list: true
+  inTotoVulnScanner__scan_results:
+    name: inTotoVulnScanner__scan_results
+    description: The vulnerabilities the scanner found; an empty list means it found
+      none.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scan_results
+    alias: scan_results
+    owner: InTotoVulnScanner
+    domain_of:
+    - InTotoVulnScanner
+    range: InTotoVulnResult
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoVulnDatabase__db_uri:
+    name: inTotoVulnDatabase__db_uri
+    description: The URI that identifies the database's source.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:db_uri
+    alias: db_uri
+    owner: InTotoVulnDatabase
+    domain_of:
+    - InTotoVulnDatabase
+    range: uri
+  inTotoVulnDatabase__db_version:
+    name: inTotoVulnDatabase__db_version
+    description: The database's version.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:db_version
+    alias: db_version
+    owner: InTotoVulnDatabase
+    domain_of:
+    - InTotoVulnDatabase
+    range: string
+  inTotoVulnDatabase__db_last_update:
+    name: inTotoVulnDatabase__db_last_update
+    description: When the database was last updated.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:db_last_update
+    alias: db_last_update
+    owner: InTotoVulnDatabase
+    domain_of:
+    - InTotoVulnDatabase
+    range: InTotoTimestamp
+    required: true
+  inTotoVulnResult__vuln_id:
+    name: inTotoVulnResult__vuln_id
+    description: The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:vuln_id
+    alias: vuln_id
+    owner: InTotoVulnResult
+    domain_of:
+    - InTotoVulnResult
+    range: string
+    required: true
+  inTotoVulnResult__vuln_severity:
+    name: inTotoVulnResult__vuln_severity
+    description: The vulnerability's severity, by one or more scoring methods.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:vuln_severity
+    alias: vuln_severity
+    owner: InTotoVulnResult
+    domain_of:
+    - InTotoVulnResult
+    range: InTotoVulnSeverity
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoVulnResult__vuln_annotations:
+    name: inTotoVulnResult__vuln_annotations
+    description: Custom information the scanner adds, as key and value pairs.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:vuln_annotations
+    alias: vuln_annotations
+    owner: InTotoVulnResult
+    domain_of:
+    - InTotoVulnResult
+    range: InTotoObjectEntry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  inTotoVulnSeverity__severity_method:
+    name: inTotoVulnSeverity__severity_method
+    description: The scoring method, such as nvd or cvss.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:severity_method
+    alias: severity_method
+    owner: InTotoVulnSeverity
+    domain_of:
+    - InTotoVulnSeverity
+    range: string
+    required: true
+  inTotoVulnSeverity__severity_score:
+    name: inTotoVulnSeverity__severity_score
+    description: The score under that method, as a string.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:severity_score
+    alias: severity_score
+    owner: InTotoVulnSeverity
+    domain_of:
+    - InTotoVulnSeverity
+    range: string
+    required: true
+  inTotoScanMetadata__scan_started_on:
+    name: inTotoScanMetadata__scan_started_on
+    description: When the scan started.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scan_started_on
+    alias: scan_started_on
+    owner: InTotoScanMetadata
+    domain_of:
+    - InTotoScanMetadata
+    range: InTotoTimestamp
+    required: true
+  inTotoScanMetadata__scan_finished_on:
+    name: inTotoScanMetadata__scan_finished_on
+    description: When the scan finished.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slot_uri: in_toto_linkml:scan_finished_on
+    alias: scan_finished_on
+    owner: InTotoScanMetadata
+    domain_of:
+    - InTotoScanMetadata
+    range: InTotoTimestamp
+    required: true
+  InTotoStatementSubject_digest:
+    name: InTotoStatementSubject_digest
+    definition_uri: https://w3id.org/lmodel/in-toto/digest
+    description: The cryptographic digests of a resource's content, keyed by algorithm.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
+    mappings:
+    - in_toto_linkml:digest
+    is_a: digest
+    domain: InTotoStatementSubject
+    slot_uri: in_toto_linkml:digest
+    alias: digest
+    owner: InTotoStatementSubject
+    domain_of:
+    - InTotoStatementSubject
+    is_usage_slot: true
+    usage_slot_name: digest
+    range: InTotoDigestSet
+    required: true
+    inlined: true
+    inlined_as_list: true
+  InTotoLinkMaterial_digest:
+    name: InTotoLinkMaterial_digest
+    definition_uri: https://w3id.org/lmodel/in-toto/digest
+    description: The cryptographic digests of a resource's content, keyed by algorithm.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
+    mappings:
+    - in_toto_linkml:digest
+    is_a: digest
+    domain: InTotoLinkMaterial
+    slot_uri: in_toto_linkml:digest
+    alias: digest
+    owner: InTotoLinkMaterial
+    domain_of:
+    - InTotoLinkMaterial
+    is_usage_slot: true
+    usage_slot_name: digest
+    range: InTotoDigestSet
+    required: true
+    inlined: true
+    inlined_as_list: true
+classes:
+  InTotoDocument:
+    name: InTotoDocument
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoDocument
+    description: A document that holds in-toto statements and the predicate types
+      they name.
+    from_schema: https://w3id.org/lmodel/in-toto
+    slots:
+    - inTotoDocument__in_toto_statements
+    - inTotoDocument__in_toto_predicate_types
+    attributes:
+      in_toto_statements:
+        name: in_toto_statements
+        description: The statements, each an in-toto attestation without its envelope.
+        range: InTotoStatement
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      in_toto_predicate_types:
+        name: in_toto_predicate_types
+        description: The predicate types.
+        range: InTotoPredicateType
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoDocument
+    tree_root: true
+  InTotoDigestSet:
+    name: InTotoDigestSet
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoDigestSet
+    description: A set of one or more digests over one artifact, keyed by algorithm,
+      from which a consumer picks the algorithm it trusts.
+    notes:
+    - Each condition in any_of names its range through a nested any_of, because the
+      JSON Schema generator leaves a condition's own range out, and a null value would
+      then count as present.
+    comments:
+    - The named algorithms take lowercase hexadecimal, and additional_digests holds
+      any other algorithm, such as an SCS's own revision type.
+    - A consumer accepts only the algorithms it considers secure and ignores the rest,
+      and two sets match when any accepted algorithm matches.
+    - SHAKE and BLAKE2 digests can be of any length, and this schema asks for at least
+      32 bytes, since a shorter digest resists collisions too weakly to identify an
+      artifact.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
+    slots:
+    - inTotoDigestSet__sha256
+    - inTotoDigestSet__sha224
+    - inTotoDigestSet__sha384
+    - inTotoDigestSet__sha512
+    - inTotoDigestSet__sha512_224
+    - inTotoDigestSet__sha512_256
+    - inTotoDigestSet__sha3_224
+    - inTotoDigestSet__sha3_256
+    - inTotoDigestSet__sha3_384
+    - inTotoDigestSet__sha3_512
+    - inTotoDigestSet__shake128
+    - inTotoDigestSet__shake256
+    - inTotoDigestSet__blake2b
+    - inTotoDigestSet__blake2s
+    - inTotoDigestSet__ripemd160
+    - inTotoDigestSet__sm3
+    - inTotoDigestSet__gost
+    - inTotoDigestSet__sha1
+    - inTotoDigestSet__md5
+    - inTotoDigestSet__dir_hash
+    - inTotoDigestSet__git_commit
+    - inTotoDigestSet__git_tree
+    - inTotoDigestSet__git_blob
+    - inTotoDigestSet__git_tag
+    - inTotoDigestSet__additional_digests
+    attributes:
+      sha256:
+        name: sha256
+        description: The SHA-256 digest of the artifact.
+        pattern: ^[a-f0-9]{64}$
+      sha224:
+        name: sha224
+        description: The SHA-224 digest of the artifact.
+        pattern: ^[a-f0-9]{56}$
+      sha384:
+        name: sha384
+        description: The SHA-384 digest of the artifact.
+        pattern: ^[a-f0-9]{96}$
+      sha512:
+        name: sha512
+        description: The SHA-512 digest of the artifact.
+        pattern: ^[a-f0-9]{128}$
+      sha512_224:
+        name: sha512_224
+        description: The SHA-512/224 digest of the artifact.
+        pattern: ^[a-f0-9]{56}$
+      sha512_256:
+        name: sha512_256
+        description: The SHA-512/256 digest of the artifact.
+        pattern: ^[a-f0-9]{64}$
+      sha3_224:
+        name: sha3_224
+        description: The SHA3-224 digest of the artifact.
+        pattern: ^[a-f0-9]{56}$
+      sha3_256:
+        name: sha3_256
+        description: The SHA3-256 digest of the artifact.
+        pattern: ^[a-f0-9]{64}$
+      sha3_384:
+        name: sha3_384
+        description: The SHA3-384 digest of the artifact.
+        pattern: ^[a-f0-9]{96}$
+      sha3_512:
+        name: sha3_512
+        description: The SHA3-512 digest of the artifact.
+        pattern: ^[a-f0-9]{128}$
+      shake128:
+        name: shake128
+        description: The SHAKE128 digest of the artifact, of at least 32 bytes.
+        pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
+      shake256:
+        name: shake256
+        description: The SHAKE256 digest of the artifact, of at least 32 bytes.
+        pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
+      blake2b:
+        name: blake2b
+        description: The BLAKE2b digest of the artifact, of 32 to 64 bytes.
+        pattern: ^[a-f0-9]{64}([a-f0-9]{2}){0,32}$
+      blake2s:
+        name: blake2s
+        description: The BLAKE2s digest of the artifact, at its full 32 bytes.
+        pattern: ^[a-f0-9]{64}$
+      ripemd160:
+        name: ripemd160
+        description: The RIPEMD-160 digest of the artifact.
+        pattern: ^[a-f0-9]{40}$
+      sm3:
+        name: sm3
+        description: The SM3 digest of the artifact.
+        pattern: ^[a-f0-9]{64}$
+      gost:
+        name: gost
+        description: The GOST R 34.11 digest of the artifact, of 256 or 512 bits.
+        pattern: ^[a-f0-9]{64}([a-f0-9]{64})?$
+      sha1:
+        name: sha1
+        description: The SHA-1 digest of the artifact.
+        comments:
+        - SHA-1 lacks collision resistance, so most consumers should not rely on it.
+        pattern: ^[a-f0-9]{40}$
+      md5:
+        name: md5
+        description: The MD5 digest of the artifact.
+        comments:
+        - MD5 lacks collision resistance, so most consumers should not accept it.
+        pattern: ^[a-f0-9]{32}$
+      dir_hash:
+        name: dir_hash
+        description: A digest over a directory's content by the dirhash Hash1 function,
+          in lowercase hexadecimal rather than base64.
+        pattern: ^[a-f0-9]{64}$
+      git_commit:
+        name: git_commit
+        description: The git commit id of a source revision.
+        pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+      git_tree:
+        name: git_tree
+        description: The git tree id of a source revision's content, or of any file
+          tree.
+        pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+      git_blob:
+        name: git_blob
+        description: The git blob id of a file's content.
+        pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+      git_tag:
+        name: git_tag
+        description: The git object id of an annotated tag.
+        pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
+      additional_digests:
+        name: additional_digests
+        description: The digests under algorithms this class does not name.
+        range: InTotoAdditionalDigest
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        minimum_cardinality: 1
+    class_uri: in_toto_linkml:InTotoDigestSet
+    any_of:
+    - slot_conditions:
+        sha256:
+          name: sha256
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha224:
+          name: sha224
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha384:
+          name: sha384
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha512:
+          name: sha512
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha512_224:
+          name: sha512_224
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha512_256:
+          name: sha512_256
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha3_224:
+          name: sha3_224
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha3_256:
+          name: sha3_256
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha3_384:
+          name: sha3_384
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha3_512:
+          name: sha3_512
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        shake128:
+          name: shake128
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        shake256:
+          name: shake256
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        blake2b:
+          name: blake2b
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        blake2s:
+          name: blake2s
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        ripemd160:
+          name: ripemd160
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sm3:
+          name: sm3
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        gost:
+          name: gost
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        sha1:
+          name: sha1
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        md5:
+          name: md5
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        dir_hash:
+          name: dir_hash
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        git_commit:
+          name: git_commit
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        git_tree:
+          name: git_tree
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        git_blob:
+          name: git_blob
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        git_tag:
+          name: git_tag
+          required: true
+          any_of:
+          - range: string
+    - slot_conditions:
+        additional_digests:
+          name: additional_digests
+          required: true
+          multivalued: true
+  InTotoAdditionalDigest:
+    name: InTotoAdditionalDigest
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest
+    description: One digest under an algorithm that InTotoDigestSet does not name,
+      such as an SCS's own revision type.
+    comments:
+    - In the attestation's JSON the algorithm is a key of the digest set beside the
+      named ones, and an algorithm the framework does not define documents how its
+      value is encoded.
+    - An SCS that does not use cryptographic digests defines a canonical revision
+      type of its own that includes the repository, such as svn_revision_id.
+    - Each algorithm appears once in a list, since the attestation's JSON uses it
+      as a key; the validator does not check this.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
+    slots:
+    - inTotoAdditionalDigest__algorithm
+    - inTotoAdditionalDigest__value
+    attributes:
+      algorithm:
+        name: algorithm
+        description: The algorithm's name, as the key the attestation's JSON uses,
+          such as svn_revision_id.
+        comments:
+        - An algorithm that InTotoDigestSet names, by its JSON key or by its field
+          name, goes in that field instead.
+        slot_uri: spdx:algorithm
+        required: true
+        pattern: ^[a-z][A-Za-z0-9_]*$
+        none_of:
+        - equals_string_in: *id001
+      value:
+        name: value
+        description: The digest under that algorithm, in the encoding the algorithm
+          documents.
+        required: true
+        pattern: ^\S+$
+    class_uri: in_toto_linkml:InTotoAdditionalDigest
+  InTotoAnnotation:
+    name: InTotoAnnotation
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoAnnotation
+    description: 'One vendor-specific annotation on a resource descriptor: a key and
+      its values.'
+    comments:
+    - The attestation's JSON allows any JSON value. A string becomes one value and
+      an array one value per item; any other value or item is written as its JSON
+      text, so one value cannot tell a string from a one-item array.
+    - Each key appears once in a list, since the attestation's JSON uses it as a key;
+      the validator does not check this.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    slots:
+    - inTotoAnnotation__annotation_key
+    - inTotoAnnotation__annotation_values
+    attributes:
+      annotation_key:
+        name: annotation_key
+        description: The annotation's key.
+        required: true
+      annotation_values:
+        name: annotation_values
+        description: The annotation's values.
+        multivalued: true
+    class_uri: in_toto_linkml:InTotoAnnotation
+  InTotoResourceDescriptor:
+    name: InTotoResourceDescriptor
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor
+    description: A reference to a software artifact or other resource by URI or digest,
+      or the resource itself as content, with optional metadata.
+    notes:
+    - Each condition in any_of names its range through a nested any_of, because the
+      JSON Schema generator leaves a condition's own range out, and a null value would
+      then count as present.
+    comments:
+    - A descriptor carries at least one of a URI, a digest or its content; a field
+      that needs a particular one says so.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/resource_descriptor.md
+    slots:
+    - resource_uri
+    - digest
+    - inTotoResourceDescriptor__resource_name
+    - inTotoResourceDescriptor__download_location
+    - inTotoResourceDescriptor__media_type
+    - inTotoResourceDescriptor__content
+    - inTotoResourceDescriptor__annotations
+    attributes:
+      resource_name:
+        name: resource_name
+        description: A name for the resource within the attestation that carries it.
+      download_location:
+        name: download_location
+        description: Where the resource can be fetched, when that differs from its
+          identifying URI.
+        range: uri
+      media_type:
+        name: media_type
+        description: The IANA media type of the resource's content.
+        slot_uri: dcat:mediaType
+      content:
+        name: content
+        description: The resource's content itself, base64-encoded, for a resource
+          small enough to carry inline.
+        comments:
+        - The in-toto framework asks for content under 1 KB, so that attestations
+          stay small.
+        pattern: ^[A-Za-z0-9+/_-]+={0,2}$
+      annotations:
+        name: annotations
+        description: Vendor-specific annotations on the resource, such as the source
+          references a SLSA Source Verification Summary records.
+        range: InTotoAnnotation
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoResourceDescriptor
+    any_of:
+    - slot_conditions:
+        resource_uri:
+          name: resource_uri
+          required: true
+          any_of:
+          - range: uri
+    - slot_conditions:
+        digest:
+          name: digest
+          required: true
+          any_of:
+          - range: InTotoDigestSet
+    - slot_conditions:
+        content:
+          name: content
+          required: true
+          any_of:
+          - range: string
+  InTotoStatementSubject:
+    name: InTotoStatementSubject
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoStatementSubject
+    description: 'One artifact an in-toto statement is about: a resource descriptor
+      that carries a digest.'
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md
+    is_a: InTotoResourceDescriptor
+    slots:
+    - resource_uri
+    - inTotoResourceDescriptor__resource_name
+    - inTotoResourceDescriptor__download_location
+    - inTotoResourceDescriptor__media_type
+    - inTotoResourceDescriptor__content
+    - inTotoResourceDescriptor__annotations
+    - InTotoStatementSubject_digest
+    slot_usage:
+      digest:
+        name: digest
+        required: true
+    class_uri: in_toto_linkml:InTotoStatementSubject
+  InTotoStatement:
+    name: InTotoStatement
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoStatement
+    description: 'The statement layer of an in-toto attestation: the subjects it is
+      about, the type of its predicate and the predicate itself.'
+    comments:
+    - The signature envelope around a statement, and the bundle that collects signed
+      statements, are outside this model.
+    - A statement is the attestation, and its predicate is one kind of claim about
+      the subjects, such as a test result or build provenance.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md
+    slots:
+    - inTotoStatement__statement_type
+    - inTotoStatement__subject
+    - inTotoStatement__predicate_type
+    - inTotoStatement__statement_predicate
+    attributes:
+      statement_type:
+        name: statement_type
+        description: The in-toto statement type, always https://in-toto.io/Statement/v1.
+        range: uri
+        required: true
+        pattern: ^https://in-toto\.io/Statement/v1$
+      subject:
+        name: subject
+        description: The artifacts the predicate is about, each with a digest.
+        range: InTotoStatementSubject
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        minimum_cardinality: 1
+      predicate_type:
+        name: predicate_type
+        description: The URI that names the predicate's type and so its schema, such
+          as https://in-toto.io/attestation/test-result/v0.1.
+        range: uri
+        required: true
+      statement_predicate:
+        name: statement_predicate
+        description: The predicate, one of the kinds this schema or an importing one
+          models; predicate_kind names which. Unset means the same as empty.
+        comments:
+        - The attestation's JSON calls this field predicate. The name here keeps it
+          apart from LOKF's predicate, the type of a relation, which a composite schema
+          gives one IRI.
+        range: InTotoPredicate
+        inlined: true
+    class_uri: in_toto_linkml:InTotoStatement
+  InTotoPredicate:
+    name: InTotoPredicate
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoPredicate
+    description: The base of every predicate an in-toto statement can carry; predicate_kind
+      names the concrete kind.
+    comments:
+    - The statement's predicate_type names the predicate's type by URI, and each concrete
+      class says which URI it renders. Nothing ties the two, since a schema that imports
+      this module may model a predicate under its own URI.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_core
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md
+    abstract: true
+    slots:
+    - inTotoPredicate__predicate_kind
+    attributes:
+      predicate_kind:
+        name: predicate_kind
+        description: The kind of predicate, one of this class's descendants.
+        designates_type: true
+        range: string
+    class_uri: in_toto_linkml:InTotoPredicate
+  InTotoPredicateType:
+    name: InTotoPredicateType
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoPredicateType
+    description: A type of predicate an in-toto statement can carry, named by the
+      URI a statement's predicate_type holds.
+    comments:
+    - The type URI includes the predicate's major version and changes when the predicate
+      changes incompatibly; a minor version keeps it.
+    - Anyone can define a predicate type. The in-toto project vets some of them, and
+      vetted_as names which vetted type this one is.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md
+    slots:
+    - inTotoPredicateType__predicate_type_uri
+    - inTotoPredicateType__predicate_version
+    - inTotoPredicateType__predicate_specification
+    - inTotoPredicateType__vetted_as
+    attributes:
+      predicate_type_uri:
+        name: predicate_type_uri
+        description: The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.
+        range: uri
+        required: true
+      predicate_version:
+        name: predicate_version
+        description: The version of the predicate's specification, as its page states
+          it, such as 0.1.0.
+      predicate_specification:
+        name: predicate_specification
+        description: The page that specifies the predicate.
+        range: uri
+      vetted_as:
+        name: vetted_as
+        description: The vetted predicate this type is, when the in-toto project vetted
+          it.
+        range: InTotoVettedPredicate
+    class_uri: in_toto_linkml:InTotoPredicateType
+  InTotoObjectEntry:
+    name: InTotoObjectEntry
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoObjectEntry
+    description: One key of a JSON object whose keys the framework leaves to the producer,
+      and the key's values.
+    comments:
+    - A string becomes one value and an array one value per item; any other value
+      or item is written as its JSON text, as InTotoAnnotation does.
+    - Each key appears once in a list, since the attestation's JSON uses it as a key;
+      the validator does not check this.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    slots:
+    - inTotoObjectEntry__entry_key
+    - inTotoObjectEntry__entry_values
+    attributes:
+      entry_key:
+        name: entry_key
+        description: The object's key.
+        required: true
+      entry_values:
+        name: entry_values
+        description: The key's values.
+        multivalued: true
+    class_uri: in_toto_linkml:InTotoObjectEntry
+  InTotoTestResult:
+    name: InTotoTestResult
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoTestResult
+    description: The predicate that records the result of one run of a test suite
+      against the subjects, with the names of the tests that passed, warned and failed.
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/test-result/v0.1.
+    - One attestation records one invocation of a suite.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md
+    exact_mappings:
+    - in_toto:test-result/v0.1
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoTestResult__test_result
+    - inTotoTestResult__configuration
+    - inTotoTestResult__test_run_url
+    - inTotoTestResult__passed_tests
+    - inTotoTestResult__warned_tests
+    - inTotoTestResult__failed_tests
+    attributes:
+      test_result:
+        name: test_result
+        description: The result of the test run.
+        range: InTotoTestResultValue
+        required: true
+      configuration:
+        name: configuration
+        description: The configuration the test run used.
+        range: InTotoResourceDescriptor
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      test_run_url:
+        name: test_run_url
+        description: Where the test run can be read, such as a CI run that holds its
+          logs; the verifier works out how to read it.
+        range: uri
+      passed_tests:
+        name: passed_tests
+        description: The names of the tests that passed.
+        multivalued: true
+      warned_tests:
+        name: warned_tests
+        description: The names of the tests that expressed a warning.
+        multivalued: true
+      failed_tests:
+        name: failed_tests
+        description: The names of the tests that failed.
+        comments:
+        - Producer and consumer agree on what a test name means; a policy can check
+          that test_result and failed_tests meet its requirements.
+        multivalued: true
+    class_uri: in_toto_linkml:InTotoTestResult
+  InTotoSimpleVerificationResult:
+    name: InTotoSimpleVerificationResult
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult
+    description: The predicate that says a verifier evaluated the subjects against
+      one or more policies, and which properties passed.
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/svr/v0.1.
+    - It is a lighter form of the SLSA Verification Summary, which lmodel/slsa models.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md
+    exact_mappings:
+    - in_toto:svr/v0.1
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoSimpleVerificationResult__svr_verifier
+    - inTotoSimpleVerificationResult__time_created
+    - inTotoSimpleVerificationResult__verified_properties
+    attributes:
+      svr_verifier:
+        name: svr_verifier
+        description: The entity that performed the verification.
+        range: InTotoSvrVerifier
+        required: true
+        inlined: true
+      time_created:
+        name: time_created
+        description: When the verification took place.
+        range: InTotoTimestamp
+        required: true
+      verified_properties:
+        name: verified_properties
+        description: The properties of the subjects that passed verification, scoped
+          to the framework or policy verified, such as SLSA_BUILD_LEVEL_3.
+        required: true
+        multivalued: true
+    class_uri: in_toto_linkml:InTotoSimpleVerificationResult
+  InTotoSvrVerifier:
+    name: InTotoSvrVerifier
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoSvrVerifier
+    description: The entity that performed a simple verification.
+    comments:
+    - A verifier with configurable policies may add fields of its own that say which
+      policy it applied; this schema does not model them.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md
+    slots:
+    - inTotoSvrVerifier__svr_verifier_id
+    attributes:
+      svr_verifier_id:
+        name: svr_verifier_id
+        description: The URI that identifies the verifier, versioned when its verification
+          logic changes materially.
+        range: uri
+        required: true
+    class_uri: in_toto_linkml:InTotoSvrVerifier
+  InTotoScaiAttributeReport:
+    name: InTotoScaiAttributeReport
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport
+    description: 'The Software Supply Chain Attribute Integrity (SCAI) predicate:
+      assertions about functional attributes of the subjects or their producer, each
+      with the evidence for it.'
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/scai/v0.3.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md
+    exact_mappings:
+    - in_toto:scai/v0.3
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoScaiAttributeReport__scai_attributes
+    - inTotoScaiAttributeReport__scai_producer
+    attributes:
+      scai_attributes:
+        name: scai_attributes
+        description: One or more attribute assertions about the subjects.
+        range: InTotoScaiAttributeAssertion
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        minimum_cardinality: 1
+      scai_producer:
+        name: scai_producer
+        description: The producer of the subjects, where that applies.
+        range: InTotoResourceDescriptor
+        inlined: true
+    class_uri: in_toto_linkml:InTotoScaiAttributeReport
+  InTotoScaiAttributeAssertion:
+    name: InTotoScaiAttributeAssertion
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion
+    description: 'One SCAI assertion: an attribute of the subject or its producer,
+      what it applies to, under which conditions, and the evidence for it.'
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md
+    slots:
+    - inTotoScaiAttributeAssertion__scai_attribute
+    - inTotoScaiAttributeAssertion__scai_target
+    - inTotoScaiAttributeAssertion__scai_conditions
+    - inTotoScaiAttributeAssertion__scai_evidence
+    attributes:
+      scai_attribute:
+        name: scai_attribute
+        description: The functional feature asserted, in a form the producer and consumer
+          agree on.
+        required: true
+      scai_target:
+        name: scai_target
+        description: The artifact or metadata object the attribute applies to.
+        range: InTotoResourceDescriptor
+        inlined: true
+      scai_conditions:
+        name: scai_conditions
+        description: The conditions under which the attribute arises.
+        range: InTotoObjectEntry
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      scai_evidence:
+        name: scai_evidence
+        description: The evidence, authenticated where possible, for the asserted
+          attribute.
+        comments:
+        - Without evidence a consumer may judge the assertion by who produced the
+          attestation.
+        range: InTotoResourceDescriptor
+        inlined: true
+    class_uri: in_toto_linkml:InTotoScaiAttributeAssertion
+  InTotoLink:
+    name: InTotoLink
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoLink
+    description: 'The predicate that records one step of an in-toto layout: the command
+      it ran and the materials it read, for a supply chain that migrates from in-toto
+      0.9 links.'
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/link/v0.3.
+    - The statement's subjects are the step's products, and each subject's resource_name
+      is unique within the attestation; the validator does not check this.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md
+    exact_mappings:
+    - in_toto:link/v0.3
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoLink__step_name
+    - inTotoLink__step_command
+    - inTotoLink__materials
+    - inTotoLink__step_byproducts
+    - inTotoLink__step_environment
+    attributes:
+      step_name:
+        name: step_name
+        description: The name of the step, which a layout uses to find the link metadata
+          it verifies.
+        required: true
+      step_command:
+        name: step_command
+        description: The command the step ran, and its arguments; possibly empty.
+        multivalued: true
+      materials:
+        name: materials
+        description: The artifacts the step read.
+        comments:
+        - Each material's resource_name is unique among them; the validator does not
+          check this.
+        range: InTotoLinkMaterial
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      step_byproducts:
+        name: step_byproducts
+        description: What else the step recorded, such as its standard output, in
+          keys the in-toto specification describes.
+        range: InTotoObjectEntry
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      step_environment:
+        name: step_environment
+        description: The environment the step ran in, in keys the producer chooses.
+        range: InTotoObjectEntry
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoLink
+  InTotoLinkMaterial:
+    name: InTotoLinkMaterial
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoLinkMaterial
+    description: One material of a link, a resource descriptor with a name and a digest.
+    notes:
+    - The name is required through a slot condition rather than slot_usage, because
+      resource_name is an attribute of the parent class and the LinkML loader refuses
+      slot_usage on an inherited attribute.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md
+    is_a: InTotoResourceDescriptor
+    slots:
+    - resource_uri
+    - inTotoResourceDescriptor__resource_name
+    - inTotoResourceDescriptor__download_location
+    - inTotoResourceDescriptor__media_type
+    - inTotoResourceDescriptor__content
+    - inTotoResourceDescriptor__annotations
+    - InTotoLinkMaterial_digest
+    slot_usage:
+      digest:
+        name: digest
+        required: true
+    class_uri: in_toto_linkml:InTotoLinkMaterial
+    all_of:
+    - slot_conditions:
+        resource_name:
+          name: resource_name
+          required: true
+          any_of:
+          - range: string
+  InTotoReference:
+    name: InTotoReference
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoReference
+    description: The predicate that points from the subjects, as a whole, to documents
+      about them, such as a bill of materials.
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/reference/v0.1.
+    - Several documents in one predicate read as if each had an attestation of its
+      own with everything else unchanged.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md
+    exact_mappings:
+    - in_toto:reference/v0.1
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoReference__reference_attester
+    - inTotoReference__referenced_documents
+    attributes:
+      reference_attester:
+        name: reference_attester
+        description: The system that provides the documents.
+        range: InTotoReferenceAttester
+        required: true
+        inlined: true
+      referenced_documents:
+        name: referenced_documents
+        description: The documents referred to.
+        range: InTotoReferencedDocument
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        minimum_cardinality: 1
+    class_uri: in_toto_linkml:InTotoReference
+  InTotoReferenceAttester:
+    name: InTotoReferenceAttester
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoReferenceAttester
+    description: The system that provides the documents a Reference predicate points
+      to.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md
+    slots:
+    - inTotoReferenceAttester__reference_attester_id
+    attributes:
+      reference_attester_id:
+        name: reference_attester_id
+        description: The URI that identifies the system.
+        range: uri
+        required: true
+    class_uri: in_toto_linkml:InTotoReferenceAttester
+  InTotoReferencedDocument:
+    name: InTotoReferencedDocument
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoReferencedDocument
+    description: 'One document a Reference predicate points to: a resource descriptor
+      with a download location and a media type.'
+    notes:
+    - Both fields are required through slot conditions rather than slot_usage, because
+      they are attributes of the parent class and the LinkML loader refuses slot_usage
+      on an inherited attribute.
+    comments:
+    - A document of unknown type takes media_type application/octet-stream.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md
+    is_a: InTotoResourceDescriptor
+    slots:
+    - resource_uri
+    - digest
+    - inTotoResourceDescriptor__resource_name
+    - inTotoResourceDescriptor__download_location
+    - inTotoResourceDescriptor__media_type
+    - inTotoResourceDescriptor__content
+    - inTotoResourceDescriptor__annotations
+    class_uri: in_toto_linkml:InTotoReferencedDocument
+    all_of:
+    - slot_conditions:
+        download_location:
+          name: download_location
+          required: true
+          any_of:
+          - range: uri
+    - slot_conditions:
+        media_type:
+          name: media_type
+          required: true
+          any_of:
+          - range: string
+  InTotoRelease:
+    name: InTotoRelease
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoRelease
+    description: The predicate that ties the subjects to one release name and version
+      of a package, so that consumers can check what the release should contain.
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/release/v0.1.
+      The page is at version 0.2, which renamed releaseId to packageId, and its examples
+      keep that URI.
+    - Each subject's resource_name is the artifact's file name as it would appear
+      on disk.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md
+    exact_mappings:
+    - in_toto:release/v0.1
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoRelease__release_purl
+    - inTotoRelease__package_id
+    attributes:
+      release_purl:
+        name: release_purl
+        description: The package URL that names the release, with its version and,
+          unless the package type needs them, no qualifiers or subpath.
+        range: uri
+        required: true
+        pattern: ^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+
+      package_id:
+        name: package_id
+        description: A stable identifier for the package that does not change between
+          releases, so that a consumer can tell a renamed package from a reused name.
+    class_uri: in_toto_linkml:InTotoRelease
+  InTotoRuntimeTrace:
+    name: InTotoRuntimeTrace
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace
+    description: The predicate that records what a monitor traced while a supply chain
+      step, such as a build, ran.
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/runtime-trace/v0.1.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
+    exact_mappings:
+    - in_toto:runtime-trace/v0.1
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoRuntimeTrace__trace_monitor
+    - inTotoRuntimeTrace__monitored_process
+    - inTotoRuntimeTrace__monitor_log
+    - inTotoRuntimeTrace__trace_metadata
+    attributes:
+      trace_monitor:
+        name: trace_monitor
+        description: The monitor instance that traced the run.
+        range: InTotoTraceMonitor
+        required: true
+        inlined: true
+      monitored_process:
+        name: monitored_process
+        description: The process the monitor watched.
+        range: InTotoMonitoredProcess
+        required: true
+        inlined: true
+      monitor_log:
+        name: monitor_log
+        description: The events the monitor traced.
+        range: InTotoMonitorLog
+        required: true
+        inlined: true
+      trace_metadata:
+        name: trace_metadata
+        description: Other properties of the monitoring event.
+        range: InTotoTraceMetadata
+        inlined: true
+    class_uri: in_toto_linkml:InTotoRuntimeTrace
+  InTotoTraceMonitor:
+    name: InTotoTraceMonitor
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoTraceMonitor
+    description: The monitor instance that produced a runtime trace.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
+    slots:
+    - inTotoTraceMonitor__monitor_type
+    - inTotoTraceMonitor__monitor_config_source
+    - inTotoTraceMonitor__trace_policy
+    attributes:
+      monitor_type:
+        name: monitor_type
+        description: The URI of the monitor's type.
+        range: uri
+        required: true
+      monitor_config_source:
+        name: monitor_config_source
+        description: The monitor's configuration.
+        range: InTotoResourceDescriptor
+        inlined: true
+      trace_policy:
+        name: trace_policy
+        description: The trace policy the monitor applied, in the monitor's own format,
+          which monitor_type names.
+        range: InTotoObjectEntry
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoTraceMonitor
+  InTotoMonitoredProcess:
+    name: InTotoMonitoredProcess
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess
+    description: The process a runtime trace watched.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
+    slots:
+    - inTotoMonitoredProcess__host_id
+    - inTotoMonitoredProcess__process_type
+    - inTotoMonitoredProcess__process_event
+    attributes:
+      host_id:
+        name: host_id
+        description: The URI that identifies the host the process ran on.
+        range: uri
+        required: true
+      process_type:
+        name: process_type
+        description: The URI of the type of process, such as the build type when the
+          monitor watched a build.
+        range: uri
+        required: true
+      process_event:
+        name: process_event
+        description: The job or task the attestation is about.
+        required: true
+    class_uri: in_toto_linkml:InTotoMonitoredProcess
+  InTotoMonitorLog:
+    name: InTotoMonitorLog
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoMonitorLog
+    description: 'The events a runtime trace''s monitor recorded: processes, network
+      activity and file accesses, at least one of them.'
+    notes:
+    - Each condition in any_of names its range through a nested any_of, because the
+      JSON Schema generator leaves a condition's own range out, and a null value would
+      then count as present.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
+    slots:
+    - inTotoMonitorLog__traced_processes
+    - inTotoMonitorLog__traced_network
+    - inTotoMonitorLog__file_access
+    attributes:
+      traced_processes:
+        name: traced_processes
+        description: The processes the monitor observed, one JSON object each, written
+          as its JSON text, in a format monitor_type determines.
+        multivalued: true
+      traced_network:
+        name: traced_network
+        description: The network activity the monitor observed, one JSON object each,
+          written as its JSON text, in a format monitor_type determines.
+        multivalued: true
+      file_access:
+        name: file_access
+        description: The files the run accessed, each with its path and digests; one
+          file may appear more than once, with different digests if it changed.
+        comments:
+        - A monitor that cannot pause the build, such as one that uses eBPF, guarantees
+          less about these digests than one that can.
+        range: InTotoResourceDescriptor
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoMonitorLog
+    any_of:
+    - slot_conditions:
+        traced_processes:
+          name: traced_processes
+          required: true
+          multivalued: true
+    - slot_conditions:
+        traced_network:
+          name: traced_network
+          required: true
+          multivalued: true
+    - slot_conditions:
+        file_access:
+          name: file_access
+          required: true
+          multivalued: true
+  InTotoTraceMetadata:
+    name: InTotoTraceMetadata
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoTraceMetadata
+    description: Other properties of a runtime trace's monitoring event.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
+    slots:
+    - inTotoTraceMetadata__build_started_on
+    - inTotoTraceMetadata__build_finished_on
+    attributes:
+      build_started_on:
+        name: build_started_on
+        description: When the monitored build started.
+        range: InTotoTimestamp
+      build_finished_on:
+        name: build_finished_on
+        description: When the monitored build finished.
+        range: InTotoTimestamp
+    class_uri: in_toto_linkml:InTotoTraceMetadata
+  InTotoVulns:
+    name: InTotoVulns
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoVulns
+    description: 'The predicate that records the result of one vulnerability scan
+      of the subjects: the scanner, its database and the vulnerabilities it found.'
+    comments:
+    - The statement that carries it has predicate_type https://in-toto.io/attestation/vulns/v0.2.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    exact_mappings:
+    - in_toto:vulns/v0.2
+    is_a: InTotoPredicate
+    slots:
+    - inTotoPredicate__predicate_kind
+    - inTotoVulns__vuln_scanner
+    - inTotoVulns__scan_metadata
+    attributes:
+      vuln_scanner:
+        name: vuln_scanner
+        description: The scanner that ran, its version and the database it used.
+        range: InTotoVulnScanner
+        required: true
+        inlined: true
+      scan_metadata:
+        name: scan_metadata
+        description: When the scan ran.
+        range: InTotoScanMetadata
+        required: true
+        inlined: true
+    class_uri: in_toto_linkml:InTotoVulns
+  InTotoVulnScanner:
+    name: InTotoVulnScanner
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoVulnScanner
+    description: The scanner a VULNS predicate records, with its results.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    slots:
+    - inTotoVulnScanner__scanner_uri
+    - inTotoVulnScanner__scanner_version
+    - inTotoVulnScanner__vuln_db
+    - inTotoVulnScanner__scan_results
+    attributes:
+      scanner_uri:
+        name: scanner_uri
+        description: The URI that identifies the scanner's source.
+        range: uri
+        required: true
+      scanner_version:
+        name: scanner_version
+        description: The scanner's version.
+      vuln_db:
+        name: vuln_db
+        description: The vulnerability database the scanner used.
+        range: InTotoVulnDatabase
+        inlined: true
+      scan_results:
+        name: scan_results
+        description: The vulnerabilities the scanner found; an empty list means it
+          found none.
+        range: InTotoVulnResult
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoVulnScanner
+  InTotoVulnDatabase:
+    name: InTotoVulnDatabase
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoVulnDatabase
+    description: The vulnerability database a scanner used.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    slots:
+    - inTotoVulnDatabase__db_uri
+    - inTotoVulnDatabase__db_version
+    - inTotoVulnDatabase__db_last_update
+    attributes:
+      db_uri:
+        name: db_uri
+        description: The URI that identifies the database's source.
+        range: uri
+      db_version:
+        name: db_version
+        description: The database's version.
+      db_last_update:
+        name: db_last_update
+        description: When the database was last updated.
+        range: InTotoTimestamp
+        required: true
+    class_uri: in_toto_linkml:InTotoVulnDatabase
+  InTotoVulnResult:
+    name: InTotoVulnResult
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoVulnResult
+    description: One vulnerability a scanner found.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    slots:
+    - inTotoVulnResult__vuln_id
+    - inTotoVulnResult__vuln_severity
+    - inTotoVulnResult__vuln_annotations
+    attributes:
+      vuln_id:
+        name: vuln_id
+        description: The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or
+          CVE-2017-5645.
+        required: true
+      vuln_severity:
+        name: vuln_severity
+        description: The vulnerability's severity, by one or more scoring methods.
+        range: InTotoVulnSeverity
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      vuln_annotations:
+        name: vuln_annotations
+        description: Custom information the scanner adds, as key and value pairs.
+        range: InTotoObjectEntry
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+    class_uri: in_toto_linkml:InTotoVulnResult
+  InTotoVulnSeverity:
+    name: InTotoVulnSeverity
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoVulnSeverity
+    description: One severity score of a vulnerability, by one scoring method.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    slots:
+    - inTotoVulnSeverity__severity_method
+    - inTotoVulnSeverity__severity_score
+    attributes:
+      severity_method:
+        name: severity_method
+        description: The scoring method, such as nvd or cvss.
+        required: true
+      severity_score:
+        name: severity_score
+        description: The score under that method, as a string.
+        required: true
+    class_uri: in_toto_linkml:InTotoVulnSeverity
+  InTotoScanMetadata:
+    name: InTotoScanMetadata
+    definition_uri: https://w3id.org/lmodel/in-toto/InTotoScanMetadata
+    description: When a vulnerability scan ran.
+    from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
+    see_also:
+    - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    slots:
+    - inTotoScanMetadata__scan_started_on
+    - inTotoScanMetadata__scan_finished_on
+    attributes:
+      scan_started_on:
+        name: scan_started_on
+        description: When the scan started.
+        range: InTotoTimestamp
+        required: true
+      scan_finished_on:
+        name: scan_finished_on
+        description: When the scan finished.
+        range: InTotoTimestamp
+        required: true
+    class_uri: in_toto_linkml:InTotoScanMetadata
+metamodel_version: 1.12.0
+source_file: in_toto_linkml.yaml
+source_file_date: '2026-10-30T15:47:57'
+source_file_size: 2246
+

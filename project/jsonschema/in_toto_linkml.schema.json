@@ -1,0 +1,1983 @@
+{
+    "$defs": {
+        "InTotoAdditionalDigest": {
+            "additionalProperties": false,
+            "description": "One digest under an algorithm that InTotoDigestSet does not name, such as an SCS's own revision type.",
+            "properties": {
+                "algorithm": {
+                    "description": "The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id.",
+                    "not": {
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "sha256",
+                                    "sha224",
+                                    "sha384",
+                                    "sha512",
+                                    "sha512_224",
+                                    "sha512_256",
+                                    "sha3_224",
+                                    "sha3_256",
+                                    "sha3_384",
+                                    "sha3_512",
+                                    "shake128",
+                                    "shake256",
+                                    "blake2b",
+                                    "blake2s",
+                                    "ripemd160",
+                                    "sm3",
+                                    "gost",
+                                    "sha1",
+                                    "md5",
+                                    "dirHash",
+                                    "gitCommit",
+                                    "gitTree",
+                                    "gitBlob",
+                                    "gitTag",
+                                    "dir_hash",
+                                    "git_commit",
+                                    "git_tree",
+                                    "git_blob",
+                                    "git_tag"
+                                ]
+                            }
+                        ]
+                    },
+                    "pattern": "^[a-z][A-Za-z0-9_]*$"
+                },
+                "value": {
+                    "description": "The digest under that algorithm, in the encoding the algorithm documents.",
+                    "pattern": "^\\S+$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "algorithm",
+                "value"
+            ],
+            "title": "InTotoAdditionalDigest",
+            "type": "object"
+        },
+        "InTotoAnnotation": {
+            "additionalProperties": false,
+            "description": "One vendor-specific annotation on a resource descriptor: a key and its values.",
+            "properties": {
+                "annotation_key": {
+                    "description": "The annotation's key.",
+                    "type": "string"
+                },
+                "annotation_values": {
+                    "description": "The annotation's values.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "annotation_key"
+            ],
+            "title": "InTotoAnnotation",
+            "type": "object"
+        },
+        "InTotoDigestSet": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "properties": {
+                        "sha256": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha256"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha224": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha224"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha384": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha384"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha512": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha512"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha512_224": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha512_224"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha512_256": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha512_256"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha3_224": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha3_224"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha3_256": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha3_256"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha3_384": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha3_384"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha3_512": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha3_512"
+                    ]
+                },
+                {
+                    "properties": {
+                        "shake128": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "shake128"
+                    ]
+                },
+                {
+                    "properties": {
+                        "shake256": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "shake256"
+                    ]
+                },
+                {
+                    "properties": {
+                        "blake2b": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "blake2b"
+                    ]
+                },
+                {
+                    "properties": {
+                        "blake2s": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "blake2s"
+                    ]
+                },
+                {
+                    "properties": {
+                        "ripemd160": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "ripemd160"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sm3": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sm3"
+                    ]
+                },
+                {
+                    "properties": {
+                        "gost": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "gost"
+                    ]
+                },
+                {
+                    "properties": {
+                        "sha1": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "sha1"
+                    ]
+                },
+                {
+                    "properties": {
+                        "md5": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "md5"
+                    ]
+                },
+                {
+                    "properties": {
+                        "dir_hash": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "dir_hash"
+                    ]
+                },
+                {
+                    "properties": {
+                        "git_commit": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "git_commit"
+                    ]
+                },
+                {
+                    "properties": {
+                        "git_tree": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "git_tree"
+                    ]
+                },
+                {
+                    "properties": {
+                        "git_blob": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "git_blob"
+                    ]
+                },
+                {
+                    "properties": {
+                        "git_tag": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "git_tag"
+                    ]
+                },
+                {
+                    "properties": {
+                        "additional_digests": {
+                            "items": {},
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "additional_digests"
+                    ]
+                }
+            ],
+            "description": "A set of one or more digests over one artifact, keyed by algorithm, from which a consumer picks the algorithm it trusts.",
+            "properties": {
+                "additional_digests": {
+                    "description": "The digests under algorithms this class does not name.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoAdditionalDigest"
+                    },
+                    "minItems": 1,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "blake2b": {
+                    "description": "The BLAKE2b digest of the artifact, of 32 to 64 bytes.",
+                    "pattern": "^[a-f0-9]{64}([a-f0-9]{2}){0,32}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blake2s": {
+                    "description": "The BLAKE2s digest of the artifact, at its full 32 bytes.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dir_hash": {
+                    "description": "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "git_blob": {
+                    "description": "The git blob id of a file's content.",
+                    "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "git_commit": {
+                    "description": "The git commit id of a source revision.",
+                    "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "git_tag": {
+                    "description": "The git object id of an annotated tag.",
+                    "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "git_tree": {
+                    "description": "The git tree id of a source revision's content, or of any file tree.",
+                    "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gost": {
+                    "description": "The GOST R 34.11 digest of the artifact, of 256 or 512 bits.",
+                    "pattern": "^[a-f0-9]{64}([a-f0-9]{64})?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "md5": {
+                    "description": "The MD5 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{32}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ripemd160": {
+                    "description": "The RIPEMD-160 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{40}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha1": {
+                    "description": "The SHA-1 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{40}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha224": {
+                    "description": "The SHA-224 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{56}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha256": {
+                    "description": "The SHA-256 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha384": {
+                    "description": "The SHA-384 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{96}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha3_224": {
+                    "description": "The SHA3-224 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{56}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha3_256": {
+                    "description": "The SHA3-256 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha3_384": {
+                    "description": "The SHA3-384 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{96}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha3_512": {
+                    "description": "The SHA3-512 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{128}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha512": {
+                    "description": "The SHA-512 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{128}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha512_224": {
+                    "description": "The SHA-512/224 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{56}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sha512_256": {
+                    "description": "The SHA-512/256 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "shake128": {
+                    "description": "The SHAKE128 digest of the artifact, of at least 32 bytes.",
+                    "pattern": "^[a-f0-9]{64}([a-f0-9]{2})*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "shake256": {
+                    "description": "The SHAKE256 digest of the artifact, of at least 32 bytes.",
+                    "pattern": "^[a-f0-9]{64}([a-f0-9]{2})*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sm3": {
+                    "description": "The SM3 digest of the artifact.",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoDigestSet",
+            "type": "object"
+        },
+        "InTotoDocument": {
+            "additionalProperties": false,
+            "description": "A document that holds in-toto statements and the predicate types they name.",
+            "properties": {
+                "in_toto_predicate_types": {
+                    "description": "The predicate types.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoPredicateType"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "in_toto_statements": {
+                    "description": "The statements, each an in-toto attestation without its envelope.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoStatement"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoDocument",
+            "type": "object"
+        },
+        "InTotoLink": {
+            "additionalProperties": false,
+            "description": "The predicate that records one step of an in-toto layout: the command it ran and the materials it read, for a supply chain that migrates from in-toto 0.9 links.",
+            "properties": {
+                "materials": {
+                    "description": "The artifacts the step read.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoLinkMaterial"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoLink"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "step_byproducts": {
+                    "description": "What else the step recorded, such as its standard output, in keys the in-toto specification describes.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoObjectEntry"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "step_command": {
+                    "description": "The command the step ran, and its arguments; possibly empty.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "step_environment": {
+                    "description": "The environment the step ran in, in keys the producer chooses.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoObjectEntry"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "step_name": {
+                    "description": "The name of the step, which a layout uses to find the link metadata it verifies.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "step_name"
+            ],
+            "title": "InTotoLink",
+            "type": "object"
+        },
+        "InTotoLinkMaterial": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "properties": {
+                        "resource_name": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "resource_name"
+                    ]
+                }
+            ],
+            "description": "One material of a link, a resource descriptor with a name and a digest.",
+            "properties": {
+                "annotations": {
+                    "description": "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "content": {
+                    "description": "The resource's content itself, base64-encoded, for a resource small enough to carry inline.",
+                    "pattern": "^[A-Za-z0-9+/_-]+={0,2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "digest": {
+                    "$ref": "#/$defs/InTotoDigestSet",
+                    "description": "The cryptographic digests of a resource's content, keyed by algorithm."
+                },
+                "download_location": {
+                    "description": "Where the resource can be fetched, when that differs from its identifying URI.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "media_type": {
+                    "description": "The IANA media type of the resource's content.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_name": {
+                    "description": "A name for the resource within the attestation that carries it.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_uri": {
+                    "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "digest"
+            ],
+            "title": "InTotoLinkMaterial",
+            "type": "object"
+        },
+        "InTotoMonitorLog": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "properties": {
+                        "traced_processes": {
+                            "items": {},
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "traced_processes"
+                    ]
+                },
+                {
+                    "properties": {
+                        "traced_network": {
+                            "items": {},
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "traced_network"
+                    ]
+                },
+                {
+                    "properties": {
+                        "file_access": {
+                            "items": {},
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "file_access"
+                    ]
+                }
+            ],
+            "description": "The events a runtime trace's monitor recorded: processes, network activity and file accesses, at least one of them.",
+            "properties": {
+                "file_access": {
+                    "description": "The files the run accessed, each with its path and digests; one file may appear more than once, with different digests if it changed.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoResourceDescriptor"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "traced_network": {
+                    "description": "The network activity the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "traced_processes": {
+                    "description": "The processes the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoMonitorLog",
+            "type": "object"
+        },
+        "InTotoMonitoredProcess": {
+            "additionalProperties": false,
+            "description": "The process a runtime trace watched.",
+            "properties": {
+                "host_id": {
+                    "description": "The URI that identifies the host the process ran on.",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "process_event": {
+                    "description": "The job or task the attestation is about.",
+                    "type": "string"
+                },
+                "process_type": {
+                    "description": "The URI of the type of process, such as the build type when the monitor watched a build.",
+                    "format": "uri",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "host_id",
+                "process_type",
+                "process_event"
+            ],
+            "title": "InTotoMonitoredProcess",
+            "type": "object"
+        },
+        "InTotoObjectEntry": {
+            "additionalProperties": false,
+            "description": "One key of a JSON object whose keys the framework leaves to the producer, and the key's values.",
+            "properties": {
+                "entry_key": {
+                    "description": "The object's key.",
+                    "type": "string"
+                },
+                "entry_values": {
+                    "description": "The key's values.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "entry_key"
+            ],
+            "title": "InTotoObjectEntry",
+            "type": "object"
+        },
+        "InTotoPredicate": {
+            "additionalProperties": false,
+            "description": "The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind.",
+            "properties": {
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoPredicate"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoPredicate",
+            "type": "object"
+        },
+        "InTotoPredicateType": {
+            "additionalProperties": false,
+            "description": "A type of predicate an in-toto statement can carry, named by the URI a statement's predicate_type holds.",
+            "properties": {
+                "predicate_specification": {
+                    "description": "The page that specifies the predicate.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "predicate_type_uri": {
+                    "description": "The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "predicate_version": {
+                    "description": "The version of the predicate's specification, as its page states it, such as 0.1.0.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vetted_as": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoVettedPredicate"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The vetted predicate this type is, when the in-toto project vetted it."
+                }
+            },
+            "required": [
+                "predicate_type_uri"
+            ],
+            "title": "InTotoPredicateType",
+            "type": "object"
+        },
+        "InTotoReference": {
+            "additionalProperties": false,
+            "description": "The predicate that points from the subjects, as a whole, to documents about them, such as a bill of materials.",
+            "properties": {
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoReference"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "reference_attester": {
+                    "$ref": "#/$defs/InTotoReferenceAttester",
+                    "description": "The system that provides the documents."
+                },
+                "referenced_documents": {
+                    "description": "The documents referred to.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoReferencedDocument"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "reference_attester",
+                "referenced_documents"
+            ],
+            "title": "InTotoReference",
+            "type": "object"
+        },
+        "InTotoReferenceAttester": {
+            "additionalProperties": false,
+            "description": "The system that provides the documents a Reference predicate points to.",
+            "properties": {
+                "reference_attester_id": {
+                    "description": "The URI that identifies the system.",
+                    "format": "uri",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "reference_attester_id"
+            ],
+            "title": "InTotoReferenceAttester",
+            "type": "object"
+        },
+        "InTotoReferencedDocument": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "properties": {
+                        "download_location": {
+                            "anyOf": [
+                                {
+                                    "format": "uri",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "download_location"
+                    ]
+                },
+                {
+                    "properties": {
+                        "media_type": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "media_type"
+                    ]
+                }
+            ],
+            "description": "One document a Reference predicate points to: a resource descriptor with a download location and a media type.",
+            "properties": {
+                "annotations": {
+                    "description": "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "content": {
+                    "description": "The resource's content itself, base64-encoded, for a resource small enough to carry inline.",
+                    "pattern": "^[A-Za-z0-9+/_-]+={0,2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "digest": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoDigestSet"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The cryptographic digests of a resource's content, keyed by algorithm."
+                },
+                "download_location": {
+                    "description": "Where the resource can be fetched, when that differs from its identifying URI.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "media_type": {
+                    "description": "The IANA media type of the resource's content.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_name": {
+                    "description": "A name for the resource within the attestation that carries it.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_uri": {
+                    "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoReferencedDocument",
+            "type": "object"
+        },
+        "InTotoRelease": {
+            "additionalProperties": false,
+            "description": "The predicate that ties the subjects to one release name and version of a package, so that consumers can check what the release should contain.",
+            "properties": {
+                "package_id": {
+                    "description": "A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoRelease"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "release_purl": {
+                    "description": "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.",
+                    "format": "uri",
+                    "pattern": "^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "release_purl"
+            ],
+            "title": "InTotoRelease",
+            "type": "object"
+        },
+        "InTotoResourceDescriptor": {
+            "additionalProperties": false,
+            "anyOf": [
+                {
+                    "properties": {
+                        "resource_uri": {
+                            "anyOf": [
+                                {
+                                    "format": "uri",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "resource_uri"
+                    ]
+                },
+                {
+                    "properties": {
+                        "digest": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/$defs/InTotoDigestSet"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "digest"
+                    ]
+                },
+                {
+                    "properties": {
+                        "content": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "content"
+                    ]
+                }
+            ],
+            "description": "A reference to a software artifact or other resource by URI or digest, or the resource itself as content, with optional metadata.",
+            "properties": {
+                "annotations": {
+                    "description": "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "content": {
+                    "description": "The resource's content itself, base64-encoded, for a resource small enough to carry inline.",
+                    "pattern": "^[A-Za-z0-9+/_-]+={0,2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "digest": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoDigestSet"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The cryptographic digests of a resource's content, keyed by algorithm."
+                },
+                "download_location": {
+                    "description": "Where the resource can be fetched, when that differs from its identifying URI.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "media_type": {
+                    "description": "The IANA media type of the resource's content.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_name": {
+                    "description": "A name for the resource within the attestation that carries it.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_uri": {
+                    "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoResourceDescriptor",
+            "type": "object"
+        },
+        "InTotoRuntimeTrace": {
+            "additionalProperties": false,
+            "description": "The predicate that records what a monitor traced while a supply chain step, such as a build, ran.",
+            "properties": {
+                "monitor_log": {
+                    "$ref": "#/$defs/InTotoMonitorLog",
+                    "description": "The events the monitor traced."
+                },
+                "monitored_process": {
+                    "$ref": "#/$defs/InTotoMonitoredProcess",
+                    "description": "The process the monitor watched."
+                },
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoRuntimeTrace"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "trace_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoTraceMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Other properties of the monitoring event."
+                },
+                "trace_monitor": {
+                    "$ref": "#/$defs/InTotoTraceMonitor",
+                    "description": "The monitor instance that traced the run."
+                }
+            },
+            "required": [
+                "trace_monitor",
+                "monitored_process",
+                "monitor_log"
+            ],
+            "title": "InTotoRuntimeTrace",
+            "type": "object"
+        },
+        "InTotoScaiAttributeAssertion": {
+            "additionalProperties": false,
+            "description": "One SCAI assertion: an attribute of the subject or its producer, what it applies to, under which conditions, and the evidence for it.",
+            "properties": {
+                "scai_attribute": {
+                    "description": "The functional feature asserted, in a form the producer and consumer agree on.",
+                    "type": "string"
+                },
+                "scai_conditions": {
+                    "description": "The conditions under which the attribute arises.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoObjectEntry"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "scai_evidence": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoResourceDescriptor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The evidence, authenticated where possible, for the asserted attribute."
+                },
+                "scai_target": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoResourceDescriptor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The artifact or metadata object the attribute applies to."
+                }
+            },
+            "required": [
+                "scai_attribute"
+            ],
+            "title": "InTotoScaiAttributeAssertion",
+            "type": "object"
+        },
+        "InTotoScaiAttributeReport": {
+            "additionalProperties": false,
+            "description": "The Software Supply Chain Attribute Integrity (SCAI) predicate: assertions about functional attributes of the subjects or their producer, each with the evidence for it.",
+            "properties": {
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoScaiAttributeReport"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "scai_attributes": {
+                    "description": "One or more attribute assertions about the subjects.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoScaiAttributeAssertion"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "scai_producer": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoResourceDescriptor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The producer of the subjects, where that applies."
+                }
+            },
+            "required": [
+                "scai_attributes"
+            ],
+            "title": "InTotoScaiAttributeReport",
+            "type": "object"
+        },
+        "InTotoScanMetadata": {
+            "additionalProperties": false,
+            "description": "When a vulnerability scan ran.",
+            "properties": {
+                "scan_finished_on": {
+                    "description": "When the scan finished.",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$",
+                    "type": "string"
+                },
+                "scan_started_on": {
+                    "description": "When the scan started.",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "scan_started_on",
+                "scan_finished_on"
+            ],
+            "title": "InTotoScanMetadata",
+            "type": "object"
+        },
+        "InTotoSimpleVerificationResult": {
+            "additionalProperties": false,
+            "description": "The predicate that says a verifier evaluated the subjects against one or more policies, and which properties passed.",
+            "properties": {
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoSimpleVerificationResult"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "svr_verifier": {
+                    "$ref": "#/$defs/InTotoSvrVerifier",
+                    "description": "The entity that performed the verification."
+                },
+                "time_created": {
+                    "description": "When the verification took place.",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$",
+                    "type": "string"
+                },
+                "verified_properties": {
+                    "description": "The properties of the subjects that passed verification, scoped to the framework or policy verified, such as SLSA_BUILD_LEVEL_3.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "svr_verifier",
+                "time_created",
+                "verified_properties"
+            ],
+            "title": "InTotoSimpleVerificationResult",
+            "type": "object"
+        },
+        "InTotoStatement": {
+            "additionalProperties": false,
+            "description": "The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself.",
+            "properties": {
+                "predicate_type": {
+                    "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "statement_predicate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoTestResult"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoSimpleVerificationResult"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoScaiAttributeReport"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoLink"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoReference"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoRelease"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoRuntimeTrace"
+                        },
+                        {
+                            "$ref": "#/$defs/InTotoVulns"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty."
+                },
+                "statement_type": {
+                    "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",
+                    "format": "uri",
+                    "pattern": "^https://in-toto\\.io/Statement/v1$",
+                    "type": "string"
+                },
+                "subject": {
+                    "description": "The artifacts the predicate is about, each with a digest.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoStatementSubject"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "statement_type",
+                "subject",
+                "predicate_type"
+            ],
+            "title": "InTotoStatement",
+            "type": "object"
+        },
+        "InTotoStatementSubject": {
+            "additionalProperties": false,
+            "description": "One artifact an in-toto statement is about: a resource descriptor that carries a digest.",
+            "properties": {
+                "annotations": {
+                    "description": "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoAnnotation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "content": {
+                    "description": "The resource's content itself, base64-encoded, for a resource small enough to carry inline.",
+                    "pattern": "^[A-Za-z0-9+/_-]+={0,2}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "digest": {
+                    "$ref": "#/$defs/InTotoDigestSet",
+                    "description": "The cryptographic digests of a resource's content, keyed by algorithm."
+                },
+                "download_location": {
+                    "description": "Where the resource can be fetched, when that differs from its identifying URI.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "media_type": {
+                    "description": "The IANA media type of the resource's content.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_name": {
+                    "description": "A name for the resource within the attestation that carries it.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_uri": {
+                    "description": "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "digest"
+            ],
+            "title": "InTotoStatementSubject",
+            "type": "object"
+        },
+        "InTotoSvrVerifier": {
+            "additionalProperties": false,
+            "description": "The entity that performed a simple verification.",
+            "properties": {
+                "svr_verifier_id": {
+                    "description": "The URI that identifies the verifier, versioned when its verification logic changes materially.",
+                    "format": "uri",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "svr_verifier_id"
+            ],
+            "title": "InTotoSvrVerifier",
+            "type": "object"
+        },
+        "InTotoTestResult": {
+            "additionalProperties": false,
+            "description": "The predicate that records the result of one run of a test suite against the subjects, with the names of the tests that passed, warned and failed.",
+            "properties": {
+                "configuration": {
+                    "description": "The configuration the test run used.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoResourceDescriptor"
+                    },
+                    "type": "array"
+                },
+                "failed_tests": {
+                    "description": "The names of the tests that failed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "passed_tests": {
+                    "description": "The names of the tests that passed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoTestResult"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "test_result": {
+                    "$ref": "#/$defs/InTotoTestResultValue",
+                    "description": "The result of the test run."
+                },
+                "test_run_url": {
+                    "description": "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "warned_tests": {
+                    "description": "The names of the tests that expressed a warning.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "test_result",
+                "configuration"
+            ],
+            "title": "InTotoTestResult",
+            "type": "object"
+        },
+        "InTotoTestResultValue": {
+            "description": "The result of a test run, as a Test Result predicate records it.",
+            "enum": [
+                "PASSED",
+                "WARNED",
+                "FAILED"
+            ],
+            "title": "InTotoTestResultValue",
+            "type": "string"
+        },
+        "InTotoTraceMetadata": {
+            "additionalProperties": false,
+            "description": "Other properties of a runtime trace's monitoring event.",
+            "properties": {
+                "build_finished_on": {
+                    "description": "When the monitored build finished.",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "build_started_on": {
+                    "description": "When the monitored build started.",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "InTotoTraceMetadata",
+            "type": "object"
+        },
+        "InTotoTraceMonitor": {
+            "additionalProperties": false,
+            "description": "The monitor instance that produced a runtime trace.",
+            "properties": {
+                "monitor_config_source": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoResourceDescriptor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The monitor's configuration."
+                },
+                "monitor_type": {
+                    "description": "The URI of the monitor's type.",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "trace_policy": {
+                    "description": "The trace policy the monitor applied, in the monitor's own format, which monitor_type names.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoObjectEntry"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "monitor_type"
+            ],
+            "title": "InTotoTraceMonitor",
+            "type": "object"
+        },
+        "InTotoVettedPredicate": {
+            "description": "The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each with the predicate_type a statement of it carries at the version its page describes.",
+            "enum": [
+                "CYCLONEDX",
+                "LINK",
+                "REFERENCE",
+                "RELEASE",
+                "RUNTIME_TRACE",
+                "SCAI",
+                "SLSA_PROVENANCE",
+                "SLSA_VERIFICATION_SUMMARY",
+                "SPDX2",
+                "SPDX3",
+                "SIMPLE_VERIFICATION_RESULT",
+                "TEST_RESULT",
+                "VULNS"
+            ],
+            "title": "InTotoVettedPredicate",
+            "type": "string"
+        },
+        "InTotoVulnDatabase": {
+            "additionalProperties": false,
+            "description": "The vulnerability database a scanner used.",
+            "properties": {
+                "db_last_update": {
+                    "description": "When the database was last updated.",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$",
+                    "type": "string"
+                },
+                "db_uri": {
+                    "description": "The URI that identifies the database's source.",
+                    "format": "uri",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "db_version": {
+                    "description": "The database's version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "db_last_update"
+            ],
+            "title": "InTotoVulnDatabase",
+            "type": "object"
+        },
+        "InTotoVulnResult": {
+            "additionalProperties": false,
+            "description": "One vulnerability a scanner found.",
+            "properties": {
+                "vuln_annotations": {
+                    "description": "Custom information the scanner adds, as key and value pairs.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoObjectEntry"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "vuln_id": {
+                    "description": "The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.",
+                    "type": "string"
+                },
+                "vuln_severity": {
+                    "description": "The vulnerability's severity, by one or more scoring methods.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoVulnSeverity"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "vuln_id",
+                "vuln_severity"
+            ],
+            "title": "InTotoVulnResult",
+            "type": "object"
+        },
+        "InTotoVulnScanner": {
+            "additionalProperties": false,
+            "description": "The scanner a VULNS predicate records, with its results.",
+            "properties": {
+                "scan_results": {
+                    "description": "The vulnerabilities the scanner found; an empty list means it found none.",
+                    "items": {
+                        "$ref": "#/$defs/InTotoVulnResult"
+                    },
+                    "type": "array"
+                },
+                "scanner_uri": {
+                    "description": "The URI that identifies the scanner's source.",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "scanner_version": {
+                    "description": "The scanner's version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vuln_db": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InTotoVulnDatabase"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The vulnerability database the scanner used."
+                }
+            },
+            "required": [
+                "scanner_uri",
+                "scan_results"
+            ],
+            "title": "InTotoVulnScanner",
+            "type": "object"
+        },
+        "InTotoVulnSeverity": {
+            "additionalProperties": false,
+            "description": "One severity score of a vulnerability, by one scoring method.",
+            "properties": {
+                "severity_method": {
+                    "description": "The scoring method, such as nvd or cvss.",
+                    "type": "string"
+                },
+                "severity_score": {
+                    "description": "The score under that method, as a string.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "severity_method",
+                "severity_score"
+            ],
+            "title": "InTotoVulnSeverity",
+            "type": "object"
+        },
+        "InTotoVulns": {
+            "additionalProperties": false,
+            "description": "The predicate that records the result of one vulnerability scan of the subjects: the scanner, its database and the vulnerabilities it found.",
+            "properties": {
+                "predicate_kind": {
+                    "description": "The kind of predicate, one of this class's descendants.",
+                    "enum": [
+                        "InTotoVulns"
+                    ],
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "scan_metadata": {
+                    "$ref": "#/$defs/InTotoScanMetadata",
+                    "description": "When the scan ran."
+                },
+                "vuln_scanner": {
+                    "$ref": "#/$defs/InTotoVulnScanner",
+                    "description": "The scanner that ran, its version and the database it used."
+                }
+            },
+            "required": [
+                "vuln_scanner",
+                "scan_metadata"
+            ],
+            "title": "InTotoVulns",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/lmodel/in-toto",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": false,
+    "description": "A document that holds in-toto statements and the predicate types they name.",
+    "metamodel_version": "1.12.0",
+    "properties": {
+        "in_toto_predicate_types": {
+            "description": "The predicate types.",
+            "items": {
+                "$ref": "#/$defs/InTotoPredicateType"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "in_toto_statements": {
+            "description": "The statements, each an in-toto attestation without its envelope.",
+            "items": {
+                "$ref": "#/$defs/InTotoStatement"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        }
+    },
+    "title": "in_toto_linkml",
+    "type": "object",
+    "version": "1.2.0"
+}

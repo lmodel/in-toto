@@ -1,0 +1,489 @@
+{
+   "@context": {
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "dcat": "http://www.w3.org/ns/dcat#",
+      "in_toto": "https://in-toto.io/attestation/",
+      "in_toto_linkml": "https://w3id.org/lmodel/in-toto/",
+      "linkml": "https://w3id.org/linkml/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "spdx": "http://spdx.org/rdf/terms#",
+      "@vocab": "https://w3id.org/lmodel/in-toto/",
+      "digest": {
+         "@type": "@id",
+         "@id": "digest"
+      },
+      "algorithm": {
+         "@id": "spdx:algorithm"
+      },
+      "value": {
+         "@id": "value"
+      },
+      "annotation_key": {
+         "@id": "annotation_key"
+      },
+      "annotation_values": {
+         "@id": "annotation_values"
+      },
+      "additional_digests": {
+         "@type": "@id",
+         "@id": "additional_digests"
+      },
+      "blake2b": {
+         "@id": "blake2b"
+      },
+      "blake2s": {
+         "@id": "blake2s"
+      },
+      "dir_hash": {
+         "@id": "dir_hash"
+      },
+      "git_blob": {
+         "@id": "git_blob"
+      },
+      "git_commit": {
+         "@id": "git_commit"
+      },
+      "git_tag": {
+         "@id": "git_tag"
+      },
+      "git_tree": {
+         "@id": "git_tree"
+      },
+      "gost": {
+         "@id": "gost"
+      },
+      "md5": {
+         "@id": "md5"
+      },
+      "ripemd160": {
+         "@id": "ripemd160"
+      },
+      "sha1": {
+         "@id": "sha1"
+      },
+      "sha224": {
+         "@id": "sha224"
+      },
+      "sha256": {
+         "@id": "sha256"
+      },
+      "sha384": {
+         "@id": "sha384"
+      },
+      "sha3_224": {
+         "@id": "sha3_224"
+      },
+      "sha3_256": {
+         "@id": "sha3_256"
+      },
+      "sha3_384": {
+         "@id": "sha3_384"
+      },
+      "sha3_512": {
+         "@id": "sha3_512"
+      },
+      "sha512": {
+         "@id": "sha512"
+      },
+      "sha512_224": {
+         "@id": "sha512_224"
+      },
+      "sha512_256": {
+         "@id": "sha512_256"
+      },
+      "shake128": {
+         "@id": "shake128"
+      },
+      "shake256": {
+         "@id": "shake256"
+      },
+      "sm3": {
+         "@id": "sm3"
+      },
+      "in_toto_predicate_types": {
+         "@type": "@id",
+         "@id": "in_toto_predicate_types"
+      },
+      "in_toto_statements": {
+         "@type": "@id",
+         "@id": "in_toto_statements"
+      },
+      "materials": {
+         "@type": "@id",
+         "@id": "materials"
+      },
+      "step_byproducts": {
+         "@type": "@id",
+         "@id": "step_byproducts"
+      },
+      "step_command": {
+         "@id": "step_command"
+      },
+      "step_environment": {
+         "@type": "@id",
+         "@id": "step_environment"
+      },
+      "step_name": {
+         "@id": "step_name"
+      },
+      "host_id": {
+         "@type": "xsd:anyURI",
+         "@id": "host_id"
+      },
+      "process_event": {
+         "@id": "process_event"
+      },
+      "process_type": {
+         "@type": "xsd:anyURI",
+         "@id": "process_type"
+      },
+      "file_access": {
+         "@type": "@id",
+         "@id": "file_access"
+      },
+      "traced_network": {
+         "@id": "traced_network"
+      },
+      "traced_processes": {
+         "@id": "traced_processes"
+      },
+      "entry_key": {
+         "@id": "entry_key"
+      },
+      "entry_values": {
+         "@id": "entry_values"
+      },
+      "predicate_kind": {
+         "@id": "predicate_kind"
+      },
+      "predicate_specification": {
+         "@type": "xsd:anyURI",
+         "@id": "predicate_specification"
+      },
+      "predicate_type_uri": {
+         "@type": "xsd:anyURI",
+         "@id": "predicate_type_uri"
+      },
+      "predicate_version": {
+         "@id": "predicate_version"
+      },
+      "vetted_as": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "vetted_as"
+      },
+      "reference_attester": {
+         "@type": "@id",
+         "@id": "reference_attester"
+      },
+      "referenced_documents": {
+         "@type": "@id",
+         "@id": "referenced_documents"
+      },
+      "reference_attester_id": {
+         "@type": "xsd:anyURI",
+         "@id": "reference_attester_id"
+      },
+      "package_id": {
+         "@id": "package_id"
+      },
+      "release_purl": {
+         "@type": "xsd:anyURI",
+         "@id": "release_purl"
+      },
+      "annotations": {
+         "@type": "@id",
+         "@id": "annotations"
+      },
+      "content": {
+         "@id": "content"
+      },
+      "download_location": {
+         "@type": "xsd:anyURI",
+         "@id": "download_location"
+      },
+      "media_type": {
+         "@id": "dcat:mediaType"
+      },
+      "resource_name": {
+         "@id": "resource_name"
+      },
+      "monitor_log": {
+         "@type": "@id",
+         "@id": "monitor_log"
+      },
+      "monitored_process": {
+         "@type": "@id",
+         "@id": "monitored_process"
+      },
+      "trace_metadata": {
+         "@type": "@id",
+         "@id": "trace_metadata"
+      },
+      "trace_monitor": {
+         "@type": "@id",
+         "@id": "trace_monitor"
+      },
+      "scai_attribute": {
+         "@id": "scai_attribute"
+      },
+      "scai_conditions": {
+         "@type": "@id",
+         "@id": "scai_conditions"
+      },
+      "scai_evidence": {
+         "@type": "@id",
+         "@id": "scai_evidence"
+      },
+      "scai_target": {
+         "@type": "@id",
+         "@id": "scai_target"
+      },
+      "scai_attributes": {
+         "@type": "@id",
+         "@id": "scai_attributes"
+      },
+      "scai_producer": {
+         "@type": "@id",
+         "@id": "scai_producer"
+      },
+      "scan_finished_on": {
+         "@type": "xsd:dateTime",
+         "@id": "scan_finished_on"
+      },
+      "scan_started_on": {
+         "@type": "xsd:dateTime",
+         "@id": "scan_started_on"
+      },
+      "svr_verifier": {
+         "@type": "@id",
+         "@id": "svr_verifier"
+      },
+      "time_created": {
+         "@type": "xsd:dateTime",
+         "@id": "time_created"
+      },
+      "verified_properties": {
+         "@id": "verified_properties"
+      },
+      "predicate_type": {
+         "@type": "xsd:anyURI",
+         "@id": "predicate_type"
+      },
+      "statement_predicate": {
+         "@type": "@id",
+         "@id": "statement_predicate"
+      },
+      "statement_type": {
+         "@type": "xsd:anyURI",
+         "@id": "statement_type"
+      },
+      "subject": {
+         "@type": "@id",
+         "@id": "subject"
+      },
+      "svr_verifier_id": {
+         "@type": "xsd:anyURI",
+         "@id": "svr_verifier_id"
+      },
+      "configuration": {
+         "@type": "@id",
+         "@id": "configuration"
+      },
+      "failed_tests": {
+         "@id": "failed_tests"
+      },
+      "passed_tests": {
+         "@id": "passed_tests"
+      },
+      "test_result": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "test_result"
+      },
+      "test_run_url": {
+         "@type": "xsd:anyURI",
+         "@id": "test_run_url"
+      },
+      "warned_tests": {
+         "@id": "warned_tests"
+      },
+      "build_finished_on": {
+         "@type": "xsd:dateTime",
+         "@id": "build_finished_on"
+      },
+      "build_started_on": {
+         "@type": "xsd:dateTime",
+         "@id": "build_started_on"
+      },
+      "monitor_config_source": {
+         "@type": "@id",
+         "@id": "monitor_config_source"
+      },
+      "monitor_type": {
+         "@type": "xsd:anyURI",
+         "@id": "monitor_type"
+      },
+      "trace_policy": {
+         "@type": "@id",
+         "@id": "trace_policy"
+      },
+      "db_last_update": {
+         "@type": "xsd:dateTime",
+         "@id": "db_last_update"
+      },
+      "db_uri": {
+         "@type": "xsd:anyURI",
+         "@id": "db_uri"
+      },
+      "db_version": {
+         "@id": "db_version"
+      },
+      "vuln_annotations": {
+         "@type": "@id",
+         "@id": "vuln_annotations"
+      },
+      "vuln_id": {
+         "@id": "vuln_id"
+      },
+      "vuln_severity": {
+         "@type": "@id",
+         "@id": "vuln_severity"
+      },
+      "scan_metadata": {
+         "@type": "@id",
+         "@id": "scan_metadata"
+      },
+      "vuln_scanner": {
+         "@type": "@id",
+         "@id": "vuln_scanner"
+      },
+      "scan_results": {
+         "@type": "@id",
+         "@id": "scan_results"
+      },
+      "scanner_uri": {
+         "@type": "xsd:anyURI",
+         "@id": "scanner_uri"
+      },
+      "scanner_version": {
+         "@id": "scanner_version"
+      },
+      "vuln_db": {
+         "@type": "@id",
+         "@id": "vuln_db"
+      },
+      "severity_method": {
+         "@id": "severity_method"
+      },
+      "severity_score": {
+         "@id": "severity_score"
+      },
+      "resource_uri": {
+         "@type": "xsd:anyURI",
+         "@id": "resource_uri"
+      },
+      "InTotoAdditionalDigest": {
+         "@id": "InTotoAdditionalDigest"
+      },
+      "InTotoAnnotation": {
+         "@id": "InTotoAnnotation"
+      },
+      "InTotoDigestSet": {
+         "@id": "InTotoDigestSet"
+      },
+      "InTotoDocument": {
+         "@id": "InTotoDocument"
+      },
+      "InTotoLink": {
+         "@id": "InTotoLink"
+      },
+      "InTotoLinkMaterial": {
+         "@id": "InTotoLinkMaterial"
+      },
+      "InTotoMonitoredProcess": {
+         "@id": "InTotoMonitoredProcess"
+      },
+      "InTotoMonitorLog": {
+         "@id": "InTotoMonitorLog"
+      },
+      "InTotoObjectEntry": {
+         "@id": "InTotoObjectEntry"
+      },
+      "InTotoPredicate": {
+         "@id": "InTotoPredicate"
+      },
+      "InTotoPredicateType": {
+         "@id": "InTotoPredicateType"
+      },
+      "InTotoReference": {
+         "@id": "InTotoReference"
+      },
+      "InTotoReferenceAttester": {
+         "@id": "InTotoReferenceAttester"
+      },
+      "InTotoReferencedDocument": {
+         "@id": "InTotoReferencedDocument"
+      },
+      "InTotoRelease": {
+         "@id": "InTotoRelease"
+      },
+      "InTotoResourceDescriptor": {
+         "@id": "InTotoResourceDescriptor"
+      },
+      "InTotoRuntimeTrace": {
+         "@id": "InTotoRuntimeTrace"
+      },
+      "InTotoScaiAttributeAssertion": {
+         "@id": "InTotoScaiAttributeAssertion"
+      },
+      "InTotoScaiAttributeReport": {
+         "@id": "InTotoScaiAttributeReport"
+      },
+      "InTotoScanMetadata": {
+         "@id": "InTotoScanMetadata"
+      },
+      "InTotoSimpleVerificationResult": {
+         "@id": "InTotoSimpleVerificationResult"
+      },
+      "InTotoStatement": {
+         "@id": "InTotoStatement"
+      },
+      "InTotoStatementSubject": {
+         "@id": "InTotoStatementSubject"
+      },
+      "InTotoSvrVerifier": {
+         "@id": "InTotoSvrVerifier"
+      },
+      "InTotoTestResult": {
+         "@id": "InTotoTestResult"
+      },
+      "InTotoTraceMetadata": {
+         "@id": "InTotoTraceMetadata"
+      },
+      "InTotoTraceMonitor": {
+         "@id": "InTotoTraceMonitor"
+      },
+      "InTotoVulnDatabase": {
+         "@id": "InTotoVulnDatabase"
+      },
+      "InTotoVulnResult": {
+         "@id": "InTotoVulnResult"
+      },
+      "InTotoVulns": {
+         "@id": "InTotoVulns"
+      },
+      "InTotoVulnScanner": {
+         "@id": "InTotoVulnScanner"
+      },
+      "InTotoVulnSeverity": {
+         "@id": "InTotoVulnSeverity"
+      }
+   }
+}
