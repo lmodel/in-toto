@@ -56,6 +56,12 @@
     "MD024": {
       "siblings_only": true
     },
+    // The bundle's indexes link the in-toto predicate type named Link by its
+    // title, which MD059 reads as the non-descriptive word "link". The rule's
+    // other default texts still fail.
+    "MD059": {
+      "prohibited_texts": ["click here", "here", "more"]
+    },
     // Tables here (and everywhere on GitHub) pair a padded header (`| Col |`)
     // with a bare `|---|` separator row - the GFM convention. MD060 treats
     // that pairing as internally inconsistent and wants the separator padded
