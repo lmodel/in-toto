@@ -1,0 +1,10 @@
+# One assertion, the artifact it applies to and the evidence for it.
+scai_attribute: VALID_ENCLAVE
+scai_target:
+  resource_name: enclave.signed
+  digest:
+    sha256: abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890
+scai_evidence:
+  resource_name: enclave-attestation.json
+  media_type: application/json
+  resource_uri: https://example.com/evidence/enclave-attestation.json

@@ -1,0 +1,4 @@
+# The database a scanner used.
+db_uri: pkg:github/aquasecurity/trivy-db/commit/4c76bb580b2736d67751410fa4ab66d2b6b9b27d
+db_version: v1-2021080612
+db_last_update: "2021-08-06T12:00:00Z"

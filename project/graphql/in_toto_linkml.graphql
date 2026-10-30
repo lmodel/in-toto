@@ -1,0 +1,288 @@
+# metamodel_version: 1.12.0
+# version: 1.2.0
+enum InTotoTestResultValue
+  {
+    PASSED
+    WARNED
+    FAILED
+  }
+
+enum InTotoVettedPredicate
+  {
+    CYCLONEDX
+    LINK
+    REFERENCE
+    RELEASE
+    RUNTIME_TRACE
+    SCAI
+    SLSA_PROVENANCE
+    SLSA_VERIFICATION_SUMMARY
+    SPDX2
+    SPDX3
+    SIMPLE_VERIFICATION_RESULT
+    TEST_RESULT
+    VULNS
+  }
+
+type InTotoAdditionalDigest
+  {
+    algorithm: String!
+    value: String!
+  }
+
+type InTotoAnnotation
+  {
+    annotationKey: String!
+    annotationValues: [String]
+  }
+
+type InTotoDigestSet
+  {
+    sha256: String
+    sha224: String
+    sha384: String
+    sha512: String
+    sha512224: String
+    sha512256: String
+    sha3224: String
+    sha3256: String
+    sha3384: String
+    sha3512: String
+    shake128: String
+    shake256: String
+    blake2b: String
+    blake2s: String
+    ripemd160: String
+    sm3: String
+    gost: String
+    sha1: String
+    md5: String
+    dirHash: String
+    gitCommit: String
+    gitTree: String
+    gitBlob: String
+    gitTag: String
+    additionalDigests: [InTotoAdditionalDigest]
+  }
+
+type InTotoDocument
+  {
+    inTotoStatements: [InTotoStatement]
+    inTotoPredicateTypes: [InTotoPredicateType]
+  }
+
+type InTotoLink
+  {
+    predicateKind: String
+    stepName: String!
+    stepCommand: [String]
+    materials: [InTotoLinkMaterial]
+    stepByproducts: [InTotoObjectEntry]
+    stepEnvironment: [InTotoObjectEntry]
+  }
+
+type InTotoLinkMaterial
+  {
+    resourceUri: InTotoResourceUri
+    resourceName: String
+    downloadLocation: InTotoResourceUri
+    mediaType: String
+    content: String
+    annotations: [InTotoAnnotation]
+    digest: InTotoDigestSet!
+  }
+
+type InTotoMonitoredProcess
+  {
+    hostId: String!
+    processType: InTotoTypeUri!
+    processEvent: String!
+  }
+
+type InTotoMonitorLog
+  {
+    tracedProcesses: [String]
+    tracedNetwork: [String]
+    fileAccess: [InTotoResourceDescriptor]
+  }
+
+type InTotoObjectEntry
+  {
+    entryKey: String!
+    entryValues: [String]
+  }
+
+interface InTotoPredicate
+  {
+    predicateKind: String
+  }
+
+type InTotoPredicateType
+  {
+    predicateTypeUri: InTotoTypeUri!
+    predicateVersion: String
+    predicateSpecification: String
+    vettedAs: InTotoVettedPredicate
+  }
+
+type InTotoReference
+  {
+    predicateKind: String
+    referenceAttester: InTotoReferenceAttester!
+    referencedDocuments: [InTotoReferencedDocument]!
+  }
+
+type InTotoReferenceAttester
+  {
+    referenceAttesterId: InTotoTypeUri!
+  }
+
+type InTotoReferencedDocument
+  {
+    resourceUri: InTotoResourceUri
+    digest: InTotoDigestSet
+    resourceName: String
+    downloadLocation: InTotoResourceUri
+    mediaType: String
+    content: String
+    annotations: [InTotoAnnotation]
+  }
+
+type InTotoRelease
+  {
+    predicateKind: String
+    releasePurl: InTotoResourceUri!
+    packageId: String
+  }
+
+type InTotoResourceDescriptor
+  {
+    resourceUri: InTotoResourceUri
+    digest: InTotoDigestSet
+    resourceName: String
+    downloadLocation: InTotoResourceUri
+    mediaType: String
+    content: String
+    annotations: [InTotoAnnotation]
+  }
+
+type InTotoRuntimeTrace
+  {
+    predicateKind: String
+    traceMonitor: InTotoTraceMonitor!
+    monitoredProcess: InTotoMonitoredProcess!
+    monitorLog: InTotoMonitorLog!
+    traceMetadata: InTotoTraceMetadata
+  }
+
+type InTotoScaiAttributeAssertion
+  {
+    scaiAttribute: String!
+    scaiTarget: InTotoResourceDescriptor
+    scaiConditions: [InTotoObjectEntry]
+    scaiEvidence: InTotoResourceDescriptor
+  }
+
+type InTotoScaiAttributeReport
+  {
+    predicateKind: String
+    scaiAttributes: [InTotoScaiAttributeAssertion]!
+    scaiProducer: InTotoResourceDescriptor
+  }
+
+type InTotoScanMetadata
+  {
+    scanStartedOn: InTotoTimestamp!
+    scanFinishedOn: InTotoTimestamp!
+  }
+
+type InTotoSimpleVerificationResult
+  {
+    predicateKind: String
+    svrVerifier: InTotoSvrVerifier!
+    timeCreated: InTotoTimestamp!
+    verifiedProperties: [String]!
+  }
+
+type InTotoStatement
+  {
+    predicate: InTotoPredicate
+    statementType: InTotoTypeUri!
+    subject: [InTotoStatementSubject]!
+    predicateType: InTotoTypeUri!
+  }
+
+type InTotoStatementSubject
+  {
+    resourceUri: InTotoResourceUri
+    resourceName: String
+    downloadLocation: InTotoResourceUri
+    mediaType: String
+    content: String
+    annotations: [InTotoAnnotation]
+    digest: InTotoDigestSet!
+  }
+
+type InTotoSvrVerifier
+  {
+    svrVerifierId: InTotoTypeUri!
+  }
+
+type InTotoTestResult
+  {
+    predicateKind: String
+    testResult: InTotoTestResultValue!
+    configuration: [InTotoResourceDescriptor]!
+    testRunUrl: InTotoResourceUri
+    passedTests: [String]
+    warnedTests: [String]
+    failedTests: [String]
+  }
+
+type InTotoTraceMetadata
+  {
+    buildStartedOn: InTotoTimestamp
+    buildFinishedOn: InTotoTimestamp
+  }
+
+type InTotoTraceMonitor
+  {
+    monitorType: InTotoTypeUri!
+    monitorConfigSource: InTotoResourceDescriptor
+    tracePolicy: [InTotoObjectEntry]
+  }
+
+type InTotoVulnDatabase
+  {
+    dbUri: InTotoResourceUri
+    dbVersion: String
+    dbLastUpdate: InTotoTimestamp!
+  }
+
+type InTotoVulnResult
+  {
+    vulnId: String!
+    vulnSeverity: [InTotoVulnSeverity]!
+    vulnAnnotations: [InTotoObjectEntry]
+  }
+
+type InTotoVulns
+  {
+    predicateKind: String
+    vulnScanner: InTotoVulnScanner!
+    scanMetadata: InTotoScanMetadata!
+  }
+
+type InTotoVulnScanner
+  {
+    scannerUri: InTotoResourceUri!
+    scannerVersion: String
+    vulnDb: InTotoVulnDatabase
+    scanResults: [InTotoVulnResult]!
+  }
+
+type InTotoVulnSeverity
+  {
+    severityMethod: String!
+    severityScore: String!
+  }

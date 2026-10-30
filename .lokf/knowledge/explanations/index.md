@@ -1,0 +1,4 @@
+# Explanations
+
+* [Scope, influences and mappings](scope-and-influences.md) - What the schema renders and what it leaves out: the statement layer and eight vetted predicates of the in-toto Attestation Framework at v1.2.0, with lmodel/slsa as its one influence on layout and names. It maps each predicate to its type URI, and models neither the envelope, the bundle, SLSA's two predicates nor the bill-of-materials predicates' bodies.
+* [Element names and the shared namespace](element-names.md) - How the schema names its elements so that its adapt copy can sit beside LOKF's schema and the neighbours' copies: classes with the `InToto` prefix, the core's names as lmodel/slsa gave them, the statement's `predicate`, which the copy renames `in_toto_linkml_predicate`, `media_type` and `algorithm` with LOKF's IRIs, and the predicates' keys prefixed or named apart, which `tests/test_schema_rules.py` checks.

@@ -1,0 +1,4 @@
+# One material of a link, by its name and digest.
+resource_name: Makefile
+digest:
+  sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef

@@ -1,0 +1,5 @@
+# Fails at: /test_result
+# Invalid: a test run's result is PASSED, WARNED or FAILED.
+test_result: SKIPPED
+configuration:
+  - resource_uri: https://github.com/example/app/blob/main/.github/workflows/ci.yml

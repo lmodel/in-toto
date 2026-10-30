@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a test-result predicate says how the run ended.
+configuration:
+  - resource_uri: https://github.com/example/app/blob/main/.github/workflows/ci.yml

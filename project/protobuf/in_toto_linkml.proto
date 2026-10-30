@@ -1,0 +1,395 @@
+syntax = "proto3";
+package in_toto_linkml;
+// metamodel_version: 1.12.0
+// version: 1.2.0
+// One digest under an algorithm that InTotoDigestSet does not name, such as an SCS's own revision type.
+message InTotoAdditionalDigest {
+  // The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id.
+  string algorithm = 1;
+  // The digest under that algorithm, in the encoding the algorithm documents.
+  string value = 2;
+}
+// One vendor-specific annotation on a resource descriptor: a key and its values.
+message InTotoAnnotation {
+  // The annotation's key.
+  string annotation_key = 1;
+  // The annotation's values.
+  repeated string annotation_values = 2;
+}
+// A set of one or more digests over one artifact, keyed by algorithm, from which a consumer picks the algorithm it trusts.
+message InTotoDigestSet {
+  // The SHA-256 digest of the artifact.
+  string sha256 = 1;
+  // The SHA-224 digest of the artifact.
+  string sha224 = 2;
+  // The SHA-384 digest of the artifact.
+  string sha384 = 3;
+  // The SHA-512 digest of the artifact.
+  string sha512 = 4;
+  // The SHA-512/224 digest of the artifact.
+  string sha512_N224 = 5;
+  // The SHA-512/256 digest of the artifact.
+  string sha512_N256 = 6;
+  // The SHA3-224 digest of the artifact.
+  string sha3_N224 = 7;
+  // The SHA3-256 digest of the artifact.
+  string sha3_N256 = 8;
+  // The SHA3-384 digest of the artifact.
+  string sha3_N384 = 9;
+  // The SHA3-512 digest of the artifact.
+  string sha3_N512 = 10;
+  // The SHAKE128 digest of the artifact, of at least 32 bytes.
+  string shake128 = 11;
+  // The SHAKE256 digest of the artifact, of at least 32 bytes.
+  string shake256 = 12;
+  // The BLAKE2b digest of the artifact, of 32 to 64 bytes.
+  string blake2b = 13;
+  // The BLAKE2s digest of the artifact, at its full 32 bytes.
+  string blake2s = 14;
+  // The RIPEMD-160 digest of the artifact.
+  string ripemd160 = 15;
+  // The SM3 digest of the artifact.
+  string sm3 = 16;
+  // The GOST R 34.11 digest of the artifact, of 256 or 512 bits.
+  string gost = 17;
+  // The SHA-1 digest of the artifact.
+  string sha1 = 18;
+  // The MD5 digest of the artifact.
+  string md5 = 19;
+  // A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64.
+  string dir_hash = 20;
+  // The git commit id of a source revision.
+  string git_commit = 21;
+  // The git tree id of a source revision's content, or of any file tree.
+  string git_tree = 22;
+  // The git blob id of a file's content.
+  string git_blob = 23;
+  // The git object id of an annotated tag.
+  string git_tag = 24;
+  // The digests under algorithms this class does not name.
+  repeated InTotoAdditionalDigest additional_digests = 25;
+}
+// A document that holds in-toto statements and the predicate types they name.
+message InTotoDocument {
+  // The statements, each an in-toto attestation without its envelope.
+  repeated InTotoStatement in_toto_statements = 1;
+  // The predicate types.
+  repeated InTotoPredicateType in_toto_predicate_types = 2;
+}
+// The predicate that records one step of an in-toto layout: the command it ran and the materials it read, for a supply chain that migrates from in-toto 0.9 links.
+message InTotoLink {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The name of the step, which a layout uses to find the link metadata it verifies.
+  string step_name = 2;
+  // The command the step ran, and its arguments; possibly empty.
+  repeated string step_command = 3;
+  // The artifacts the step read.
+  repeated InTotoLinkMaterial materials = 4;
+  // What else the step recorded, such as its standard output, in keys the in-toto specification describes.
+  repeated InTotoObjectEntry step_byproducts = 5;
+  // The environment the step ran in, in keys the producer chooses.
+  repeated InTotoObjectEntry step_environment = 6;
+}
+// One material of a link, a resource descriptor with a name and a digest.
+message InTotoLinkMaterial {
+  // The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.
+  string resource_uri = 1;
+  // A name for the resource within the attestation that carries it.
+  string resource_name = 2;
+  // Where the resource can be fetched, when that differs from its identifying URI.
+  string download_location = 3;
+  // The IANA media type of the resource's content.
+  string media_type = 4;
+  // The resource's content itself, base64-encoded, for a resource small enough to carry inline.
+  string content = 5;
+  // Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.
+  repeated InTotoAnnotation annotations = 6;
+  // The cryptographic digests of a resource's content, keyed by algorithm.
+  InTotoDigestSet digest = 7;
+}
+// The process a runtime trace watched.
+message InTotoMonitoredProcess {
+  // The URI that identifies the host the process ran on.
+  string host_id = 1;
+  // The URI of the type of process, such as the build type when the monitor watched a build.
+  string process_type = 2;
+  // The job or task the attestation is about.
+  string process_event = 3;
+}
+// The events a runtime trace's monitor recorded: processes, network activity and file accesses, at least one of them.
+message InTotoMonitorLog {
+  // The processes the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.
+  repeated string traced_processes = 1;
+  // The network activity the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.
+  repeated string traced_network = 2;
+  // The files the run accessed, each with its path and digests; one file may appear more than once, with different digests if it changed.
+  repeated InTotoResourceDescriptor file_access = 3;
+}
+// One key of a JSON object whose keys the framework leaves to the producer, and the key's values.
+message InTotoObjectEntry {
+  // The object's key.
+  string entry_key = 1;
+  // The key's values.
+  repeated string entry_values = 2;
+}
+// The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind.
+message InTotoPredicate {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+}
+// A type of predicate an in-toto statement can carry, named by the URI a statement's predicate_type holds.
+message InTotoPredicateType {
+  // The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1.
+  string predicate_type_uri = 1;
+  // The version of the predicate's specification, as its page states it, such as 0.1.0.
+  string predicate_version = 2;
+  // The page that specifies the predicate.
+  string predicate_specification = 3;
+  // The vetted predicate this type is, when the in-toto project vetted it.
+  InTotoVettedPredicate vetted_as = 4;
+}
+// The predicate that points from the subjects, as a whole, to documents about them, such as a bill of materials.
+message InTotoReference {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The system that provides the documents.
+  InTotoReferenceAttester reference_attester = 2;
+  // The documents referred to.
+  repeated InTotoReferencedDocument referenced_documents = 3;
+}
+// The system that provides the documents a Reference predicate points to.
+message InTotoReferenceAttester {
+  // The URI that identifies the system.
+  string reference_attester_id = 1;
+}
+// One document a Reference predicate points to: a resource descriptor with a download location and a media type.
+message InTotoReferencedDocument {
+  // The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.
+  string resource_uri = 1;
+  // The cryptographic digests of a resource's content, keyed by algorithm.
+  InTotoDigestSet digest = 2;
+  // A name for the resource within the attestation that carries it.
+  string resource_name = 3;
+  // Where the resource can be fetched, when that differs from its identifying URI.
+  string download_location = 4;
+  // The IANA media type of the resource's content.
+  string media_type = 5;
+  // The resource's content itself, base64-encoded, for a resource small enough to carry inline.
+  string content = 6;
+  // Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.
+  repeated InTotoAnnotation annotations = 7;
+}
+// The predicate that ties the subjects to one release name and version of a package, so that consumers can check what the release should contain.
+message InTotoRelease {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.
+  string release_purl = 2;
+  // A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name.
+  string package_id = 3;
+}
+// A reference to a software artifact or other resource by URI or digest, or the resource itself as content, with optional metadata.
+message InTotoResourceDescriptor {
+  // The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.
+  string resource_uri = 1;
+  // The cryptographic digests of a resource's content, keyed by algorithm.
+  InTotoDigestSet digest = 2;
+  // A name for the resource within the attestation that carries it.
+  string resource_name = 3;
+  // Where the resource can be fetched, when that differs from its identifying URI.
+  string download_location = 4;
+  // The IANA media type of the resource's content.
+  string media_type = 5;
+  // The resource's content itself, base64-encoded, for a resource small enough to carry inline.
+  string content = 6;
+  // Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.
+  repeated InTotoAnnotation annotations = 7;
+}
+// The predicate that records what a monitor traced while a supply chain step, such as a build, ran.
+message InTotoRuntimeTrace {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The monitor instance that traced the run.
+  InTotoTraceMonitor trace_monitor = 2;
+  // The process the monitor watched.
+  InTotoMonitoredProcess monitored_process = 3;
+  // The events the monitor traced.
+  InTotoMonitorLog monitor_log = 4;
+  // Other properties of the monitoring event.
+  InTotoTraceMetadata trace_metadata = 5;
+}
+// One SCAI assertion: an attribute of the subject or its producer, what it applies to, under which conditions, and the evidence for it.
+message InTotoScaiAttributeAssertion {
+  // The functional feature asserted, in a form the producer and consumer agree on.
+  string scai_attribute = 1;
+  // The artifact or metadata object the attribute applies to.
+  InTotoResourceDescriptor scai_target = 2;
+  // The conditions under which the attribute arises.
+  repeated InTotoObjectEntry scai_conditions = 3;
+  // The evidence, authenticated where possible, for the asserted attribute.
+  InTotoResourceDescriptor scai_evidence = 4;
+}
+// The Software Supply Chain Attribute Integrity (SCAI) predicate: assertions about functional attributes of the subjects or their producer, each with the evidence for it.
+message InTotoScaiAttributeReport {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // One or more attribute assertions about the subjects.
+  repeated InTotoScaiAttributeAssertion scai_attributes = 2;
+  // The producer of the subjects, where that applies.
+  InTotoResourceDescriptor scai_producer = 3;
+}
+// When a vulnerability scan ran.
+message InTotoScanMetadata {
+  // When the scan started.
+  string scan_started_on = 1;
+  // When the scan finished.
+  string scan_finished_on = 2;
+}
+// The predicate that says a verifier evaluated the subjects against one or more policies, and which properties passed.
+message InTotoSimpleVerificationResult {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The entity that performed the verification.
+  InTotoSvrVerifier svr_verifier = 2;
+  // When the verification took place.
+  string time_created = 3;
+  // The properties of the subjects that passed verification, scoped to the framework or policy verified, such as SLSA_BUILD_LEVEL_3.
+  repeated string verified_properties = 4;
+}
+// The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself.
+message InTotoStatement {
+  // The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty.
+  InTotoPredicate predicate = 1;
+  // The in-toto statement type, always https://in-toto.io/Statement/v1.
+  string statement_type = 2;
+  // The artifacts the predicate is about, each with a digest.
+  repeated InTotoStatementSubject subject = 3;
+  // The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
+  string predicate_type = 4;
+}
+// One artifact an in-toto statement is about: a resource descriptor that carries a digest.
+message InTotoStatementSubject {
+  // The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference.
+  string resource_uri = 1;
+  // A name for the resource within the attestation that carries it.
+  string resource_name = 2;
+  // Where the resource can be fetched, when that differs from its identifying URI.
+  string download_location = 3;
+  // The IANA media type of the resource's content.
+  string media_type = 4;
+  // The resource's content itself, base64-encoded, for a resource small enough to carry inline.
+  string content = 5;
+  // Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records.
+  repeated InTotoAnnotation annotations = 6;
+  // The cryptographic digests of a resource's content, keyed by algorithm.
+  InTotoDigestSet digest = 7;
+}
+// The entity that performed a simple verification.
+message InTotoSvrVerifier {
+  // The URI that identifies the verifier, versioned when its verification logic changes materially.
+  string svr_verifier_id = 1;
+}
+// The predicate that records the result of one run of a test suite against the subjects, with the names of the tests that passed, warned and failed.
+message InTotoTestResult {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The result of the test run.
+  InTotoTestResultValue test_result = 2;
+  // The configuration the test run used.
+  repeated InTotoResourceDescriptor configuration = 3;
+  // Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it.
+  string test_run_url = 4;
+  // The names of the tests that passed.
+  repeated string passed_tests = 5;
+  // The names of the tests that expressed a warning.
+  repeated string warned_tests = 6;
+  // The names of the tests that failed.
+  repeated string failed_tests = 7;
+}
+// Other properties of a runtime trace's monitoring event.
+message InTotoTraceMetadata {
+  // When the monitored build started.
+  string build_started_on = 1;
+  // When the monitored build finished.
+  string build_finished_on = 2;
+}
+// The monitor instance that produced a runtime trace.
+message InTotoTraceMonitor {
+  // The URI of the monitor's type.
+  string monitor_type = 1;
+  // The monitor's configuration.
+  InTotoResourceDescriptor monitor_config_source = 2;
+  // The trace policy the monitor applied, in the monitor's own format, which monitor_type names.
+  repeated InTotoObjectEntry trace_policy = 3;
+}
+// The vulnerability database a scanner used.
+message InTotoVulnDatabase {
+  // The URI that identifies the database's source.
+  string db_uri = 1;
+  // The database's version.
+  string db_version = 2;
+  // When the database was last updated.
+  string db_last_update = 3;
+}
+// One vulnerability a scanner found.
+message InTotoVulnResult {
+  // The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.
+  string vuln_id = 1;
+  // The vulnerability's severity, by one or more scoring methods.
+  repeated InTotoVulnSeverity vuln_severity = 2;
+  // Custom information the scanner adds, as key and value pairs.
+  repeated InTotoObjectEntry vuln_annotations = 3;
+}
+// The predicate that records the result of one vulnerability scan of the subjects: the scanner, its database and the vulnerabilities it found.
+message InTotoVulns {
+  // The kind of predicate, one of this class's descendants.
+  string predicate_kind = 1;
+  // The scanner that ran, its version and the database it used.
+  InTotoVulnScanner vuln_scanner = 2;
+  // When the scan ran.
+  InTotoScanMetadata scan_metadata = 3;
+}
+// The scanner a VULNS predicate records, with its results.
+message InTotoVulnScanner {
+  // The URI that identifies the scanner's source.
+  string scanner_uri = 1;
+  // The scanner's version.
+  string scanner_version = 2;
+  // The vulnerability database the scanner used.
+  InTotoVulnDatabase vuln_db = 3;
+  // The vulnerabilities the scanner found; an empty list means it found none.
+  repeated InTotoVulnResult scan_results = 4;
+}
+// One severity score of a vulnerability, by one scoring method.
+message InTotoVulnSeverity {
+  // The scoring method, such as nvd or cvss.
+  string severity_method = 1;
+  // The score under that method, as a string.
+  string severity_score = 2;
+}
+
+// The result of a test run, as a Test Result predicate records it.
+enum InTotoTestResultValue {
+  IN_TOTO_TEST_RESULT_VALUE_UNSPECIFIED = 0;
+  IN_TOTO_TEST_RESULT_VALUE_PASSED = 1;
+  IN_TOTO_TEST_RESULT_VALUE_WARNED = 2;
+  IN_TOTO_TEST_RESULT_VALUE_FAILED = 3;
+}
+// The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each with the predicate_type a statement of it carries at the version its page describes.
+enum InTotoVettedPredicate {
+  IN_TOTO_VETTED_PREDICATE_UNSPECIFIED = 0;
+  IN_TOTO_VETTED_PREDICATE_CYCLONEDX = 1;
+  IN_TOTO_VETTED_PREDICATE_LINK = 2;
+  IN_TOTO_VETTED_PREDICATE_REFERENCE = 3;
+  IN_TOTO_VETTED_PREDICATE_RELEASE = 4;
+  IN_TOTO_VETTED_PREDICATE_RUNTIME_TRACE = 5;
+  IN_TOTO_VETTED_PREDICATE_SCAI = 6;
+  IN_TOTO_VETTED_PREDICATE_SLSA_PROVENANCE = 7;
+  IN_TOTO_VETTED_PREDICATE_SLSA_VERIFICATION_SUMMARY = 8;
+  IN_TOTO_VETTED_PREDICATE_SPDX2 = 9;
+  IN_TOTO_VETTED_PREDICATE_SPDX3 = 10;
+  IN_TOTO_VETTED_PREDICATE_SIMPLE_VERIFICATION_RESULT = 11;
+  IN_TOTO_VETTED_PREDICATE_TEST_RESULT = 12;
+  IN_TOTO_VETTED_PREDICATE_VULNS = 13;
+}

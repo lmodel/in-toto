@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a predicate type is named by its URI.
+predicate_version: 0.1.0
+vetted_as: TEST_RESULT

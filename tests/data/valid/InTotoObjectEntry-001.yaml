@@ -1,0 +1,4 @@
+# One key of an opaque object, such as a link's byproducts.
+entry_key: stdout
+entry_values:
+  - build finished

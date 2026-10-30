@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a monitor is named by its type's URI.
+monitor_config_source:
+  resource_uri: https://example.com/tetragon-config.yaml

@@ -1,0 +1,4 @@
+# One subject of a statement: a file, by its name and digest.
+resource_name: app.tar.gz
+digest:
+  sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef

@@ -1,0 +1,5 @@
+# The digest set page's non-cryptographic digest of a virtual machine image:
+# an Amazon Resource Name under an algorithm the set does not name.
+additional_digests:
+  - algorithm: arn
+    value: arn:aws:ec2:region:123:image/ami-123abcd

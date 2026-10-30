@@ -1,0 +1,3 @@
+# Fails at: /
+# Invalid: a test-result predicate names the configuration the run used.
+test_result: PASSED

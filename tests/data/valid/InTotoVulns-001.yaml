@@ -1,0 +1,11 @@
+# A scan that found one vulnerability.
+vuln_scanner:
+  scanner_uri: pkg:github/anchore/grype@v0.74.0
+  scan_results:
+    - vuln_id: GHSA-fxph-q3j8-mv87
+      vuln_severity:
+        - severity_method: cvss_score
+          severity_score: "9.8"
+scan_metadata:
+  scan_started_on: "2026-03-18T12:00:00Z"
+  scan_finished_on: "2026-03-18T12:01:00Z"

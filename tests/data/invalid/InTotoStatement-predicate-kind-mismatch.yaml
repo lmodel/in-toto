@@ -1,0 +1,14 @@
+# Fails at: /predicate
+# Invalid: a verification result's fields in a test-result predicate.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://in-toto.io/attestation/test-result/v0.1
+predicate:
+  predicate_kind: InTotoTestResult
+  test_result: PASSED
+  configuration: []
+  verified_properties:
+    - SLSA_BUILD_LEVEL_3

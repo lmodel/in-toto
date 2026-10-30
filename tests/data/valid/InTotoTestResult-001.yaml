@@ -1,0 +1,13 @@
+# A test run that failed one test.
+test_result: FAILED
+configuration:
+  - resource_name: .github/workflows/ci.yml
+    download_location: https://github.com/example/app/blob/1a2b3c4/.github/workflows/ci.yml
+    digest:
+      git_blob: ebebf8d1d4e5a7e5c3f5e1b0c7f1e3a9b8c7d6e5
+test_run_url: https://github.com/example/app/actions/runs/123456789
+passed_tests:
+  - unit
+  - integration
+failed_tests:
+  - integration-timeout

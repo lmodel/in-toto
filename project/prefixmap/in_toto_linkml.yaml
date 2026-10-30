@@ -1,0 +1,7 @@
+{
+   "dcat": "http://www.w3.org/ns/dcat#",
+   "in_toto": "https://in-toto.io/attestation/",
+   "in_toto_linkml": "https://w3id.org/lmodel/in-toto/",
+   "linkml": "https://w3id.org/linkml/",
+   "spdx": "http://spdx.org/rdf/terms#"
+}

@@ -1,0 +1,8 @@
+# A monitor with its configuration and trace policy.
+monitor_type: https://github.com/cilium/tetragon
+monitor_config_source:
+  resource_uri: https://example.com/tetragon-config.yaml
+trace_policy:
+  - entry_key: kind
+    entry_values:
+      - TracingPolicy

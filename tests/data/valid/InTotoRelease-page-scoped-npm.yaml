@@ -1,0 +1,4 @@
+# The Release page's first example: a scoped npm package, whose purl keeps
+# the scope's @ unencoded before the version's.
+release_purl: pkg:npm/@angular/http@7.2.16
+package_id: "1234567890"

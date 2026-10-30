@@ -1,0 +1,4 @@
+# The build a monitor watched.
+host_id: https://github.com/actions/runner
+process_type: https://actions.github.io/buildtypes/workflow/v1
+process_event: build

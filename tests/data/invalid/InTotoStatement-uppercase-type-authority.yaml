@@ -1,0 +1,8 @@
+# Fails at: /predicate_type
+# Invalid: a type URI's scheme and authority are lowercase.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://In-Toto.io/attestation/test-result/v0.1

@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: a reference names who provides the documents.
+referenced_documents:
+  - download_location: https://example.com/app.spdx.json
+    media_type: application/spdx+json

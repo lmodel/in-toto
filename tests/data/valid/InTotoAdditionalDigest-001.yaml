@@ -1,0 +1,4 @@
+# A revision of a source control system that uses no cryptographic digest,
+# under the canonical revision type it defines.
+algorithm: svn_revision_id
+value: https://svn.example.com/repo@4242

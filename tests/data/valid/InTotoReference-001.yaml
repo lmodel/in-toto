@@ -1,0 +1,8 @@
+# Two SBOMs for the subjects as a whole.
+reference_attester:
+  reference_attester_id: https://github.com/example/app/actions
+referenced_documents:
+  - download_location: https://example.com/app.spdx.json
+    media_type: application/spdx+json
+  - download_location: https://example.com/app.cdx.json
+    media_type: application/vnd.cyclonedx+json

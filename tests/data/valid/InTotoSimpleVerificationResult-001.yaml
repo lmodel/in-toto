@@ -1,0 +1,6 @@
+# A verifier found the artifact at SLSA Build Level 3.
+svr_verifier:
+  svr_verifier_id: https://verifier.example.com/policy-engine/v2
+time_created: "2026-03-18T12:00:00.52Z"
+verified_properties:
+  - SLSA_BUILD_LEVEL_3

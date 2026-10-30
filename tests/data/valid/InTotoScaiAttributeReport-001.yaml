@@ -1,0 +1,9 @@
+# A report with one assertion and its producer.
+scai_attributes:
+  - scai_attribute: WITH_STACK_PROTECTION
+    scai_conditions:
+      - entry_key: flags
+        entry_values:
+          - -fstack-protector*
+scai_producer:
+  resource_uri: https://github.com/example/app/.github/workflows/build.yml

@@ -1,0 +1,9 @@
+# A scan that found nothing: an empty result list, which the specification
+# allows. The JSON Schema validator accepts it; the generated dataclasses read
+# an empty required list as a missing one, so the example waits here.
+vuln_scanner:
+  scanner_uri: pkg:github/anchore/grype@v0.74.0
+  scan_results: []
+scan_metadata:
+  scan_started_on: "2026-03-18T12:00:00Z"
+  scan_finished_on: "2026-03-18T12:01:00Z"

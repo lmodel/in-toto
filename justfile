@@ -106,26 +106,21 @@ clean: _wsl2_compat_check _clean_project
 [group('model development')]
 site: gen-project gen-doc
 
-# Deploy documentation site to Github Pages
-[group('deployment')]
-deploy: site
-  mkd-gh-deploy
-
 # Run all tests
 [group('model development')]
 test: _test-schema _test-python _test-examples
 
-# Run linting
+# Run linting, errors only (CI runs the same command)
 [group('model development')]
 lint:
-  uv run linkml-lint {{source_schema_dir}}
+  uv run linkml-lint --ignore-warnings {{source_schema_dir}}
 
 # Generate md documentation for the schema and add artifacts
 [group('model development')]
 gen-doc: _gen-yaml && _add-artifacts
   uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
 
-# Build docs and run test server
+# Build docs and serve the website locally
 [group('model development')]
 testdoc: gen-doc _serve
 
@@ -239,9 +234,9 @@ _gen-yaml:
 # Overridable recipe to add project-specific artifacts to the distribution schema path
 _add-artifacts:
 
-# Run documentation server
+# Run the website's development server
 _serve:
-  uv run mkdocs serve
+  cd website && npm ci --ignore-scripts && npm run dev
 
 # Initialize git repository
 _git-init:

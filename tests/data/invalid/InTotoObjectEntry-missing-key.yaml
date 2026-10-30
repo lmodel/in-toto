@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: an entry names its key.
+entry_values:
+  - build finished

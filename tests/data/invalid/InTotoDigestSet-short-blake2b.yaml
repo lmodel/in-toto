@@ -1,0 +1,3 @@
+# Fails at: /blake2b
+# Invalid: a BLAKE2b digest has at least 32 bytes, so 64 hexadecimal digits.
+blake2b: ef15

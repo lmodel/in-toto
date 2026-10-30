@@ -1,0 +1,3 @@
+# Fails at: /resource_uri
+# Invalid: a resource URI's scheme and authority are lowercase.
+resource_uri: HTTPS://github.com/actions/runner

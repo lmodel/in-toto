@@ -1,0 +1,7 @@
+# Fails at: /
+# Invalid: a statement names its predicate's type.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef

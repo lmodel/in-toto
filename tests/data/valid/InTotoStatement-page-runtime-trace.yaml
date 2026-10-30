@@ -1,0 +1,30 @@
+# The Runtime Trace page's example, in this schema's keys, with predicate_kind
+# naming the predicate's class and two of its five process events, each as its
+# JSON text. The monitor's configSource, an empty object there, is left out,
+# since the page treats an empty object as unset.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: ttl.sh/testin123
+    digest:
+      sha256: def2bdf8cee687d5889d51923d7907c441f1a61958f1e5dfb07f53041c83745f
+predicate_type: https://in-toto.io/attestation/runtime-trace/v0.1
+predicate:
+  predicate_kind: InTotoRuntimeTrace
+  trace_monitor:
+    monitor_type: https://github.com/cilium/tetragon/v0.8.4
+    trace_policy:
+      - entry_key: policies
+        entry_values:
+          - '{"Name": "connect", "Config": ""}'
+          - '{"Name": "sys-read-follow-prefix", "Config": ""}'
+  monitored_process:
+    host_id: https://tekton.dev/chains/v2
+    process_type: https://tekton.dev/attestations/chains@v2
+    process_event: run-image-pipelinerun-build-trusted
+  monitor_log:
+    traced_processes:
+      - '{"eventType": "process", "processBinary": "/ko-app/entrypoint", "arguments": ["init /ko-app/entrypoint /tekton/bin/entrypoint step-prepare step-create step-results"], "privileged": null}'
+      - '{"eventType": "process", "processBinary": "/bin/touch", "arguments": ["/tekton/scripts/script-0-vjklb"], "privileged": null}'
+  trace_metadata:
+    build_started_on: "2022-10-13T22:55:50Z"
+    build_finished_on: "2022-10-13T22:56:17Z"

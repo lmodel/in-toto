@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a monitored process names the job or task it is about.
+host_id: https://github.com/actions/runner
+process_type: https://actions.github.io/buildtypes/workflow/v1

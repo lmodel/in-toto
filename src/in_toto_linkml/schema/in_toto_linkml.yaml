@@ -1,98 +1,62 @@
 ---
 id: https://w3id.org/lmodel/in-toto
-name: in-toto
-title: in-toto
-description: |-
-  in-toto Attestation Framework: LinkML Schema
+name: in_toto_linkml
+title: in-toto Attestation Framework
+description: >-
+  A LinkML model of the in-toto Attestation Framework: the statement that binds
+  an attestation to its subjects, the resource descriptor and digest set that
+  identify an artifact, the predicate types the in-toto project has vetted, and
+  the vetted predicates that no other lmodel schema models.
+version: 1.2.0
+source: https://github.com/in-toto/attestation/tree/v1.2.0
 license: Apache-2.0
 see_also:
   - https://lmodel.github.io/in-toto
+  - https://github.com/in-toto/attestation/blob/v1.2.0/spec/README.md
+  - https://in-toto.io/
+annotations:
+  attestation_tag: v1.2.0
+  attestation_commit: df02077bf97218a8860a5c534eff1f1381f56984
+comments:
+  - >-
+    The version is the release of in-toto/attestation the model renders, and
+    the specification pages and protocol buffer definitions of that release are
+    copied to src/in_toto_linkml/schema/attestation/ at the tag and commit in
+    the annotations. The release tags are the schema's own versions, and
+    scripts/check_upstream_release.py reads the same pins and reports when the
+    in-toto project releases again or the copy drifts.
+  - >-
+    in_toto_core imports only the LinkML types, in_toto_predicates imports the
+    core, and this file adds only the document root, so an importer can take
+    one module. lmodel/slsa imports the core and models SLSA's own predicates.
 
-prefixes:
-  in_toto_linkml: https://w3id.org/lmodel/in-toto/
-  linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/vocab/
-  schema: http://schema.org/
-  PATO: http://purl.obolibrary.org/obo/PATO_
-  example: http://www.example.org/rdf#
 default_prefix: in_toto_linkml
 default_range: string
 
+prefixes:
+  linkml: https://w3id.org/linkml/
+  in_toto_linkml: https://w3id.org/lmodel/in-toto/
+
 imports:
   - linkml:types
+  - ./in_toto_core
+  - ./in_toto_predicates
 
 classes:
-
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
-    slots:
-      - id
-      - name
-      - description
-    class_uri: schema:Thing
-
-  Person:
-    is_a: NamedThing
-    description: >-
-      Represents a Person
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
-  PersonCollection:
+  InTotoDocument:
     tree_root: true
     description: >-
-      A holder for Person objects
+      A document that holds in-toto statements and the predicate types they name.
     attributes:
-      people:
-        range: Person
+      in_toto_statements:
+        description: The statements, each an in-toto attestation without its envelope.
+        range: InTotoStatement
         multivalued: true
+        inlined: true
         inlined_as_list: true
-
-slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-
-enums:
-  PersonStatus:
-    description:
-      The vital status of a person
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+      in_toto_predicate_types:
+        description: The predicate types.
+        range: InTotoPredicateType
+        multivalued: true
+        inlined: true
+        inlined_as_list: true

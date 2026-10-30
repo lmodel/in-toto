@@ -1,0 +1,3 @@
+# The processes a monitor observed.
+traced_processes:
+  - '{"binary": "/usr/bin/make", "pid": 4242}'

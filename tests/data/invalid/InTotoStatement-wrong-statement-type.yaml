@@ -1,0 +1,8 @@
+# Fails at: /statement_type
+# Invalid: the statement type is always https://in-toto.io/Statement/v1.
+statement_type: https://in-toto.io/Statement/v0.1
+subject:
+  - resource_name: app.tar.gz
+    digest:
+      sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+predicate_type: https://example.com/attestation/reviewed/v1

@@ -1,0 +1,3 @@
+# Fails at: /release_purl
+# Invalid: a release's package URL includes the version.
+release_purl: pkg:pypi/urllib3

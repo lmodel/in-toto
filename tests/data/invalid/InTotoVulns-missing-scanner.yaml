@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: a VULNS predicate names its scanner.
+scan_metadata:
+  scan_started_on: "2026-03-18T12:00:00Z"
+  scan_finished_on: "2026-03-18T12:01:00Z"

@@ -1,0 +1,12 @@
+# The Simple Verification Result page's basic example: its predicate, in this
+# schema's keys. The statement around it is left out, because the page
+# shortens its subject's digest.
+svr_verifier:
+  svr_verifier_id: https://example.com/publication_verifier/v2
+time_created: "1985-04-12T23:20:50.52Z"
+verified_properties:
+  - SLSA_BUILD_LEVEL_3
+  - SLSA_SOURCE_LEVEL_3
+  - ORG_SOURCE_STATIC_ANALYSIS
+  - CONFORMA_HERMETIC_BUILD_TASK
+  - COMPANY_RELEASE_APPROVED

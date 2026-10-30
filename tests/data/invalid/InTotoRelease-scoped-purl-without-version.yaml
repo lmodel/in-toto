@@ -1,0 +1,3 @@
+# Fails at: /release_purl
+# Invalid: a release's package URL includes the version, and a scope's @ is not one.
+release_purl: pkg:npm/@angular/http

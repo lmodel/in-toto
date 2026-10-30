@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: a descriptor carries a URI, a digest or the content itself.
+resource_name: policy.json
+media_type: application/json

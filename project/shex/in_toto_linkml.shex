@@ -1,0 +1,386 @@
+# metamodel_version: 1.12.0
+# version: 1.2.0
+BASE <https://w3id.org/lmodel/in-toto/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX spdx: <http://spdx.org/rdf/terms#>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<InTotoResourceUri> IRI
+
+<InTotoTypeUri> IRI
+
+<InTotoTimestamp> xsd:dateTime
+
+<InTotoAdditionalDigest> CLOSED {
+    (  $<InTotoAdditionalDigest_tes> (  spdx:algorithm @linkml:String ;
+          <value> @linkml:String
+       ) ;
+       rdf:type [ <InTotoAdditionalDigest> ] ?
+    )
+}
+
+<InTotoAnnotation> CLOSED {
+    (  $<InTotoAnnotation_tes> (  <annotation_key> @linkml:String ;
+          <annotation_values> @linkml:String *
+       ) ;
+       rdf:type [ <InTotoAnnotation> ] ?
+    )
+}
+
+<InTotoDigestSet> CLOSED {
+    (  $<InTotoDigestSet_tes> (  <sha256> @linkml:String ? ;
+          <sha224> @linkml:String ? ;
+          <sha384> @linkml:String ? ;
+          <sha512> @linkml:String ? ;
+          <sha512_224> @linkml:String ? ;
+          <sha512_256> @linkml:String ? ;
+          <sha3_224> @linkml:String ? ;
+          <sha3_256> @linkml:String ? ;
+          <sha3_384> @linkml:String ? ;
+          <sha3_512> @linkml:String ? ;
+          <shake128> @linkml:String ? ;
+          <shake256> @linkml:String ? ;
+          <blake2b> @linkml:String ? ;
+          <blake2s> @linkml:String ? ;
+          <ripemd160> @linkml:String ? ;
+          <sm3> @linkml:String ? ;
+          <gost> @linkml:String ? ;
+          <sha1> @linkml:String ? ;
+          <md5> @linkml:String ? ;
+          <dir_hash> @linkml:String ? ;
+          <git_commit> @linkml:String ? ;
+          <git_tree> @linkml:String ? ;
+          <git_blob> @linkml:String ? ;
+          <git_tag> @linkml:String ? ;
+          <additional_digests> @<InTotoAdditionalDigest> *
+       ) ;
+       rdf:type [ <InTotoDigestSet> ] ?
+    )
+}
+
+<InTotoDocument> CLOSED {
+    (  $<InTotoDocument_tes> (  <in_toto_statements> @<InTotoStatement> * ;
+          <in_toto_predicate_types> @<InTotoPredicateType> *
+       ) ;
+       rdf:type [ <InTotoDocument> ] ?
+    )
+}
+
+<InTotoLink> CLOSED {
+    (  $<InTotoLink_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <step_name> @linkml:String ;
+          <step_command> @linkml:String * ;
+          <materials> @<InTotoLinkMaterial> * ;
+          <step_byproducts> @<InTotoObjectEntry> * ;
+          <step_environment> @<InTotoObjectEntry> *
+       ) ;
+       rdf:type [ <InTotoLink> ] ?
+    )
+}
+
+<InTotoLinkMaterial> CLOSED {
+    (  $<InTotoLinkMaterial_tes> (  &<InTotoResourceDescriptor_tes> ;
+          rdf:type [ <InTotoResourceDescriptor> ] ? ;
+          <digest> @<InTotoDigestSet>
+       ) ;
+       rdf:type [ <InTotoLinkMaterial> ] ?
+    )
+}
+
+<InTotoMonitoredProcess> CLOSED {
+    (  $<InTotoMonitoredProcess_tes> (  <host_id> @linkml:Uri ;
+          <process_type> @<InTotoTypeUri> ;
+          <process_event> @linkml:String
+       ) ;
+       rdf:type [ <InTotoMonitoredProcess> ] ?
+    )
+}
+
+<InTotoMonitorLog> CLOSED {
+    (  $<InTotoMonitorLog_tes> (  <traced_processes> @linkml:String * ;
+          <traced_network> @linkml:String * ;
+          <file_access> @<InTotoResourceDescriptor> *
+       ) ;
+       rdf:type [ <InTotoMonitorLog> ] ?
+    )
+}
+
+<InTotoObjectEntry> CLOSED {
+    (  $<InTotoObjectEntry_tes> (  <entry_key> @linkml:String ;
+          <entry_values> @linkml:String *
+       ) ;
+       rdf:type [ <InTotoObjectEntry> ] ?
+    )
+}
+
+<InTotoPredicate>  (
+    @<InTotoLink> OR @<InTotoReference> OR @<InTotoRelease> OR @<InTotoRuntimeTrace> OR @<InTotoScaiAttributeReport> OR
+    @<InTotoSimpleVerificationResult> OR @<InTotoTestResult> OR @<InTotoVulns>
+)
+
+<InTotoPredicate_struct> {
+    (  $<InTotoPredicate_tes> <predicate_kind> @linkml:String ? ;
+       rdf:type [ <InTotoPredicate> ] ?
+    )
+}
+
+<InTotoPredicateType> CLOSED {
+    (  $<InTotoPredicateType_tes> (  <predicate_type_uri> @<InTotoTypeUri> ;
+          <predicate_version> @linkml:String ? ;
+          <predicate_specification> @linkml:Uri ? ;
+          <vetted_as> [ <https://cyclonedx.org/bom/v1.4> <https://in-toto.io/attestation/link/v0.3>
+             <https://in-toto.io/attestation/reference/v0.1> <https://in-toto.io/attestation/release/v0.1>
+             <https://in-toto.io/attestation/runtime-trace/v0.1> <https://in-toto.io/attestation/scai/v0.3>
+             <https://slsa.dev/provenance/v1> <https://slsa.dev/verification_summary/v1> <https://spdx.dev/Document/v2.3>
+             <https://spdx.dev/Document/v3> <https://in-toto.io/attestation/svr/v0.1>
+             <https://in-toto.io/attestation/test-result/v0.1> <https://in-toto.io/attestation/vulns/v0.2> ] ?
+       ) ;
+       rdf:type [ <InTotoPredicateType> ] ?
+    )
+}
+
+<InTotoReference> CLOSED {
+    (  $<InTotoReference_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <reference_attester> @<InTotoReferenceAttester> ;
+          <referenced_documents> @<InTotoReferencedDocument> +
+       ) ;
+       rdf:type [ <InTotoReference> ] ?
+    )
+}
+
+<InTotoReferenceAttester> CLOSED {
+    (  $<InTotoReferenceAttester_tes> <reference_attester_id> @<InTotoTypeUri> ;
+       rdf:type [ <InTotoReferenceAttester> ] ?
+    )
+}
+
+<InTotoReferencedDocument> CLOSED {
+    (  $<InTotoReferencedDocument_tes> (  &<InTotoResourceDescriptor_tes> ;
+          rdf:type [ <InTotoResourceDescriptor> ] ?
+       ) ;
+       rdf:type [ <InTotoReferencedDocument> ] ?
+    )
+}
+
+<InTotoRelease> CLOSED {
+    (  $<InTotoRelease_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <release_purl> @<InTotoResourceUri> ;
+          <package_id> @linkml:String ?
+       ) ;
+       rdf:type [ <InTotoRelease> ] ?
+    )
+}
+
+<InTotoResourceDescriptor>  (
+    CLOSED {
+       (  $<InTotoResourceDescriptor_tes> (  <resource_uri> @<InTotoResourceUri> ? ;
+             <digest> @<InTotoDigestSet> ? ;
+             <resource_name> @linkml:String ? ;
+             <download_location> @<InTotoResourceUri> ? ;
+             dcat:mediaType @linkml:String ? ;
+             <content> @linkml:String ? ;
+             <annotations> @<InTotoAnnotation> *
+          ) ;
+          rdf:type [ <InTotoResourceDescriptor> ] ?
+       )
+    } OR @<InTotoLinkMaterial> OR @<InTotoReferencedDocument> OR @<InTotoStatementSubject>
+)
+
+<InTotoRuntimeTrace> CLOSED {
+    (  $<InTotoRuntimeTrace_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <trace_monitor> @<InTotoTraceMonitor> ;
+          <monitored_process> @<InTotoMonitoredProcess> ;
+          <monitor_log> @<InTotoMonitorLog> ;
+          <trace_metadata> @<InTotoTraceMetadata> ?
+       ) ;
+       rdf:type [ <InTotoRuntimeTrace> ] ?
+    )
+}
+
+<InTotoScaiAttributeAssertion> CLOSED {
+    (  $<InTotoScaiAttributeAssertion_tes> (  <scai_attribute> @linkml:String ;
+          <scai_target> @<InTotoResourceDescriptor> ? ;
+          <scai_conditions> @<InTotoObjectEntry> * ;
+          <scai_evidence> @<InTotoResourceDescriptor> ?
+       ) ;
+       rdf:type [ <InTotoScaiAttributeAssertion> ] ?
+    )
+}
+
+<InTotoScaiAttributeReport> CLOSED {
+    (  $<InTotoScaiAttributeReport_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <scai_attributes> @<InTotoScaiAttributeAssertion> + ;
+          <scai_producer> @<InTotoResourceDescriptor> ?
+       ) ;
+       rdf:type [ <InTotoScaiAttributeReport> ] ?
+    )
+}
+
+<InTotoScanMetadata> CLOSED {
+    (  $<InTotoScanMetadata_tes> (  <scan_started_on> @<InTotoTimestamp> ;
+          <scan_finished_on> @<InTotoTimestamp>
+       ) ;
+       rdf:type [ <InTotoScanMetadata> ] ?
+    )
+}
+
+<InTotoSimpleVerificationResult> CLOSED {
+    (  $<InTotoSimpleVerificationResult_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <svr_verifier> @<InTotoSvrVerifier> ;
+          <time_created> @<InTotoTimestamp> ;
+          <verified_properties> @linkml:String +
+       ) ;
+       rdf:type [ <InTotoSimpleVerificationResult> ] ?
+    )
+}
+
+<InTotoStatement> CLOSED {
+    (  $<InTotoStatement_tes> (  <predicate> @<InTotoPredicate> ? ;
+          <statement_type> @<InTotoTypeUri> ;
+          <subject> @<InTotoStatementSubject> + ;
+          <predicate_type> @<InTotoTypeUri>
+       ) ;
+       rdf:type [ <InTotoStatement> ] ?
+    )
+}
+
+<InTotoStatementSubject> CLOSED {
+    (  $<InTotoStatementSubject_tes> (  &<InTotoResourceDescriptor_tes> ;
+          rdf:type [ <InTotoResourceDescriptor> ] ? ;
+          <digest> @<InTotoDigestSet>
+       ) ;
+       rdf:type [ <InTotoStatementSubject> ] ?
+    )
+}
+
+<InTotoSvrVerifier> CLOSED {
+    (  $<InTotoSvrVerifier_tes> <svr_verifier_id> @<InTotoTypeUri> ;
+       rdf:type [ <InTotoSvrVerifier> ] ?
+    )
+}
+
+<InTotoTestResult> CLOSED {
+    (  $<InTotoTestResult_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <test_result> [ <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#PASSED>
+             <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#WARNED>
+             <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#FAILED> ] ;
+          <configuration> @<InTotoResourceDescriptor> + ;
+          <test_run_url> @<InTotoResourceUri> ? ;
+          <passed_tests> @linkml:String * ;
+          <warned_tests> @linkml:String * ;
+          <failed_tests> @linkml:String *
+       ) ;
+       rdf:type [ <InTotoTestResult> ] ?
+    )
+}
+
+<InTotoTraceMetadata> CLOSED {
+    (  $<InTotoTraceMetadata_tes> (  <build_started_on> @<InTotoTimestamp> ? ;
+          <build_finished_on> @<InTotoTimestamp> ?
+       ) ;
+       rdf:type [ <InTotoTraceMetadata> ] ?
+    )
+}
+
+<InTotoTraceMonitor> CLOSED {
+    (  $<InTotoTraceMonitor_tes> (  <monitor_type> @<InTotoTypeUri> ;
+          <monitor_config_source> @<InTotoResourceDescriptor> ? ;
+          <trace_policy> @<InTotoObjectEntry> *
+       ) ;
+       rdf:type [ <InTotoTraceMonitor> ] ?
+    )
+}
+
+<InTotoVulnDatabase> CLOSED {
+    (  $<InTotoVulnDatabase_tes> (  <db_uri> @<InTotoResourceUri> ? ;
+          <db_version> @linkml:String ? ;
+          <db_last_update> @<InTotoTimestamp>
+       ) ;
+       rdf:type [ <InTotoVulnDatabase> ] ?
+    )
+}
+
+<InTotoVulnResult> CLOSED {
+    (  $<InTotoVulnResult_tes> (  <vuln_id> @linkml:String ;
+          <vuln_severity> @<InTotoVulnSeverity> + ;
+          <vuln_annotations> @<InTotoObjectEntry> *
+       ) ;
+       rdf:type [ <InTotoVulnResult> ] ?
+    )
+}
+
+<InTotoVulns> CLOSED {
+    (  $<InTotoVulns_tes> (  &<InTotoPredicate_tes> ;
+          rdf:type [ <InTotoPredicate> ] ? ;
+          <vuln_scanner> @<InTotoVulnScanner> ;
+          <scan_metadata> @<InTotoScanMetadata>
+       ) ;
+       rdf:type [ <InTotoVulns> ] ?
+    )
+}
+
+<InTotoVulnScanner> CLOSED {
+    (  $<InTotoVulnScanner_tes> (  <scanner_uri> @<InTotoResourceUri> ;
+          <scanner_version> @linkml:String ? ;
+          <vuln_db> @<InTotoVulnDatabase> ? ;
+          <scan_results> @<InTotoVulnResult> +
+       ) ;
+       rdf:type [ <InTotoVulnScanner> ] ?
+    )
+}
+
+<InTotoVulnSeverity> CLOSED {
+    (  $<InTotoVulnSeverity_tes> (  <severity_method> @linkml:String ;
+          <severity_score> @linkml:String
+       ) ;
+       rdf:type [ <InTotoVulnSeverity> ] ?
+    )
+}

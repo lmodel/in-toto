@@ -1,0 +1,7 @@
+# One vulnerability, by two scoring methods.
+vuln_id: CVE-2017-5645
+vuln_severity:
+  - severity_method: nvd
+    severity_score: "9.8"
+  - severity_method: cvss_score
+    severity_score: "7.5"
