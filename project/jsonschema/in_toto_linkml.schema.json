@@ -43,7 +43,7 @@
                             }
                         ]
                     },
-                    "pattern": "^[a-z][A-Za-z0-9_]*$"
+                    "pattern": "^[a-z][A-Za-z0-9_.:-]*$"
                 },
                 "value": {
                     "description": "The digest under that algorithm, in the encoding the algorithm documents.",

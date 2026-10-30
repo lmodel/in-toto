@@ -637,7 +637,11 @@ class InTotoAdditionalDigest(ConfiguredBaseModel):
          'see_also': ['https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md']})
 
     algorithm: str = Field(default=..., description="""The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id.""", json_schema_extra = { "linkml_meta": {'comments': ['An algorithm that InTotoDigestSet names, by its JSON key or by '
-                      'its field name, goes in that field instead.'],
+                      'its field name, goes in that field instead.',
+                      "A name starts with a lowercase letter, as the framework's own "
+                      'names do, so that SHA256 is not taken for sha256, and it may '
+                      "hold a colon, as go-witness's gitoid:sha256 does. The framework "
+                      'itself sets no rule for other names.'],
          'domain_of': ['InTotoAdditionalDigest'],
          'none_of': [{'equals_string_in': ['sha256',
                                            'sha224',
@@ -673,7 +677,7 @@ class InTotoAdditionalDigest(ConfiguredBaseModel):
 
     @field_validator('algorithm')
     def pattern_algorithm(cls, v):
-        pattern=re.compile(r"^[a-z][A-Za-z0-9_]*$")
+        pattern=re.compile(r"^[a-z][A-Za-z0-9_.:-]*$")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.search(element):

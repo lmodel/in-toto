@@ -1374,7 +1374,7 @@ slots.inTotoDigestSet__additional_digests = Slot(uri=IN_TOTO_LINKML.additional_d
 
 slots.inTotoAdditionalDigest__algorithm = Slot(uri=SPDX.algorithm, name="inTotoAdditionalDigest__algorithm", curie=SPDX.curie('algorithm'),
                    model_uri=IN_TOTO_LINKML.inTotoAdditionalDigest__algorithm, domain=None, range=str,
-                   pattern=re.compile(r'^[a-z][A-Za-z0-9_]*$'))
+                   pattern=re.compile(r'^[a-z][A-Za-z0-9_.:-]*$'))
 
 slots.inTotoAdditionalDigest__value = Slot(uri=IN_TOTO_LINKML.value, name="inTotoAdditionalDigest__value", curie=IN_TOTO_LINKML.curie('value'),
                    model_uri=IN_TOTO_LINKML.inTotoAdditionalDigest__value, domain=None, range=str,

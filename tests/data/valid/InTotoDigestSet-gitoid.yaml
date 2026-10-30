@@ -1,0 +1,9 @@
+# The five bytes "Hello" as go-witness, an in-toto project, digests them: a
+# SHA-256 digest and two gitoids, each under a key the set does not name and
+# written as a gitoid URI.
+sha256: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+additional_digests:
+  - algorithm: gitoid:sha1
+    value: gitoid:blob:sha1:5ab2f8a4323abafb10abb68657d9d39f1a775057
+  - algorithm: gitoid:sha256
+    value: gitoid:blob:sha256:1301800ffa9c48e2a82cbfda7fe9d17d5605cfa5df7c673639c44d8fcc244a71

@@ -304,7 +304,7 @@ classes:
         description: The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id.
         slot_uri: spdx:algorithm
         required: true
-        pattern: ^[a-z][A-Za-z0-9_]*$
+        pattern: ^[a-z][A-Za-z0-9_.:-]*$
         none_of:
         - equals_string_in:
           - sha256
@@ -339,6 +339,9 @@ classes:
         comments:
         - An algorithm that InTotoDigestSet names, by its JSON key or by its field name, goes in that
           field instead.
+        - A name starts with a lowercase letter, as the framework's own names do, so that SHA256 is not
+          taken for sha256, and it may hold a colon, as go-witness's gitoid:sha256 does. The framework
+          itself sets no rule for other names.
       value:
         slot_uri: in_toto_linkml:value
         description: The digest under that algorithm, in the encoding the algorithm documents.
