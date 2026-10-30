@@ -286,6 +286,7 @@ in_toto_linkml:InTotoVettedPredicate a owl:Class ;
 	owl:unionOf _:c14n110 ;
 	skos:definition "The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each with the predicate_type a statement of it carries at the version its page describes." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
+	skos:note "The in-toto project's own types are CURIEs under in_toto. The others are full addresses, because the Python generator writes no namespace for a prefix that only an enum's meaning uses." ;
 	linkml:permissible_values <https://cyclonedx.org/bom/v1.4> , <https://in-toto.io/attestation/link/v0.3> , <https://in-toto.io/attestation/reference/v0.1> , <https://in-toto.io/attestation/release/v0.1> , <https://in-toto.io/attestation/runtime-trace/v0.1> , <https://in-toto.io/attestation/scai/v0.3> , <https://in-toto.io/attestation/svr/v0.1> , <https://in-toto.io/attestation/test-result/v0.1> , <https://in-toto.io/attestation/vulns/v0.2> , <https://slsa.dev/provenance/v1> , <https://slsa.dev/verification_summary/v1> , <https://spdx.dev/Document/v2.3> , <https://spdx.dev/Document/v3> .
 in_toto_linkml:InTotoVulnDatabase a owl:Class ;
 	rdfs:label "InTotoVulnDatabase" ;

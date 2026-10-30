@@ -32,9 +32,6 @@ prefixes:
   dcat: http://www.w3.org/ns/dcat#
   spdx: http://spdx.org/rdf/terms#
   in_toto: https://in-toto.io/attestation/
-  cyclonedx: https://cyclonedx.org/
-  slsa_spec: https://slsa.dev/
-  spdx_spec: https://spdx.dev/
   xsd: http://www.w3.org/2001/XMLSchema#
 imports:
 - linkml:types
@@ -1013,12 +1010,15 @@ enums:
   InTotoVettedPredicate:
     description: The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each
       with the predicate_type a statement of it carries at the version its page describes.
+    comments:
+    - The in-toto project's own types are CURIEs under in_toto. The others are full addresses, because
+      the Python generator writes no namespace for a prefix that only an enum's meaning uses.
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md
     permissible_values:
       CYCLONEDX:
         description: A CycloneDX bill of materials for software artifacts.
-        meaning: cyclonedx:bom/v1.4
+        meaning: https://cyclonedx.org/bom/v1.4
         see_also:
         - https://cyclonedx.org/
       LINK:
@@ -1039,16 +1039,16 @@ enums:
         meaning: in_toto:scai/v0.3
       SLSA_PROVENANCE:
         description: How an artifact or set of artifacts was produced; lmodel/slsa models it.
-        meaning: slsa_spec:provenance/v1
+        meaning: https://slsa.dev/provenance/v1
       SLSA_VERIFICATION_SUMMARY:
         description: A SLSA verification decision about a software artifact; lmodel/slsa models it.
-        meaning: slsa_spec:verification_summary/v1
+        meaning: https://slsa.dev/verification_summary/v1
       SPDX2:
         description: An SPDX 2 bill of materials for software artifacts.
-        meaning: spdx_spec:Document/v2.3
+        meaning: https://spdx.dev/Document/v2.3
       SPDX3:
         description: An SPDX 3 bill of materials for software artifacts.
-        meaning: spdx_spec:Document/v3
+        meaning: https://spdx.dev/Document/v3
       SIMPLE_VERIFICATION_RESULT:
         description: Evidence that an artifact was evaluated against one or more policies.
         meaning: in_toto:svr/v0.1

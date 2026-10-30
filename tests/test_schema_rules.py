@@ -119,7 +119,6 @@ MAPPING_KEYS = (
     "related_mappings",
     "narrow_mappings",
     "broad_mappings",
-    "meaning",
 )
 
 
@@ -149,7 +148,7 @@ def _names(path):
 
 
 def _mappings(node):
-    """Every mapping and meaning value anywhere in a parsed schema file."""
+    """Every mapping value anywhere in a parsed schema file."""
     if isinstance(node, dict):
         for key, value in node.items():
             if key in MAPPING_KEYS:
@@ -205,9 +204,9 @@ def test_copy_roots_the_concept_classes():
 
 
 def test_mappings_use_a_bound_prefix():
-    """Every mapping and enum meaning in the copy is a CURIE whose prefix the
-    copy binds. A full address that no prefix covers makes every
-    `lokf convert --schema` over the copy warn that it has no namespace."""
+    """Every mapping in the copy is a CURIE whose prefix the copy binds. A full
+    address that no prefix covers makes every `lokf convert --schema` over the
+    copy warn that it has no namespace."""
     doc = yaml.safe_load(COPY.read_text())
     prefixes = doc.get("prefixes") or {}
     mappings = list(_mappings(doc))

@@ -475,8 +475,8 @@ CREATE TABLE "InTotoMonitorLog_traced_processes" (
 	PRIMARY KEY ("InTotoMonitorLog_id", traced_processes),
 	FOREIGN KEY("InTotoMonitorLog_id") REFERENCES "InTotoMonitorLog" (id)
 );
-CREATE INDEX "ix_InTotoMonitorLog_traced_processes_InTotoMonitorLog_id" ON "InTotoMonitorLog_traced_processes" ("InTotoMonitorLog_id");
 CREATE INDEX "ix_InTotoMonitorLog_traced_processes_traced_processes" ON "InTotoMonitorLog_traced_processes" (traced_processes);
+CREATE INDEX "ix_InTotoMonitorLog_traced_processes_InTotoMonitorLog_id" ON "InTotoMonitorLog_traced_processes" ("InTotoMonitorLog_id");
 
 CREATE TABLE "InTotoMonitorLog_traced_network" (
 	"InTotoMonitorLog_id" INTEGER,
@@ -638,8 +638,8 @@ CREATE TABLE "InTotoAnnotation_annotation_values" (
 	PRIMARY KEY ("InTotoAnnotation_id", annotation_values),
 	FOREIGN KEY("InTotoAnnotation_id") REFERENCES "InTotoAnnotation" (id)
 );
-CREATE INDEX "ix_InTotoAnnotation_annotation_values_InTotoAnnotation_id" ON "InTotoAnnotation_annotation_values" ("InTotoAnnotation_id");
 CREATE INDEX "ix_InTotoAnnotation_annotation_values_annotation_values" ON "InTotoAnnotation_annotation_values" (annotation_values);
+CREATE INDEX "ix_InTotoAnnotation_annotation_values_InTotoAnnotation_id" ON "InTotoAnnotation_annotation_values" ("InTotoAnnotation_id");
 
 CREATE TABLE "InTotoObjectEntry_entry_values" (
 	"InTotoObjectEntry_id" INTEGER,
@@ -647,5 +647,5 @@ CREATE TABLE "InTotoObjectEntry_entry_values" (
 	PRIMARY KEY ("InTotoObjectEntry_id", entry_values),
 	FOREIGN KEY("InTotoObjectEntry_id") REFERENCES "InTotoObjectEntry" (id)
 );
-CREATE INDEX "ix_InTotoObjectEntry_entry_values_InTotoObjectEntry_id" ON "InTotoObjectEntry_entry_values" ("InTotoObjectEntry_id");
 CREATE INDEX "ix_InTotoObjectEntry_entry_values_entry_values" ON "InTotoObjectEntry_entry_values" (entry_values);
+CREATE INDEX "ix_InTotoObjectEntry_entry_values_InTotoObjectEntry_id" ON "InTotoObjectEntry_entry_values" ("InTotoObjectEntry_id");
