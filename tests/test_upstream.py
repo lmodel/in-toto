@@ -9,6 +9,7 @@ URI and each field of the protocol buffer definitions it renders.
 
 import hashlib
 import importlib.util
+import json
 import re
 from pathlib import Path
 
@@ -280,3 +281,61 @@ def test_each_predicate_names_the_type_its_page_gives(cls):
         for v in VIEW.get_enum("InTotoVettedPredicate").permissible_values.values()
     }
     assert uri in meanings
+
+
+# ── The pages' own examples ──────────────────────────────────────────────
+
+
+VALID = ROOT / "tests" / "data" / "valid"
+
+# Each valid example taken from a specification page, and the page. It holds
+# the page's values in this schema's keys, so `just test` validates the
+# framework's own examples.
+PAGE_EXAMPLES = {
+    "InTotoDigestSet-page-arn.yaml": "spec/v1/digest_set.md",
+    "InTotoRelease-page-oci.yaml": "spec/predicates/release.md",
+    "InTotoRelease-page-scoped-npm.yaml": "spec/predicates/release.md",
+    "InTotoResourceDescriptor-page-build-service.yaml": "spec/v1/resource_descriptor.md",
+    "InTotoResourceDescriptor-page-tekton-taskrun.yaml": "spec/v1/resource_descriptor.md",
+    "InTotoSimpleVerificationResult-page-basic.yaml": "spec/predicates/svr.md",
+    "InTotoStatement-page-reference.yaml": "spec/predicates/reference.md",
+    "InTotoStatement-page-runtime-trace.yaml": "spec/predicates/runtime-trace.md",
+    "InTotoStatement-page-test-result.yaml": "spec/predicates/test-result.md",
+    "InTotoStatement-page-vulns.yaml": "spec/predicates/vulns_02.md",
+}
+
+
+def _strings(node, key=None):
+    """Every string value in a parsed example, reading a JSON text as the
+    value it encodes, except predicate_kind, which the schema adds."""
+    if isinstance(node, dict):
+        for name, value in node.items():
+            yield from _strings(value, name)
+    elif isinstance(node, list):
+        for item in node:
+            yield from _strings(item, key)
+    elif isinstance(node, str) and key != "predicate_kind":
+        try:
+            decoded = json.loads(node)
+        except ValueError:
+            decoded = None
+        if isinstance(decoded, (dict, list)):
+            yield from _strings(decoded, key)
+        else:
+            yield node
+
+
+def test_every_page_example_names_its_page():
+    """Each example whose name says it comes from a page is listed above."""
+    assert {p.name for p in VALID.glob("*-page-*.yaml")} == set(PAGE_EXAMPLES)
+
+
+@pytest.mark.parametrize("name", sorted(PAGE_EXAMPLES))
+def test_each_page_example_holds_the_pages_values(name):
+    """Every string a page example holds appears on its page, so the example
+    is the page's and not one written to fit the schema."""
+    page = (COPY / PAGE_EXAMPLES[name]).read_text()
+    data = yaml.safe_load((VALID / name).read_text())
+    strings = list(_strings(data))
+    assert strings
+    assert [s for s in strings if s not in page] == []

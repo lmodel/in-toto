@@ -1,0 +1,3 @@
+# The Release page's container image example: an OCI purl, whose qualifiers
+# the oci type needs to name the release.
+release_purl: pkg:oci/my-image@sha256%3Afedcba09?repository_url=registry.example.com/my-project/my-image&tag=v1.2.3

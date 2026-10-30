@@ -1,0 +1,3 @@
+# The resource descriptor page's pointer to a build service: a URI alone,
+# whose path keeps its capitals.
+resource_uri: https://cloudbuild.googleapis.com/GoogleHostedWorker@v1

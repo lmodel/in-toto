@@ -1,0 +1,7 @@
+# The resource descriptor page's descriptor of a Tekton TaskRun result, in
+# this schema's keys: a URI, a digest, the content itself and its media type.
+resource_uri: https://tekton.dev/TaskRun/check/result/report
+digest:
+  sha256: ec87961dbfe8e7d8a73890c602ac7bd407b80b9e31c326beb9110bdd255f12e6
+content: eyAicmVzdWx0IjogIlNVQ0NFU1MiLCAidGltZXN0YW1wIjogIjE2Nzc4NzIyMzYiLCAic3VjY2Vzc2VzIjogMjIsICJmYWlsdXJlcyI6IDAsICJ3YXJuaW5ncyI6MCB9
+media_type: application/json

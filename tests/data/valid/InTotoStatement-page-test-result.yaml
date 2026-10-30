@@ -1,0 +1,32 @@
+# The Test Result page's example, in this schema's keys, with predicate_kind
+# naming the predicate's class: in-toto's own CI run on a commit.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - digest:
+      git_commit: d20ace7968ba43c0219f62d71334c1095bab1602
+predicate_type: https://in-toto.io/attestation/test-result/v0.1
+predicate:
+  predicate_kind: InTotoTestResult
+  test_result: PASSED
+  configuration:
+    - resource_name: .github/workflows/ci.yml
+      download_location: https://github.com/in-toto/in-toto/blob/d20ace7968ba43c0219f62d71334c1095bab1602/.github/workflows/ci.yml
+      digest:
+        git_blob: ebe4add40f63c3c98bc9b32ff1e736f04120b023
+  test_run_url: https://github.com/in-toto/in-toto/actions/runs/4425592351
+  passed_tests:
+    - build (3.7, ubuntu-latest, py)
+    - build (3.7, macos-latest, py)
+    - build (3.7, windows-latest, py)
+    - build (3.8, ubuntu-latest, py)
+    - build (3.8, macos-latest, py)
+    - build (3.8, windows-latest, py)
+    - build (3.9, ubuntu-latest, py)
+    - build (3.9, macos-latest, py)
+    - build (3.9, windows-latest, py)
+    - build (3.10, ubuntu-latest, py)
+    - build (3.10, macos-latest, py)
+    - build (3.10, windows-latest, py)
+    - build (3.x, ubuntu-latest, lint)
+  warned_tests: []
+  failed_tests: []

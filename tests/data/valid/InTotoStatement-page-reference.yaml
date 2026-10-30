@@ -1,0 +1,20 @@
+# The Reference page's example of one SBOM for two artifacts, in this
+# schema's keys, with predicate_kind naming the predicate's class.
+statement_type: https://in-toto.io/Statement/v1
+subject:
+  - resource_name: foo.deb
+    digest:
+      sha256: f1847f7e67aa18d0063fda3cbde8b61f84384fbf35c3dd4cfa8c4822400b5a64
+  - resource_name: bar.deb
+    digest:
+      sha256: 680177210742d53016820ec118b6d7dd0be62758ad6d7f503e96927ced4809b4
+predicate_type: https://in-toto.io/attestation/reference/v0.1
+predicate:
+  predicate_kind: InTotoReference
+  reference_attester:
+    reference_attester_id: https://my-builder.com/v1
+  referenced_documents:
+    - download_location: https://cloud.com/my-sboms/sbom.spdx.json
+      digest:
+        sha256: 3b0d19b348f1e46a571c6e9df32897637c20dd9803261c2fc9cbe38b0c8422c4
+      media_type: application/spdx+json
