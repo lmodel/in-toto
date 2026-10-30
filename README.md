@@ -51,6 +51,7 @@ The schema crosses to the framework's own identifiers and borrows from no other 
 ## Not modelled here
 
 * The envelope that signs a statement and the bundle that collects signed statements. Both carry a statement unchanged.
+* An attestation's JSON as it is published. The schema's keys are in snake case and its open-keyed objects are lists, so a statement is written in them before it validates, as [docs/index.md](docs/index.md) says.
 * SLSA Provenance and the SLSA Verification Summary, which lmodel/slsa models.
 * The bodies of the CycloneDX, SPDX 2 and SPDX 3 predicates, each a whole bill of materials in another specification's format. The schema names their type URIs only; lmodel/spdx models SPDX 3.
 * The older predicate versions and the superseded VULNS v0.1 page, and the policy field a verifier may add to a Simple Verification Result.

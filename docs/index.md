@@ -16,6 +16,15 @@ predicates that lmodel/slsa does not model.
 checks a file against the JSON Schema generated from the schema, and
 `tests/test_data.py` holds every example to it.
 
+The file is written in this schema's keys, not as the attestation's JSON is
+published. The keys are in snake case (`predicate_type` for `predicateType`,
+`git_commit` for `gitCommit`, `statement_type` for `_type`). A JSON object
+whose keys the producer chooses, such as a digest set's other algorithms or a
+descriptor's annotations, becomes a list of key and value entries. A
+predicate carries `predicate_kind`, which names its class. [About](about.md)
+lists the names. The examples whose file names hold `-page-` are the
+specification's own examples, written this way.
+
 Validate a file before loading it into either model in
 `src/in_toto_linkml/datamodel/`. LinkML 1.12.1 generates models that check
 less:
