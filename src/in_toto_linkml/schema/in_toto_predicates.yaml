@@ -399,7 +399,12 @@ classes:
           package type needs them, no qualifiers or subpath.
         range: uri
         required: true
-        pattern: "^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+"
+        pattern: "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+"
+        comments:
+          - >-
+            The version follows the last @, as the purl specification parses a package
+            URL, so a scoped npm name such as @angular/http may keep its @ unencoded,
+            as the page's first example does.
       package_id:
         description: >-
           A stable identifier for the package that does not change between releases,

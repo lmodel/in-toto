@@ -1150,7 +1150,11 @@ class InTotoRelease(InTotoPredicate):
          'from_schema': 'https://w3id.org/lmodel/in-toto/in_toto_predicates',
          'see_also': ['https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md']})
 
-    release_purl: str = Field(default=..., description="""The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoRelease']} })
+    release_purl: str = Field(default=..., description="""The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.""", json_schema_extra = { "linkml_meta": {'comments': ['The version follows the last @, as the purl specification '
+                      'parses a package URL, so a scoped npm name such as '
+                      "@angular/http may keep its @ unencoded, as the page's first "
+                      'example does.'],
+         'domain_of': ['InTotoRelease']} })
     package_id: Optional[str] = Field(default=None, description="""A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoRelease']} })
     predicate_kind: Literal["InTotoRelease"] = Field(default="InTotoRelease", description="""The kind of predicate, one of this class's descendants.""", json_schema_extra = { "linkml_meta": {'designates_type': True,
          'domain_of': ['InTotoPredicate'],
@@ -1158,7 +1162,7 @@ class InTotoRelease(InTotoPredicate):
 
     @field_validator('release_purl')
     def pattern_release_purl(cls, v):
-        pattern=re.compile(r"^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+")
+        pattern=re.compile(r"^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+")
         if isinstance(v, list):
             for element in v:
                 if isinstance(element, str) and not pattern.search(element):

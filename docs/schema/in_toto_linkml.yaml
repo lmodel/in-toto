@@ -1414,6 +1414,10 @@ slots:
     name: inTotoRelease__release_purl
     description: The package URL that names the release, with its version and, unless
       the package type needs them, no qualifiers or subpath.
+    comments:
+    - The version follows the last @, as the purl specification parses a package URL,
+      so a scoped npm name such as @angular/http may keep its @ unencoded, as the
+      page's first example does.
     from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
     slot_uri: in_toto_linkml:release_purl
     alias: release_purl
@@ -1422,7 +1426,7 @@ slots:
     - InTotoRelease
     range: uri
     required: true
-    pattern: ^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+
+    pattern: ^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+
   inTotoRelease__package_id:
     name: inTotoRelease__package_id
     description: A stable identifier for the package that does not change between
@@ -2911,9 +2915,13 @@ classes:
         name: release_purl
         description: The package URL that names the release, with its version and,
           unless the package type needs them, no qualifiers or subpath.
+        comments:
+        - The version follows the last @, as the purl specification parses a package
+          URL, so a scoped npm name such as @angular/http may keep its @ unencoded,
+          as the page's first example does.
         range: uri
         required: true
-        pattern: ^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+
+        pattern: ^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+
       package_id:
         name: package_id
         description: A stable identifier for the package that does not change between

@@ -1172,7 +1172,7 @@
                 "release_purl": {
                     "description": "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.",
                     "format": "uri",
-                    "pattern": "^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+",
+                    "pattern": "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+",
                     "type": "string"
                 }
             },

@@ -1510,7 +1510,7 @@ slots.inTotoReferenceAttester__reference_attester_id = Slot(uri=IN_TOTO_LINKML.r
 
 slots.inTotoRelease__release_purl = Slot(uri=IN_TOTO_LINKML.release_purl, name="inTotoRelease__release_purl", curie=IN_TOTO_LINKML.curie('release_purl'),
                    model_uri=IN_TOTO_LINKML.inTotoRelease__release_purl, domain=None, range=Union[str, URI],
-                   pattern=re.compile(r'^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+'))
+                   pattern=re.compile(r'^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+'))
 
 slots.inTotoRelease__package_id = Slot(uri=IN_TOTO_LINKML.package_id, name="inTotoRelease__package_id", curie=IN_TOTO_LINKML.curie('package_id'),
                    model_uri=IN_TOTO_LINKML.inTotoRelease__package_id, domain=None, range=Optional[str])

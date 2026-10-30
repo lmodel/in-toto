@@ -8,7 +8,7 @@ in_toto_linkml:InTotoAdditionalDigest a sh:NodeShape ;
 	rdfs:comment "One digest under an algorithm that InTotoDigestSet does not name, such as an SCS's own revision type." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n9 ;
-	sh:property _:c14n109 , _:c14n179 ;
+	sh:property _:c14n109 , _:c14n180 ;
 	sh:targetClass in_toto_linkml:InTotoAdditionalDigest .
 in_toto_linkml:InTotoAnnotation a sh:NodeShape ;
 	rdfs:comment "One vendor-specific annotation on a resource descriptor: a key and its values." ;
@@ -20,19 +20,19 @@ in_toto_linkml:InTotoDigestSet a sh:NodeShape ;
 	rdfs:comment "A set of one or more digests over one artifact, keyed by algorithm, from which a consumer picks the algorithm it trusts." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n139 ;
-	sh:property _:c14n110 , _:c14n118 , _:c14n127 , _:c14n13 , _:c14n130 , _:c14n131 , _:c14n146 , _:c14n147 , _:c14n151 , _:c14n154 , _:c14n160 , _:c14n175 , _:c14n178 , _:c14n182 , _:c14n185 , _:c14n191 , _:c14n203 , _:c14n207 , _:c14n35 , _:c14n5 , _:c14n58 , _:c14n61 , _:c14n91 , _:c14n94 , _:c14n98 ;
+	sh:property _:c14n110 , _:c14n118 , _:c14n127 , _:c14n13 , _:c14n130 , _:c14n131 , _:c14n147 , _:c14n148 , _:c14n152 , _:c14n155 , _:c14n161 , _:c14n176 , _:c14n179 , _:c14n183 , _:c14n186 , _:c14n191 , _:c14n203 , _:c14n207 , _:c14n35 , _:c14n5 , _:c14n58 , _:c14n61 , _:c14n91 , _:c14n94 , _:c14n98 ;
 	sh:targetClass in_toto_linkml:InTotoDigestSet .
 in_toto_linkml:InTotoDocument a sh:NodeShape ;
 	rdfs:comment "A document that holds in-toto statements and the predicate types they name." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n142 ;
-	sh:property _:c14n155 , _:c14n164 ;
+	sh:property _:c14n156 , _:c14n165 ;
 	sh:targetClass in_toto_linkml:InTotoDocument .
 in_toto_linkml:InTotoLink a sh:NodeShape ;
 	rdfs:comment "The predicate that records one step of an in-toto layout: the command it ran and the materials it read, for a supply chain that migrates from in-toto 0.9 links." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n183 ;
-	sh:property _:c14n106 , _:c14n132 , _:c14n156 , _:c14n159 , _:c14n199 , _:c14n79 ;
+	sh:ignoredProperties _:c14n184 ;
+	sh:property _:c14n106 , _:c14n132 , _:c14n157 , _:c14n160 , _:c14n199 , _:c14n79 ;
 	sh:targetClass in_toto_linkml:InTotoLink .
 in_toto_linkml:InTotoLinkMaterial a sh:NodeShape ;
 	rdfs:comment "One material of a link, a resource descriptor with a name and a digest." ;
@@ -50,7 +50,7 @@ in_toto_linkml:InTotoMonitoredProcess a sh:NodeShape ;
 	rdfs:comment "The process a runtime trace watched." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n125 ;
-	sh:property _:c14n113 , _:c14n169 , _:c14n29 ;
+	sh:property _:c14n113 , _:c14n170 , _:c14n29 ;
 	sh:targetClass in_toto_linkml:InTotoMonitoredProcess .
 in_toto_linkml:InTotoObjectEntry a sh:NodeShape ;
 	rdfs:comment "One key of a JSON object whose keys the framework leaves to the producer, and the key's values." ;
@@ -62,19 +62,19 @@ in_toto_linkml:InTotoPredicate a sh:NodeShape ;
 	rdfs:comment "The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind." ;
 	sh:closed false ;
 	sh:ignoredProperties _:c14n114 ;
-	sh:property _:c14n149 ;
+	sh:property _:c14n150 ;
 	sh:targetClass in_toto_linkml:InTotoPredicate .
 in_toto_linkml:InTotoPredicateType a sh:NodeShape ;
 	rdfs:comment "A type of predicate an in-toto statement can carry, named by the URI a statement's predicate_type holds." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n50 ;
-	sh:property _:c14n124 , _:c14n152 , _:c14n190 , _:c14n80 ;
+	sh:property _:c14n124 , _:c14n153 , _:c14n190 , _:c14n80 ;
 	sh:targetClass in_toto_linkml:InTotoPredicateType .
 in_toto_linkml:InTotoReference a sh:NodeShape ;
 	rdfs:comment "The predicate that points from the subjects, as a whole, to documents about them, such as a bill of materials." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n70 ;
-	sh:property _:c14n119 , _:c14n184 , _:c14n88 ;
+	sh:property _:c14n119 , _:c14n185 , _:c14n88 ;
 	sh:targetClass in_toto_linkml:InTotoReference .
 in_toto_linkml:InTotoReferenceAttester a sh:NodeShape ;
 	rdfs:comment "The system that provides the documents a Reference predicate points to." ;
@@ -86,25 +86,25 @@ in_toto_linkml:InTotoReferencedDocument a sh:NodeShape ;
 	rdfs:comment "One document a Reference predicate points to: a resource descriptor with a download location and a media type." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n104 ;
-	sh:property _:c14n133 , _:c14n140 , _:c14n165 , _:c14n208 , _:c14n46 , _:c14n54 , _:c14n85 ;
+	sh:property _:c14n133 , _:c14n140 , _:c14n166 , _:c14n208 , _:c14n46 , _:c14n54 , _:c14n85 ;
 	sh:targetClass in_toto_linkml:InTotoReferencedDocument .
 in_toto_linkml:InTotoRelease a sh:NodeShape ;
 	rdfs:comment "The predicate that ties the subjects to one release name and version of a package, so that consumers can check what the release should contain." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n171 ;
-	sh:property _:c14n116 , _:c14n189 , _:c14n47 ;
+	sh:ignoredProperties _:c14n172 ;
+	sh:property _:c14n116 , _:c14n144 , _:c14n47 ;
 	sh:targetClass in_toto_linkml:InTotoRelease .
 in_toto_linkml:InTotoResourceDescriptor a sh:NodeShape ;
 	rdfs:comment "A reference to a software artifact or other resource by URI or digest, or the resource itself as content, with optional metadata." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n86 ;
-	sh:property _:c14n117 , _:c14n12 , _:c14n121 , _:c14n137 , _:c14n167 , _:c14n34 , _:c14n90 ;
+	sh:property _:c14n117 , _:c14n12 , _:c14n121 , _:c14n137 , _:c14n168 , _:c14n34 , _:c14n90 ;
 	sh:targetClass in_toto_linkml:InTotoResourceDescriptor .
 in_toto_linkml:InTotoRuntimeTrace a sh:NodeShape ;
 	rdfs:comment "The predicate that records what a monitor traced while a supply chain step, such as a build, ran." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n64 ;
-	sh:property _:c14n128 , _:c14n148 , _:c14n15 , _:c14n84 , _:c14n96 ;
+	sh:property _:c14n128 , _:c14n149 , _:c14n15 , _:c14n84 , _:c14n96 ;
 	sh:targetClass in_toto_linkml:InTotoRuntimeTrace .
 in_toto_linkml:InTotoScaiAttributeAssertion a sh:NodeShape ;
 	rdfs:comment "One SCAI assertion: an attribute of the subject or its producer, what it applies to, under which conditions, and the evidence for it." ;
@@ -116,30 +116,30 @@ in_toto_linkml:InTotoScaiAttributeReport a sh:NodeShape ;
 	rdfs:comment "The Software Supply Chain Attribute Integrity (SCAI) predicate: assertions about functional attributes of the subjects or their producer, each with the evidence for it." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n57 ;
-	sh:property _:c14n122 , _:c14n150 , _:c14n60 ;
+	sh:property _:c14n122 , _:c14n151 , _:c14n60 ;
 	sh:targetClass in_toto_linkml:InTotoScaiAttributeReport .
 in_toto_linkml:InTotoScanMetadata a sh:NodeShape ;
 	rdfs:comment "When a vulnerability scan ran." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n181 ;
+	sh:ignoredProperties _:c14n182 ;
 	sh:property _:c14n48 , _:c14n8 ;
 	sh:targetClass in_toto_linkml:InTotoScanMetadata .
 in_toto_linkml:InTotoSimpleVerificationResult a sh:NodeShape ;
 	rdfs:comment "The predicate that says a verifier evaluated the subjects against one or more policies, and which properties passed." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n188 ;
+	sh:ignoredProperties _:c14n189 ;
 	sh:property _:c14n135 , _:c14n2 , _:c14n200 , _:c14n67 ;
 	sh:targetClass in_toto_linkml:InTotoSimpleVerificationResult .
 in_toto_linkml:InTotoStatement a sh:NodeShape ;
 	rdfs:comment "The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n93 ;
-	sh:property _:c14n145 , _:c14n157 , _:c14n174 , _:c14n89 ;
+	sh:property _:c14n146 , _:c14n158 , _:c14n175 , _:c14n89 ;
 	sh:targetClass in_toto_linkml:InTotoStatement .
 in_toto_linkml:InTotoStatementSubject a sh:NodeShape ;
 	rdfs:comment "One artifact an in-toto statement is about: a resource descriptor that carries a digest." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n168 ;
+	sh:ignoredProperties _:c14n169 ;
 	sh:property _:c14n101 , _:c14n126 , _:c14n194 , _:c14n42 , _:c14n43 , _:c14n56 , _:c14n65 ;
 	sh:targetClass in_toto_linkml:InTotoStatementSubject .
 in_toto_linkml:InTotoSvrVerifier a sh:NodeShape ;
@@ -151,7 +151,7 @@ in_toto_linkml:InTotoSvrVerifier a sh:NodeShape ;
 in_toto_linkml:InTotoTestResult a sh:NodeShape ;
 	rdfs:comment "The predicate that records the result of one run of a test suite against the subjects, with the names of the tests that passed, warned and failed." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n144 ;
+	sh:ignoredProperties _:c14n145 ;
 	sh:property _:c14n103 , _:c14n105 , _:c14n112 , _:c14n134 , _:c14n141 , _:c14n4 , _:c14n76 ;
 	sh:targetClass in_toto_linkml:InTotoTestResult .
 in_toto_linkml:InTotoTraceMetadata a sh:NodeShape ;
@@ -164,31 +164,31 @@ in_toto_linkml:InTotoTraceMonitor a sh:NodeShape ;
 	rdfs:comment "The monitor instance that produced a runtime trace." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n115 ;
-	sh:property _:c14n100 , _:c14n172 , _:c14n78 ;
+	sh:property _:c14n100 , _:c14n173 , _:c14n78 ;
 	sh:targetClass in_toto_linkml:InTotoTraceMonitor .
 in_toto_linkml:InTotoVulnDatabase a sh:NodeShape ;
 	rdfs:comment "The vulnerability database a scanner used." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n162 ;
-	sh:property _:c14n1 , _:c14n166 , _:c14n173 ;
+	sh:ignoredProperties _:c14n163 ;
+	sh:property _:c14n1 , _:c14n167 , _:c14n174 ;
 	sh:targetClass in_toto_linkml:InTotoVulnDatabase .
 in_toto_linkml:InTotoVulnResult a sh:NodeShape ;
 	rdfs:comment "One vulnerability a scanner found." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n73 ;
-	sh:property _:c14n176 , _:c14n37 , _:c14n81 ;
+	sh:property _:c14n177 , _:c14n37 , _:c14n81 ;
 	sh:targetClass in_toto_linkml:InTotoVulnResult .
 in_toto_linkml:InTotoVulnScanner a sh:NodeShape ;
 	rdfs:comment "The scanner a VULNS predicate records, with its results." ;
 	sh:closed true ;
-	sh:ignoredProperties _:c14n180 ;
+	sh:ignoredProperties _:c14n181 ;
 	sh:property _:c14n108 , _:c14n123 , _:c14n19 , _:c14n198 ;
 	sh:targetClass in_toto_linkml:InTotoVulnScanner .
 in_toto_linkml:InTotoVulnSeverity a sh:NodeShape ;
 	rdfs:comment "One severity score of a vulnerability, by one scoring method." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n72 ;
-	sh:property _:c14n186 , _:c14n204 ;
+	sh:property _:c14n187 , _:c14n204 ;
 	sh:targetClass in_toto_linkml:InTotoVulnSeverity .
 in_toto_linkml:InTotoVulns a sh:NodeShape ;
 	rdfs:comment "The predicate that records the result of one vulnerability scan of the subjects: the scanner, its database and the vulnerabilities it found." ;
@@ -286,7 +286,7 @@ _:c14n113 sh:description "The URI that identifies the host the process ran on." 
 	sh:order 0 ;
 	sh:path in_toto_linkml:host_id .
 _:c14n114 rdf:first rdf:type ;
-	rdf:rest _:c14n161 .
+	rdf:rest _:c14n162 .
 _:c14n115 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
 _:c14n116 sh:datatype xsd:string ;
@@ -448,39 +448,40 @@ _:c14n143 sh:datatype xsd:string ;
 	sh:nodeKind sh:Literal ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:traced_network .
-_:c14n144 rdf:first rdf:type ;
+_:c14n144 sh:description "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath." ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	sh:nodeKind sh:IRI ;
+	sh:order 0 ;
+	sh:path in_toto_linkml:release_purl ;
+	sh:pattern "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+" .
+_:c14n145 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n145 sh:class in_toto_linkml:InTotoStatementSubject ;
+_:c14n146 sh:class in_toto_linkml:InTotoStatementSubject ;
 	sh:description "The artifacts the predicate is about, each with a digest." ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:subject .
-_:c14n146 sh:datatype xsd:string ;
+_:c14n147 sh:datatype xsd:string ;
 	sh:description "The SM3 digest of the artifact." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 15 ;
 	sh:path in_toto_linkml:sm3 ;
 	sh:pattern "^[a-f0-9]{64}$" .
-_:c14n147 sh:datatype xsd:string ;
+_:c14n148 sh:datatype xsd:string ;
 	sh:description "The SHA-384 digest of the artifact." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 2 ;
 	sh:path in_toto_linkml:sha384 ;
 	sh:pattern "^[a-f0-9]{96}$" .
-_:c14n148 sh:datatype xsd:string ;
-	sh:description "The kind of predicate, one of this class's descendants." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 4 ;
-	sh:path in_toto_linkml:predicate_kind .
 _:c14n149 sh:datatype xsd:string ;
 	sh:description "The kind of predicate, one of this class's descendants." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
-	sh:order 0 ;
+	sh:order 4 ;
 	sh:path in_toto_linkml:predicate_kind .
 _:c14n15 sh:class in_toto_linkml:InTotoTraceMetadata ;
 	sh:description "Other properties of the monitoring event." ;
@@ -488,61 +489,61 @@ _:c14n15 sh:class in_toto_linkml:InTotoTraceMetadata ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 3 ;
 	sh:path in_toto_linkml:trace_metadata .
-_:c14n150 sh:class in_toto_linkml:InTotoScaiAttributeAssertion ;
+_:c14n150 sh:datatype xsd:string ;
+	sh:description "The kind of predicate, one of this class's descendants." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 0 ;
+	sh:path in_toto_linkml:predicate_kind .
+_:c14n151 sh:class in_toto_linkml:InTotoScaiAttributeAssertion ;
 	sh:description "One or more attribute assertions about the subjects." ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:scai_attributes .
-_:c14n151 sh:datatype xsd:string ;
+_:c14n152 sh:datatype xsd:string ;
 	sh:description "The SHA3-256 digest of the artifact." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 7 ;
 	sh:path in_toto_linkml:sha3_256 ;
 	sh:pattern "^[a-f0-9]{64}$" .
-_:c14n152 sh:datatype xsd:string ;
+_:c14n153 sh:datatype xsd:string ;
 	sh:description "The version of the predicate's specification, as its page states it, such as 0.1.0." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:predicate_version .
-_:c14n153 rdf:first in_toto_linkml:failed_tests ;
+_:c14n154 rdf:first in_toto_linkml:failed_tests ;
 	rdf:rest _:c14n33 .
-_:c14n154 sh:datatype xsd:string ;
+_:c14n155 sh:datatype xsd:string ;
 	sh:description "The SHA-512 digest of the artifact." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 3 ;
 	sh:path in_toto_linkml:sha512 ;
 	sh:pattern "^[a-f0-9]{128}$" .
-_:c14n155 sh:class in_toto_linkml:InTotoPredicateType ;
+_:c14n156 sh:class in_toto_linkml:InTotoPredicateType ;
 	sh:description "The predicate types." ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:in_toto_predicate_types .
-_:c14n156 sh:datatype xsd:string ;
+_:c14n157 sh:datatype xsd:string ;
 	sh:description "The name of the step, which a layout uses to find the link metadata it verifies." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:step_name .
-_:c14n157 sh:description "The in-toto statement type, always https://in-toto.io/Statement/v1." ;
+_:c14n158 sh:description "The in-toto statement type, always https://in-toto.io/Statement/v1." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:statement_type ;
 	sh:pattern "^https://in-toto\\.io/Statement/v1$" .
-_:c14n158 rdf:first in_toto_linkml:package_id ;
+_:c14n159 rdf:first in_toto_linkml:package_id ;
 	rdf:rest _:c14n0 .
-_:c14n159 sh:datatype xsd:string ;
-	sh:description "The kind of predicate, one of this class's descendants." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 5 ;
-	sh:path in_toto_linkml:predicate_kind .
 _:c14n16 sh:datatype xsd:string ;
 	sh:description "The resource's content itself, base64-encoded, for a resource small enough to carry inline." ;
 	sh:maxCount 1 ;
@@ -551,65 +552,71 @@ _:c14n16 sh:datatype xsd:string ;
 	sh:path in_toto_linkml:content ;
 	sh:pattern "^[A-Za-z0-9+/_-]+={0,2}$" .
 _:c14n160 sh:datatype xsd:string ;
+	sh:description "The kind of predicate, one of this class's descendants." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 5 ;
+	sh:path in_toto_linkml:predicate_kind .
+_:c14n161 sh:datatype xsd:string ;
 	sh:description "The SHAKE256 digest of the artifact, of at least 32 bytes." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 11 ;
 	sh:path in_toto_linkml:shake256 ;
 	sh:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" .
-_:c14n161 rdf:first in_toto_linkml:configuration ;
-	rdf:rest _:c14n153 .
-_:c14n162 rdf:first rdf:type ;
+_:c14n162 rdf:first in_toto_linkml:configuration ;
+	rdf:rest _:c14n154 .
+_:c14n163 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n163 rdf:first <https://spdx.dev/Document/v3> ;
+_:c14n164 rdf:first <https://spdx.dev/Document/v3> ;
 	rdf:rest _:c14n53 .
-_:c14n164 sh:class in_toto_linkml:InTotoStatement ;
+_:c14n165 sh:class in_toto_linkml:InTotoStatement ;
 	sh:description "The statements, each an in-toto attestation without its envelope." ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:in_toto_statements .
-_:c14n165 sh:description "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference." ;
+_:c14n166 sh:description "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:resource_uri .
-_:c14n166 sh:description "The URI that identifies the database's source." ;
+_:c14n167 sh:description "The URI that identifies the database's source." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:db_uri .
-_:c14n167 sh:datatype xsd:string ;
+_:c14n168 sh:datatype xsd:string ;
 	sh:description "The resource's content itself, base64-encoded, for a resource small enough to carry inline." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 5 ;
 	sh:path in_toto_linkml:content ;
 	sh:pattern "^[A-Za-z0-9+/_-]+={0,2}$" .
-_:c14n168 rdf:first rdf:type ;
+_:c14n169 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n169 sh:datatype xsd:string ;
-	sh:description "The job or task the attestation is about." ;
-	sh:maxCount 1 ;
-	sh:minCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 2 ;
-	sh:path in_toto_linkml:process_event .
 _:c14n17 sh:description "The URI that identifies the system." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:reference_attester_id .
-_:c14n170 rdf:first in_toto_linkml:referenced_documents ;
+_:c14n170 sh:datatype xsd:string ;
+	sh:description "The job or task the attestation is about." ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 2 ;
+	sh:path in_toto_linkml:process_event .
+_:c14n171 rdf:first in_toto_linkml:referenced_documents ;
 	rdf:rest _:c14n136 .
-_:c14n171 rdf:first rdf:type ;
+_:c14n172 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n172 sh:class in_toto_linkml:InTotoObjectEntry ;
+_:c14n173 sh:class in_toto_linkml:InTotoObjectEntry ;
 	sh:description "The trace policy the monitor applied, in the monitor's own format, which monitor_type names." ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 2 ;
 	sh:path in_toto_linkml:trace_policy .
-_:c14n173 sh:datatype xsd:dateTime ;
+_:c14n174 sh:datatype xsd:dateTime ;
 	sh:description "When the database was last updated." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
@@ -617,34 +624,40 @@ _:c14n173 sh:datatype xsd:dateTime ;
 	sh:order 2 ;
 	sh:path in_toto_linkml:db_last_update ;
 	sh:pattern "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$" .
-_:c14n174 sh:description "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1." ;
+_:c14n175 sh:description "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:IRI ;
 	sh:order 2 ;
 	sh:path in_toto_linkml:predicate_type .
-_:c14n175 sh:datatype xsd:string ;
+_:c14n176 sh:datatype xsd:string ;
 	sh:description "The SHA-512/224 digest of the artifact." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 4 ;
 	sh:path in_toto_linkml:sha512_224 ;
 	sh:pattern "^[a-f0-9]{56}$" .
-_:c14n176 sh:class in_toto_linkml:InTotoVulnSeverity ;
+_:c14n177 sh:class in_toto_linkml:InTotoVulnSeverity ;
 	sh:description "The vulnerability's severity, by one or more scoring methods." ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:vuln_severity .
-_:c14n177 rdf:first in_toto_linkml:vuln_scanner ;
+_:c14n178 rdf:first in_toto_linkml:vuln_scanner ;
 	rdf:rest _:c14n92 .
-_:c14n178 sh:class in_toto_linkml:InTotoAdditionalDigest ;
+_:c14n179 sh:class in_toto_linkml:InTotoAdditionalDigest ;
 	sh:description "The digests under algorithms this class does not name." ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 24 ;
 	sh:path in_toto_linkml:additional_digests .
-_:c14n179 sh:datatype xsd:string ;
+_:c14n18 sh:class in_toto_linkml:InTotoResourceDescriptor ;
+	sh:description "The evidence, authenticated where possible, for the asserted attribute." ;
+	sh:maxCount 1 ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:order 3 ;
+	sh:path in_toto_linkml:scai_evidence .
+_:c14n180 sh:datatype xsd:string ;
 	sh:description "The digest under that algorithm, in the encoding the algorithm documents." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
@@ -652,56 +665,43 @@ _:c14n179 sh:datatype xsd:string ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:value ;
 	sh:pattern "^\\S+$" .
-_:c14n18 sh:class in_toto_linkml:InTotoResourceDescriptor ;
-	sh:description "The evidence, authenticated where possible, for the asserted attribute." ;
-	sh:maxCount 1 ;
-	sh:nodeKind sh:BlankNodeOrIRI ;
-	sh:order 3 ;
-	sh:path in_toto_linkml:scai_evidence .
-_:c14n180 rdf:first rdf:type ;
-	rdf:rest rdf:nil .
 _:c14n181 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n182 sh:datatype xsd:string ;
+_:c14n182 rdf:first rdf:type ;
+	rdf:rest rdf:nil .
+_:c14n183 sh:datatype xsd:string ;
 	sh:description "The SHA-224 digest of the artifact." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:sha224 ;
 	sh:pattern "^[a-f0-9]{56}$" .
-_:c14n183 rdf:first rdf:type ;
+_:c14n184 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n184 sh:class in_toto_linkml:InTotoReferencedDocument ;
+_:c14n185 sh:class in_toto_linkml:InTotoReferencedDocument ;
 	sh:description "The documents referred to." ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:BlankNodeOrIRI ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:referenced_documents .
-_:c14n185 sh:datatype xsd:string ;
+_:c14n186 sh:datatype xsd:string ;
 	sh:description "The git tree id of a source revision's content, or of any file tree." ;
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 21 ;
 	sh:path in_toto_linkml:git_tree ;
 	sh:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" .
-_:c14n186 sh:datatype xsd:string ;
+_:c14n187 sh:datatype xsd:string ;
 	sh:description "The scoring method, such as nvd or cvss." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 0 ;
 	sh:path in_toto_linkml:severity_method .
-_:c14n187 rdf:first <https://in-toto.io/attestation/reference/v0.1> ;
+_:c14n188 rdf:first <https://in-toto.io/attestation/reference/v0.1> ;
 	rdf:rest _:c14n197 .
-_:c14n188 rdf:first rdf:type ;
+_:c14n189 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
-_:c14n189 sh:description "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath." ;
-	sh:maxCount 1 ;
-	sh:minCount 1 ;
-	sh:nodeKind sh:IRI ;
-	sh:order 0 ;
-	sh:path in_toto_linkml:release_purl ;
-	sh:pattern "^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+" .
 _:c14n19 sh:description "The URI that identifies the scanner's source." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
@@ -798,7 +798,7 @@ _:c14n204 sh:datatype xsd:string ;
 	sh:order 1 ;
 	sh:path in_toto_linkml:severity_score .
 _:c14n205 rdf:first in_toto_linkml:reference_attester ;
-	rdf:rest _:c14n170 .
+	rdf:rest _:c14n171 .
 _:c14n206 rdf:first in_toto_linkml:svr_verifier ;
 	rdf:rest _:c14n39 .
 _:c14n207 sh:datatype xsd:string ;
@@ -950,7 +950,7 @@ _:c14n48 sh:datatype xsd:dateTime ;
 	sh:path in_toto_linkml:scan_started_on ;
 	sh:pattern "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$" .
 _:c14n49 rdf:first <https://in-toto.io/attestation/link/v0.3> ;
-	rdf:rest _:c14n187 .
+	rdf:rest _:c14n188 .
 _:c14n5 sh:datatype xsd:string ;
 	sh:description "The MD5 digest of the artifact." ;
 	sh:maxCount 1 ;
@@ -1044,13 +1044,13 @@ _:c14n68 sh:datatype xsd:dateTime ;
 	sh:path in_toto_linkml:build_finished_on ;
 	sh:pattern "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$" .
 _:c14n69 rdf:first in_toto_linkml:verified_properties ;
-	rdf:rest _:c14n177 .
+	rdf:rest _:c14n178 .
 _:c14n7 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
 _:c14n70 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
 _:c14n71 rdf:first in_toto_linkml:monitored_process ;
-	rdf:rest _:c14n158 .
+	rdf:rest _:c14n159 .
 _:c14n72 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
 _:c14n73 rdf:first rdf:type ;
@@ -1058,7 +1058,7 @@ _:c14n73 rdf:first rdf:type ;
 _:c14n74 rdf:first rdf:type ;
 	rdf:rest rdf:nil .
 _:c14n75 rdf:first <https://spdx.dev/Document/v2.3> ;
-	rdf:rest _:c14n163 .
+	rdf:rest _:c14n164 .
 _:c14n76 sh:description "The result of the test run." ;
 	sh:in _:c14n102 ;
 	sh:maxCount 1 ;

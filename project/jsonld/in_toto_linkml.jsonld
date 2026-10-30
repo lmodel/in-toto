@@ -1728,6 +1728,9 @@
     {
       "name": "inTotoRelease__release_purl",
       "description": "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.",
+      "comments": [
+        "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does."
+      ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
       "slot_uri": "https://w3id.org/lmodel/in-toto/release_purl",
       "alias": "release_purl",
@@ -1737,7 +1740,7 @@
       ],
       "range": "uri",
       "required": true,
-      "pattern": "^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+",
+      "pattern": "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+",
       "@type": "SlotDefinition"
     },
     {
@@ -3876,9 +3879,12 @@
         {
           "name": "release_purl",
           "description": "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath.",
+          "comments": [
+            "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does."
+          ],
           "range": "uri",
           "required": true,
-          "pattern": "^pkg:[A-Za-z.+-]+/[^@?#]+@[^?#]+",
+          "pattern": "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+",
           "@type": "SlotDefinition"
         },
         {
