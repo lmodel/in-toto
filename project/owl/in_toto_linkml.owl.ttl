@@ -147,7 +147,7 @@ in_toto_linkml:InTotoObjectEntry a owl:Class ;
 	rdfs:subClassOf _:c14n11 , _:c14n18 , _:c14n339 , _:c14n348 , _:c14n352 ;
 	skos:definition "One key of a JSON object whose keys the framework leaves to the producer, and the key's values." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
-	skos:note "A string becomes one value and an array one value per item; any other value or item is written as its JSON text, as InTotoAnnotation does." , "Each key appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this." .
+	skos:note "A list that holds one JSON object holds each key once, since the object uses it as a key; the validator does not check this." , "A string becomes one value and an array one value per item; any other value or item is written as its JSON text, as InTotoAnnotation does." .
 in_toto_linkml:InTotoPredicate a owl:Class ;
 	rdfs:label "InTotoPredicate" ;
 	rdfs:seeAlso <https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md> ;
@@ -759,7 +759,8 @@ in_toto_linkml:vetted_as a owl:ObjectProperty ;
 in_toto_linkml:vuln_annotations a owl:ObjectProperty ;
 	rdfs:label "vuln_annotations" ;
 	skos:definition "Custom information the scanner adds, as key and value pairs." ;
-	skos:inScheme in_toto_linkml:in_toto_predicates .
+	skos:inScheme in_toto_linkml:in_toto_predicates ;
+	skos:note "The page calls them a list of key and value pairs, and the protocol buffer definition a list of objects. Each pair of each object is one entry, in order, so a key may appear more than once." .
 in_toto_linkml:vuln_db a owl:ObjectProperty ;
 	rdfs:label "vuln_db" ;
 	skos:definition "The vulnerability database the scanner used." ;

@@ -507,8 +507,8 @@ classes:
     comments:
     - A string becomes one value and an array one value per item; any other value or item is written as
       its JSON text, as InTotoAnnotation does.
-    - Each key appears once in a list, since the attestation's JSON uses it as a key; the validator does
-      not check this.
+    - A list that holds one JSON object holds each key once, since the object uses it as a key; the validator
+      does not check this.
     attributes:
       entry_key:
         description: The object's key.
@@ -980,6 +980,9 @@ classes:
         multivalued: true
         inlined: true
         inlined_as_list: true
+        comments:
+        - The page calls them a list of key and value pairs, and the protocol buffer definition a list
+          of objects. Each pair of each object is one entry, in order, so a key may appear more than once.
   InTotoVulnSeverity:
     description: One severity score of a vulnerability, by one scoring method.
     see_also:

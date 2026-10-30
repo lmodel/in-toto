@@ -894,8 +894,9 @@ class InTotoObjectEntry(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['A string becomes one value and an array one value per item; any '
                       'other value or item is written as its JSON text, as '
                       'InTotoAnnotation does.',
-                      "Each key appears once in a list, since the attestation's JSON "
-                      'uses it as a key; the validator does not check this.'],
+                      'A list that holds one JSON object holds each key once, since '
+                      'the object uses it as a key; the validator does not check '
+                      'this.'],
          'from_schema': 'https://w3id.org/lmodel/in-toto/in_toto_predicates'})
 
     entry_key: str = Field(default=..., description="""The object's key.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoObjectEntry']} })
@@ -1314,7 +1315,11 @@ class InTotoVulnResult(ConfiguredBaseModel):
 
     vuln_id: str = Field(default=..., description="""The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoVulnResult']} })
     vuln_severity: list[InTotoVulnSeverity] = Field(default=..., description="""The vulnerability's severity, by one or more scoring methods.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoVulnResult']} })
-    vuln_annotations: Optional[list[InTotoObjectEntry]] = Field(default=None, description="""Custom information the scanner adds, as key and value pairs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoVulnResult']} })
+    vuln_annotations: Optional[list[InTotoObjectEntry]] = Field(default=None, description="""Custom information the scanner adds, as key and value pairs.""", json_schema_extra = { "linkml_meta": {'comments': ['The page calls them a list of key and value pairs, and the '
+                      'protocol buffer definition a list of objects. Each pair of each '
+                      'object is one entry, in order, so a key may appear more than '
+                      'once.'],
+         'domain_of': ['InTotoVulnResult']} })
 
 
 class InTotoVulnSeverity(ConfiguredBaseModel):

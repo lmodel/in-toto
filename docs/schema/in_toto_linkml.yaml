@@ -1828,6 +1828,10 @@ slots:
   inTotoVulnResult__vuln_annotations:
     name: inTotoVulnResult__vuln_annotations
     description: Custom information the scanner adds, as key and value pairs.
+    comments:
+    - The page calls them a list of key and value pairs, and the protocol buffer definition
+      a list of objects. Each pair of each object is one entry, in order, so a key
+      may appear more than once.
     from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
     slot_uri: in_toto_linkml:vuln_annotations
     alias: vuln_annotations
@@ -2568,8 +2572,8 @@ classes:
     comments:
     - A string becomes one value and an array one value per item; any other value
       or item is written as its JSON text, as InTotoAnnotation does.
-    - Each key appears once in a list, since the attestation's JSON uses it as a key;
-      the validator does not check this.
+    - A list that holds one JSON object holds each key once, since the object uses
+      it as a key; the validator does not check this.
     from_schema: https://w3id.org/lmodel/in-toto/in_toto_predicates
     slots:
     - inTotoObjectEntry__entry_key
@@ -3294,6 +3298,10 @@ classes:
       vuln_annotations:
         name: vuln_annotations
         description: Custom information the scanner adds, as key and value pairs.
+        comments:
+        - The page calls them a list of key and value pairs, and the protocol buffer
+          definition a list of objects. Each pair of each object is one entry, in
+          order, so a key may appear more than once.
         range: InTotoObjectEntry
         multivalued: true
         inlined: true

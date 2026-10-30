@@ -48,4 +48,6 @@ another neighbour's copy, and two predicates never give one key two meanings.
 - JSON objects whose keys the framework leaves to the producer, such as a
   link's byproducts, are lists of `InTotoObjectEntry`, a key with its values,
   as slsa's annotations are. A list of such objects, such as a runtime trace's
-  processes, holds each object as its JSON text.
+  processes, holds each object as its JSON text. A vulnerability's
+  annotations are the exception: the page calls them key and value pairs, so
+  they are entries too.
