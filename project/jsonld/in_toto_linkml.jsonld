@@ -17,10 +17,17 @@
     "in_toto_core imports only the LinkML types, in_toto_predicates imports the core, and this file adds only the document root, so an importer can take one module. lmodel/slsa imports the core and models SLSA's own predicates."
   ],
   "source": "https://github.com/in-toto/attestation/tree/v1.2.0",
+  "in_language": "en",
   "see_also": [
     "https://lmodel.github.io/in-toto",
     "https://github.com/in-toto/attestation/blob/v1.2.0/spec/README.md",
     "https://in-toto.io/"
+  ],
+  "keywords": [
+    "in-toto",
+    "attestation",
+    "predicate type",
+    "software supply chain"
   ],
   "id": "https://w3id.org/lmodel/in-toto",
   "version": "1.2.0",
@@ -567,6 +574,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri"
       ],
+      "aliases": [
+        "uri"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/resource_uri"
       ],
@@ -662,6 +672,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha256"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha256"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha256",
       "alias": "sha256",
       "owner": "InTotoDigestSet",
@@ -678,6 +691,9 @@
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha224"
+      ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha224"
       ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha224",
       "alias": "sha224",
@@ -696,6 +712,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha384"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha384"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha384",
       "alias": "sha384",
       "owner": "InTotoDigestSet",
@@ -712,6 +731,9 @@
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha512"
+      ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha512"
       ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha512",
       "alias": "sha512",
@@ -764,6 +786,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha3_224"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_224"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_224",
       "alias": "sha3_224",
       "owner": "InTotoDigestSet",
@@ -780,6 +805,9 @@
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha3_256"
+      ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_256"
       ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_256",
       "alias": "sha3_256",
@@ -798,6 +826,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha3_384"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_384"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_384",
       "alias": "sha3_384",
       "owner": "InTotoDigestSet",
@@ -814,6 +845,9 @@
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha3_512"
+      ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_512"
       ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha3_512",
       "alias": "sha3_512",
@@ -954,6 +988,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/sha1"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha1"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/sha1",
       "alias": "sha1",
       "owner": "InTotoDigestSet",
@@ -974,6 +1011,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/md5"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/md5"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/md5",
       "alias": "md5",
       "owner": "InTotoDigestSet",
@@ -988,6 +1028,9 @@
       "name": "inTotoDigestSet__dir_hash",
       "description": "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "dirHash"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/dir_hash"
       ],
@@ -1005,6 +1048,9 @@
       "name": "inTotoDigestSet__git_commit",
       "description": "The git commit id of a source revision.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "gitCommit"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/git_commit"
       ],
@@ -1022,6 +1068,9 @@
       "name": "inTotoDigestSet__git_tree",
       "description": "The git tree id of a source revision's content, or of any file tree.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "gitTree"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/git_tree"
       ],
@@ -1039,6 +1088,9 @@
       "name": "inTotoDigestSet__git_blob",
       "description": "The git blob id of a file's content.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "gitBlob"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/git_blob"
       ],
@@ -1056,6 +1108,9 @@
       "name": "inTotoDigestSet__git_tag",
       "description": "The git object id of an annotated tag.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "gitTag"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/git_tag"
       ],
@@ -1154,6 +1209,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/value"
       ],
+      "related_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/hashValue"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/value",
       "alias": "value",
       "owner": "InTotoAdditionalDigest",
@@ -1172,6 +1230,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/annotation_key"
       ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/key"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/annotation_key",
       "alias": "annotation_key",
       "owner": "InTotoAnnotation",
@@ -1189,6 +1250,9 @@
       "mappings": [
         "https://w3id.org/lmodel/in-toto/annotation_values"
       ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/value"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/annotation_values",
       "alias": "annotation_values",
       "owner": "InTotoAnnotation",
@@ -1203,6 +1267,9 @@
       "name": "inTotoResourceDescriptor__resource_name",
       "description": "A name for the resource within the attestation that carries it.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "name"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/resource_name"
       ],
@@ -1219,8 +1286,15 @@
       "name": "inTotoResourceDescriptor__download_location",
       "description": "Where the resource can be fetched, when that differs from its identifying URI.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "downloadLocation"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/download_location"
+      ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Software/downloadLocation",
+        "http://www.w3.org/ns/dcat#downloadURL"
       ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/download_location",
       "alias": "download_location",
@@ -1235,8 +1309,14 @@
       "name": "inTotoResourceDescriptor__media_type",
       "description": "The IANA media type of the resource's content.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "mediaType"
+      ],
       "mappings": [
         "http://www.w3.org/ns/dcat#mediaType"
+      ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/contentType"
       ],
       "slot_uri": "http://www.w3.org/ns/dcat#mediaType",
       "alias": "media_type",
@@ -1290,6 +1370,9 @@
       "name": "inTotoStatement__statement_type",
       "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "_type"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/statement_type"
       ],
@@ -1329,6 +1412,9 @@
       "name": "inTotoStatement__predicate_type",
       "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "aliases": [
+        "predicateType"
+      ],
       "mappings": [
         "https://w3id.org/lmodel/in-toto/predicate_type"
       ],
@@ -1416,6 +1502,9 @@
       "name": "inTotoObjectEntry__entry_key",
       "description": "The object's key.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/key"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/entry_key",
       "alias": "entry_key",
       "owner": "InTotoObjectEntry",
@@ -1430,6 +1519,9 @@
       "name": "inTotoObjectEntry__entry_values",
       "description": "The key's values.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Core/value"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/entry_values",
       "alias": "entry_values",
       "owner": "InTotoObjectEntry",
@@ -1444,6 +1536,9 @@
       "name": "inTotoTestResult__test_result",
       "description": "The result of the test run.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "result"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/test_result",
       "alias": "test_result",
       "owner": "InTotoTestResult",
@@ -1475,6 +1570,9 @@
       "name": "inTotoTestResult__test_run_url",
       "description": "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "url"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/test_run_url",
       "alias": "test_run_url",
       "owner": "InTotoTestResult",
@@ -1488,6 +1586,9 @@
       "name": "inTotoTestResult__passed_tests",
       "description": "The names of the tests that passed.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "passedTests"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/passed_tests",
       "alias": "passed_tests",
       "owner": "InTotoTestResult",
@@ -1502,6 +1603,9 @@
       "name": "inTotoTestResult__warned_tests",
       "description": "The names of the tests that expressed a warning.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "warnedTests"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/warned_tests",
       "alias": "warned_tests",
       "owner": "InTotoTestResult",
@@ -1519,6 +1623,9 @@
         "Producer and consumer agree on what a test name means; a policy can check that test_result and failed_tests meet its requirements."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "failedTests"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/failed_tests",
       "alias": "failed_tests",
       "owner": "InTotoTestResult",
@@ -1533,6 +1640,9 @@
       "name": "inTotoSimpleVerificationResult__svr_verifier",
       "description": "The entity that performed the verification.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "verifier"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/svr_verifier",
       "alias": "svr_verifier",
       "owner": "InTotoSimpleVerificationResult",
@@ -1549,6 +1659,9 @@
       "name": "inTotoSimpleVerificationResult__time_created",
       "description": "When the verification took place.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "timeCreated"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/time_created",
       "alias": "time_created",
       "owner": "InTotoSimpleVerificationResult",
@@ -1563,6 +1676,9 @@
       "name": "inTotoSimpleVerificationResult__verified_properties",
       "description": "The properties of the subjects that passed verification, scoped to the framework or policy verified, such as SLSA_BUILD_LEVEL_3.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "properties"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/verified_properties",
       "alias": "verified_properties",
       "owner": "InTotoSimpleVerificationResult",
@@ -1578,6 +1694,9 @@
       "name": "inTotoSvrVerifier__svr_verifier_id",
       "description": "The URI that identifies the verifier, versioned when its verification logic changes materially.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "id"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/svr_verifier_id",
       "alias": "svr_verifier_id",
       "owner": "InTotoSvrVerifier",
@@ -1592,6 +1711,9 @@
       "name": "inTotoScaiAttributeReport__scai_attributes",
       "description": "One or more attribute assertions about the subjects.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "attributes"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scai_attributes",
       "alias": "scai_attributes",
       "owner": "InTotoScaiAttributeReport",
@@ -1610,6 +1732,9 @@
       "name": "inTotoScaiAttributeReport__scai_producer",
       "description": "The producer of the subjects, where that applies.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "producer"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scai_producer",
       "alias": "scai_producer",
       "owner": "InTotoScaiAttributeReport",
@@ -1625,6 +1750,9 @@
       "name": "inTotoScaiAttributeAssertion__scai_attribute",
       "description": "The functional feature asserted, in a form the producer and consumer agree on.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "attribute"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scai_attribute",
       "alias": "scai_attribute",
       "owner": "InTotoScaiAttributeAssertion",
@@ -1639,6 +1767,9 @@
       "name": "inTotoScaiAttributeAssertion__scai_target",
       "description": "The artifact or metadata object the attribute applies to.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "target"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scai_target",
       "alias": "scai_target",
       "owner": "InTotoScaiAttributeAssertion",
@@ -1654,6 +1785,9 @@
       "name": "inTotoScaiAttributeAssertion__scai_conditions",
       "description": "The conditions under which the attribute arises.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "conditions"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scai_conditions",
       "alias": "scai_conditions",
       "owner": "InTotoScaiAttributeAssertion",
@@ -1673,6 +1807,9 @@
         "Without evidence a consumer may judge the assertion by who produced the attestation."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "evidence"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scai_evidence",
       "alias": "scai_evidence",
       "owner": "InTotoScaiAttributeAssertion",
@@ -1688,6 +1825,9 @@
       "name": "inTotoLink__step_name",
       "description": "The name of the step, which a layout uses to find the link metadata it verifies.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "name"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/step_name",
       "alias": "step_name",
       "owner": "InTotoLink",
@@ -1702,6 +1842,9 @@
       "name": "inTotoLink__step_command",
       "description": "The command the step ran, and its arguments; possibly empty.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "command"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/step_command",
       "alias": "step_command",
       "owner": "InTotoLink",
@@ -1735,6 +1878,9 @@
       "name": "inTotoLink__step_byproducts",
       "description": "What else the step recorded, such as its standard output, in keys the in-toto specification describes.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "byproducts"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/step_byproducts",
       "alias": "step_byproducts",
       "owner": "InTotoLink",
@@ -1751,6 +1897,9 @@
       "name": "inTotoLink__step_environment",
       "description": "The environment the step ran in, in keys the producer chooses.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "environment"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/step_environment",
       "alias": "step_environment",
       "owner": "InTotoLink",
@@ -1767,6 +1916,9 @@
       "name": "inTotoReference__reference_attester",
       "description": "The system that provides the documents.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "attester"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/reference_attester",
       "alias": "reference_attester",
       "owner": "InTotoReference",
@@ -1783,6 +1935,9 @@
       "name": "inTotoReference__referenced_documents",
       "description": "The documents referred to.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "references"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/referenced_documents",
       "alias": "referenced_documents",
       "owner": "InTotoReference",
@@ -1801,6 +1956,9 @@
       "name": "inTotoReferenceAttester__reference_attester_id",
       "description": "The URI that identifies the system.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "id"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/reference_attester_id",
       "alias": "reference_attester_id",
       "owner": "InTotoReferenceAttester",
@@ -1818,6 +1976,12 @@
         "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "purl"
+      ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Software/packageUrl"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/release_purl",
       "alias": "release_purl",
       "owner": "InTotoRelease",
@@ -1833,6 +1997,9 @@
       "name": "inTotoRelease__package_id",
       "description": "A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "packageId"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/package_id",
       "alias": "package_id",
       "owner": "InTotoRelease",
@@ -1846,6 +2013,9 @@
       "name": "inTotoRuntimeTrace__trace_monitor",
       "description": "The monitor instance that traced the run.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "monitor"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/trace_monitor",
       "alias": "trace_monitor",
       "owner": "InTotoRuntimeTrace",
@@ -1862,6 +2032,9 @@
       "name": "inTotoRuntimeTrace__monitored_process",
       "description": "The process the monitor watched.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "monitoredProcess"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/monitored_process",
       "alias": "monitored_process",
       "owner": "InTotoRuntimeTrace",
@@ -1878,6 +2051,9 @@
       "name": "inTotoRuntimeTrace__monitor_log",
       "description": "The events the monitor traced.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "monitorLog"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/monitor_log",
       "alias": "monitor_log",
       "owner": "InTotoRuntimeTrace",
@@ -1894,6 +2070,9 @@
       "name": "inTotoRuntimeTrace__trace_metadata",
       "description": "Other properties of the monitoring event.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "metadata"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/trace_metadata",
       "alias": "trace_metadata",
       "owner": "InTotoRuntimeTrace",
@@ -1909,6 +2088,9 @@
       "name": "inTotoTraceMonitor__monitor_type",
       "description": "The URI of the monitor's type.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "type"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/monitor_type",
       "alias": "monitor_type",
       "owner": "InTotoTraceMonitor",
@@ -1923,6 +2105,9 @@
       "name": "inTotoTraceMonitor__monitor_config_source",
       "description": "The monitor's configuration.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "configSource"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/monitor_config_source",
       "alias": "monitor_config_source",
       "owner": "InTotoTraceMonitor",
@@ -1938,6 +2123,9 @@
       "name": "inTotoTraceMonitor__trace_policy",
       "description": "The trace policy the monitor applied, in the monitor's own format, which monitor_type names.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "tracePolicy"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/trace_policy",
       "alias": "trace_policy",
       "owner": "InTotoTraceMonitor",
@@ -1954,6 +2142,9 @@
       "name": "inTotoMonitoredProcess__host_id",
       "description": "The URI that identifies the host the process ran on.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "hostID"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/host_id",
       "alias": "host_id",
       "owner": "InTotoMonitoredProcess",
@@ -1968,6 +2159,9 @@
       "name": "inTotoMonitoredProcess__process_type",
       "description": "The URI of the type of process, such as the build type when the monitor watched a build.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "type"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/process_type",
       "alias": "process_type",
       "owner": "InTotoMonitoredProcess",
@@ -1982,6 +2176,9 @@
       "name": "inTotoMonitoredProcess__process_event",
       "description": "The job or task the attestation is about.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "event"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/process_event",
       "alias": "process_event",
       "owner": "InTotoMonitoredProcess",
@@ -1996,6 +2193,9 @@
       "name": "inTotoMonitorLog__traced_processes",
       "description": "The processes the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "process"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/traced_processes",
       "alias": "traced_processes",
       "owner": "InTotoMonitorLog",
@@ -2010,6 +2210,9 @@
       "name": "inTotoMonitorLog__traced_network",
       "description": "The network activity the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "network"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/traced_network",
       "alias": "traced_network",
       "owner": "InTotoMonitorLog",
@@ -2027,6 +2230,9 @@
         "A monitor that cannot pause the build, such as one that uses eBPF, guarantees less about these digests than one that can."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "fileAccess"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/file_access",
       "alias": "file_access",
       "owner": "InTotoMonitorLog",
@@ -2043,6 +2249,12 @@
       "name": "inTotoTraceMetadata__build_started_on",
       "description": "When the monitored build started.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "buildStartedOn"
+      ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Build/buildStartTime"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/build_started_on",
       "alias": "build_started_on",
       "owner": "InTotoTraceMetadata",
@@ -2056,6 +2268,12 @@
       "name": "inTotoTraceMetadata__build_finished_on",
       "description": "When the monitored build finished.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "buildFinishedOn"
+      ],
+      "close_mappings": [
+        "https://spdx.org/rdf/3.0.1/terms/Build/buildEndTime"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/build_finished_on",
       "alias": "build_finished_on",
       "owner": "InTotoTraceMetadata",
@@ -2069,6 +2287,9 @@
       "name": "inTotoVulns__vuln_scanner",
       "description": "The scanner that ran, its version and the database it used.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "scanner"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/vuln_scanner",
       "alias": "vuln_scanner",
       "owner": "InTotoVulns",
@@ -2085,6 +2306,9 @@
       "name": "inTotoVulns__scan_metadata",
       "description": "When the scan ran.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "metadata"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scan_metadata",
       "alias": "scan_metadata",
       "owner": "InTotoVulns",
@@ -2101,6 +2325,9 @@
       "name": "inTotoVulnScanner__scanner_uri",
       "description": "The URI that identifies the scanner's source.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "uri"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scanner_uri",
       "alias": "scanner_uri",
       "owner": "InTotoVulnScanner",
@@ -2118,6 +2345,9 @@
         "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "version"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scanner_version",
       "alias": "scanner_version",
       "owner": "InTotoVulnScanner",
@@ -2131,6 +2361,9 @@
       "name": "inTotoVulnScanner__vuln_db",
       "description": "The vulnerability database the scanner used.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "db"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/vuln_db",
       "alias": "vuln_db",
       "owner": "InTotoVulnScanner",
@@ -2146,6 +2379,9 @@
       "name": "inTotoVulnScanner__scan_results",
       "description": "The vulnerabilities the scanner found; an empty list means it found none.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "result"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scan_results",
       "alias": "scan_results",
       "owner": "InTotoVulnScanner",
@@ -2163,6 +2399,9 @@
       "name": "inTotoVulnDatabase__db_uri",
       "description": "The URI that identifies the database's source.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "uri"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/db_uri",
       "alias": "db_uri",
       "owner": "InTotoVulnDatabase",
@@ -2176,6 +2415,9 @@
       "name": "inTotoVulnDatabase__db_version",
       "description": "The database's version.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "version"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/db_version",
       "alias": "db_version",
       "owner": "InTotoVulnDatabase",
@@ -2189,6 +2431,9 @@
       "name": "inTotoVulnDatabase__db_last_update",
       "description": "When the database was last updated.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "lastUpdate"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/db_last_update",
       "alias": "db_last_update",
       "owner": "InTotoVulnDatabase",
@@ -2203,6 +2448,9 @@
       "name": "inTotoVulnResult__vuln_id",
       "description": "The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "id"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/vuln_id",
       "alias": "vuln_id",
       "owner": "InTotoVulnResult",
@@ -2217,6 +2465,9 @@
       "name": "inTotoVulnResult__vuln_severity",
       "description": "The vulnerability's severity, by one or more scoring methods.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "severity"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/vuln_severity",
       "alias": "vuln_severity",
       "owner": "InTotoVulnResult",
@@ -2237,6 +2488,9 @@
         "The page calls them a list of key and value pairs, and the protocol buffer definition a list of objects. Each pair of each object is one entry, in order, so a key may appear more than once."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "annotations"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/vuln_annotations",
       "alias": "vuln_annotations",
       "owner": "InTotoVulnResult",
@@ -2253,6 +2507,9 @@
       "name": "inTotoVulnSeverity__severity_method",
       "description": "The scoring method, such as nvd or cvss.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "method"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/severity_method",
       "alias": "severity_method",
       "owner": "InTotoVulnSeverity",
@@ -2267,6 +2524,9 @@
       "name": "inTotoVulnSeverity__severity_score",
       "description": "The score under that method, as a string.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "score"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/severity_score",
       "alias": "severity_score",
       "owner": "InTotoVulnSeverity",
@@ -2281,6 +2541,9 @@
       "name": "inTotoScanMetadata__scan_started_on",
       "description": "When the scan started.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "scanStartedOn"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scan_started_on",
       "alias": "scan_started_on",
       "owner": "InTotoScanMetadata",
@@ -2295,6 +2558,9 @@
       "name": "inTotoScanMetadata__scan_finished_on",
       "description": "When the scan finished.",
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "aliases": [
+        "scanFinishedOn"
+      ],
       "slot_uri": "https://w3id.org/lmodel/in-toto/scan_finished_on",
       "alias": "scan_finished_on",
       "owner": "InTotoScanMetadata",
@@ -2403,6 +2669,7 @@
         "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present."
       ],
       "comments": [
+        "A field named after an algorithm that SPDX 3 also names relates to SPDX's individual for it. BLAKE2b is left unmapped: the framework allows any length from 32 to 64 bytes, where SPDX names three fixed lengths.",
         "The named algorithms take lowercase hexadecimal, and additional_digests holds any other algorithm, such as an SCS's own revision type.",
         "A consumer accepts only the algorithms it considers secure and ignores the rest, and two sets match when any accepted algorithm matches.",
         "SHAKE and BLAKE2 digests can be of any length, and this schema asks for at least 32 bytes, since a shorter digest resists collisions too weakly to identify an artifact."
@@ -2410,6 +2677,9 @@
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"
+      ],
+      "aliases": [
+        "DigestSet"
       ],
       "slots": [
         "inTotoDigestSet__sha256",
@@ -2443,6 +2713,9 @@
         {
           "name": "sha256",
           "description": "The SHA-256 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha256"
+          ],
           "slot_uri": "in_toto_linkml:sha256",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
@@ -2450,6 +2723,9 @@
         {
           "name": "sha224",
           "description": "The SHA-224 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha224"
+          ],
           "slot_uri": "in_toto_linkml:sha224",
           "pattern": "^[a-f0-9]{56}$",
           "@type": "SlotDefinition"
@@ -2457,6 +2733,9 @@
         {
           "name": "sha384",
           "description": "The SHA-384 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha384"
+          ],
           "slot_uri": "in_toto_linkml:sha384",
           "pattern": "^[a-f0-9]{96}$",
           "@type": "SlotDefinition"
@@ -2464,6 +2743,9 @@
         {
           "name": "sha512",
           "description": "The SHA-512 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha512"
+          ],
           "slot_uri": "in_toto_linkml:sha512",
           "pattern": "^[a-f0-9]{128}$",
           "@type": "SlotDefinition"
@@ -2485,6 +2767,9 @@
         {
           "name": "sha3_224",
           "description": "The SHA3-224 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha3_224"
+          ],
           "slot_uri": "in_toto_linkml:sha3_224",
           "pattern": "^[a-f0-9]{56}$",
           "@type": "SlotDefinition"
@@ -2492,6 +2777,9 @@
         {
           "name": "sha3_256",
           "description": "The SHA3-256 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha3_256"
+          ],
           "slot_uri": "in_toto_linkml:sha3_256",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
@@ -2499,6 +2787,9 @@
         {
           "name": "sha3_384",
           "description": "The SHA3-384 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha3_384"
+          ],
           "slot_uri": "in_toto_linkml:sha3_384",
           "pattern": "^[a-f0-9]{96}$",
           "@type": "SlotDefinition"
@@ -2506,6 +2797,9 @@
         {
           "name": "sha3_512",
           "description": "The SHA3-512 digest of the artifact.",
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha3_512"
+          ],
           "slot_uri": "in_toto_linkml:sha3_512",
           "pattern": "^[a-f0-9]{128}$",
           "@type": "SlotDefinition"
@@ -2565,6 +2859,9 @@
           "comments": [
             "SHA-1 lacks collision resistance, so most consumers should not rely on it."
           ],
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/sha1"
+          ],
           "slot_uri": "in_toto_linkml:sha1",
           "pattern": "^[a-f0-9]{40}$",
           "@type": "SlotDefinition"
@@ -2575,6 +2872,9 @@
           "comments": [
             "MD5 lacks collision resistance, so most consumers should not accept it."
           ],
+          "related_mappings": [
+            "spdx_core:HashAlgorithm/md5"
+          ],
           "slot_uri": "in_toto_linkml:md5",
           "pattern": "^[a-f0-9]{32}$",
           "@type": "SlotDefinition"
@@ -2582,6 +2882,9 @@
         {
           "name": "dir_hash",
           "description": "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64.",
+          "aliases": [
+            "dirHash"
+          ],
           "slot_uri": "in_toto_linkml:dir_hash",
           "pattern": "^[a-f0-9]{64}$",
           "@type": "SlotDefinition"
@@ -2589,6 +2892,9 @@
         {
           "name": "git_commit",
           "description": "The git commit id of a source revision.",
+          "aliases": [
+            "gitCommit"
+          ],
           "slot_uri": "in_toto_linkml:git_commit",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
@@ -2596,6 +2902,9 @@
         {
           "name": "git_tree",
           "description": "The git tree id of a source revision's content, or of any file tree.",
+          "aliases": [
+            "gitTree"
+          ],
           "slot_uri": "in_toto_linkml:git_tree",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
@@ -2603,6 +2912,9 @@
         {
           "name": "git_blob",
           "description": "The git blob id of a file's content.",
+          "aliases": [
+            "gitBlob"
+          ],
           "slot_uri": "in_toto_linkml:git_blob",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
@@ -2610,6 +2922,9 @@
         {
           "name": "git_tag",
           "description": "The git object id of an annotated tag.",
+          "aliases": [
+            "gitTag"
+          ],
           "slot_uri": "in_toto_linkml:git_tag",
           "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$",
           "@type": "SlotDefinition"
@@ -3033,11 +3348,15 @@
       "comments": [
         "In the attestation's JSON the algorithm is a key of the digest set beside the named ones, and an algorithm the framework does not define documents how its value is encoded.",
         "An SCS that does not use cryptographic digests defines a canonical revision type of its own that includes the repository, such as svn_revision_id.",
-        "Each algorithm appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this."
+        "Each algorithm appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this.",
+        "It is related to, not the same as, an SPDX 3 Hash, whose algorithm comes from a closed list, where this one's may be a revision type rather than a digest."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"
+      ],
+      "related_mappings": [
+        "spdx_core:Hash"
       ],
       "slots": [
         "inTotoAdditionalDigest__algorithm",
@@ -3096,6 +3415,9 @@
         {
           "name": "value",
           "description": "The digest under that algorithm, in the encoding the algorithm documents.",
+          "related_mappings": [
+            "spdx_core:hashValue"
+          ],
           "slot_uri": "in_toto_linkml:value",
           "required": true,
           "pattern": "^\\S+$",
@@ -3114,6 +3436,9 @@
         "Each key appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
+      "close_mappings": [
+        "spdx_core:DictionaryEntry"
+      ],
       "slots": [
         "inTotoAnnotation__annotation_key",
         "inTotoAnnotation__annotation_values"
@@ -3123,6 +3448,9 @@
         {
           "name": "annotation_key",
           "description": "The annotation's key.",
+          "close_mappings": [
+            "spdx_core:key"
+          ],
           "slot_uri": "in_toto_linkml:annotation_key",
           "required": true,
           "@type": "SlotDefinition"
@@ -3130,6 +3458,9 @@
         {
           "name": "annotation_values",
           "description": "The annotation's values.",
+          "close_mappings": [
+            "spdx_core:value"
+          ],
           "slot_uri": "in_toto_linkml:annotation_values",
           "multivalued": true,
           "@type": "SlotDefinition"
@@ -3146,11 +3477,18 @@
         "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present."
       ],
       "comments": [
-        "A descriptor carries at least one of a URI, a digest or its content; a field that needs a particular one says so."
+        "A descriptor carries at least one of a URI, a digest or its content; a field that needs a particular one says so.",
+        "It describes an artifact, where an SPDX 3 Artifact is the artifact itself, so the two are related rather than the same."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/resource_descriptor.md"
+      ],
+      "aliases": [
+        "ResourceDescriptor"
+      ],
+      "related_mappings": [
+        "spdx_core:Artifact"
       ],
       "slots": [
         "resource_uri",
@@ -3166,12 +3504,22 @@
         {
           "name": "resource_name",
           "description": "A name for the resource within the attestation that carries it.",
+          "aliases": [
+            "name"
+          ],
           "slot_uri": "in_toto_linkml:resource_name",
           "@type": "SlotDefinition"
         },
         {
           "name": "download_location",
           "description": "Where the resource can be fetched, when that differs from its identifying URI.",
+          "aliases": [
+            "downloadLocation"
+          ],
+          "close_mappings": [
+            "spdx_software:downloadLocation",
+            "dcat:downloadURL"
+          ],
           "slot_uri": "in_toto_linkml:download_location",
           "range": "in_toto_resource_uri",
           "@type": "SlotDefinition"
@@ -3179,6 +3527,12 @@
         {
           "name": "media_type",
           "description": "The IANA media type of the resource's content.",
+          "aliases": [
+            "mediaType"
+          ],
+          "close_mappings": [
+            "spdx_core:contentType"
+          ],
           "slot_uri": "dcat:mediaType",
           "@type": "SlotDefinition"
         },
@@ -3284,11 +3638,18 @@
       "description": "The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself.",
       "comments": [
         "The signature envelope around a statement, and the bundle that collects signed statements, are outside this model.",
-        "A statement is the attestation, and its predicate is one kind of claim about the subjects, such as a test result or build provenance."
+        "A statement is the attestation, and its predicate is one kind of claim about the subjects, such as a test result or build provenance.",
+        "Its exact mapping is the type URI its statement_type holds, as each predicate class maps to its predicate_type."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md"
+      ],
+      "aliases": [
+        "Statement"
+      ],
+      "exact_mappings": [
+        "in_toto_io:Statement/v1"
       ],
       "slots": [
         "predicate",
@@ -3301,6 +3662,9 @@
         {
           "name": "statement_type",
           "description": "The in-toto statement type, always https://in-toto.io/Statement/v1.",
+          "aliases": [
+            "_type"
+          ],
           "slot_uri": "in_toto_linkml:statement_type",
           "range": "in_toto_type_uri",
           "required": true,
@@ -3322,6 +3686,9 @@
         {
           "name": "predicate_type",
           "description": "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.",
+          "aliases": [
+            "predicateType"
+          ],
           "slot_uri": "in_toto_linkml:predicate_type",
           "range": "in_toto_type_uri",
           "required": true,
@@ -3336,11 +3703,15 @@
       "definition_uri": "https://w3id.org/lmodel/in-toto/InTotoPredicate",
       "description": "The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind.",
       "comments": [
-        "The statement's predicate_type names the predicate's type by URI, and each concrete class says which URI it renders. Nothing ties the two, since a schema that imports this module may model a predicate under its own URI."
+        "The statement's predicate_type names the predicate's type by URI, and each concrete class says which URI it renders. Nothing ties the two, since a schema that imports this module may model a predicate under its own URI.",
+        "A predicate is of one kind only, so the kinds that extend this class are mutually disjoint."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_core",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md"
+      ],
+      "aliases": [
+        "Predicate"
       ],
       "abstract": true,
       "slots": [
@@ -3358,6 +3729,7 @@
         }
       ],
       "class_uri": "https://w3id.org/lmodel/in-toto/InTotoPredicate",
+      "children_are_mutually_disjoint": true,
       "@type": "ClassDefinition"
     },
     {
@@ -3418,6 +3790,9 @@
         "A list that holds one JSON object holds each key once, since the object uses it as a key; the validator does not check this."
       ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
+      "close_mappings": [
+        "spdx_core:DictionaryEntry"
+      ],
       "slots": [
         "inTotoObjectEntry__entry_key",
         "inTotoObjectEntry__entry_values"
@@ -3427,12 +3802,18 @@
         {
           "name": "entry_key",
           "description": "The object's key.",
+          "close_mappings": [
+            "spdx_core:key"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "entry_values",
           "description": "The key's values.",
+          "close_mappings": [
+            "spdx_core:value"
+          ],
           "multivalued": true,
           "@type": "SlotDefinition"
         }
@@ -3452,6 +3833,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md"
       ],
+      "aliases": [
+        "TestResult"
+      ],
       "exact_mappings": [
         "in_toto:test-result/v0.1"
       ],
@@ -3470,6 +3854,9 @@
         {
           "name": "test_result",
           "description": "The result of the test run.",
+          "aliases": [
+            "result"
+          ],
           "range": "InTotoTestResultValue",
           "required": true,
           "@type": "SlotDefinition"
@@ -3487,18 +3874,27 @@
         {
           "name": "test_run_url",
           "description": "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it.",
+          "aliases": [
+            "url"
+          ],
           "range": "in_toto_resource_uri",
           "@type": "SlotDefinition"
         },
         {
           "name": "passed_tests",
           "description": "The names of the tests that passed.",
+          "aliases": [
+            "passedTests"
+          ],
           "multivalued": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "warned_tests",
           "description": "The names of the tests that expressed a warning.",
+          "aliases": [
+            "warnedTests"
+          ],
           "multivalued": true,
           "@type": "SlotDefinition"
         },
@@ -3507,6 +3903,9 @@
           "description": "The names of the tests that failed.",
           "comments": [
             "Producer and consumer agree on what a test name means; a policy can check that test_result and failed_tests meet its requirements."
+          ],
+          "aliases": [
+            "failedTests"
           ],
           "multivalued": true,
           "@type": "SlotDefinition"
@@ -3527,6 +3926,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md"
       ],
+      "aliases": [
+        "SimpleVerificationResult"
+      ],
       "exact_mappings": [
         "in_toto:svr/v0.1"
       ],
@@ -3542,6 +3944,9 @@
         {
           "name": "svr_verifier",
           "description": "The entity that performed the verification.",
+          "aliases": [
+            "verifier"
+          ],
           "range": "InTotoSvrVerifier",
           "required": true,
           "inlined": true,
@@ -3550,6 +3955,9 @@
         {
           "name": "time_created",
           "description": "When the verification took place.",
+          "aliases": [
+            "timeCreated"
+          ],
           "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
@@ -3557,6 +3965,9 @@
         {
           "name": "verified_properties",
           "description": "The properties of the subjects that passed verification, scoped to the framework or policy verified, such as SLSA_BUILD_LEVEL_3.",
+          "aliases": [
+            "properties"
+          ],
           "required": true,
           "multivalued": true,
           "@type": "SlotDefinition"
@@ -3576,6 +3987,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md"
       ],
+      "aliases": [
+        "Verifier"
+      ],
       "slots": [
         "inTotoSvrVerifier__svr_verifier_id"
       ],
@@ -3584,6 +3998,9 @@
         {
           "name": "svr_verifier_id",
           "description": "The URI that identifies the verifier, versioned when its verification logic changes materially.",
+          "aliases": [
+            "id"
+          ],
           "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -3603,6 +4020,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md"
       ],
+      "aliases": [
+        "AttributeReport"
+      ],
       "exact_mappings": [
         "in_toto:scai/v0.3"
       ],
@@ -3617,6 +4037,9 @@
         {
           "name": "scai_attributes",
           "description": "One or more attribute assertions about the subjects.",
+          "aliases": [
+            "attributes"
+          ],
           "range": "InTotoScaiAttributeAssertion",
           "required": true,
           "multivalued": true,
@@ -3628,6 +4051,9 @@
         {
           "name": "scai_producer",
           "description": "The producer of the subjects, where that applies.",
+          "aliases": [
+            "producer"
+          ],
           "range": "InTotoResourceDescriptor",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -3644,6 +4070,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md"
       ],
+      "aliases": [
+        "AttributeAssertion"
+      ],
       "slots": [
         "inTotoScaiAttributeAssertion__scai_attribute",
         "inTotoScaiAttributeAssertion__scai_target",
@@ -3655,12 +4084,18 @@
         {
           "name": "scai_attribute",
           "description": "The functional feature asserted, in a form the producer and consumer agree on.",
+          "aliases": [
+            "attribute"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "scai_target",
           "description": "The artifact or metadata object the attribute applies to.",
+          "aliases": [
+            "target"
+          ],
           "range": "InTotoResourceDescriptor",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -3668,6 +4103,9 @@
         {
           "name": "scai_conditions",
           "description": "The conditions under which the attribute arises.",
+          "aliases": [
+            "conditions"
+          ],
           "range": "InTotoObjectEntry",
           "multivalued": true,
           "inlined": true,
@@ -3679,6 +4117,9 @@
           "description": "The evidence, authenticated where possible, for the asserted attribute.",
           "comments": [
             "Without evidence a consumer may judge the assertion by who produced the attestation."
+          ],
+          "aliases": [
+            "evidence"
           ],
           "range": "InTotoResourceDescriptor",
           "inlined": true,
@@ -3700,6 +4141,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md"
       ],
+      "aliases": [
+        "Link"
+      ],
       "exact_mappings": [
         "in_toto:link/v0.3"
       ],
@@ -3717,12 +4161,18 @@
         {
           "name": "step_name",
           "description": "The name of the step, which a layout uses to find the link metadata it verifies.",
+          "aliases": [
+            "name"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "step_command",
           "description": "The command the step ran, and its arguments; possibly empty.",
+          "aliases": [
+            "command"
+          ],
           "multivalued": true,
           "@type": "SlotDefinition"
         },
@@ -3741,6 +4191,9 @@
         {
           "name": "step_byproducts",
           "description": "What else the step recorded, such as its standard output, in keys the in-toto specification describes.",
+          "aliases": [
+            "byproducts"
+          ],
           "range": "InTotoObjectEntry",
           "multivalued": true,
           "inlined": true,
@@ -3750,6 +4203,9 @@
         {
           "name": "step_environment",
           "description": "The environment the step ran in, in keys the producer chooses.",
+          "aliases": [
+            "environment"
+          ],
           "range": "InTotoObjectEntry",
           "multivalued": true,
           "inlined": true,
@@ -3815,6 +4271,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md"
       ],
+      "aliases": [
+        "Reference"
+      ],
       "exact_mappings": [
         "in_toto:reference/v0.1"
       ],
@@ -3829,6 +4288,9 @@
         {
           "name": "reference_attester",
           "description": "The system that provides the documents.",
+          "aliases": [
+            "attester"
+          ],
           "range": "InTotoReferenceAttester",
           "required": true,
           "inlined": true,
@@ -3837,6 +4299,9 @@
         {
           "name": "referenced_documents",
           "description": "The documents referred to.",
+          "aliases": [
+            "references"
+          ],
           "range": "InTotoReferencedDocument",
           "required": true,
           "multivalued": true,
@@ -3857,6 +4322,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md"
       ],
+      "aliases": [
+        "Attester"
+      ],
       "slots": [
         "inTotoReferenceAttester__reference_attester_id"
       ],
@@ -3865,6 +4333,9 @@
         {
           "name": "reference_attester_id",
           "description": "The URI that identifies the system.",
+          "aliases": [
+            "id"
+          ],
           "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -3947,6 +4418,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md"
       ],
+      "aliases": [
+        "Release"
+      ],
       "exact_mappings": [
         "in_toto:release/v0.1"
       ],
@@ -3964,6 +4438,12 @@
           "comments": [
             "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does."
           ],
+          "aliases": [
+            "purl"
+          ],
+          "close_mappings": [
+            "spdx_software:packageUrl"
+          ],
           "range": "in_toto_resource_uri",
           "required": true,
           "pattern": "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+",
@@ -3972,6 +4452,9 @@
         {
           "name": "package_id",
           "description": "A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name.",
+          "aliases": [
+            "packageId"
+          ],
           "@type": "SlotDefinition"
         }
       ],
@@ -4005,6 +4488,9 @@
         {
           "name": "trace_monitor",
           "description": "The monitor instance that traced the run.",
+          "aliases": [
+            "monitor"
+          ],
           "range": "InTotoTraceMonitor",
           "required": true,
           "inlined": true,
@@ -4013,6 +4499,9 @@
         {
           "name": "monitored_process",
           "description": "The process the monitor watched.",
+          "aliases": [
+            "monitoredProcess"
+          ],
           "range": "InTotoMonitoredProcess",
           "required": true,
           "inlined": true,
@@ -4021,6 +4510,9 @@
         {
           "name": "monitor_log",
           "description": "The events the monitor traced.",
+          "aliases": [
+            "monitorLog"
+          ],
           "range": "InTotoMonitorLog",
           "required": true,
           "inlined": true,
@@ -4029,6 +4521,9 @@
         {
           "name": "trace_metadata",
           "description": "Other properties of the monitoring event.",
+          "aliases": [
+            "metadata"
+          ],
           "range": "InTotoTraceMetadata",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -4055,6 +4550,9 @@
         {
           "name": "monitor_type",
           "description": "The URI of the monitor's type.",
+          "aliases": [
+            "type"
+          ],
           "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -4062,6 +4560,9 @@
         {
           "name": "monitor_config_source",
           "description": "The monitor's configuration.",
+          "aliases": [
+            "configSource"
+          ],
           "range": "InTotoResourceDescriptor",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -4069,6 +4570,9 @@
         {
           "name": "trace_policy",
           "description": "The trace policy the monitor applied, in the monitor's own format, which monitor_type names.",
+          "aliases": [
+            "tracePolicy"
+          ],
           "range": "InTotoObjectEntry",
           "multivalued": true,
           "inlined": true,
@@ -4097,6 +4601,9 @@
         {
           "name": "host_id",
           "description": "The URI that identifies the host the process ran on.",
+          "aliases": [
+            "hostID"
+          ],
           "range": "uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -4104,6 +4611,9 @@
         {
           "name": "process_type",
           "description": "The URI of the type of process, such as the build type when the monitor watched a build.",
+          "aliases": [
+            "type"
+          ],
           "range": "in_toto_type_uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -4111,6 +4621,9 @@
         {
           "name": "process_event",
           "description": "The job or task the attestation is about.",
+          "aliases": [
+            "event"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -4139,12 +4652,18 @@
         {
           "name": "traced_processes",
           "description": "The processes the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.",
+          "aliases": [
+            "process"
+          ],
           "multivalued": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "traced_network",
           "description": "The network activity the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines.",
+          "aliases": [
+            "network"
+          ],
           "multivalued": true,
           "@type": "SlotDefinition"
         },
@@ -4153,6 +4672,9 @@
           "description": "The files the run accessed, each with its path and digests; one file may appear more than once, with different digests if it changed.",
           "comments": [
             "A monitor that cannot pause the build, such as one that uses eBPF, guarantees less about these digests than one that can."
+          ],
+          "aliases": [
+            "fileAccess"
           ],
           "range": "InTotoResourceDescriptor",
           "multivalued": true,
@@ -4216,12 +4738,24 @@
         {
           "name": "build_started_on",
           "description": "When the monitored build started.",
+          "aliases": [
+            "buildStartedOn"
+          ],
+          "close_mappings": [
+            "spdx_build:buildStartTime"
+          ],
           "range": "in_toto_timestamp",
           "@type": "SlotDefinition"
         },
         {
           "name": "build_finished_on",
           "description": "When the monitored build finished.",
+          "aliases": [
+            "buildFinishedOn"
+          ],
+          "close_mappings": [
+            "spdx_build:buildEndTime"
+          ],
           "range": "in_toto_timestamp",
           "@type": "SlotDefinition"
         }
@@ -4240,6 +4774,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"
       ],
+      "aliases": [
+        "Vulns"
+      ],
       "exact_mappings": [
         "in_toto:vulns/v0.2"
       ],
@@ -4254,6 +4791,9 @@
         {
           "name": "vuln_scanner",
           "description": "The scanner that ran, its version and the database it used.",
+          "aliases": [
+            "scanner"
+          ],
           "range": "InTotoVulnScanner",
           "required": true,
           "inlined": true,
@@ -4262,6 +4802,9 @@
         {
           "name": "scan_metadata",
           "description": "When the scan ran.",
+          "aliases": [
+            "metadata"
+          ],
           "range": "InTotoScanMetadata",
           "required": true,
           "inlined": true,
@@ -4279,6 +4822,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"
       ],
+      "aliases": [
+        "Scanner"
+      ],
       "slots": [
         "inTotoVulnScanner__scanner_uri",
         "inTotoVulnScanner__scanner_version",
@@ -4290,6 +4836,9 @@
         {
           "name": "scanner_uri",
           "description": "The URI that identifies the scanner's source.",
+          "aliases": [
+            "uri"
+          ],
           "range": "in_toto_resource_uri",
           "required": true,
           "@type": "SlotDefinition"
@@ -4300,11 +4849,17 @@
           "comments": [
             "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string."
           ],
+          "aliases": [
+            "version"
+          ],
           "@type": "SlotDefinition"
         },
         {
           "name": "vuln_db",
           "description": "The vulnerability database the scanner used.",
+          "aliases": [
+            "db"
+          ],
           "range": "InTotoVulnDatabase",
           "inlined": true,
           "@type": "SlotDefinition"
@@ -4312,6 +4867,9 @@
         {
           "name": "scan_results",
           "description": "The vulnerabilities the scanner found; an empty list means it found none.",
+          "aliases": [
+            "result"
+          ],
           "range": "InTotoVulnResult",
           "required": true,
           "multivalued": true,
@@ -4331,6 +4889,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"
       ],
+      "aliases": [
+        "VulnDatabase"
+      ],
       "slots": [
         "inTotoVulnDatabase__db_uri",
         "inTotoVulnDatabase__db_version",
@@ -4341,17 +4902,26 @@
         {
           "name": "db_uri",
           "description": "The URI that identifies the database's source.",
+          "aliases": [
+            "uri"
+          ],
           "range": "in_toto_resource_uri",
           "@type": "SlotDefinition"
         },
         {
           "name": "db_version",
           "description": "The database's version.",
+          "aliases": [
+            "version"
+          ],
           "@type": "SlotDefinition"
         },
         {
           "name": "db_last_update",
           "description": "When the database was last updated.",
+          "aliases": [
+            "lastUpdate"
+          ],
           "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
@@ -4364,9 +4934,18 @@
       "name": "InTotoVulnResult",
       "definition_uri": "https://w3id.org/lmodel/in-toto/InTotoVulnResult",
       "description": "One vulnerability a scanner found.",
+      "comments": [
+        "SPDX 3 describes a vulnerability as an element of its own and ties it to the artifact by a relationship, where this result is the scanner's finding about the subjects, so the two are related rather than the same."
+      ],
       "from_schema": "https://w3id.org/lmodel/in-toto/in_toto_predicates",
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"
+      ],
+      "aliases": [
+        "Result"
+      ],
+      "related_mappings": [
+        "spdx_security:Vulnerability"
       ],
       "slots": [
         "inTotoVulnResult__vuln_id",
@@ -4378,12 +4957,18 @@
         {
           "name": "vuln_id",
           "description": "The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.",
+          "aliases": [
+            "id"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "vuln_severity",
           "description": "The vulnerability's severity, by one or more scoring methods.",
+          "aliases": [
+            "severity"
+          ],
           "range": "InTotoVulnSeverity",
           "required": true,
           "multivalued": true,
@@ -4396,6 +4981,9 @@
           "description": "Custom information the scanner adds, as key and value pairs.",
           "comments": [
             "The page calls them a list of key and value pairs, and the protocol buffer definition a list of objects. Each pair of each object is one entry, in order, so a key may appear more than once."
+          ],
+          "aliases": [
+            "annotations"
           ],
           "range": "InTotoObjectEntry",
           "multivalued": true,
@@ -4415,6 +5003,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"
       ],
+      "aliases": [
+        "Severity"
+      ],
       "slots": [
         "inTotoVulnSeverity__severity_method",
         "inTotoVulnSeverity__severity_score"
@@ -4424,12 +5015,18 @@
         {
           "name": "severity_method",
           "description": "The scoring method, such as nvd or cvss.",
+          "aliases": [
+            "method"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "severity_score",
           "description": "The score under that method, as a string.",
+          "aliases": [
+            "score"
+          ],
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -4445,6 +5042,9 @@
       "see_also": [
         "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"
       ],
+      "aliases": [
+        "ScanMetadata"
+      ],
       "slots": [
         "inTotoScanMetadata__scan_started_on",
         "inTotoScanMetadata__scan_finished_on"
@@ -4454,6 +5054,9 @@
         {
           "name": "scan_started_on",
           "description": "When the scan started.",
+          "aliases": [
+            "scanStartedOn"
+          ],
           "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
@@ -4461,6 +5064,9 @@
         {
           "name": "scan_finished_on",
           "description": "When the scan finished.",
+          "aliases": [
+            "scanFinishedOn"
+          ],
           "range": "in_toto_timestamp",
           "required": true,
           "@type": "SlotDefinition"
@@ -4472,8 +5078,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "in_toto_linkml.yaml",
-  "source_file_date": "2026-10-30T15:47:57",
-  "source_file_size": 2246,
+  "source_file_date": "2026-11-01T00:25:45",
+  "source_file_size": 2345,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/in_toto_linkml.context.jsonld",
