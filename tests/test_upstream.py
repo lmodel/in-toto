@@ -201,6 +201,47 @@ def _messages(path: Path) -> dict[str, set[str]]:
     return found
 
 
+JSON_NAME = re.compile(r"^\s*[^/]*?\b(\w+)\s*=\s*\d+\s*\[json_name\s*=\s*\"([^\"]+)\"")
+
+
+def _json_name(path: Path, field: str) -> str:
+    """The key a field takes in the attestation's JSON: the json_name its
+    definition gives, else its name in lower camel case, as the protocol
+    buffer JSON mapping writes it."""
+    for line in path.read_text().splitlines():
+        named = JSON_NAME.match(line)
+        if named and named.group(1) == field:
+            return named.group(2)
+    head, *rest = field.split("_")
+    return head + "".join(part.title() for part in rest)
+
+
+@pytest.mark.parametrize("key", sorted(MESSAGES), ids=lambda k: f"{k[0]}:{k[1]}")
+def test_each_name_the_framework_uses_is_an_alias(key):
+    """A class whose name is not the message's carries the message name as an
+    alias, and a slot whose name is not the field's JSON key carries the key."""
+    file, message = key
+    cls, fields = MESSAGES[key]
+    assert message in VIEW.get_class(cls).aliases, cls
+    for field, slot in fields.items():
+        if slot is None:
+            continue
+        key_name = _json_name(PROTOS / file, field)
+        if key_name != slot:
+            assert key_name in VIEW.induced_slot(slot, cls).aliases, (cls, slot)
+
+
+def test_the_statement_maps_to_its_type():
+    """The statement maps to the one type URI its statement_type allows, as
+    each predicate class maps to its predicate_type."""
+    (mapping,) = VIEW.get_class("InTotoStatement").exact_mappings
+    uri = VIEW.expand_curie(mapping)
+    pattern = VIEW.induced_slot("statement_type", "InTotoStatement").pattern
+    assert re.fullmatch(pattern, uri)
+    page = (COPY / "spec" / "v1" / "statement.md").read_text()
+    assert f'"_type": "{uri}"' in page
+
+
 @pytest.mark.parametrize("key", sorted(MESSAGES), ids=lambda k: f"{k[0]}:{k[1]}")
 def test_each_proto_field_has_a_slot(key):
     """Every field of a rendered message is mapped, and each mapped slot is

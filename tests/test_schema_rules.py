@@ -33,6 +33,13 @@ def test_digest_set_rules_name_every_algorithm():
     assert reserved == {JSON_KEYS.get(name, name) for name in algorithms} | algorithms
 
 
+def test_digest_set_fields_alias_their_json_keys():
+    """A digest field whose name is not its JSON key carries the key as an alias."""
+    sv = SchemaView(str(SCHEMA))
+    for name, key in JSON_KEYS.items():
+        assert key in sv.induced_slot(name, "InTotoDigestSet").aliases, name
+
+
 def test_every_predicate_is_a_kind_of_the_statements_predicate():
     """The statement's predicate ranges over the base every predicate extends,
     so predicate_kind can name each of them."""
@@ -212,3 +219,41 @@ def test_mappings_use_a_bound_prefix():
     for mapping in mappings:
         prefix, sep, _ = mapping.partition(":")
         assert sep and prefix in prefixes, mapping
+
+
+SPDX = "https://spdx.org/rdf/3.0.1/terms/"
+
+
+def _expand(doc, curie):
+    prefix, _, local = curie.partition(":")
+    return (doc.get("prefixes") or {}).get(prefix, prefix + ":") + local
+
+
+def _spdx_terms():
+    """Every SPDX 3.0.1 IRI the spdx neighbour renders: its classes' and
+    slots' IRIs and its enum values' meanings."""
+    doc = yaml.safe_load((NEIGHBOUR_DIR / "spdx.yaml").read_text())
+    terms = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            for key, value in node.items():
+                if key in ("class_uri", "slot_uri", "meaning") and isinstance(value, str):
+                    terms.add(_expand(doc, value))
+                else:
+                    walk(value)
+        elif isinstance(node, list):
+            for item in node:
+                walk(item)
+
+    walk(doc)
+    return terms
+
+
+def test_spdx_mappings_name_terms_spdx_defines():
+    """Every mapping to SPDX 3.0.1 names a term that lmodel/spdx renders from
+    SPDX's own model, so a mapping cannot point at a term SPDX lacks."""
+    doc = yaml.safe_load(COPY.read_text())
+    spdx = [_expand(doc, m) for m in _mappings(doc) if _expand(doc, m).startswith(SPDX)]
+    assert spdx
+    assert sorted(set(spdx) - _spdx_terms()) == []
