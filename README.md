@@ -43,9 +43,11 @@ None beyond the in-toto specification: the schema renders one framework, and its
 
 ## Mappings
 
-The schema crosses to the framework's own identifiers and borrows from no other vocabulary.
+The schema crosses to the framework's own identifiers, and to SPDX 3.0.1 and DCAT where a term means the same or close to it. The framework states no mappings, so the SPDX and DCAT ones are this project's own.
 
-* **Predicate types**: each predicate class names the type URI its statements carry in `exact_mappings`, and each value of `InTotoVettedPredicate` means that URI, under the `in_toto:` prefix for the in-toto project's own predicates.
+* **Statement and predicate types**: `InTotoStatement` and each predicate class name the type URI their statements carry in `exact_mappings`, and each value of `InTotoVettedPredicate` means that URI, under the `in_toto:` prefix for the in-toto project's own predicates.
+* **SPDX 3.0.1**: annotations and open-keyed entries are close to SPDX's `DictionaryEntry`, `download_location` to its `downloadLocation` and to DCAT's `downloadURL`, `media_type` to `contentType`, `release_purl` to `packageUrl`, and a runtime trace's build times to the Build profile's. Digest fields, the additional digest and a vulnerability result are only related to SPDX's hash algorithms, `Hash` and `Vulnerability`. `tests/test_schema_rules.py` checks each term against the lmodel/spdx release that renders SPDX's model.
+* **Names**: each class and field whose name differs from the framework's carries the framework's name as an alias, such as `_type` on `statement_type` and `TestResult` on `InTotoTestResult`.
 * **LOKF**: `media_type` carries DCAT's `mediaType` and `algorithm` SPDX 2's `algorithm`, the IRIs LOKF gives the two keys, because the framework's fields mean the same.
 
 ## Not modelled here

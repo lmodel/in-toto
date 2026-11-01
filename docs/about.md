@@ -22,7 +22,8 @@ The classes carry the `InToto` prefix and live under `in_toto_linkml:`
 (`https://w3id.org/lmodel/in-toto/`). The core keeps the class and slot names
 lmodel/slsa gave the layer, which follow the attestation's JSON in snake case:
 `statement_type` for `_type`, `resource_uri` for `uri` and `dir_hash` for
-`dirHash`, for example.
+`dirHash`, for example. Each such element carries the framework's name as an
+alias.
 
 Three keys are also LOKF's, so the adapt copy treats them apart. `media_type`
 carries DCAT's `mediaType` and `algorithm` SPDX 2's `algorithm`, the IRIs LOKF
