@@ -56,9 +56,10 @@ classes:
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
     comments:
-    - 'A field named after an algorithm that SPDX 3 also names relates to SPDX''s individual for it. BLAKE2b
-      is left unmapped: the framework allows any length from 32 to 64 bytes, where SPDX names three fixed
-      lengths.'
+    - A field named after an algorithm that SPDX 3 also names relates to SPDX's individual for it. BLAKE2b
+      relates to all three of SPDX's BLAKE2b individuals, because the framework allows any length from
+      32 to 64 bytes, where SPDX names only lengths of 32, 48 and 64 bytes. SPDX has no individual for
+      the other algorithms, and an SPDX document records them as other.
     - The named algorithms take lowercase hexadecimal, and additional_digests holds any other algorithm,
       such as an SCS's own revision type.
     - A consumer accepts only the algorithms it considers secure and ignores the rest, and two sets match
@@ -135,6 +136,10 @@ classes:
         pattern: ^[a-f0-9]{64}([a-f0-9]{2})*$
       blake2b:
         slot_uri: in_toto_linkml:blake2b
+        related_mappings:
+        - spdx_core:HashAlgorithm/blake2b256
+        - spdx_core:HashAlgorithm/blake2b384
+        - spdx_core:HashAlgorithm/blake2b512
         description: The BLAKE2b digest of the artifact, of 32 to 64 bytes.
         pattern: ^[a-f0-9]{64}([a-f0-9]{2}){0,32}$
       blake2s:
@@ -1339,13 +1344,21 @@ enums:
     description: The result of a test run, as a Test Result predicate records it.
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md
+    - https://www.w3.org/TR/EARL10-Schema/
+    comments:
+    - PASSED and FAILED mean the outcomes of the same names in W3C's Evaluation and Report Language (EARL)
+      1.0. EARL has no outcome for a pass with warnings, so WARNED is unmapped.
+    - The meanings are full addresses, because the Python generator writes no namespace for a prefix that
+      only an enum's meaning uses.
     permissible_values:
       PASSED:
         description: The run passed.
+        meaning: http://www.w3.org/ns/earl#passed
       WARNED:
         description: The run passed with warnings.
       FAILED:
         description: The run failed.
+        meaning: http://www.w3.org/ns/earl#failed
   InTotoVettedPredicate:
     description: The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each
       with the predicate_type a statement of it carries at the version its page describes.

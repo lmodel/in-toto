@@ -6,6 +6,10 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **EARL outcomes and BLAKE2b's SPDX lengths.** The Test Result values `PASSED` and `FAILED` mean W3C EARL 1.0's `passed` and `failed`, and `blake2b` relates to SPDX's three BLAKE2b individuals, since the framework allows any length from 32 to 64 bytes.
+
 ## [0.2.1] - 2026-11-01
 
 ### Fixed

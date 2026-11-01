@@ -1202,13 +1202,15 @@ class InTotoTestResultValue(EnumDefinitionImpl):
     """
     PASSED = PermissibleValue(
         text="PASSED",
-        description="The run passed.")
+        description="The run passed.",
+        meaning=None)
     WARNED = PermissibleValue(
         text="WARNED",
         description="The run passed with warnings.")
     FAILED = PermissibleValue(
         text="FAILED",
-        description="The run failed.")
+        description="The run failed.",
+        meaning=None)
 
     _defn = EnumDefinition(
         name="InTotoTestResultValue",
