@@ -4,19 +4,9 @@
 
 in-toto Attestation Framework (LinkML)
 
-> **Two ways in.** This README is one; the other is a docent, a museum's name
-> for a guide. Install
-> [`ktl-docent`](https://github.com/noelmcloughlin/knowledge-trust-ladder) into
-> whatever agent you already use, by a route from
-> [the install page](https://w3id.org/ktl/docs/install/), and ask it anything
-> about this project. It answers from `.lokf/knowledge/`,
-> the checked part of what the project knows, and says how far each answer has
-> been trusted (still a draft, checked by automation only, or confirmed by a
-> named person). It opens the source for exact values, and records what it
-> could not answer so the gap gets filled. The same docent serves a person at a
-> prompt, an agent reading this file, or a chatbot that can load a skill.
-> **Agents:** if `.lokf/knowledge/index.md` exists, read it first. `llms.txt`
-> says how to weigh it.
+> **Only want to ask?** Install `ktl-docent` into any agent you use, by a route from [the install page](https://w3id.org/ktl/docs/install/), and ask it about this project. It answers from the bundle and says how far each answer has been checked.
+>
+> **Agents:** if `.lokf/knowledge/index.md` exists, read it first. `llms.txt` says how to weigh it.
 
 ## Documentation Website
 
@@ -24,32 +14,20 @@ in-toto Attestation Framework (LinkML)
 
 ## What it models
 
-The [in-toto Attestation Framework](https://github.com/in-toto/attestation) at release [v1.2.0](https://github.com/in-toto/attestation/releases/tag/v1.2.0) of March 18, 2026, the format in which a supply chain step makes a verifiable claim about the artifacts it touched:
+The schema models the [in-toto Attestation Framework](https://github.com/in-toto/attestation) at release [v1.2.0](https://github.com/in-toto/attestation/releases/tag/v1.2.0) of March 18, 2026, the format in which a supply chain step makes a verifiable claim about the artifacts it touched. The schema holds the statement (`InTotoStatement`), the resource descriptor and digest set that name an artifact, the predicate types with the thirteen the in-toto project has vetted, and eight of the vetted predicates.
 
-* **The statement** (`InTotoStatement`): the middle layer of an attestation, which binds it to its subjects, each a resource descriptor with a digest (`InTotoStatementSubject`), and names the type of its predicate.
-* **The resource descriptor** (`InTotoResourceDescriptor`) and **the digest set** (`InTotoDigestSet`, with `InTotoAdditionalDigest` and `InTotoAnnotation`): how an attestation names an artifact, by URI, digest or content.
-* **Predicate types** (`InTotoPredicateType`): a type of predicate, named by the URI a statement's `predicate_type` holds, and the thirteen the in-toto project has vetted (`InTotoVettedPredicate`).
-* **Eight vetted predicates**: Test Result (`InTotoTestResult`), Simple Verification Result (`InTotoSimpleVerificationResult`), SCAI Attribute Report (`InTotoScaiAttributeReport`), Link (`InTotoLink`), Reference (`InTotoReference`), Release (`InTotoRelease`), Runtime Trace (`InTotoRuntimeTrace`) and VULNS (`InTotoVulns`), each with the classes it holds.
+`in_toto_core` holds the statement layer and imports only the LinkML types, so that [lmodel/slsa](https://github.com/lmodel/slsa) can import it alone.
 
-`in_toto_core` holds the statement layer and imports only the LinkML types, so that [lmodel/slsa](https://github.com/lmodel/slsa), which models SLSA Provenance and the SLSA Verification Summary, can import it alone. The class and slot names are the ones slsa gave them.
-
-The schema header's `version` is the framework's release, 1.2.0, and its `source` is the release's tree. [src/in_toto_linkml/schema/attestation/](src/in_toto_linkml/schema/attestation) holds the release's specification pages and protocol buffer definitions, matched to it by git object hash. `tests/test_upstream.py` holds every field of each copied definition to a slot, the list of vetted predicates to the predicates page, each vetted type URI to the page that gives it, and the pages' complete examples to the schema. A weekly workflow opens an issue when in-toto/attestation releases again, changes a copied file, or the copy drifts.
-
-v1.2.0 is the latest release. Release tags number the schema's versions.
-
-## Influences
-
-None beyond the in-toto specification: the schema renders one framework, and its layout, its release asset and its governance files follow lmodel/slsa.
+[src/in_toto_linkml/schema/attestation/](src/in_toto_linkml/schema/attestation) holds the release's specification pages and protocol buffer definitions, matched by git object hash, and `tests/test_upstream.py` holds the schema to them. A weekly workflow opens an issue when in-toto/attestation releases again, changes a copied file, or the copy drifts.
 
 ## Mappings
 
-The schema crosses to the framework's own identifiers, and to SPDX 3.0.1, DCAT and W3C's EARL 1.0 where a term means the same or close to it. The framework states no mappings, so the SPDX, DCAT and EARL ones are this project's own.
+The framework states no mappings, so the SPDX, DCAT and EARL ones are this project's own.
 
-* **Statement and predicate types**: `InTotoStatement` and each predicate class name the type URI their statements carry in `exact_mappings`, and each value of `InTotoVettedPredicate` means that URI, under the `in_toto:` prefix for the in-toto project's own predicates.
-* **SPDX 3.0.1**: annotations and open-keyed entries are close to SPDX's `DictionaryEntry`, `download_location` to its `downloadLocation` and to DCAT's `downloadURL`, `media_type` to `contentType`, `release_purl` to `packageUrl`, and a runtime trace's build times to the Build profile's. Digest fields, the additional digest and a vulnerability result are only related to SPDX's hash algorithms, `Hash` and `Vulnerability`; `blake2b` relates to all three of SPDX's BLAKE2b lengths, and an algorithm SPDX does not name has no mapping. `tests/test_schema_rules.py` checks each term against the lmodel/spdx release that renders SPDX's model.
-* **EARL 1.0**: the Test Result values `PASSED` and `FAILED` mean EARL's `passed` and `failed` outcomes. EARL has no outcome for a pass with warnings, so `WARNED` means none.
-* **Names**: each class and field whose name differs from the framework's carries the framework's name as an alias, such as `_type` on `statement_type` and `TestResult` on `InTotoTestResult`.
-* **LOKF**: `media_type` carries DCAT's `mediaType` and `algorithm` SPDX 2's `algorithm`, the IRIs LOKF gives the two keys, because the framework's fields mean the same.
+* **Type URIs**: `InTotoStatement` and each predicate class name the type URI their statements carry in `exact_mappings`, and each value of `InTotoVettedPredicate` means that URI.
+* **SPDX 3.0.1 and DCAT**: close mappings for annotations, download locations, media types, package URLs and build times, and related ones for digests and vulnerabilities. `tests/test_schema_rules.py` checks each term against the lmodel/spdx release.
+* **EARL 1.0**: the Test Result values `PASSED` and `FAILED` mean EARL's `passed` and `failed`. `WARNED` means none, because EARL has no such outcome.
+* **Names**: a class or field whose name differs from the framework's carries the framework's name as an alias, such as `_type` on `statement_type`.
 
 ## Not modelled here
 
@@ -77,27 +55,23 @@ Run `just` to list the project's [just](https://github.com/casey/just/) recipes.
 
 ## Knowledge Trust Ladder (KTL)
 
-`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle, in the Linked Open Knowledge Format (LOKF). Its domain schema is `.lokf/in-toto.yaml`, which `lokf adapt` writes from `src/in_toto_linkml/schema/in_toto_linkml.yaml`. Edit the source, never the copy. A release carries the copy as `schema-<tag>-in-toto.yaml`, on the terms [CONTRIBUTING.md](CONTRIBUTING.md#releasing-maintainers) gives.
+`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle. Its domain schema, `.lokf/in-toto.yaml`, is the copy `just lokf-adapt` writes from `src/in_toto_linkml/schema/in_toto_linkml.yaml`, and `just lokf-adapt-check` says when it is stale. Edit the source, never the copy. A release carries the copy as `schema-<tag>-in-toto.yaml`, on the terms [CONTRIBUTING.md](CONTRIBUTING.md#releasing-maintainers) gives.
 
-`just lokf-adapt` rewrites the copy, and `just lokf-adapt-check` says when it is stale. `project.justfile` names the class the copy roots on `Concept`, and a concept may name it as its `type`. In Obsidian, add it to the KTL Registrar and KTL Curator plugins' *Known LOKF types* setting:
+The copy roots one class on `Concept`, so a concept may name it as its `type`. In Obsidian, add it to the *Known LOKF types* setting of the KTL Registrar and KTL Curator plugins:
 
 ```text
 InTotoPredicateType
 ```
 
-A concept writes the type URI in `predicate_type_uri`, and the vetted predicate it is in `vetted_as`. A name and a description are the concept's own `title` and `description`. Statements, resource descriptors and predicates are records about one artifact, which a concept cites rather than holds.
+A concept writes the type URI in `predicate_type_uri`, and the vetted predicate it is in `vetted_as`. Statements, resource descriptors and predicates are records about one artifact, which a concept cites rather than holds.
 
-A host imports the copy beside LOKF's schema, `lokf.yaml`, and beside other adapt copies. LinkML merges them into one namespace, where the last definition of a name wins silently. So no class, enum or type shares a name with LOKF's. A slot shares a name with LOKF's only where it carries LOKF's meaning and Internationalized Resource Identifier (IRI), as `media_type` and `algorithm` do. The statement's `predicate` means something else, so the copy calls it `in_toto_linkml_predicate`. With the released neighbours, the copy shares `subject` and `value` with the oscal and spdx copies, keys slsa v0.7.0 shares with them too. It shares the in-toto layer with slsa v0.7.0 itself, which defines that layer in its own namespace until its next release imports it from here, so a host takes one of the two. `tests/test_schema_rules.py` fails on any other shared name.
+`media_type` and `algorithm` carry the IRIs LOKF gives those keys, because the framework's fields mean the same. The statement's `predicate` means something else, so the copy calls it `in_toto_linkml_predicate`. The copy shares `subject` and `value` with the oscal and spdx copies, and the in-toto layer with slsa v0.7.0, which defines that layer in its own namespace, so a host imports one of the two. `tests/test_schema_rules.py` fails on any other shared name.
 
 ## License
 
-The schema and the code are under the Apache License 2.0 ([LICENSE](LICENSE)).
+The schema and the code are under the Apache License 2.0 ([LICENSE](LICENSE)), and the knowledge bundle in `.lokf/knowledge/` is under CC BY 4.0.
 
-The knowledge bundle in `.lokf/knowledge/` is under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), as its `index.md` declares.
-
-The in-toto Attestation Framework is the in-toto project's, under the Apache License 2.0. The schema's descriptions are this project's own words. The specification copy in [src/in_toto_linkml/schema/attestation/](src/in_toto_linkml/schema/attestation) keeps the project's licence beside it: see [NOTICE](NOTICE).
-
-This is not an official in-toto project, and its use implies no endorsement by the in-toto project.
+The in-toto Attestation Framework is the in-toto project's, under the Apache License 2.0. The schema's descriptions are this project's own words, and the specification copy keeps the project's licence beside it: see [NOTICE](NOTICE). This is not an official in-toto project, and its use implies no endorsement by the in-toto project.
 
 ## Contributing and security
 
