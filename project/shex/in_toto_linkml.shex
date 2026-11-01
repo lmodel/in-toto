@@ -309,9 +309,8 @@ linkml:Sparqlpath xsd:string
 <InTotoTestResult> CLOSED {
     (  $<InTotoTestResult_tes> (  &<InTotoPredicate_tes> ;
           rdf:type [ <InTotoPredicate> ] ? ;
-          <test_result> [ <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#PASSED>
-             <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#WARNED>
-             <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#FAILED> ] ;
+          <test_result> [ <http://www.w3.org/ns/earl#passed> <https://w3id.org/lmodel/in-toto/InTotoTestResultValue#WARNED>
+             <http://www.w3.org/ns/earl#failed> ] ;
           <configuration> @<InTotoResourceDescriptor> + ;
           <test_run_url> @<InTotoResourceUri> ? ;
           <passed_tests> @linkml:String * ;

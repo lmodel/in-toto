@@ -267,9 +267,11 @@ class InTotoDigestSet(ConfiguredBaseModel):
                                                                 'name': 'additional_digests',
                                                                 'required': True}}}],
          'comments': ['A field named after an algorithm that SPDX 3 also names relates '
-                      "to SPDX's individual for it. BLAKE2b is left unmapped: the "
-                      'framework allows any length from 32 to 64 bytes, where SPDX '
-                      'names three fixed lengths.',
+                      "to SPDX's individual for it. BLAKE2b relates to all three of "
+                      "SPDX's BLAKE2b individuals, because the framework allows any "
+                      'length from 32 to 64 bytes, where SPDX names only lengths of '
+                      '32, 48 and 64 bytes. SPDX has no individual for the other '
+                      'algorithms, and an SPDX document records them as other.',
                       'The named algorithms take lowercase hexadecimal, and '
                       "additional_digests holds any other algorithm, such as an SCS's "
                       'own revision type.',
@@ -313,7 +315,11 @@ class InTotoDigestSet(ConfiguredBaseModel):
          'slot_uri': 'in_toto_linkml:sha3_512'} })
     shake128: Optional[str] = Field(default=None, description="""The SHAKE128 digest of the artifact, of at least 32 bytes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'], 'slot_uri': 'in_toto_linkml:shake128'} })
     shake256: Optional[str] = Field(default=None, description="""The SHAKE256 digest of the artifact, of at least 32 bytes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'], 'slot_uri': 'in_toto_linkml:shake256'} })
-    blake2b: Optional[str] = Field(default=None, description="""The BLAKE2b digest of the artifact, of 32 to 64 bytes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'], 'slot_uri': 'in_toto_linkml:blake2b'} })
+    blake2b: Optional[str] = Field(default=None, description="""The BLAKE2b digest of the artifact, of 32 to 64 bytes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'],
+         'related_mappings': ['spdx_core:HashAlgorithm/blake2b256',
+                              'spdx_core:HashAlgorithm/blake2b384',
+                              'spdx_core:HashAlgorithm/blake2b512'],
+         'slot_uri': 'in_toto_linkml:blake2b'} })
     blake2s: Optional[str] = Field(default=None, description="""The BLAKE2s digest of the artifact, at its full 32 bytes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'], 'slot_uri': 'in_toto_linkml:blake2s'} })
     ripemd160: Optional[str] = Field(default=None, description="""The RIPEMD-160 digest of the artifact.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'], 'slot_uri': 'in_toto_linkml:ripemd160'} })
     sm3: Optional[str] = Field(default=None, description="""The SM3 digest of the artifact.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InTotoDigestSet'], 'slot_uri': 'in_toto_linkml:sm3'} })
