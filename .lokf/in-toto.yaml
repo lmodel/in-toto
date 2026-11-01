@@ -9,6 +9,12 @@ description: 'A LinkML model of the in-toto Attestation Framework: the statement
 version: 1.2.0
 source: https://github.com/in-toto/attestation/tree/v1.2.0
 license: Apache-2.0
+in_language: en
+keywords:
+- in-toto
+- attestation
+- predicate type
+- software supply chain
 see_also:
 - https://lmodel.github.io/in-toto
 - https://github.com/in-toto/attestation/blob/v1.2.0/spec/README.md
@@ -30,9 +36,14 @@ prefixes:
   linkml: https://w3id.org/linkml/
   in_toto_linkml: https://w3id.org/lmodel/in-toto/
   dcat: http://www.w3.org/ns/dcat#
+  in_toto_io: https://in-toto.io/
   spdx: http://spdx.org/rdf/terms#
+  spdx_core: https://spdx.org/rdf/3.0.1/terms/Core/
+  spdx_software: https://spdx.org/rdf/3.0.1/terms/Software/
   xsd: http://www.w3.org/2001/XMLSchema#
   in_toto: https://in-toto.io/attestation/
+  spdx_build: https://spdx.org/rdf/3.0.1/terms/Build/
+  spdx_security: https://spdx.org/rdf/3.0.1/terms/Security/
 imports:
 - linkml:types
 - lokf
@@ -40,9 +51,14 @@ classes:
   InTotoDigestSet:
     description: A set of one or more digests over one artifact, keyed by algorithm, from which a consumer
       picks the algorithm it trusts.
+    aliases:
+    - DigestSet
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
     comments:
+    - 'A field named after an algorithm that SPDX 3 also names relates to SPDX''s individual for it. BLAKE2b
+      is left unmapped: the framework allows any length from 32 to 64 bytes, where SPDX names three fixed
+      lengths.'
     - The named algorithms take lowercase hexadecimal, and additional_digests holds any other algorithm,
       such as an SCS's own revision type.
     - A consumer accepts only the algorithms it considers secure and ignores the rest, and two sets match
@@ -55,18 +71,26 @@ classes:
     attributes:
       sha256:
         slot_uri: in_toto_linkml:sha256
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha256
         description: The SHA-256 digest of the artifact.
         pattern: ^[a-f0-9]{64}$
       sha224:
         slot_uri: in_toto_linkml:sha224
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha224
         description: The SHA-224 digest of the artifact.
         pattern: ^[a-f0-9]{56}$
       sha384:
         slot_uri: in_toto_linkml:sha384
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha384
         description: The SHA-384 digest of the artifact.
         pattern: ^[a-f0-9]{96}$
       sha512:
         slot_uri: in_toto_linkml:sha512
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha512
         description: The SHA-512 digest of the artifact.
         pattern: ^[a-f0-9]{128}$
       sha512_224:
@@ -79,18 +103,26 @@ classes:
         pattern: ^[a-f0-9]{64}$
       sha3_224:
         slot_uri: in_toto_linkml:sha3_224
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha3_224
         description: The SHA3-224 digest of the artifact.
         pattern: ^[a-f0-9]{56}$
       sha3_256:
         slot_uri: in_toto_linkml:sha3_256
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha3_256
         description: The SHA3-256 digest of the artifact.
         pattern: ^[a-f0-9]{64}$
       sha3_384:
         slot_uri: in_toto_linkml:sha3_384
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha3_384
         description: The SHA3-384 digest of the artifact.
         pattern: ^[a-f0-9]{96}$
       sha3_512:
         slot_uri: in_toto_linkml:sha3_512
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha3_512
         description: The SHA3-512 digest of the artifact.
         pattern: ^[a-f0-9]{128}$
       shake128:
@@ -123,34 +155,48 @@ classes:
         pattern: ^[a-f0-9]{64}([a-f0-9]{64})?$
       sha1:
         slot_uri: in_toto_linkml:sha1
+        related_mappings:
+        - spdx_core:HashAlgorithm/sha1
         description: The SHA-1 digest of the artifact.
         pattern: ^[a-f0-9]{40}$
         comments:
         - SHA-1 lacks collision resistance, so most consumers should not rely on it.
       md5:
         slot_uri: in_toto_linkml:md5
+        related_mappings:
+        - spdx_core:HashAlgorithm/md5
         description: The MD5 digest of the artifact.
         pattern: ^[a-f0-9]{32}$
         comments:
         - MD5 lacks collision resistance, so most consumers should not accept it.
       dir_hash:
+        aliases:
+        - dirHash
         slot_uri: in_toto_linkml:dir_hash
         description: A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal
           rather than base64.
         pattern: ^[a-f0-9]{64}$
       git_commit:
+        aliases:
+        - gitCommit
         slot_uri: in_toto_linkml:git_commit
         description: The git commit id of a source revision.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       git_tree:
+        aliases:
+        - gitTree
         slot_uri: in_toto_linkml:git_tree
         description: The git tree id of a source revision's content, or of any file tree.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       git_blob:
+        aliases:
+        - gitBlob
         slot_uri: in_toto_linkml:git_blob
         description: The git blob id of a file's content.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
       git_tag:
+        aliases:
+        - gitTag
         slot_uri: in_toto_linkml:git_tag
         description: The git object id of an annotated tag.
         pattern: ^[a-f0-9]{40}([a-f0-9]{24})?$
@@ -290,6 +336,8 @@ classes:
   InTotoAdditionalDigest:
     description: One digest under an algorithm that InTotoDigestSet does not name, such as an SCS's own
       revision type.
+    related_mappings:
+    - spdx_core:Hash
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md
     comments:
@@ -299,6 +347,8 @@ classes:
       includes the repository, such as svn_revision_id.
     - Each algorithm appears once in a list, since the attestation's JSON uses it as a key; the validator
       does not check this.
+    - It is related to, not the same as, an SPDX 3 Hash, whose algorithm comes from a closed list, where
+      this one's may be a revision type rather than a digest.
     attributes:
       algorithm:
         description: The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id.
@@ -344,11 +394,15 @@ classes:
           itself sets no rule for other names.
       value:
         slot_uri: in_toto_linkml:value
+        related_mappings:
+        - spdx_core:hashValue
         description: The digest under that algorithm, in the encoding the algorithm documents.
         required: true
         pattern: ^\S+$
   InTotoAnnotation:
     description: 'One vendor-specific annotation on a resource descriptor: a key and its values.'
+    close_mappings:
+    - spdx_core:DictionaryEntry
     comments:
     - The attestation's JSON allows any JSON value. A string becomes one value and an array one value
       per item; any other value or item is written as its JSON text, so one value cannot tell a string
@@ -358,20 +412,30 @@ classes:
     attributes:
       annotation_key:
         slot_uri: in_toto_linkml:annotation_key
+        close_mappings:
+        - spdx_core:key
         description: The annotation's key.
         required: true
       annotation_values:
         slot_uri: in_toto_linkml:annotation_values
+        close_mappings:
+        - spdx_core:value
         description: The annotation's values.
         multivalued: true
   InTotoResourceDescriptor:
     description: A reference to a software artifact or other resource by URI or digest, or the resource
       itself as content, with optional metadata.
+    aliases:
+    - ResourceDescriptor
+    related_mappings:
+    - spdx_core:Artifact
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/resource_descriptor.md
     comments:
     - A descriptor carries at least one of a URI, a digest or its content; a field that needs a particular
       one says so.
+    - It describes an artifact, where an SPDX 3 Artifact is the artifact itself, so the two are related
+      rather than the same.
     notes:
     - Each condition in any_of names its range through a nested any_of, because the JSON Schema generator
       leaves a condition's own range out, and a null value would then count as present.
@@ -380,15 +444,26 @@ classes:
     - digest
     attributes:
       resource_name:
+        aliases:
+        - name
         slot_uri: in_toto_linkml:resource_name
         description: A name for the resource within the attestation that carries it.
       download_location:
+        aliases:
+        - downloadLocation
         slot_uri: in_toto_linkml:download_location
+        close_mappings:
+        - spdx_software:downloadLocation
+        - dcat:downloadURL
         description: Where the resource can be fetched, when that differs from its identifying URI.
         range: in_toto_resource_uri
       media_type:
         description: The IANA media type of the resource's content.
+        aliases:
+        - mediaType
         slot_uri: dcat:mediaType
+        close_mappings:
+        - spdx_core:contentType
       content:
         slot_uri: in_toto_linkml:content
         description: The resource's content itself, base64-encoded, for a resource small enough to carry
@@ -431,6 +506,10 @@ classes:
   InTotoStatement:
     description: 'The statement layer of an in-toto attestation: the subjects it is about, the type of
       its predicate and the predicate itself.'
+    aliases:
+    - Statement
+    exact_mappings:
+    - in_toto_io:Statement/v1
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md
     comments:
@@ -438,10 +517,14 @@ classes:
       this model.
     - A statement is the attestation, and its predicate is one kind of claim about the subjects, such
       as a test result or build provenance.
+    - Its exact mapping is the type URI its statement_type holds, as each predicate class maps to its
+      predicate_type.
     slots:
     - in_toto_linkml_predicate
     attributes:
       statement_type:
+        aliases:
+        - _type
         slot_uri: in_toto_linkml:statement_type
         description: The in-toto statement type, always https://in-toto.io/Statement/v1.
         range: in_toto_type_uri
@@ -457,6 +540,8 @@ classes:
         inlined: true
         inlined_as_list: true
       predicate_type:
+        aliases:
+        - predicateType
         slot_uri: in_toto_linkml:predicate_type
         description: The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1.
         range: in_toto_type_uri
@@ -465,12 +550,16 @@ classes:
     abstract: true
     description: The base of every predicate an in-toto statement can carry; predicate_kind names the
       concrete kind.
+    aliases:
+    - Predicate
+    children_are_mutually_disjoint: true
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md
     comments:
     - The statement's predicate_type names the predicate's type by URI, and each concrete class says which
       URI it renders. Nothing ties the two, since a schema that imports this module may model a predicate
       under its own URI.
+    - A predicate is of one kind only, so the kinds that extend this class are mutually disjoint.
     attributes:
       predicate_kind:
         slot_uri: in_toto_linkml:predicate_kind
@@ -504,6 +593,8 @@ classes:
   InTotoObjectEntry:
     description: One key of a JSON object whose keys the framework leaves to the producer, and the key's
       values.
+    close_mappings:
+    - spdx_core:DictionaryEntry
     comments:
     - A string becomes one value and an array one value per item; any other value or item is written as
       its JSON text, as InTotoAnnotation does.
@@ -512,14 +603,20 @@ classes:
     attributes:
       entry_key:
         description: The object's key.
+        close_mappings:
+        - spdx_core:key
         required: true
       entry_values:
         description: The key's values.
+        close_mappings:
+        - spdx_core:value
         multivalued: true
   InTotoTestResult:
     is_a: InTotoPredicate
     description: The predicate that records the result of one run of a test suite against the subjects,
       with the names of the tests that passed, warned and failed.
+    aliases:
+    - TestResult
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md
     exact_mappings:
@@ -529,6 +626,8 @@ classes:
     - One attestation records one invocation of a suite.
     attributes:
       test_result:
+        aliases:
+        - result
         description: The result of the test run.
         range: InTotoTestResultValue
         required: true
@@ -540,16 +639,24 @@ classes:
         inlined: true
         inlined_as_list: true
       test_run_url:
+        aliases:
+        - url
         description: Where the test run can be read, such as a CI run that holds its logs; the verifier
           works out how to read it.
         range: in_toto_resource_uri
       passed_tests:
+        aliases:
+        - passedTests
         description: The names of the tests that passed.
         multivalued: true
       warned_tests:
+        aliases:
+        - warnedTests
         description: The names of the tests that expressed a warning.
         multivalued: true
       failed_tests:
+        aliases:
+        - failedTests
         description: The names of the tests that failed.
         multivalued: true
         comments:
@@ -559,6 +666,8 @@ classes:
     is_a: InTotoPredicate
     description: The predicate that says a verifier evaluated the subjects against one or more policies,
       and which properties passed.
+    aliases:
+    - SimpleVerificationResult
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md
     exact_mappings:
@@ -568,21 +677,29 @@ classes:
     - It is a lighter form of the SLSA Verification Summary, which lmodel/slsa models.
     attributes:
       svr_verifier:
+        aliases:
+        - verifier
         description: The entity that performed the verification.
         range: InTotoSvrVerifier
         required: true
         inlined: true
       time_created:
+        aliases:
+        - timeCreated
         description: When the verification took place.
         range: in_toto_timestamp
         required: true
       verified_properties:
+        aliases:
+        - properties
         description: The properties of the subjects that passed verification, scoped to the framework
           or policy verified, such as SLSA_BUILD_LEVEL_3.
         multivalued: true
         required: true
   InTotoSvrVerifier:
     description: The entity that performed a simple verification.
+    aliases:
+    - Verifier
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md
     comments:
@@ -590,6 +707,8 @@ classes:
       this schema does not model them.
     attributes:
       svr_verifier_id:
+        aliases:
+        - id
         description: The URI that identifies the verifier, versioned when its verification logic changes
           materially.
         range: in_toto_type_uri
@@ -598,6 +717,8 @@ classes:
     is_a: InTotoPredicate
     description: 'The Software Supply Chain Attribute Integrity (SCAI) predicate: assertions about functional
       attributes of the subjects or their producer, each with the evidence for it.'
+    aliases:
+    - AttributeReport
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md
     exact_mappings:
@@ -606,6 +727,8 @@ classes:
     - The statement that carries it has predicate_type https://in-toto.io/attestation/scai/v0.3.
     attributes:
       scai_attributes:
+        aliases:
+        - attributes
         description: One or more attribute assertions about the subjects.
         range: InTotoScaiAttributeAssertion
         multivalued: true
@@ -614,29 +737,41 @@ classes:
         inlined: true
         inlined_as_list: true
       scai_producer:
+        aliases:
+        - producer
         description: The producer of the subjects, where that applies.
         range: InTotoResourceDescriptor
         inlined: true
   InTotoScaiAttributeAssertion:
     description: 'One SCAI assertion: an attribute of the subject or its producer, what it applies to,
       under which conditions, and the evidence for it.'
+    aliases:
+    - AttributeAssertion
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md
     attributes:
       scai_attribute:
+        aliases:
+        - attribute
         description: The functional feature asserted, in a form the producer and consumer agree on.
         required: true
       scai_target:
+        aliases:
+        - target
         description: The artifact or metadata object the attribute applies to.
         range: InTotoResourceDescriptor
         inlined: true
       scai_conditions:
+        aliases:
+        - conditions
         description: The conditions under which the attribute arises.
         range: InTotoObjectEntry
         multivalued: true
         inlined: true
         inlined_as_list: true
       scai_evidence:
+        aliases:
+        - evidence
         description: The evidence, authenticated where possible, for the asserted attribute.
         range: InTotoResourceDescriptor
         inlined: true
@@ -646,6 +781,8 @@ classes:
     is_a: InTotoPredicate
     description: 'The predicate that records one step of an in-toto layout: the command it ran and the
       materials it read, for a supply chain that migrates from in-toto 0.9 links.'
+    aliases:
+    - Link
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md
     exact_mappings:
@@ -656,9 +793,13 @@ classes:
       the attestation; the validator does not check this.
     attributes:
       step_name:
+        aliases:
+        - name
         description: The name of the step, which a layout uses to find the link metadata it verifies.
         required: true
       step_command:
+        aliases:
+        - command
         description: The command the step ran, and its arguments; possibly empty.
         multivalued: true
       materials:
@@ -670,6 +811,8 @@ classes:
         comments:
         - Each material's resource_name is unique among them; the validator does not check this.
       step_byproducts:
+        aliases:
+        - byproducts
         description: What else the step recorded, such as its standard output, in keys the in-toto specification
           describes.
         range: InTotoObjectEntry
@@ -677,6 +820,8 @@ classes:
         inlined: true
         inlined_as_list: true
       step_environment:
+        aliases:
+        - environment
         description: The environment the step ran in, in keys the producer chooses.
         range: InTotoObjectEntry
         multivalued: true
@@ -703,6 +848,8 @@ classes:
     is_a: InTotoPredicate
     description: The predicate that points from the subjects, as a whole, to documents about them, such
       as a bill of materials.
+    aliases:
+    - Reference
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md
     exact_mappings:
@@ -713,11 +860,15 @@ classes:
       else unchanged.
     attributes:
       reference_attester:
+        aliases:
+        - attester
         description: The system that provides the documents.
         range: InTotoReferenceAttester
         required: true
         inlined: true
       referenced_documents:
+        aliases:
+        - references
         description: The documents referred to.
         range: InTotoReferencedDocument
         multivalued: true
@@ -727,10 +878,14 @@ classes:
         inlined_as_list: true
   InTotoReferenceAttester:
     description: The system that provides the documents a Reference predicate points to.
+    aliases:
+    - Attester
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md
     attributes:
       reference_attester_id:
+        aliases:
+        - id
         description: The URI that identifies the system.
         range: in_toto_type_uri
         required: true
@@ -760,6 +915,8 @@ classes:
     is_a: InTotoPredicate
     description: The predicate that ties the subjects to one release name and version of a package, so
       that consumers can check what the release should contain.
+    aliases:
+    - Release
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md
     exact_mappings:
@@ -770,15 +927,21 @@ classes:
     - Each subject's resource_name is the artifact's file name as it would appear on disk.
     attributes:
       release_purl:
+        aliases:
+        - purl
         description: The package URL that names the release, with its version and, unless the package
           type needs them, no qualifiers or subpath.
         range: in_toto_resource_uri
+        close_mappings:
+        - spdx_software:packageUrl
         required: true
         pattern: ^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+
         comments:
         - The version follows the last @, as the purl specification parses a package URL, so a scoped
           npm name such as @angular/http may keep its @ unencoded, as the page's first example does.
       package_id:
+        aliases:
+        - packageId
         description: A stable identifier for the package that does not change between releases, so that
           a consumer can tell a renamed package from a reused name.
   InTotoRuntimeTrace:
@@ -793,21 +956,29 @@ classes:
     - The statement that carries it has predicate_type https://in-toto.io/attestation/runtime-trace/v0.1.
     attributes:
       trace_monitor:
+        aliases:
+        - monitor
         description: The monitor instance that traced the run.
         range: InTotoTraceMonitor
         required: true
         inlined: true
       monitored_process:
+        aliases:
+        - monitoredProcess
         description: The process the monitor watched.
         range: InTotoMonitoredProcess
         required: true
         inlined: true
       monitor_log:
+        aliases:
+        - monitorLog
         description: The events the monitor traced.
         range: InTotoMonitorLog
         required: true
         inlined: true
       trace_metadata:
+        aliases:
+        - metadata
         description: Other properties of the monitoring event.
         range: InTotoTraceMetadata
         inlined: true
@@ -817,14 +988,20 @@ classes:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
     attributes:
       monitor_type:
+        aliases:
+        - type
         description: The URI of the monitor's type.
         range: in_toto_type_uri
         required: true
       monitor_config_source:
+        aliases:
+        - configSource
         description: The monitor's configuration.
         range: InTotoResourceDescriptor
         inlined: true
       trace_policy:
+        aliases:
+        - tracePolicy
         description: The trace policy the monitor applied, in the monitor's own format, which monitor_type
           names.
         range: InTotoObjectEntry
@@ -837,15 +1014,21 @@ classes:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
     attributes:
       host_id:
+        aliases:
+        - hostID
         description: The URI that identifies the host the process ran on.
         range: uri
         required: true
       process_type:
+        aliases:
+        - type
         description: The URI of the type of process, such as the build type when the monitor watched a
           build.
         range: in_toto_type_uri
         required: true
       process_event:
+        aliases:
+        - event
         description: The job or task the attestation is about.
         required: true
   InTotoMonitorLog:
@@ -858,14 +1041,20 @@ classes:
       leaves a condition's own range out, and a null value would then count as present.
     attributes:
       traced_processes:
+        aliases:
+        - process
         description: The processes the monitor observed, one JSON object each, written as its JSON text,
           in a format monitor_type determines.
         multivalued: true
       traced_network:
+        aliases:
+        - network
         description: The network activity the monitor observed, one JSON object each, written as its JSON
           text, in a format monitor_type determines.
         multivalued: true
       file_access:
+        aliases:
+        - fileAccess
         description: The files the run accessed, each with its path and digests; one file may appear more
           than once, with different digests if it changed.
         range: InTotoResourceDescriptor
@@ -894,15 +1083,25 @@ classes:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md
     attributes:
       build_started_on:
+        aliases:
+        - buildStartedOn
         description: When the monitored build started.
         range: in_toto_timestamp
+        close_mappings:
+        - spdx_build:buildStartTime
       build_finished_on:
+        aliases:
+        - buildFinishedOn
         description: When the monitored build finished.
         range: in_toto_timestamp
+        close_mappings:
+        - spdx_build:buildEndTime
   InTotoVulns:
     is_a: InTotoPredicate
     description: 'The predicate that records the result of one vulnerability scan of the subjects: the
       scanner, its database and the vulnerabilities it found.'
+    aliases:
+    - Vulns
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
     exact_mappings:
@@ -911,34 +1110,48 @@ classes:
     - The statement that carries it has predicate_type https://in-toto.io/attestation/vulns/v0.2.
     attributes:
       vuln_scanner:
+        aliases:
+        - scanner
         description: The scanner that ran, its version and the database it used.
         range: InTotoVulnScanner
         required: true
         inlined: true
       scan_metadata:
+        aliases:
+        - metadata
         description: When the scan ran.
         range: InTotoScanMetadata
         required: true
         inlined: true
   InTotoVulnScanner:
     description: The scanner a VULNS predicate records, with its results.
+    aliases:
+    - Scanner
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
     attributes:
       scanner_uri:
+        aliases:
+        - uri
         description: The URI that identifies the scanner's source.
         range: in_toto_resource_uri
         required: true
       scanner_version:
+        aliases:
+        - version
         description: The scanner's version.
         comments:
         - The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema
           takes any string.
       vuln_db:
+        aliases:
+        - db
         description: The vulnerability database the scanner used.
         range: InTotoVulnDatabase
         inlined: true
       scan_results:
+        aliases:
+        - result
         description: The vulnerabilities the scanner found; an empty list means it found none.
         range: InTotoVulnResult
         multivalued: true
@@ -947,27 +1160,47 @@ classes:
         inlined_as_list: true
   InTotoVulnDatabase:
     description: The vulnerability database a scanner used.
+    aliases:
+    - VulnDatabase
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
     attributes:
       db_uri:
+        aliases:
+        - uri
         description: The URI that identifies the database's source.
         range: in_toto_resource_uri
       db_version:
+        aliases:
+        - version
         description: The database's version.
       db_last_update:
+        aliases:
+        - lastUpdate
         description: When the database was last updated.
         range: in_toto_timestamp
         required: true
   InTotoVulnResult:
     description: One vulnerability a scanner found.
+    related_mappings:
+    - spdx_security:Vulnerability
+    aliases:
+    - Result
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
+    comments:
+    - SPDX 3 describes a vulnerability as an element of its own and ties it to the artifact by a relationship,
+      where this result is the scanner's finding about the subjects, so the two are related rather than
+      the same.
     attributes:
       vuln_id:
+        aliases:
+        - id
         description: The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645.
         required: true
       vuln_severity:
+        aliases:
+        - severity
         description: The vulnerability's severity, by one or more scoring methods.
         range: InTotoVulnSeverity
         multivalued: true
@@ -975,6 +1208,8 @@ classes:
         inlined: true
         inlined_as_list: true
       vuln_annotations:
+        aliases:
+        - annotations
         description: Custom information the scanner adds, as key and value pairs.
         range: InTotoObjectEntry
         multivalued: true
@@ -985,25 +1220,37 @@ classes:
           of objects. Each pair of each object is one entry, in order, so a key may appear more than once.
   InTotoVulnSeverity:
     description: One severity score of a vulnerability, by one scoring method.
+    aliases:
+    - Severity
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
     attributes:
       severity_method:
+        aliases:
+        - method
         description: The scoring method, such as nvd or cvss.
         required: true
       severity_score:
+        aliases:
+        - score
         description: The score under that method, as a string.
         required: true
   InTotoScanMetadata:
     description: When a vulnerability scan ran.
+    aliases:
+    - ScanMetadata
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md
     attributes:
       scan_started_on:
+        aliases:
+        - scanStartedOn
         description: When the scan started.
         range: in_toto_timestamp
         required: true
       scan_finished_on:
+        aliases:
+        - scanFinishedOn
         description: When the scan finished.
         range: in_toto_timestamp
         required: true
@@ -1028,6 +1275,8 @@ slots:
       an OCI image reference.
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri
+    aliases:
+    - uri
     slot_uri: in_toto_linkml:resource_uri
     range: in_toto_resource_uri
   digest:

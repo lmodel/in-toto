@@ -10,6 +10,12 @@ description: >-
 version: 1.2.0
 source: https://github.com/in-toto/attestation/tree/v1.2.0
 license: Apache-2.0
+in_language: en
+keywords:
+  - in-toto
+  - attestation
+  - predicate type
+  - software supply chain
 see_also:
   - https://lmodel.github.io/in-toto
   - https://github.com/in-toto/attestation/blob/v1.2.0/spec/README.md

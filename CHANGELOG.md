@@ -6,6 +6,12 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **Mappings to SPDX 3.0.1 and DCAT, and the statement's own type URI.** Close and related mappings link annotations, download locations, media types, package URLs, build times, digests and vulnerability results to the SPDX terms lmodel/spdx renders, and a test holds each to that release.
+- **The framework's names as aliases**: the message name on each class and the JSON key on each field whose name differs, held to the protocol buffer definitions by a test.
+- **A language, keywords, and disjoint predicate kinds.** Each module states `in_language` and `keywords`, and the classes that extend `InTotoPredicate` are mutually disjoint in the generated ontology.
+
 ## [0.1.1] - 2026-10-30
 
 ### Fixed
