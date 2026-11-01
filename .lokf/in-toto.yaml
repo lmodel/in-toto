@@ -1348,8 +1348,9 @@ enums:
     comments:
     - PASSED and FAILED mean the outcomes of the same names in W3C's Evaluation and Report Language (EARL)
       1.0. EARL has no outcome for a pass with warnings, so WARNED is unmapped.
-    - The meanings are full addresses, because the Python generator writes no namespace for a prefix that
-      only an enum's meaning uses.
+    - The meanings are full addresses with no prefix bound for them, because the Python generator writes
+      no namespace for a prefix bound only in an imported module, and shortens a full address to any prefix
+      that covers it. The Python model holds no meaning for them; the other generators keep it.
     permissible_values:
       PASSED:
         description: The run passed.
@@ -1363,8 +1364,9 @@ enums:
     description: The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each
       with the predicate_type a statement of it carries at the version its page describes.
     comments:
-    - The in-toto project's own types are CURIEs under in_toto. The others are full addresses, because
-      the Python generator writes no namespace for a prefix that only an enum's meaning uses.
+    - The in-toto project's own types are CURIEs under in_toto. The others are full addresses with no
+      prefix bound for them, because the Python generator writes no namespace for a prefix bound only
+      in an imported module.
     see_also:
     - https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md
     permissible_values:

@@ -306,7 +306,7 @@ in_toto_linkml:InTotoTestResultValue a owl:Class ;
 	owl:unionOf _:c14n199 ;
 	skos:definition "The result of a test run, as a Test Result predicate records it." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
-	skos:note "PASSED and FAILED mean the outcomes of the same names in W3C's Evaluation and Report Language (EARL) 1.0. EARL has no outcome for a pass with warnings, so WARNED is unmapped." , "The meanings are full addresses, because the Python generator writes no namespace for a prefix that only an enum's meaning uses." ;
+	skos:note "PASSED and FAILED mean the outcomes of the same names in W3C's Evaluation and Report Language (EARL) 1.0. EARL has no outcome for a pass with warnings, so WARNED is unmapped." , "The meanings are full addresses with no prefix bound for them, because the Python generator writes no namespace for a prefix bound only in an imported module, and shortens a full address to any prefix that covers it. The Python model holds no meaning for them; the other generators keep it." ;
 	linkml:permissible_values <http://www.w3.org/ns/earl#failed> , <http://www.w3.org/ns/earl#passed> , in_toto_linkml:InTotoTestResultValue\#WARNED .
 in_toto_linkml:InTotoTraceMetadata a owl:Class ;
 	rdfs:label "InTotoTraceMetadata" ;
@@ -328,7 +328,7 @@ in_toto_linkml:InTotoVettedPredicate a owl:Class ;
 	owl:unionOf _:c14n110 ;
 	skos:definition "The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each with the predicate_type a statement of it carries at the version its page describes." ;
 	skos:inScheme in_toto_linkml:in_toto_predicates ;
-	skos:note "The in-toto project's own types are CURIEs under in_toto. The others are full addresses, because the Python generator writes no namespace for a prefix that only an enum's meaning uses." ;
+	skos:note "The in-toto project's own types are CURIEs under in_toto. The others are full addresses with no prefix bound for them, because the Python generator writes no namespace for a prefix bound only in an imported module." ;
 	linkml:permissible_values <https://cyclonedx.org/bom/v1.4> , <https://in-toto.io/attestation/link/v0.3> , <https://in-toto.io/attestation/reference/v0.1> , <https://in-toto.io/attestation/release/v0.1> , <https://in-toto.io/attestation/runtime-trace/v0.1> , <https://in-toto.io/attestation/scai/v0.3> , <https://in-toto.io/attestation/svr/v0.1> , <https://in-toto.io/attestation/test-result/v0.1> , <https://in-toto.io/attestation/vulns/v0.2> , <https://slsa.dev/provenance/v1> , <https://slsa.dev/verification_summary/v1> , <https://spdx.dev/Document/v2.3> , <https://spdx.dev/Document/v3> .
 in_toto_linkml:InTotoVulnDatabase a owl:Class ;
 	rdfs:label "InTotoVulnDatabase" ;
