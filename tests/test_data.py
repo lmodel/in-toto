@@ -1,6 +1,7 @@
 """Data test."""
 
 import glob
+import importlib
 import os
 from pathlib import Path
 
@@ -78,3 +79,8 @@ def test_every_class_has_an_example():
     classes = {name for name, cls in view.all_classes().items() if not cls.abstract}
     examples = {Path(f).stem.split("-")[0] for f in VALID_EXAMPLE_FILES}
     assert classes <= examples, sorted(classes - examples)
+
+
+def test_the_pydantic_model_imports():
+    """The Pydantic model loads, so every type it names is defined or imported."""
+    importlib.import_module("in_toto_linkml.datamodel.in_toto_linkml_pydantic")

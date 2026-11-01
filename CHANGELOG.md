@@ -6,6 +6,10 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **The Pydantic model imports.** The two URI types leave `base: URI` commented out, with a link to [linkml#3491](https://github.com/linkml/linkml/issues/3491), because `gen-pydantic` wrote it as an annotation it never imported. They now take `str` from `uri`, and a test imports the model.
+
 ## [0.2.0] - 2026-11-01
 
 ### Added
