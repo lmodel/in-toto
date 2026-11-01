@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-01
+
 ### Added
 
 - **Mappings to SPDX 3.0.1 and DCAT, and the statement's own type URI.** Close and related mappings link annotations, download locations, media types, package URLs, build times, digests and vulnerability results to the SPDX terms lmodel/spdx renders, and a test holds each to that release.
