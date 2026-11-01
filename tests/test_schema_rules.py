@@ -49,6 +49,21 @@ def test_every_predicate_is_a_kind_of_the_statements_predicate():
         assert "predicate_kind" in sv.class_slots(name), name
 
 
+# The outcome values of W3C's EARL 1.0, as its schema, earl.rdf, names them.
+EARL = "http://www.w3.org/ns/earl#"
+EARL_OUTCOMES = {EARL + name for name in ("passed", "failed", "cantTell", "inapplicable", "untested")}
+
+
+def test_test_results_mean_earl_outcomes():
+    """PASSED and FAILED mean EARL's outcomes of the same names, and WARNED, a
+    pass with warnings, which EARL has no outcome for, means none."""
+    sv = SchemaView(str(SCHEMA))
+    values = sv.get_enum("InTotoTestResultValue").permissible_values
+    meanings = {name: value.meaning for name, value in values.items()}
+    assert meanings == {"PASSED": EARL + "passed", "WARNED": None, "FAILED": EARL + "failed"}
+    assert {m for m in meanings.values() if m} <= EARL_OUTCOMES
+
+
 # What a host may import beside this schema's adapt copy: LOKF's schema, pinned
 # by the sidecar, and the adapt copies other lmodel repositories release. Each
 # neighbour is the schema asset of a release, downloaded and checked against
