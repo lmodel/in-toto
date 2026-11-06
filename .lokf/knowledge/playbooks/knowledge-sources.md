@@ -12,7 +12,7 @@ sources:
   - resource: src/in_toto_linkml/schema
   - resource: src/in_toto_linkml/datamodel
   - resource: project.justfile
-  - resource: .lokf/in-toto.yaml
+  - resource: .lokf/schema/in-toto.yaml
   - resource: .lokf/justfile
   - resource: .lokf/pyproject.toml
   - resource: NOTICE
@@ -81,7 +81,7 @@ exclusions:
     reason: The sidecar's link to the bundle.
   - resource: .github/PULL_REQUEST_TEMPLATE
     reason: The sidecar sync's pull request template.
-  - resource: .lokf/lokf.yaml
+  - resource: .lokf/schema/lokf.yaml
     reason: LOKF's schema, pinned by the sidecar.
   - resource: .lokf/scripts
     reason: The sidecar's scripts, which the weekly sync replaces.
@@ -101,7 +101,7 @@ exclusions:
     reason: The sidecar's git settings.
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-11-06T21:21:07Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -117,7 +117,7 @@ Each concept names the file or folder it derives from by its path from the repos
 | Source | Yields | Re-check by |
 | --- | --- | --- |
 | `src/in_toto_linkml/schema/in_toto_core.yaml`, `in_toto_predicates.yaml`, `in_toto_linkml.yaml` | `datasets/in-toto-linkml-schema`, the five `glossary/` terms | re-read each header, each class's required slots, patterns and conditions, the two enums and the `exact_mappings` |
-| `project.justfile`, `.lokf/in-toto.yaml`, `.lokf/justfile`, `.lokf/pyproject.toml`, the README's Knowledge Trust Ladder (KTL) section | the domain-schema section of `datasets/in-toto-linkml-schema` | re-read the `--root` list, the copy's notes, the `schema :=` line and the `[tool.lokf]` table |
+| `project.justfile`, `.lokf/schema/in-toto.yaml`, `.lokf/justfile`, `.lokf/pyproject.toml`, the README's Knowledge Trust Ladder (KTL) section | the domain-schema section of `datasets/in-toto-linkml-schema` | re-read the `--root` list, the copy's notes, the `schema :=` line and the `[tool.lokf]` table |
 | `src/in_toto_linkml/schema/attestation/`, the in-toto section of `NOTICE` | `datasets/attestation-copy`, `references/attestation-framework`, `references/vetted-predicates`, the thirteen `predicate-types/` | re-read the copied pages and the vetted list; the upstream watch compares the blobs weekly |
 | `scripts/check_upstream_release.py`, `.github/scripts/` | `playbooks/update-upstream-pins`, `workflows/upstream-watch` | re-read the pins, the docstring, the left-out pattern and the issue title |
 | `README.md` (What it models, Influences, Mappings, Not modelled here), `docs/about.md`, `.linkmllint.yaml`, `CHANGELOG.md` | `explanations/scope-and-influences`, `explanations/element-names` | re-read each section and the lint comment |

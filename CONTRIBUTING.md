@@ -37,7 +37,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Edit the schema, then regenerate.** Edit the modules under `src/in_toto_linkml/schema/`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output; `project/`, `src/in_toto_linkml/datamodel/`, `docs/schema/` and `.lokf/in-toto.yaml` are generated.
+- **Edit the schema, then regenerate.** Edit the modules under `src/in_toto_linkml/schema/`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output; `project/`, `src/in_toto_linkml/datamodel/`, `docs/schema/` and `.lokf/schema/in-toto.yaml` are generated.
 - **Render what the in-toto specification defines**, in your own words, and name the page in the pull request; [AI_COVENANT.md](AI_COVENANT.md) says why. `tests/test_upstream.py` holds the schema to the copied protocol buffer definitions.
 - **Leave `src/in_toto_linkml/schema/attestation/` as in-toto published it.** Replace it whole from one release of in-toto/attestation instead, and move the pins in `scripts/check_upstream_release.py` and the schema header; `upstream-watch.yaml` checks the copy.
 - **Keep names apart.** A host imports this adapt copy beside the Linked Open Knowledge Format (LOKF) schema and the released neighbours' copies in `tests/neighbours/`, so a shared name carries one Internationalized Resource Identifier (IRI). `tests/test_schema_rules.py` checks.

@@ -6,8 +6,8 @@
 
 # ============ Knowledge bundle: the adapted domain schema ============
 
-# `.lokf/in-toto.yaml` is the copy `lokf adapt` writes from the schema so that
-# it can sit beside `.lokf/lokf.yaml` (`lokf adapt --help` lists the moves).
+# `.lokf/schema/in-toto.yaml` is the copy `lokf adapt` writes from the schema so that
+# it can sit beside `.lokf/schema/lokf.yaml` (`lokf adapt --help` lists the moves).
 # The root is the class a knowledge concept may use as its `type`: the
 # predicate type, which a host's concept names when it says which kind of
 # attestation a workflow or a release publishes. Statements, resource
@@ -19,12 +19,12 @@
 lokf_cmd := env_var_or_default("LOKF_CMD", "uv run --project .lokf lokf")
 lokf_adapt_roots := "--root InTotoPredicateType"
 
-# Rewrite .lokf/in-toto.yaml from the schema (run after every schema change)
+# Rewrite .lokf/schema/in-toto.yaml from the schema (run after every schema change)
 [group('knowledge bundle')]
 lokf-adapt:
-  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/in-toto.yaml
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/schema/lokf.yaml -o .lokf/schema/in-toto.yaml
 
-# Fail when .lokf/in-toto.yaml is stale against the schema or .lokf/lokf.yaml
+# Fail when .lokf/schema/in-toto.yaml is stale against the schema or .lokf/schema/lokf.yaml
 [group('knowledge bundle')]
 lokf-adapt-check:
-  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/in-toto.yaml --check
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/schema/lokf.yaml -o .lokf/schema/in-toto.yaml --check
