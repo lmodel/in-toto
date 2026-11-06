@@ -19,14 +19,14 @@ sources:
     title: the lokf-adapt recipes
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-11-06T21:21:07Z"
 status: draft
 ---
 
 # Regenerate and test after a schema change
 
 1. Install the toolchain once: Python 3.10 or later, `uv` and `just`, then `uv sync --group dev` in the clone.[^contributing.md]
-2. Edit the modules under `src/in_toto_linkml/schema/`: `in_toto_core.yaml`, `in_toto_predicates.yaml` and the umbrella `in_toto_linkml.yaml`. They are the files to write by hand. `project/`, `src/in_toto_linkml/datamodel/`, `docs/schema/` and `.lokf/in-toto.yaml` are generated from them. Say in the pull request which page of the specification a new or changed element renders.
+2. Edit the modules under `src/in_toto_linkml/schema/`: `in_toto_core.yaml`, `in_toto_predicates.yaml` and the umbrella `in_toto_linkml.yaml`. They are the files to write by hand. `project/`, `src/in_toto_linkml/datamodel/`, `docs/schema/` and `.lokf/schema/in-toto.yaml` are generated from them. Say in the pull request which page of the specification a new or changed element renders.
 3. Run `just lint`, which runs `linkml-lint --ignore-warnings` under `.linkmllint.yaml`.[^justfile]
 4. Run `just gen-project` and `just gen-doc`, then `just lokf-adapt`, which rewrites the adapt copy rooted on the predicate type.[^project.justfile] Commit the output.
 5. Add an example under `tests/data/valid/` for a new class and a counter-example under `tests/data/invalid/` for a new constraint, named `ClassName-suffix.yaml`, then run `just test`.
