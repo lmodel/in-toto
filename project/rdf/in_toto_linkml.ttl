@@ -1,0 +1,2603 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix schema1: <http://schema.org/> .
+<https://w3id.org/lmodel/in-toto/CYCLONEDX> rdfs:seeAlso "https://cyclonedx.org/"^^xsd:anyURI , "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/cyclonedx.md"^^xsd:anyURI ;
+	skos:note "The page gives https://cyclonedx.org/bom in its header, and this URI in its example." ;
+	linkml:description "A CycloneDX bill of materials for software artifacts." ;
+	linkml:meaning "https://cyclonedx.org/bom/v1.4"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/FAILED> linkml:description "The run failed." ;
+	linkml:meaning "http://www.w3.org/ns/earl#failed"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "An SCS that does not use cryptographic digests defines a canonical revision type of its own that includes the repository, such as svn_revision_id." , "Each algorithm appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this." , "In the attestation's JSON the algorithm is a key of the digest set beside the named ones, and an algorithm the framework does not define documents how its value is encoded." , "It is related to, not the same as, an SPDX 3 Hash, whose algorithm comes from a closed list, where this one's may be a revision type rather than a digest." ;
+	skos:relatedMatch "spdx_core:Hash"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/algorithm> , <https://w3id.org/lmodel/in-toto/value> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest"^^xsd:anyURI ;
+	linkml:description "One digest under an algorithm that InTotoDigestSet does not name, such as an SCS's own revision type." ;
+	linkml:slot_usage _:c14n11 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoAdditionalDigest__algorithm> , <https://w3id.org/lmodel/in-toto/inTotoAdditionalDigest__value> .
+<https://w3id.org/lmodel/in-toto/InTotoAnnotation> a linkml:ClassDefinition ;
+	skos:closeMatch "spdx_core:DictionaryEntry"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "Each key appears once in a list, since the attestation's JSON uses it as a key; the validator does not check this." , "The attestation's JSON allows any JSON value. A string becomes one value and an array one value per item; any other value or item is written as its JSON text, so one value cannot tell a string from a one-item array." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/annotation_key> , <https://w3id.org/lmodel/in-toto/annotation_values> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoAnnotation"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoAnnotation"^^xsd:anyURI ;
+	linkml:description "One vendor-specific annotation on a resource descriptor: a key and its values." ;
+	linkml:slot_usage _:c14n72 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoAnnotation__annotation_key> , <https://w3id.org/lmodel/in-toto/inTotoAnnotation__annotation_values> .
+<https://w3id.org/lmodel/in-toto/InTotoDigestSet> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"^^xsd:anyURI ;
+	skos:altLabel "DigestSet" ;
+	skos:editorialNote "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present." ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "A consumer accepts only the algorithms it considers secure and ignores the rest, and two sets match when any accepted algorithm matches." , "A field named after an algorithm that SPDX 3 also names relates to SPDX's individual for it. BLAKE2b relates to all three of SPDX's BLAKE2b individuals, because the framework allows any length from 32 to 64 bytes, where SPDX names only lengths of 32, 48 and 64 bytes. SPDX has no individual for the other algorithms, and an SPDX document records them as other." , "SHAKE and BLAKE2 digests can be of any length, and this schema asks for at least 32 bytes, since a shorter digest resists collisions too weakly to identify an artifact." , "The named algorithms take lowercase hexadecimal, and additional_digests holds any other algorithm, such as an SCS's own revision type." ;
+	linkml:any_of _:c14n100 , _:c14n13 , _:c14n15 , _:c14n18 , _:c14n21 , _:c14n25 , _:c14n27 , _:c14n32 , _:c14n35 , _:c14n38 , _:c14n39 , _:c14n41 , _:c14n46 , _:c14n50 , _:c14n51 , _:c14n67 , _:c14n70 , _:c14n74 , _:c14n77 , _:c14n8 , _:c14n83 , _:c14n86 , _:c14n89 , _:c14n90 , _:c14n94 ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/additional_digests> , <https://w3id.org/lmodel/in-toto/blake2b> , <https://w3id.org/lmodel/in-toto/blake2s> , <https://w3id.org/lmodel/in-toto/dir_hash> , <https://w3id.org/lmodel/in-toto/git_blob> , <https://w3id.org/lmodel/in-toto/git_commit> , <https://w3id.org/lmodel/in-toto/git_tag> , <https://w3id.org/lmodel/in-toto/git_tree> , <https://w3id.org/lmodel/in-toto/gost> , <https://w3id.org/lmodel/in-toto/md5> , <https://w3id.org/lmodel/in-toto/ripemd160> , <https://w3id.org/lmodel/in-toto/sha1> , <https://w3id.org/lmodel/in-toto/sha224> , <https://w3id.org/lmodel/in-toto/sha256> , <https://w3id.org/lmodel/in-toto/sha384> , <https://w3id.org/lmodel/in-toto/sha3_224> , <https://w3id.org/lmodel/in-toto/sha3_256> , <https://w3id.org/lmodel/in-toto/sha3_384> , <https://w3id.org/lmodel/in-toto/sha3_512> , <https://w3id.org/lmodel/in-toto/sha512> , <https://w3id.org/lmodel/in-toto/sha512_224> , <https://w3id.org/lmodel/in-toto/sha512_256> , <https://w3id.org/lmodel/in-toto/shake128> , <https://w3id.org/lmodel/in-toto/shake256> , <https://w3id.org/lmodel/in-toto/sm3> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoDigestSet"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoDigestSet"^^xsd:anyURI ;
+	linkml:description "A set of one or more digests over one artifact, keyed by algorithm, from which a consumer picks the algorithm it trusts." ;
+	linkml:slot_usage _:c14n78 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoDigestSet__additional_digests> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__blake2b> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__blake2s> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__dir_hash> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_blob> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_commit> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_tag> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_tree> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__gost> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__md5> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__ripemd160> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha1> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha224> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha384> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_224> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_384> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_512> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512_224> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512_256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__shake128> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__shake256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sm3> .
+<https://w3id.org/lmodel/in-toto/InTotoDocument> a linkml:ClassDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/in_toto_predicate_types> , <https://w3id.org/lmodel/in-toto/in_toto_statements> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoDocument"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoDocument"^^xsd:anyURI ;
+	linkml:description "A document that holds in-toto statements and the predicate types they name." ;
+	linkml:slot_usage _:c14n80 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoDocument__in_toto_predicate_types> , <https://w3id.org/lmodel/in-toto/inTotoDocument__in_toto_statements> ;
+	linkml:tree_root true .
+<https://w3id.org/lmodel/in-toto/InTotoLink> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md"^^xsd:anyURI ;
+	skos:altLabel "Link" ;
+	skos:exactMatch "in_toto:link/v0.3"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The statement that carries it has predicate_type https://in-toto.io/attestation/link/v0.3." , "The statement's subjects are the step's products, and each subject's resource_name is unique within the attestation; the validator does not check this." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/materials> , <https://w3id.org/lmodel/in-toto/step_byproducts> , <https://w3id.org/lmodel/in-toto/step_command> , <https://w3id.org/lmodel/in-toto/step_environment> , <https://w3id.org/lmodel/in-toto/step_name> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoLink"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoLink"^^xsd:anyURI ;
+	linkml:description "The predicate that records one step of an in-toto layout: the command it ran and the materials it read, for a supply chain that migrates from in-toto 0.9 links." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n47 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoLink__materials> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_byproducts> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_command> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_environment> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_name> , <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> .
+<https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md"^^xsd:anyURI ;
+	skos:editorialNote "The name is required through a slot condition rather than slot_usage, because resource_name is an attribute of the parent class and the LinkML loader refuses slot_usage on an inherited attribute." ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:all_of _:c14n4 ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoLinkMaterial"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoLinkMaterial"^^xsd:anyURI ;
+	linkml:description "One material of a link, a resource descriptor with a name and a digest." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_usage _:c14n55 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial_digest> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__annotations> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__content> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__download_location> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__media_type> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__resource_name> , <https://w3id.org/lmodel/in-toto/resource_uri> .
+<https://w3id.org/lmodel/in-toto/InTotoLinkMaterial_digest> a linkml:SlotDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	skos:prefLabel "digest" ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	linkml:description "The cryptographic digests of a resource's content, keyed by algorithm." ;
+	linkml:domain <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/digest> ;
+	linkml:is_usage_slot true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	linkml:usage_slot_name "digest" .
+<https://w3id.org/lmodel/in-toto/InTotoMonitorLog> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md"^^xsd:anyURI ;
+	skos:editorialNote "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present." ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:any_of _:c14n22 , _:c14n53 , _:c14n99 ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/file_access> , <https://w3id.org/lmodel/in-toto/traced_network> , <https://w3id.org/lmodel/in-toto/traced_processes> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoMonitorLog"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoMonitorLog"^^xsd:anyURI ;
+	linkml:description "The events a runtime trace's monitor recorded: processes, network activity and file accesses, at least one of them." ;
+	linkml:slot_usage _:c14n62 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoMonitorLog__file_access> , <https://w3id.org/lmodel/in-toto/inTotoMonitorLog__traced_network> , <https://w3id.org/lmodel/in-toto/inTotoMonitorLog__traced_processes> .
+<https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/host_id> , <https://w3id.org/lmodel/in-toto/process_event> , <https://w3id.org/lmodel/in-toto/process_type> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess"^^xsd:anyURI ;
+	linkml:description "The process a runtime trace watched." ;
+	linkml:slot_usage _:c14n93 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__host_id> , <https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__process_event> , <https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__process_type> .
+<https://w3id.org/lmodel/in-toto/InTotoObjectEntry> a linkml:ClassDefinition ;
+	skos:closeMatch "spdx_core:DictionaryEntry"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "A list that holds one JSON object holds each key once, since the object uses it as a key; the validator does not check this." , "A string becomes one value and an array one value per item; any other value or item is written as its JSON text, as InTotoAnnotation does." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/entry_key> , <https://w3id.org/lmodel/in-toto/entry_values> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoObjectEntry"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoObjectEntry"^^xsd:anyURI ;
+	linkml:description "One key of a JSON object whose keys the framework leaves to the producer, and the key's values." ;
+	linkml:slot_usage _:c14n5 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoObjectEntry__entry_key> , <https://w3id.org/lmodel/in-toto/inTotoObjectEntry__entry_values> .
+<https://w3id.org/lmodel/in-toto/InTotoPredicate> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md"^^xsd:anyURI ;
+	skos:altLabel "Predicate" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "A predicate is of one kind only, so the kinds that extend this class are mutually disjoint." , "The statement's predicate_type names the predicate's type by URI, and each concrete class says which URI it renders. Nothing ties the two, since a schema that imports this module may model a predicate under its own URI." ;
+	linkml:abstract true ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/predicate_kind> ;
+	linkml:children_are_mutually_disjoint true ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoPredicate"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoPredicate"^^xsd:anyURI ;
+	linkml:description "The base of every predicate an in-toto statement can carry; predicate_kind names the concrete kind." ;
+	linkml:slot_usage _:c14n75 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> .
+<https://w3id.org/lmodel/in-toto/InTotoPredicateType> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md"^^xsd:anyURI , "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/predicate.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "Anyone can define a predicate type. The in-toto project vets some of them, and vetted_as names which vetted type this one is." , "The type URI includes the predicate's major version and changes when the predicate changes incompatibly; a minor version keeps it." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/predicate_specification> , <https://w3id.org/lmodel/in-toto/predicate_type_uri> , <https://w3id.org/lmodel/in-toto/predicate_version> , <https://w3id.org/lmodel/in-toto/vetted_as> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoPredicateType"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoPredicateType"^^xsd:anyURI ;
+	linkml:description "A type of predicate an in-toto statement can carry, named by the URI a statement's predicate_type holds." ;
+	linkml:slot_usage _:c14n1 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_specification> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_type_uri> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_version> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__vetted_as> .
+<https://w3id.org/lmodel/in-toto/InTotoReference> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md"^^xsd:anyURI ;
+	skos:altLabel "Reference" ;
+	skos:exactMatch "in_toto:reference/v0.1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "Several documents in one predicate read as if each had an attestation of its own with everything else unchanged." , "The statement that carries it has predicate_type https://in-toto.io/attestation/reference/v0.1." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/reference_attester> , <https://w3id.org/lmodel/in-toto/referenced_documents> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoReference"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoReference"^^xsd:anyURI ;
+	linkml:description "The predicate that points from the subjects, as a whole, to documents about them, such as a bill of materials." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n82 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoReference__reference_attester> , <https://w3id.org/lmodel/in-toto/inTotoReference__referenced_documents> .
+<https://w3id.org/lmodel/in-toto/InTotoReferenceAttester> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md"^^xsd:anyURI ;
+	skos:altLabel "Attester" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/reference_attester_id> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoReferenceAttester"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoReferenceAttester"^^xsd:anyURI ;
+	linkml:description "The system that provides the documents a Reference predicate points to." ;
+	linkml:slot_usage _:c14n10 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoReferenceAttester__reference_attester_id> .
+<https://w3id.org/lmodel/in-toto/InTotoReferencedDocument> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md"^^xsd:anyURI ;
+	skos:editorialNote "Both fields are required through slot conditions rather than slot_usage, because they are attributes of the parent class and the LinkML loader refuses slot_usage on an inherited attribute." ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "A document of unknown type takes media_type application/octet-stream." ;
+	linkml:all_of _:c14n34 , _:c14n44 ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoReferencedDocument"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoReferencedDocument"^^xsd:anyURI ;
+	linkml:description "One document a Reference predicate points to: a resource descriptor with a download location and a media type." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_usage _:c14n76 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/digest> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__annotations> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__content> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__download_location> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__media_type> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__resource_name> , <https://w3id.org/lmodel/in-toto/resource_uri> .
+<https://w3id.org/lmodel/in-toto/InTotoRelease> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md"^^xsd:anyURI ;
+	skos:altLabel "Release" ;
+	skos:exactMatch "in_toto:release/v0.1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "Each subject's resource_name is the artifact's file name as it would appear on disk." , "The statement that carries it has predicate_type https://in-toto.io/attestation/release/v0.1. The page is at version 0.2, which renamed releaseId to packageId, and its examples keep that URI." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/package_id> , <https://w3id.org/lmodel/in-toto/release_purl> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoRelease"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoRelease"^^xsd:anyURI ;
+	linkml:description "The predicate that ties the subjects to one release name and version of a package, so that consumers can check what the release should contain." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n14 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoRelease__package_id> , <https://w3id.org/lmodel/in-toto/inTotoRelease__release_purl> .
+<https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/resource_descriptor.md"^^xsd:anyURI ;
+	skos:altLabel "ResourceDescriptor" ;
+	skos:editorialNote "Each condition in any_of names its range through a nested any_of, because the JSON Schema generator leaves a condition's own range out, and a null value would then count as present." ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "A descriptor carries at least one of a URI, a digest or its content; a field that needs a particular one says so." , "It describes an artifact, where an SPDX 3 Artifact is the artifact itself, so the two are related rather than the same." ;
+	skos:relatedMatch "spdx_core:Artifact"^^xsd:anyURI ;
+	linkml:any_of _:c14n28 , _:c14n9 , _:c14n97 ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/annotations> , <https://w3id.org/lmodel/in-toto/content> , <https://w3id.org/lmodel/in-toto/download_location> , <https://w3id.org/lmodel/in-toto/media_type> , <https://w3id.org/lmodel/in-toto/resource_name> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor"^^xsd:anyURI ;
+	linkml:description "A reference to a software artifact or other resource by URI or digest, or the resource itself as content, with optional metadata." ;
+	linkml:slot_usage _:c14n88 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/digest> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__annotations> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__content> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__download_location> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__media_type> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__resource_name> , <https://w3id.org/lmodel/in-toto/resource_uri> .
+<https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md"^^xsd:anyURI ;
+	skos:exactMatch "in_toto:runtime-trace/v0.1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The statement that carries it has predicate_type https://in-toto.io/attestation/runtime-trace/v0.1." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/monitor_log> , <https://w3id.org/lmodel/in-toto/monitored_process> , <https://w3id.org/lmodel/in-toto/trace_metadata> , <https://w3id.org/lmodel/in-toto/trace_monitor> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace"^^xsd:anyURI ;
+	linkml:description "The predicate that records what a monitor traced while a supply chain step, such as a build, ran." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n24 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__monitor_log> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__monitored_process> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__trace_metadata> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__trace_monitor> .
+<https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md"^^xsd:anyURI ;
+	skos:altLabel "AttributeAssertion" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/scai_attribute> , <https://w3id.org/lmodel/in-toto/scai_conditions> , <https://w3id.org/lmodel/in-toto/scai_evidence> , <https://w3id.org/lmodel/in-toto/scai_target> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion"^^xsd:anyURI ;
+	linkml:description "One SCAI assertion: an attribute of the subject or its producer, what it applies to, under which conditions, and the evidence for it." ;
+	linkml:slot_usage _:c14n26 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_attribute> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_conditions> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_evidence> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_target> .
+<https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md"^^xsd:anyURI ;
+	skos:altLabel "AttributeReport" ;
+	skos:exactMatch "in_toto:scai/v0.3"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The statement that carries it has predicate_type https://in-toto.io/attestation/scai/v0.3." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/scai_attributes> , <https://w3id.org/lmodel/in-toto/scai_producer> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport"^^xsd:anyURI ;
+	linkml:description "The Software Supply Chain Attribute Integrity (SCAI) predicate: assertions about functional attributes of the subjects or their producer, each with the evidence for it." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n16 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeReport__scai_attributes> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeReport__scai_producer> .
+<https://w3id.org/lmodel/in-toto/InTotoScanMetadata> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	skos:altLabel "ScanMetadata" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/scan_finished_on> , <https://w3id.org/lmodel/in-toto/scan_started_on> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoScanMetadata"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoScanMetadata"^^xsd:anyURI ;
+	linkml:description "When a vulnerability scan ran." ;
+	linkml:slot_usage _:c14n23 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoScanMetadata__scan_finished_on> , <https://w3id.org/lmodel/in-toto/inTotoScanMetadata__scan_started_on> .
+<https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md"^^xsd:anyURI ;
+	skos:altLabel "SimpleVerificationResult" ;
+	skos:exactMatch "in_toto:svr/v0.1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "It is a lighter form of the SLSA Verification Summary, which lmodel/slsa models." , "The statement that carries it has predicate_type https://in-toto.io/attestation/svr/v0.1." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/svr_verifier> , <https://w3id.org/lmodel/in-toto/time_created> , <https://w3id.org/lmodel/in-toto/verified_properties> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult"^^xsd:anyURI ;
+	linkml:description "The predicate that says a verifier evaluated the subjects against one or more policies, and which properties passed." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n0 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__svr_verifier> , <https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__time_created> , <https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__verified_properties> .
+<https://w3id.org/lmodel/in-toto/InTotoStatement> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md"^^xsd:anyURI ;
+	skos:altLabel "Statement" ;
+	skos:exactMatch "in_toto_io:Statement/v1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "A statement is the attestation, and its predicate is one kind of claim about the subjects, such as a test result or build provenance." , "Its exact mapping is the type URI its statement_type holds, as each predicate class maps to its predicate_type." , "The signature envelope around a statement, and the bundle that collects signed statements, are outside this model." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/predicate_type> , <https://w3id.org/lmodel/in-toto/statement_type> , <https://w3id.org/lmodel/in-toto/subject> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoStatement"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoStatement"^^xsd:anyURI ;
+	linkml:description "The statement layer of an in-toto attestation: the subjects it is about, the type of its predicate and the predicate itself." ;
+	linkml:slot_usage _:c14n71 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoStatement__predicate_type> , <https://w3id.org/lmodel/in-toto/inTotoStatement__statement_type> , <https://w3id.org/lmodel/in-toto/inTotoStatement__subject> , <https://w3id.org/lmodel/in-toto/predicate> .
+<https://w3id.org/lmodel/in-toto/InTotoStatementSubject> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoStatementSubject"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoStatementSubject"^^xsd:anyURI ;
+	linkml:description "One artifact an in-toto statement is about: a resource descriptor that carries a digest." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_usage _:c14n101 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/InTotoStatementSubject_digest> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__annotations> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__content> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__download_location> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__media_type> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__resource_name> , <https://w3id.org/lmodel/in-toto/resource_uri> .
+<https://w3id.org/lmodel/in-toto/InTotoStatementSubject_digest> a linkml:SlotDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	skos:prefLabel "digest" ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	linkml:description "The cryptographic digests of a resource's content, keyed by algorithm." ;
+	linkml:domain <https://w3id.org/lmodel/in-toto/InTotoStatementSubject> ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoStatementSubject> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/digest> ;
+	linkml:is_usage_slot true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoStatementSubject> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	linkml:usage_slot_name "digest" .
+<https://w3id.org/lmodel/in-toto/InTotoSvrVerifier> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md"^^xsd:anyURI ;
+	skos:altLabel "Verifier" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "A verifier with configurable policies may add fields of its own that say which policy it applied; this schema does not model them." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/svr_verifier_id> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoSvrVerifier"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoSvrVerifier"^^xsd:anyURI ;
+	linkml:description "The entity that performed a simple verification." ;
+	linkml:slot_usage _:c14n59 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoSvrVerifier__svr_verifier_id> .
+<https://w3id.org/lmodel/in-toto/InTotoTestResult> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md"^^xsd:anyURI ;
+	skos:altLabel "TestResult" ;
+	skos:exactMatch "in_toto:test-result/v0.1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "One attestation records one invocation of a suite." , "The statement that carries it has predicate_type https://in-toto.io/attestation/test-result/v0.1." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/configuration> , <https://w3id.org/lmodel/in-toto/failed_tests> , <https://w3id.org/lmodel/in-toto/passed_tests> , <https://w3id.org/lmodel/in-toto/test_result> , <https://w3id.org/lmodel/in-toto/test_run_url> , <https://w3id.org/lmodel/in-toto/warned_tests> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoTestResult"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoTestResult"^^xsd:anyURI ;
+	linkml:description "The predicate that records the result of one run of a test suite against the subjects, with the names of the tests that passed, warned and failed." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n19 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__configuration> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__failed_tests> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__passed_tests> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__test_result> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__test_run_url> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__warned_tests> .
+<https://w3id.org/lmodel/in-toto/InTotoTestResultValue> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md"^^xsd:anyURI , "https://www.w3.org/TR/EARL10-Schema/"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "PASSED and FAILED mean the outcomes of the same names in W3C's Evaluation and Report Language (EARL) 1.0. EARL has no outcome for a pass with warnings, so WARNED is unmapped." , "The meanings are full addresses with no prefix bound for them, because the Python generator writes no namespace for a prefix bound only in an imported module, and shortens a full address to any prefix that covers it. The Python model holds no meaning for them; the other generators keep it." ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoTestResultValue"^^xsd:anyURI ;
+	linkml:description "The result of a test run, as a Test Result predicate records it." ;
+	linkml:permissible_values <https://w3id.org/lmodel/in-toto/FAILED> , <https://w3id.org/lmodel/in-toto/PASSED> , <https://w3id.org/lmodel/in-toto/WARNED> .
+<https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/build_finished_on> , <https://w3id.org/lmodel/in-toto/build_started_on> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoTraceMetadata"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoTraceMetadata"^^xsd:anyURI ;
+	linkml:description "Other properties of a runtime trace's monitoring event." ;
+	linkml:slot_usage _:c14n87 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoTraceMetadata__build_finished_on> , <https://w3id.org/lmodel/in-toto/inTotoTraceMetadata__build_started_on> .
+<https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/monitor_config_source> , <https://w3id.org/lmodel/in-toto/monitor_type> , <https://w3id.org/lmodel/in-toto/trace_policy> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoTraceMonitor"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoTraceMonitor"^^xsd:anyURI ;
+	linkml:description "The monitor instance that produced a runtime trace." ;
+	linkml:slot_usage _:c14n56 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__monitor_config_source> , <https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__monitor_type> , <https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__trace_policy> .
+<https://w3id.org/lmodel/in-toto/InTotoVettedPredicate> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/README.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The in-toto project's own types are CURIEs under in_toto. The others are full addresses with no prefix bound for them, because the Python generator writes no namespace for a prefix bound only in an imported module." ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoVettedPredicate"^^xsd:anyURI ;
+	linkml:description "The thirteen predicate types the in-toto project lists as vetted at release v1.2.0, each with the predicate_type a statement of it carries at the version its page describes." ;
+	linkml:permissible_values <https://w3id.org/lmodel/in-toto/CYCLONEDX> , <https://w3id.org/lmodel/in-toto/LINK> , <https://w3id.org/lmodel/in-toto/REFERENCE> , <https://w3id.org/lmodel/in-toto/RELEASE> , <https://w3id.org/lmodel/in-toto/RUNTIME_TRACE> , <https://w3id.org/lmodel/in-toto/SCAI> , <https://w3id.org/lmodel/in-toto/SIMPLE_VERIFICATION_RESULT> , <https://w3id.org/lmodel/in-toto/SLSA_PROVENANCE> , <https://w3id.org/lmodel/in-toto/SLSA_VERIFICATION_SUMMARY> , <https://w3id.org/lmodel/in-toto/SPDX2> , <https://w3id.org/lmodel/in-toto/SPDX3> , <https://w3id.org/lmodel/in-toto/TEST_RESULT> , <https://w3id.org/lmodel/in-toto/VULNS> .
+<https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	skos:altLabel "VulnDatabase" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/db_last_update> , <https://w3id.org/lmodel/in-toto/db_uri> , <https://w3id.org/lmodel/in-toto/db_version> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoVulnDatabase"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoVulnDatabase"^^xsd:anyURI ;
+	linkml:description "The vulnerability database a scanner used." ;
+	linkml:slot_usage _:c14n20 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_last_update> , <https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_uri> , <https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_version> .
+<https://w3id.org/lmodel/in-toto/InTotoVulnResult> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	skos:altLabel "Result" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "SPDX 3 describes a vulnerability as an element of its own and ties it to the artifact by a relationship, where this result is the scanner's finding about the subjects, so the two are related rather than the same." ;
+	skos:relatedMatch "spdx_security:Vulnerability"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/vuln_annotations> , <https://w3id.org/lmodel/in-toto/vuln_id> , <https://w3id.org/lmodel/in-toto/vuln_severity> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoVulnResult"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoVulnResult"^^xsd:anyURI ;
+	linkml:description "One vulnerability a scanner found." ;
+	linkml:slot_usage _:c14n69 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_annotations> , <https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_id> , <https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_severity> .
+<https://w3id.org/lmodel/in-toto/InTotoVulnScanner> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	skos:altLabel "Scanner" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/scan_results> , <https://w3id.org/lmodel/in-toto/scanner_uri> , <https://w3id.org/lmodel/in-toto/scanner_version> , <https://w3id.org/lmodel/in-toto/vuln_db> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoVulnScanner"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoVulnScanner"^^xsd:anyURI ;
+	linkml:description "The scanner a VULNS predicate records, with its results." ;
+	linkml:slot_usage _:c14n66 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scan_results> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scanner_uri> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scanner_version> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__vuln_db> .
+<https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	skos:altLabel "Severity" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/severity_method> , <https://w3id.org/lmodel/in-toto/severity_score> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoVulnSeverity"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoVulnSeverity"^^xsd:anyURI ;
+	linkml:description "One severity score of a vulnerability, by one scoring method." ;
+	linkml:slot_usage _:c14n91 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoVulnSeverity__severity_method> , <https://w3id.org/lmodel/in-toto/inTotoVulnSeverity__severity_score> .
+<https://w3id.org/lmodel/in-toto/InTotoVulns> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	skos:altLabel "Vulns" ;
+	skos:exactMatch "in_toto:vulns/v0.2"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The statement that carries it has predicate_type https://in-toto.io/attestation/vulns/v0.2." ;
+	linkml:attributes <https://w3id.org/lmodel/in-toto/scan_metadata> , <https://w3id.org/lmodel/in-toto/vuln_scanner> ;
+	linkml:class_uri "https://w3id.org/lmodel/in-toto/InTotoVulns"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoVulns"^^xsd:anyURI ;
+	linkml:description "The predicate that records the result of one vulnerability scan of the subjects: the scanner, its database and the vulnerabilities it found." ;
+	linkml:is_a <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_usage _:c14n33 ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoVulns__scan_metadata> , <https://w3id.org/lmodel/in-toto/inTotoVulns__vuln_scanner> .
+<https://w3id.org/lmodel/in-toto/LINK> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/link.md"^^xsd:anyURI ;
+	linkml:description "One step of an in-toto layout, for migration from in-toto 0.9." ;
+	linkml:meaning "in_toto:link/v0.3"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/PASSED> linkml:description "The run passed." ;
+	linkml:meaning "http://www.w3.org/ns/earl#passed"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/REFERENCE> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/reference.md"^^xsd:anyURI ;
+	linkml:description "References to documents relevant to a resource." ;
+	linkml:meaning "in_toto:reference/v0.1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/RELEASE> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/release.md"^^xsd:anyURI ;
+	linkml:description "An artifact that is part of a given release version." ;
+	linkml:meaning "in_toto:release/v0.1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/RUNTIME_TRACE> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/runtime-trace.md"^^xsd:anyURI ;
+	linkml:description "Runtime traces of software supply chain operations." ;
+	linkml:meaning "in_toto:runtime-trace/v0.1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/SCAI> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/scai.md"^^xsd:anyURI ;
+	linkml:description "Evidence-based assertions about software artifact and supply chain attributes or behaviour." ;
+	linkml:meaning "in_toto:scai/v0.3"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/SIMPLE_VERIFICATION_RESULT> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/svr.md"^^xsd:anyURI ;
+	linkml:description "Evidence that an artifact was evaluated against one or more policies." ;
+	linkml:meaning "in_toto:svr/v0.1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/SLSA_PROVENANCE> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/provenance.md"^^xsd:anyURI ;
+	skos:note "The page gives https://slsa.dev/provenance at version 1.0, and the framework's versioning rule adds the major version." ;
+	linkml:description "How an artifact or set of artifacts was produced; lmodel/slsa models it." ;
+	linkml:meaning "https://slsa.dev/provenance/v1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/SLSA_VERIFICATION_SUMMARY> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vsa.md"^^xsd:anyURI ;
+	linkml:description "A SLSA verification decision about a software artifact; lmodel/slsa models it." ;
+	linkml:meaning "https://slsa.dev/verification_summary/v1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/SPDX2> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx2.md"^^xsd:anyURI ;
+	skos:note "The page also gives https://spdx.dev/Document, the type URI before it carried a version." ;
+	linkml:description "An SPDX 2 bill of materials for software artifacts." ;
+	linkml:meaning "https://spdx.dev/Document/v2.3"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/SPDX3> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/spdx3.md"^^xsd:anyURI ;
+	linkml:description "An SPDX 3 bill of materials for software artifacts." ;
+	linkml:meaning "https://spdx.dev/Document/v3"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/TEST_RESULT> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/test-result.md"^^xsd:anyURI ;
+	linkml:description "The results of any type of test." ;
+	linkml:meaning "in_toto:test-result/v0.1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/VULNS> rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/predicates/vulns_02.md"^^xsd:anyURI ;
+	linkml:description "The results of a vulnerability scan of software artifacts." ;
+	linkml:meaning "in_toto:vulns/v0.2"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/WARNED> linkml:description "The run passed with warnings." .
+<https://w3id.org/lmodel/in-toto/additional_digests> a linkml:SlotDefinition ;
+	linkml:description "The digests under algorithms this class does not name." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:additional_digests"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/algorithm> a linkml:SlotDefinition ;
+	skos:note "A name starts with a lowercase letter, as the framework's own names do, so that SHA256 is not taken for sha256, and it may hold a colon, as go-witness's gitoid:sha256 does. The framework itself sets no rule for other names." , "An algorithm that InTotoDigestSet names, by its JSON key or by its field name, goes in that field instead." ;
+	linkml:description "The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id." ;
+	linkml:none_of _:c14n92 ;
+	linkml:pattern "^[a-z][A-Za-z0-9_.:-]*$" ;
+	linkml:required true ;
+	linkml:slot_uri "spdx:algorithm"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/annotation_key> a linkml:SlotDefinition ;
+	skos:closeMatch "spdx_core:key"^^xsd:anyURI ;
+	linkml:description "The annotation's key." ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:annotation_key"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/annotation_values> a linkml:SlotDefinition ;
+	skos:closeMatch "spdx_core:value"^^xsd:anyURI ;
+	linkml:description "The annotation's values." ;
+	linkml:multivalued true ;
+	linkml:slot_uri "in_toto_linkml:annotation_values"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/annotations> a linkml:SlotDefinition ;
+	linkml:description "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoAnnotation> ;
+	linkml:slot_uri "in_toto_linkml:annotations"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/blake2b> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/blake2b256"^^xsd:anyURI , "spdx_core:HashAlgorithm/blake2b384"^^xsd:anyURI , "spdx_core:HashAlgorithm/blake2b512"^^xsd:anyURI ;
+	linkml:any_of _:c14n30 ;
+	linkml:description "The BLAKE2b digest of the artifact, of 32 to 64 bytes." ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{2}){0,32}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:blake2b"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/blake2s> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n61 ;
+	linkml:description "The BLAKE2s digest of the artifact, at its full 32 bytes." ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:blake2s"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/boolean> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"." ;
+	skos:exactMatch "schema:Boolean"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "Bool" ;
+	linkml:definition_uri "https://w3id.org/linkml/Boolean"^^xsd:anyURI ;
+	linkml:description "A binary (true or false) value" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "bool" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#boolean"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/build_finished_on> a linkml:SlotDefinition ;
+	skos:altLabel "buildFinishedOn" ;
+	skos:closeMatch "spdx_build:buildEndTime"^^xsd:anyURI ;
+	linkml:description "When the monitored build finished." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> .
+<https://w3id.org/lmodel/in-toto/build_started_on> a linkml:SlotDefinition ;
+	skos:altLabel "buildStartedOn" ;
+	skos:closeMatch "spdx_build:buildStartTime"^^xsd:anyURI ;
+	linkml:description "When the monitored build started." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> .
+<https://w3id.org/lmodel/in-toto/configuration> a linkml:SlotDefinition ;
+	linkml:description "The configuration the test run used." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/content> a linkml:SlotDefinition ;
+	skos:note "The in-toto framework asks for content under 1 KB, so that attestations stay small." ;
+	linkml:any_of _:c14n3 ;
+	linkml:description "The resource's content itself, base64-encoded, for a resource small enough to carry inline." ;
+	linkml:pattern "^[A-Za-z0-9+/_-]+={0,2}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:content"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/curie> dcterms:conformsTo "https://www.w3.org/TR/curie/" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "in RDF serializations this MUST be expanded to a URI" , "in non-RDF serializations MAY be serialized as the compact representation" ;
+	linkml:base "Curie" ;
+	linkml:definition_uri "https://w3id.org/linkml/Curie"^^xsd:anyURI ;
+	linkml:description "a compact URI" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/date> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"." , "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+	skos:exactMatch "schema:Date"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDDate" ;
+	linkml:definition_uri "https://w3id.org/linkml/Date"^^xsd:anyURI ;
+	linkml:description "a date (year, month and day) in an idealized calendar" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#date"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/date_or_datetime> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/DateOrDatetime"^^xsd:anyURI ;
+	linkml:description "Either a date or a datetime" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "https://w3id.org/linkml/DateOrDatetime"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/datetime> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"." ;
+	skos:exactMatch "schema:DateTime"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDDateTime" ;
+	linkml:definition_uri "https://w3id.org/linkml/Datetime"^^xsd:anyURI ;
+	linkml:description "The combination of a date and time" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/db_last_update> a linkml:SlotDefinition ;
+	skos:altLabel "lastUpdate" ;
+	linkml:description "When the database was last updated." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/db_uri> a linkml:SlotDefinition ;
+	skos:altLabel "uri" ;
+	linkml:description "The URI that identifies the database's source." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> .
+<https://w3id.org/lmodel/in-toto/db_version> a linkml:SlotDefinition ;
+	skos:altLabel "version" ;
+	linkml:description "The database's version." .
+<https://w3id.org/lmodel/in-toto/decimal> a linkml:TypeDefinition ;
+	skos:broadMatch "schema:Number"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "Decimal" ;
+	linkml:definition_uri "https://w3id.org/linkml/Decimal"^^xsd:anyURI ;
+	linkml:description "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/digest> a linkml:SlotDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/digest_set.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	linkml:any_of _:c14n36 ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI ;
+	linkml:description "The cryptographic digests of a resource's content, keyed by algorithm." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/digest"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/dir_hash> a linkml:SlotDefinition ;
+	skos:altLabel "dirHash" ;
+	linkml:any_of _:c14n6 ;
+	linkml:description "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64." ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:dir_hash"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/double> a linkml:TypeDefinition ;
+	skos:closeMatch "schema:Float"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "float" ;
+	linkml:definition_uri "https://w3id.org/linkml/Double"^^xsd:anyURI ;
+	linkml:description "A real number that conforms to the xsd:double specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#double"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/download_location> a linkml:SlotDefinition ;
+	skos:altLabel "downloadLocation" ;
+	skos:closeMatch "dcat:downloadURL"^^xsd:anyURI , "spdx_software:downloadLocation"^^xsd:anyURI ;
+	linkml:any_of _:c14n52 ;
+	linkml:description "Where the resource can be fetched, when that differs from its identifying URI." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:download_location"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/entry_key> a linkml:SlotDefinition ;
+	skos:closeMatch "spdx_core:key"^^xsd:anyURI ;
+	linkml:description "The object's key." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/entry_values> a linkml:SlotDefinition ;
+	skos:closeMatch "spdx_core:value"^^xsd:anyURI ;
+	linkml:description "The key's values." ;
+	linkml:multivalued true .
+<https://w3id.org/lmodel/in-toto/failed_tests> a linkml:SlotDefinition ;
+	skos:altLabel "failedTests" ;
+	skos:note "Producer and consumer agree on what a test name means; a policy can check that test_result and failed_tests meet its requirements." ;
+	linkml:description "The names of the tests that failed." ;
+	linkml:multivalued true .
+<https://w3id.org/lmodel/in-toto/file_access> a linkml:SlotDefinition ;
+	skos:altLabel "fileAccess" ;
+	skos:note "A monitor that cannot pause the build, such as one that uses eBPF, guarantees less about these digests than one that can." ;
+	linkml:description "The files the run accessed, each with its path and digests; one file may appear more than once, with different digests if it changed." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/float> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"." ;
+	skos:exactMatch "schema:Float"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "float" ;
+	linkml:definition_uri "https://w3id.org/linkml/Float"^^xsd:anyURI ;
+	linkml:description "A real number that conforms to the xsd:float specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#float"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/git_blob> a linkml:SlotDefinition ;
+	skos:altLabel "gitBlob" ;
+	linkml:any_of _:c14n31 ;
+	linkml:description "The git blob id of a file's content." ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:git_blob"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/git_commit> a linkml:SlotDefinition ;
+	skos:altLabel "gitCommit" ;
+	linkml:any_of _:c14n96 ;
+	linkml:description "The git commit id of a source revision." ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:git_commit"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/git_tag> a linkml:SlotDefinition ;
+	skos:altLabel "gitTag" ;
+	linkml:any_of _:c14n17 ;
+	linkml:description "The git object id of an annotated tag." ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:git_tag"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/git_tree> a linkml:SlotDefinition ;
+	skos:altLabel "gitTree" ;
+	linkml:any_of _:c14n81 ;
+	linkml:description "The git tree id of a source revision's content, or of any file tree." ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:git_tree"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/gost> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n68 ;
+	linkml:description "The GOST R 34.11 digest of the artifact, of 256 or 512 bits." ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{64})?$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:gost"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/host_id> a linkml:SlotDefinition ;
+	skos:altLabel "hostID" ;
+	linkml:description "The URI that identifies the host the process ran on." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/inTotoAdditionalDigest__algorithm> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "http://spdx.org/rdf/terms#algorithm"^^xsd:anyURI ;
+	skos:note "A name starts with a lowercase letter, as the framework's own names do, so that SHA256 is not taken for sha256, and it may hold a colon, as go-witness's gitoid:sha256 does. The framework itself sets no rule for other names." , "An algorithm that InTotoDigestSet names, by its JSON key or by its field name, goes in that field instead." ;
+	skos:prefLabel "algorithm" ;
+	linkml:description "The algorithm's name, as the key the attestation's JSON uses, such as svn_revision_id." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> ;
+	linkml:none_of _:c14n2 ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> ;
+	linkml:pattern "^[a-z][A-Za-z0-9_.:-]*$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "http://spdx.org/rdf/terms#algorithm"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoAdditionalDigest__value> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/value"^^xsd:anyURI ;
+	skos:prefLabel "value" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/hashValue"^^xsd:anyURI ;
+	linkml:description "The digest under that algorithm, in the encoding the algorithm documents." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> ;
+	linkml:pattern "^\\S+$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/value"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoAnnotation__annotation_key> a linkml:SlotDefinition ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Core/key"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/annotation_key"^^xsd:anyURI ;
+	skos:prefLabel "annotation_key" ;
+	linkml:description "The annotation's key." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoAnnotation> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoAnnotation> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/annotation_key"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoAnnotation__annotation_values> a linkml:SlotDefinition ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Core/value"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/annotation_values"^^xsd:anyURI ;
+	skos:prefLabel "annotation_values" ;
+	linkml:description "The annotation's values." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoAnnotation> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoAnnotation> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/annotation_values"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__additional_digests> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/additional_digests"^^xsd:anyURI ;
+	skos:prefLabel "additional_digests" ;
+	linkml:description "The digests under algorithms this class does not name." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/additional_digests"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__blake2b> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/blake2b"^^xsd:anyURI ;
+	skos:prefLabel "blake2b" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/blake2b256"^^xsd:anyURI , "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/blake2b384"^^xsd:anyURI , "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/blake2b512"^^xsd:anyURI ;
+	linkml:description "The BLAKE2b digest of the artifact, of 32 to 64 bytes." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{2}){0,32}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/blake2b"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__blake2s> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/blake2s"^^xsd:anyURI ;
+	skos:prefLabel "blake2s" ;
+	linkml:description "The BLAKE2s digest of the artifact, at its full 32 bytes." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/blake2s"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__dir_hash> a linkml:SlotDefinition ;
+	skos:altLabel "dirHash" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/dir_hash"^^xsd:anyURI ;
+	skos:prefLabel "dir_hash" ;
+	linkml:description "A digest over a directory's content by the dirhash Hash1 function, in lowercase hexadecimal rather than base64." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/dir_hash"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_blob> a linkml:SlotDefinition ;
+	skos:altLabel "gitBlob" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/git_blob"^^xsd:anyURI ;
+	skos:prefLabel "git_blob" ;
+	linkml:description "The git blob id of a file's content." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/git_blob"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_commit> a linkml:SlotDefinition ;
+	skos:altLabel "gitCommit" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/git_commit"^^xsd:anyURI ;
+	skos:prefLabel "git_commit" ;
+	linkml:description "The git commit id of a source revision." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/git_commit"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_tag> a linkml:SlotDefinition ;
+	skos:altLabel "gitTag" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/git_tag"^^xsd:anyURI ;
+	skos:prefLabel "git_tag" ;
+	linkml:description "The git object id of an annotated tag." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/git_tag"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_tree> a linkml:SlotDefinition ;
+	skos:altLabel "gitTree" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/git_tree"^^xsd:anyURI ;
+	skos:prefLabel "git_tree" ;
+	linkml:description "The git tree id of a source revision's content, or of any file tree." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{40}([a-f0-9]{24})?$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/git_tree"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__gost> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/gost"^^xsd:anyURI ;
+	skos:prefLabel "gost" ;
+	linkml:description "The GOST R 34.11 digest of the artifact, of 256 or 512 bits." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{64})?$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/gost"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__md5> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/md5"^^xsd:anyURI ;
+	skos:note "MD5 lacks collision resistance, so most consumers should not accept it." ;
+	skos:prefLabel "md5" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/md5"^^xsd:anyURI ;
+	linkml:description "The MD5 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{32}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/md5"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__ripemd160> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/ripemd160"^^xsd:anyURI ;
+	skos:prefLabel "ripemd160" ;
+	linkml:description "The RIPEMD-160 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{40}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/ripemd160"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha1> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha1"^^xsd:anyURI ;
+	skos:note "SHA-1 lacks collision resistance, so most consumers should not rely on it." ;
+	skos:prefLabel "sha1" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha1"^^xsd:anyURI ;
+	linkml:description "The SHA-1 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{40}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha224> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha224"^^xsd:anyURI ;
+	skos:prefLabel "sha224" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha224"^^xsd:anyURI ;
+	linkml:description "The SHA-224 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{56}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha224"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha256> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha256"^^xsd:anyURI ;
+	skos:prefLabel "sha256" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha256"^^xsd:anyURI ;
+	linkml:description "The SHA-256 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha384> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha384"^^xsd:anyURI ;
+	skos:prefLabel "sha384" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha384"^^xsd:anyURI ;
+	linkml:description "The SHA-384 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{96}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha384"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_224> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha3_224"^^xsd:anyURI ;
+	skos:prefLabel "sha3_224" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_224"^^xsd:anyURI ;
+	linkml:description "The SHA3-224 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{56}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha3_224"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_256> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha3_256"^^xsd:anyURI ;
+	skos:prefLabel "sha3_256" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_256"^^xsd:anyURI ;
+	linkml:description "The SHA3-256 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha3_256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_384> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha3_384"^^xsd:anyURI ;
+	skos:prefLabel "sha3_384" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_384"^^xsd:anyURI ;
+	linkml:description "The SHA3-384 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{96}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha3_384"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_512> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha3_512"^^xsd:anyURI ;
+	skos:prefLabel "sha3_512" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha3_512"^^xsd:anyURI ;
+	linkml:description "The SHA3-512 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{128}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha3_512"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha512"^^xsd:anyURI ;
+	skos:prefLabel "sha512" ;
+	skos:relatedMatch "https://spdx.org/rdf/3.0.1/terms/Core/HashAlgorithm/sha512"^^xsd:anyURI ;
+	linkml:description "The SHA-512 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{128}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha512"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512_224> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha512_224"^^xsd:anyURI ;
+	skos:prefLabel "sha512_224" ;
+	linkml:description "The SHA-512/224 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{56}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha512_224"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512_256> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sha512_256"^^xsd:anyURI ;
+	skos:prefLabel "sha512_256" ;
+	linkml:description "The SHA-512/256 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sha512_256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__shake128> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/shake128"^^xsd:anyURI ;
+	skos:prefLabel "shake128" ;
+	linkml:description "The SHAKE128 digest of the artifact, of at least 32 bytes." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/shake128"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__shake256> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/shake256"^^xsd:anyURI ;
+	skos:prefLabel "shake256" ;
+	linkml:description "The SHAKE256 digest of the artifact, of at least 32 bytes." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/shake256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDigestSet__sm3> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/sm3"^^xsd:anyURI ;
+	skos:prefLabel "sm3" ;
+	linkml:description "The SM3 digest of the artifact." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDigestSet> ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/sm3"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDocument__in_toto_predicate_types> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto"^^xsd:anyURI ;
+	skos:prefLabel "in_toto_predicate_types" ;
+	linkml:description "The predicate types." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDocument> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDocument> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/in_toto_predicate_types"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoDocument__in_toto_statements> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto"^^xsd:anyURI ;
+	skos:prefLabel "in_toto_statements" ;
+	linkml:description "The statements, each an in-toto attestation without its envelope." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoDocument> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoDocument> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/in_toto_statements"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoLink__materials> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "Each material's resource_name is unique among them; the validator does not check this." ;
+	skos:prefLabel "materials" ;
+	linkml:description "The artifacts the step read." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/materials"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoLink__step_byproducts> a linkml:SlotDefinition ;
+	skos:altLabel "byproducts" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "step_byproducts" ;
+	linkml:description "What else the step recorded, such as its standard output, in keys the in-toto specification describes." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/step_byproducts"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoLink__step_command> a linkml:SlotDefinition ;
+	skos:altLabel "command" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "step_command" ;
+	linkml:description "The command the step ran, and its arguments; possibly empty." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/step_command"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoLink__step_environment> a linkml:SlotDefinition ;
+	skos:altLabel "environment" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "step_environment" ;
+	linkml:description "The environment the step ran in, in keys the producer chooses." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/step_environment"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoLink__step_name> a linkml:SlotDefinition ;
+	skos:altLabel "name" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "step_name" ;
+	linkml:description "The name of the step, which a layout uses to find the link metadata it verifies." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoLink> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/step_name"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoMonitorLog__file_access> a linkml:SlotDefinition ;
+	skos:altLabel "fileAccess" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "A monitor that cannot pause the build, such as one that uses eBPF, guarantees less about these digests than one that can." ;
+	skos:prefLabel "file_access" ;
+	linkml:description "The files the run accessed, each with its path and digests; one file may appear more than once, with different digests if it changed." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/file_access"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoMonitorLog__traced_network> a linkml:SlotDefinition ;
+	skos:altLabel "network" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "traced_network" ;
+	linkml:description "The network activity the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/traced_network"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoMonitorLog__traced_processes> a linkml:SlotDefinition ;
+	skos:altLabel "process" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "traced_processes" ;
+	linkml:description "The processes the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/traced_processes"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__host_id> a linkml:SlotDefinition ;
+	skos:altLabel "hostID" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "host_id" ;
+	linkml:description "The URI that identifies the host the process ran on." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/host_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__process_event> a linkml:SlotDefinition ;
+	skos:altLabel "event" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "process_event" ;
+	linkml:description "The job or task the attestation is about." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/process_event"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__process_type> a linkml:SlotDefinition ;
+	skos:altLabel "type" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "process_type" ;
+	linkml:description "The URI of the type of process, such as the build type when the monitor watched a build." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/process_type"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoObjectEntry__entry_key> a linkml:SlotDefinition ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Core/key"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "entry_key" ;
+	linkml:description "The object's key." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/entry_key"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoObjectEntry__entry_values> a linkml:SlotDefinition ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Core/value"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "entry_values" ;
+	linkml:description "The key's values." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/entry_values"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_specification> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "predicate_specification" ;
+	linkml:description "The page that specifies the predicate." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/uri> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/predicate_specification"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_type_uri> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "predicate_type_uri" ;
+	linkml:description "The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/predicate_type_uri"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_version> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "predicate_version" ;
+	linkml:description "The version of the predicate's specification, as its page states it, such as 0.1.0." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/predicate_version"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoPredicateType__vetted_as> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "vetted_as" ;
+	linkml:description "The vetted predicate this type is, when the in-toto project vetted it." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoPredicateType> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVettedPredicate> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/vetted_as"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/predicate_kind"^^xsd:anyURI ;
+	skos:prefLabel "predicate_kind" ;
+	linkml:description "The kind of predicate, one of this class's descendants." ;
+	linkml:designates_type true ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/predicate_kind"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoReferenceAttester__reference_attester_id> a linkml:SlotDefinition ;
+	skos:altLabel "id" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "reference_attester_id" ;
+	linkml:description "The URI that identifies the system." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoReferenceAttester> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoReferenceAttester> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/reference_attester_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoReference__reference_attester> a linkml:SlotDefinition ;
+	skos:altLabel "attester" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "reference_attester" ;
+	linkml:description "The system that provides the documents." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoReference> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoReference> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoReferenceAttester> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/reference_attester"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoReference__referenced_documents> a linkml:SlotDefinition ;
+	skos:altLabel "references" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "referenced_documents" ;
+	linkml:description "The documents referred to." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoReference> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoReference> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoReferencedDocument> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/referenced_documents"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoRelease__package_id> a linkml:SlotDefinition ;
+	skos:altLabel "packageId" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "package_id" ;
+	linkml:description "A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoRelease> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoRelease> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/package_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoRelease__release_purl> a linkml:SlotDefinition ;
+	skos:altLabel "purl" ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Software/packageUrl"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does." ;
+	skos:prefLabel "release_purl" ;
+	linkml:description "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoRelease> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoRelease> ;
+	linkml:pattern "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/release_purl"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__annotations> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/annotations"^^xsd:anyURI ;
+	skos:prefLabel "annotations" ;
+	linkml:description "Vendor-specific annotations on the resource, such as the source references a SLSA Source Verification Summary records." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoAnnotation> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/annotations"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__content> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/content"^^xsd:anyURI ;
+	skos:note "The in-toto framework asks for content under 1 KB, so that attestations stay small." ;
+	skos:prefLabel "content" ;
+	linkml:description "The resource's content itself, base64-encoded, for a resource small enough to carry inline." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:pattern "^[A-Za-z0-9+/_-]+={0,2}$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/content"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__download_location> a linkml:SlotDefinition ;
+	skos:altLabel "downloadLocation" ;
+	skos:closeMatch "http://www.w3.org/ns/dcat#downloadURL"^^xsd:anyURI , "https://spdx.org/rdf/3.0.1/terms/Software/downloadLocation"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/download_location"^^xsd:anyURI ;
+	skos:prefLabel "download_location" ;
+	linkml:description "Where the resource can be fetched, when that differs from its identifying URI." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/download_location"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__media_type> a linkml:SlotDefinition ;
+	skos:altLabel "mediaType" ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Core/contentType"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "http://www.w3.org/ns/dcat#mediaType"^^xsd:anyURI ;
+	skos:prefLabel "media_type" ;
+	linkml:description "The IANA media type of the resource's content." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "http://www.w3.org/ns/dcat#mediaType"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__resource_name> a linkml:SlotDefinition ;
+	skos:altLabel "name" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/resource_name"^^xsd:anyURI ;
+	skos:prefLabel "resource_name" ;
+	linkml:description "A name for the resource within the attestation that carries it." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/resource_name"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__monitor_log> a linkml:SlotDefinition ;
+	skos:altLabel "monitorLog" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "monitor_log" ;
+	linkml:description "The events the monitor traced." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/monitor_log"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__monitored_process> a linkml:SlotDefinition ;
+	skos:altLabel "monitoredProcess" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "monitored_process" ;
+	linkml:description "The process the monitor watched." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/monitored_process"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__trace_metadata> a linkml:SlotDefinition ;
+	skos:altLabel "metadata" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "trace_metadata" ;
+	linkml:description "Other properties of the monitoring event." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/trace_metadata"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__trace_monitor> a linkml:SlotDefinition ;
+	skos:altLabel "monitor" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "trace_monitor" ;
+	linkml:description "The monitor instance that traced the run." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/trace_monitor"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_attribute> a linkml:SlotDefinition ;
+	skos:altLabel "attribute" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scai_attribute" ;
+	linkml:description "The functional feature asserted, in a form the producer and consumer agree on." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scai_attribute"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_conditions> a linkml:SlotDefinition ;
+	skos:altLabel "conditions" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scai_conditions" ;
+	linkml:description "The conditions under which the attribute arises." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scai_conditions"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_evidence> a linkml:SlotDefinition ;
+	skos:altLabel "evidence" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "Without evidence a consumer may judge the assertion by who produced the attestation." ;
+	skos:prefLabel "scai_evidence" ;
+	linkml:description "The evidence, authenticated where possible, for the asserted attribute." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scai_evidence"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_target> a linkml:SlotDefinition ;
+	skos:altLabel "target" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scai_target" ;
+	linkml:description "The artifact or metadata object the attribute applies to." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scai_target"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScaiAttributeReport__scai_attributes> a linkml:SlotDefinition ;
+	skos:altLabel "attributes" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scai_attributes" ;
+	linkml:description "One or more attribute assertions about the subjects." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scai_attributes"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScaiAttributeReport__scai_producer> a linkml:SlotDefinition ;
+	skos:altLabel "producer" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scai_producer" ;
+	linkml:description "The producer of the subjects, where that applies." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scai_producer"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScanMetadata__scan_finished_on> a linkml:SlotDefinition ;
+	skos:altLabel "scanFinishedOn" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scan_finished_on" ;
+	linkml:description "When the scan finished." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scan_finished_on"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoScanMetadata__scan_started_on> a linkml:SlotDefinition ;
+	skos:altLabel "scanStartedOn" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scan_started_on" ;
+	linkml:description "When the scan started." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scan_started_on"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__svr_verifier> a linkml:SlotDefinition ;
+	skos:altLabel "verifier" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "svr_verifier" ;
+	linkml:description "The entity that performed the verification." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoSvrVerifier> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/svr_verifier"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__time_created> a linkml:SlotDefinition ;
+	skos:altLabel "timeCreated" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "time_created" ;
+	linkml:description "When the verification took place." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/time_created"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__verified_properties> a linkml:SlotDefinition ;
+	skos:altLabel "properties" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "verified_properties" ;
+	linkml:description "The properties of the subjects that passed verification, scoped to the framework or policy verified, such as SLSA_BUILD_LEVEL_3." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/verified_properties"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoStatement__predicate_type> a linkml:SlotDefinition ;
+	skos:altLabel "predicateType" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/predicate_type"^^xsd:anyURI ;
+	skos:prefLabel "predicate_type" ;
+	linkml:description "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/predicate_type"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoStatement__statement_type> a linkml:SlotDefinition ;
+	skos:altLabel "_type" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/statement_type"^^xsd:anyURI ;
+	skos:prefLabel "statement_type" ;
+	linkml:description "The in-toto statement type, always https://in-toto.io/Statement/v1." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:pattern "^https://in-toto\\.io/Statement/v1$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/statement_type"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoStatement__subject> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/subject"^^xsd:anyURI ;
+	skos:prefLabel "subject" ;
+	linkml:description "The artifacts the predicate is about, each with a digest." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoStatementSubject> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/subject"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoSvrVerifier__svr_verifier_id> a linkml:SlotDefinition ;
+	skos:altLabel "id" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "svr_verifier_id" ;
+	linkml:description "The URI that identifies the verifier, versioned when its verification logic changes materially." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoSvrVerifier> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoSvrVerifier> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/svr_verifier_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTestResult__configuration> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "configuration" ;
+	linkml:description "The configuration the test run used." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/configuration"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTestResult__failed_tests> a linkml:SlotDefinition ;
+	skos:altLabel "failedTests" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "Producer and consumer agree on what a test name means; a policy can check that test_result and failed_tests meet its requirements." ;
+	skos:prefLabel "failed_tests" ;
+	linkml:description "The names of the tests that failed." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/failed_tests"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTestResult__passed_tests> a linkml:SlotDefinition ;
+	skos:altLabel "passedTests" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "passed_tests" ;
+	linkml:description "The names of the tests that passed." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/passed_tests"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTestResult__test_result> a linkml:SlotDefinition ;
+	skos:altLabel "result" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "test_result" ;
+	linkml:description "The result of the test run." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoTestResultValue> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/test_result"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTestResult__test_run_url> a linkml:SlotDefinition ;
+	skos:altLabel "url" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "test_run_url" ;
+	linkml:description "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/test_run_url"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTestResult__warned_tests> a linkml:SlotDefinition ;
+	skos:altLabel "warnedTests" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "warned_tests" ;
+	linkml:description "The names of the tests that expressed a warning." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTestResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/warned_tests"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTraceMetadata__build_finished_on> a linkml:SlotDefinition ;
+	skos:altLabel "buildFinishedOn" ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Build/buildEndTime"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "build_finished_on" ;
+	linkml:description "When the monitored build finished." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/build_finished_on"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTraceMetadata__build_started_on> a linkml:SlotDefinition ;
+	skos:altLabel "buildStartedOn" ;
+	skos:closeMatch "https://spdx.org/rdf/3.0.1/terms/Build/buildStartTime"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "build_started_on" ;
+	linkml:description "When the monitored build started." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/build_started_on"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__monitor_config_source> a linkml:SlotDefinition ;
+	skos:altLabel "configSource" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "monitor_config_source" ;
+	linkml:description "The monitor's configuration." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/monitor_config_source"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__monitor_type> a linkml:SlotDefinition ;
+	skos:altLabel "type" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "monitor_type" ;
+	linkml:description "The URI of the monitor's type." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/monitor_type"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__trace_policy> a linkml:SlotDefinition ;
+	skos:altLabel "tracePolicy" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "trace_policy" ;
+	linkml:description "The trace policy the monitor applied, in the monitor's own format, which monitor_type names." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/trace_policy"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_last_update> a linkml:SlotDefinition ;
+	skos:altLabel "lastUpdate" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "db_last_update" ;
+	linkml:description "When the database was last updated." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/db_last_update"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_uri> a linkml:SlotDefinition ;
+	skos:altLabel "uri" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "db_uri" ;
+	linkml:description "The URI that identifies the database's source." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/db_uri"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_version> a linkml:SlotDefinition ;
+	skos:altLabel "version" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "db_version" ;
+	linkml:description "The database's version." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/db_version"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_annotations> a linkml:SlotDefinition ;
+	skos:altLabel "annotations" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The page calls them a list of key and value pairs, and the protocol buffer definition a list of objects. Each pair of each object is one entry, in order, so a key may appear more than once." ;
+	skos:prefLabel "vuln_annotations" ;
+	linkml:description "Custom information the scanner adds, as key and value pairs." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/vuln_annotations"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_id> a linkml:SlotDefinition ;
+	skos:altLabel "id" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "vuln_id" ;
+	linkml:description "The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/vuln_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_severity> a linkml:SlotDefinition ;
+	skos:altLabel "severity" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "vuln_severity" ;
+	linkml:description "The vulnerability's severity, by one or more scoring methods." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/vuln_severity"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scan_results> a linkml:SlotDefinition ;
+	skos:altLabel "result" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scan_results" ;
+	linkml:description "The vulnerabilities the scanner found; an empty list means it found none." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scan_results"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scanner_uri> a linkml:SlotDefinition ;
+	skos:altLabel "uri" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scanner_uri" ;
+	linkml:description "The URI that identifies the scanner's source." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scanner_uri"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scanner_version> a linkml:SlotDefinition ;
+	skos:altLabel "version" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:note "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string." ;
+	skos:prefLabel "scanner_version" ;
+	linkml:description "The scanner's version." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scanner_version"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnScanner__vuln_db> a linkml:SlotDefinition ;
+	skos:altLabel "db" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "vuln_db" ;
+	linkml:description "The vulnerability database the scanner used." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/vuln_db"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnSeverity__severity_method> a linkml:SlotDefinition ;
+	skos:altLabel "method" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "severity_method" ;
+	linkml:description "The scoring method, such as nvd or cvss." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/severity_method"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulnSeverity__severity_score> a linkml:SlotDefinition ;
+	skos:altLabel "score" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "severity_score" ;
+	linkml:description "The score under that method, as a string." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/severity_score"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulns__scan_metadata> a linkml:SlotDefinition ;
+	skos:altLabel "metadata" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "scan_metadata" ;
+	linkml:description "When the scan ran." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulns> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulns> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/scan_metadata"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/inTotoVulns__vuln_scanner> a linkml:SlotDefinition ;
+	skos:altLabel "scanner" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_predicates"^^xsd:anyURI ;
+	skos:prefLabel "vuln_scanner" ;
+	linkml:description "The scanner that ran, its version and the database it used." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoVulns> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoVulns> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/vuln_scanner"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/in_toto_linkml> dcterms:license "Apache-2.0" ;
+	dcterms:source "https://github.com/in-toto/attestation/tree/v1.2.0"^^xsd:anyURI ;
+	dcterms:title "in-toto Attestation Framework" ;
+	pav:version "1.2.0" ;
+	schema1:inLanguage "en" ;
+	schema1:keywords "attestation" , "in-toto" , "predicate type" , "software supply chain" ;
+	a linkml:SchemaDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/README.md"^^xsd:anyURI , "https://in-toto.io/"^^xsd:anyURI , "https://lmodel.github.io/in-toto"^^xsd:anyURI ;
+	skos:note "The version is the release of in-toto/attestation the model renders, and the specification pages and protocol buffer definitions of that release are copied to src/in_toto_linkml/schema/attestation/ at the tag and commit in the annotations. The release tags are the schema's own versions, and scripts/check_upstream_release.py reads the same pins and reports when the in-toto project releases again or the copy drifts." , "in_toto_core imports only the LinkML types, in_toto_predicates imports the core, and this file adds only the document root, so an importer can take one module. lmodel/slsa imports the core and models SLSA's own predicates." ;
+	sh:declare _:c14n64 , _:c14n73 ;
+	linkml:annotations _:c14n40 , _:c14n65 ;
+	linkml:classes <https://w3id.org/lmodel/in-toto/InTotoAdditionalDigest> , <https://w3id.org/lmodel/in-toto/InTotoAnnotation> , <https://w3id.org/lmodel/in-toto/InTotoDigestSet> , <https://w3id.org/lmodel/in-toto/InTotoDocument> , <https://w3id.org/lmodel/in-toto/InTotoLink> , <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> , <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> , <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> , <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> , <https://w3id.org/lmodel/in-toto/InTotoPredicate> , <https://w3id.org/lmodel/in-toto/InTotoPredicateType> , <https://w3id.org/lmodel/in-toto/InTotoReference> , <https://w3id.org/lmodel/in-toto/InTotoReferenceAttester> , <https://w3id.org/lmodel/in-toto/InTotoReferencedDocument> , <https://w3id.org/lmodel/in-toto/InTotoRelease> , <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> , <https://w3id.org/lmodel/in-toto/InTotoRuntimeTrace> , <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> , <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeReport> , <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> , <https://w3id.org/lmodel/in-toto/InTotoSimpleVerificationResult> , <https://w3id.org/lmodel/in-toto/InTotoStatement> , <https://w3id.org/lmodel/in-toto/InTotoStatementSubject> , <https://w3id.org/lmodel/in-toto/InTotoSvrVerifier> , <https://w3id.org/lmodel/in-toto/InTotoTestResult> , <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> , <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> , <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> , <https://w3id.org/lmodel/in-toto/InTotoVulnResult> , <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> , <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> , <https://w3id.org/lmodel/in-toto/InTotoVulns> ;
+	linkml:default_prefix "in_toto_linkml" ;
+	linkml:default_range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:description "A LinkML model of the in-toto Attestation Framework: the statement that binds an attestation to its subjects, the resource descriptor and digest set that identify an artifact, the predicate types the in-toto project has vetted, and the vetted predicates that no other lmodel schema models." ;
+	linkml:enums <https://w3id.org/lmodel/in-toto/InTotoTestResultValue> , <https://w3id.org/lmodel/in-toto/InTotoVettedPredicate> ;
+	linkml:id "https://w3id.org/lmodel/in-toto"^^xsd:anyURI ;
+	linkml:imports "./in_toto_core"^^xsd:anyURI , "./in_toto_predicates"^^xsd:anyURI , "linkml:types"^^xsd:anyURI ;
+	linkml:metamodel_version "1.12.0" ;
+	linkml:slots <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial_digest> , <https://w3id.org/lmodel/in-toto/InTotoStatementSubject_digest> , <https://w3id.org/lmodel/in-toto/digest> , <https://w3id.org/lmodel/in-toto/inTotoAdditionalDigest__algorithm> , <https://w3id.org/lmodel/in-toto/inTotoAdditionalDigest__value> , <https://w3id.org/lmodel/in-toto/inTotoAnnotation__annotation_key> , <https://w3id.org/lmodel/in-toto/inTotoAnnotation__annotation_values> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__additional_digests> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__blake2b> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__blake2s> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__dir_hash> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_blob> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_commit> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_tag> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__git_tree> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__gost> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__md5> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__ripemd160> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha1> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha224> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha384> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_224> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_384> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha3_512> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512_224> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sha512_256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__shake128> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__shake256> , <https://w3id.org/lmodel/in-toto/inTotoDigestSet__sm3> , <https://w3id.org/lmodel/in-toto/inTotoDocument__in_toto_predicate_types> , <https://w3id.org/lmodel/in-toto/inTotoDocument__in_toto_statements> , <https://w3id.org/lmodel/in-toto/inTotoLink__materials> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_byproducts> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_command> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_environment> , <https://w3id.org/lmodel/in-toto/inTotoLink__step_name> , <https://w3id.org/lmodel/in-toto/inTotoMonitorLog__file_access> , <https://w3id.org/lmodel/in-toto/inTotoMonitorLog__traced_network> , <https://w3id.org/lmodel/in-toto/inTotoMonitorLog__traced_processes> , <https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__host_id> , <https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__process_event> , <https://w3id.org/lmodel/in-toto/inTotoMonitoredProcess__process_type> , <https://w3id.org/lmodel/in-toto/inTotoObjectEntry__entry_key> , <https://w3id.org/lmodel/in-toto/inTotoObjectEntry__entry_values> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_specification> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_type_uri> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__predicate_version> , <https://w3id.org/lmodel/in-toto/inTotoPredicateType__vetted_as> , <https://w3id.org/lmodel/in-toto/inTotoPredicate__predicate_kind> , <https://w3id.org/lmodel/in-toto/inTotoReferenceAttester__reference_attester_id> , <https://w3id.org/lmodel/in-toto/inTotoReference__reference_attester> , <https://w3id.org/lmodel/in-toto/inTotoReference__referenced_documents> , <https://w3id.org/lmodel/in-toto/inTotoRelease__package_id> , <https://w3id.org/lmodel/in-toto/inTotoRelease__release_purl> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__annotations> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__content> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__download_location> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__media_type> , <https://w3id.org/lmodel/in-toto/inTotoResourceDescriptor__resource_name> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__monitor_log> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__monitored_process> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__trace_metadata> , <https://w3id.org/lmodel/in-toto/inTotoRuntimeTrace__trace_monitor> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_attribute> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_conditions> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_evidence> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeAssertion__scai_target> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeReport__scai_attributes> , <https://w3id.org/lmodel/in-toto/inTotoScaiAttributeReport__scai_producer> , <https://w3id.org/lmodel/in-toto/inTotoScanMetadata__scan_finished_on> , <https://w3id.org/lmodel/in-toto/inTotoScanMetadata__scan_started_on> , <https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__svr_verifier> , <https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__time_created> , <https://w3id.org/lmodel/in-toto/inTotoSimpleVerificationResult__verified_properties> , <https://w3id.org/lmodel/in-toto/inTotoStatement__predicate_type> , <https://w3id.org/lmodel/in-toto/inTotoStatement__statement_type> , <https://w3id.org/lmodel/in-toto/inTotoStatement__subject> , <https://w3id.org/lmodel/in-toto/inTotoSvrVerifier__svr_verifier_id> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__configuration> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__failed_tests> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__passed_tests> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__test_result> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__test_run_url> , <https://w3id.org/lmodel/in-toto/inTotoTestResult__warned_tests> , <https://w3id.org/lmodel/in-toto/inTotoTraceMetadata__build_finished_on> , <https://w3id.org/lmodel/in-toto/inTotoTraceMetadata__build_started_on> , <https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__monitor_config_source> , <https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__monitor_type> , <https://w3id.org/lmodel/in-toto/inTotoTraceMonitor__trace_policy> , <https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_last_update> , <https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_uri> , <https://w3id.org/lmodel/in-toto/inTotoVulnDatabase__db_version> , <https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_annotations> , <https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_id> , <https://w3id.org/lmodel/in-toto/inTotoVulnResult__vuln_severity> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scan_results> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scanner_uri> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__scanner_version> , <https://w3id.org/lmodel/in-toto/inTotoVulnScanner__vuln_db> , <https://w3id.org/lmodel/in-toto/inTotoVulnSeverity__severity_method> , <https://w3id.org/lmodel/in-toto/inTotoVulnSeverity__severity_score> , <https://w3id.org/lmodel/in-toto/inTotoVulns__scan_metadata> , <https://w3id.org/lmodel/in-toto/inTotoVulns__vuln_scanner> , <https://w3id.org/lmodel/in-toto/predicate> , <https://w3id.org/lmodel/in-toto/resource_uri> ;
+	linkml:source_file "in_toto_linkml.yaml" ;
+	linkml:source_file_date "2026-11-01T18:08:29"^^xsd:dateTime ;
+	linkml:source_file_size 2345 ;
+	linkml:types <https://w3id.org/lmodel/in-toto/boolean> , <https://w3id.org/lmodel/in-toto/curie> , <https://w3id.org/lmodel/in-toto/date> , <https://w3id.org/lmodel/in-toto/date_or_datetime> , <https://w3id.org/lmodel/in-toto/datetime> , <https://w3id.org/lmodel/in-toto/decimal> , <https://w3id.org/lmodel/in-toto/double> , <https://w3id.org/lmodel/in-toto/float> , <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> , <https://w3id.org/lmodel/in-toto/in_toto_timestamp> , <https://w3id.org/lmodel/in-toto/in_toto_type_uri> , <https://w3id.org/lmodel/in-toto/integer> , <https://w3id.org/lmodel/in-toto/jsonpath> , <https://w3id.org/lmodel/in-toto/jsonpointer> , <https://w3id.org/lmodel/in-toto/ncname> , <https://w3id.org/lmodel/in-toto/nodeidentifier> , <https://w3id.org/lmodel/in-toto/objectidentifier> , <https://w3id.org/lmodel/in-toto/sparqlpath> , <https://w3id.org/lmodel/in-toto/string> , <https://w3id.org/lmodel/in-toto/time> , <https://w3id.org/lmodel/in-toto/uri> , <https://w3id.org/lmodel/in-toto/uriorcurie> .
+<https://w3id.org/lmodel/in-toto/in_toto_predicate_types> a linkml:SlotDefinition ;
+	linkml:description "The predicate types." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoPredicateType> .
+<https://w3id.org/lmodel/in-toto/in_toto_resource_uri> a linkml:TypeDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "The framework recommends a package URL (pkg:) or an SPDX download location (git+https:), and allows one that does not resolve." ;
+	linkml:base "URI" ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoResourceUri"^^xsd:anyURI ;
+	linkml:description "A URI that identifies or locates a resource, such as a package URL or a git repository address, with its scheme and authority in lowercase." ;
+	linkml:pattern "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$" ;
+	linkml:repr "str" ;
+	linkml:typeof <https://w3id.org/lmodel/in-toto/uri> ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/in_toto_statements> a linkml:SlotDefinition ;
+	linkml:description "The statements, each an in-toto attestation without its envelope." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoStatement> .
+<https://w3id.org/lmodel/in-toto/in_toto_timestamp> a linkml:TypeDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#timestamp"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "It extends string rather than datetime, because the LinkML Python runtime writes a datetime's Z as +00:00, which the framework does not allow." ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoTimestamp"^^xsd:anyURI ;
+	linkml:description "A point in time in RFC 3339 format in the UTC time zone, written with a trailing Z, such as 1985-04-12T23:20:50.52Z." ;
+	linkml:pattern "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$" ;
+	linkml:typeof <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/in_toto_type_uri> a linkml:TypeDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#typeuri"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:note "The framework asks that it carry a version and registers none, since the namespace of a URI keeps two types apart." ;
+	linkml:base "URI" ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/InTotoTypeUri"^^xsd:anyURI ;
+	linkml:description "A URI that names a type, such as a statement's or a predicate's, with its scheme and authority in lowercase." ;
+	linkml:pattern "^[a-z][a-z0-9+.-]*:(//[^/?#A-Z]*([/?#].*)?|[^/].*|/[^/].*|/)?$" ;
+	linkml:repr "str" ;
+	linkml:typeof <https://w3id.org/lmodel/in-toto/uri> ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/integer> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"." ;
+	skos:exactMatch "schema:Integer"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "int" ;
+	linkml:definition_uri "https://w3id.org/linkml/Integer"^^xsd:anyURI ;
+	linkml:description "An integer" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#integer"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/jsonpath> dcterms:conformsTo "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Jsonpath"^^xsd:anyURI ;
+	linkml:description "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/jsonpointer> dcterms:conformsTo "https://datatracker.ietf.org/doc/html/rfc6901" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Jsonpointer"^^xsd:anyURI ;
+	linkml:description "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/materials> a linkml:SlotDefinition ;
+	skos:note "Each material's resource_name is unique among them; the validator does not check this." ;
+	linkml:description "The artifacts the step read." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoLinkMaterial> .
+<https://w3id.org/lmodel/in-toto/md5> a linkml:SlotDefinition ;
+	skos:note "MD5 lacks collision resistance, so most consumers should not accept it." ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/md5"^^xsd:anyURI ;
+	linkml:any_of _:c14n48 ;
+	linkml:description "The MD5 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{32}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:md5"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/media_type> a linkml:SlotDefinition ;
+	skos:altLabel "mediaType" ;
+	skos:closeMatch "spdx_core:contentType"^^xsd:anyURI ;
+	linkml:any_of _:c14n54 ;
+	linkml:description "The IANA media type of the resource's content." ;
+	linkml:required true ;
+	linkml:slot_uri "dcat:mediaType"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/monitor_config_source> a linkml:SlotDefinition ;
+	skos:altLabel "configSource" ;
+	linkml:description "The monitor's configuration." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> .
+<https://w3id.org/lmodel/in-toto/monitor_log> a linkml:SlotDefinition ;
+	skos:altLabel "monitorLog" ;
+	linkml:description "The events the monitor traced." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoMonitorLog> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/monitor_type> a linkml:SlotDefinition ;
+	skos:altLabel "type" ;
+	linkml:description "The URI of the monitor's type." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/monitored_process> a linkml:SlotDefinition ;
+	skos:altLabel "monitoredProcess" ;
+	linkml:description "The process the monitor watched." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoMonitoredProcess> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/ncname> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "NCName" ;
+	linkml:definition_uri "https://w3id.org/linkml/Ncname"^^xsd:anyURI ;
+	linkml:description "Prefix part of CURIE" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/nodeidentifier> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "NodeIdentifier" ;
+	linkml:definition_uri "https://w3id.org/linkml/Nodeidentifier"^^xsd:anyURI ;
+	linkml:description "A URI, CURIE or BNODE that represents a node in a model." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/ns/shex#nonLiteral"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/objectidentifier> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "Used for inheritance and type checking" ;
+	linkml:base "ElementIdentifier" ;
+	linkml:definition_uri "https://w3id.org/linkml/Objectidentifier"^^xsd:anyURI ;
+	linkml:description "A URI or CURIE that represents an object in the model." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/ns/shex#iri"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/package_id> a linkml:SlotDefinition ;
+	skos:altLabel "packageId" ;
+	linkml:description "A stable identifier for the package that does not change between releases, so that a consumer can tell a renamed package from a reused name." .
+<https://w3id.org/lmodel/in-toto/passed_tests> a linkml:SlotDefinition ;
+	skos:altLabel "passedTests" ;
+	linkml:description "The names of the tests that passed." ;
+	linkml:multivalued true .
+<https://w3id.org/lmodel/in-toto/predicate> a linkml:SlotDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/statement.md"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/predicate"^^xsd:anyURI ;
+	skos:note "It is a slot of its own rather than an attribute of InTotoStatement, because LOKF's predicate is a relation's type: `lokf adapt` renames a slot whose name LOKF defines, with the name of the schema it adapts as a prefix, and keeps its IRI. This repository's copy calls it in_toto_linkml_predicate, and lmodel/slsa's calls it slsa_predicate." ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/predicate"^^xsd:anyURI ;
+	linkml:description "The predicate, one of the kinds this schema or an importing one models; predicate_kind names which. Unset means the same as empty." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoStatement> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoPredicate> ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/predicate"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/predicate_kind> a linkml:SlotDefinition ;
+	linkml:description "The kind of predicate, one of this class's descendants." ;
+	linkml:designates_type true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> ;
+	linkml:slot_uri "in_toto_linkml:predicate_kind"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/predicate_specification> a linkml:SlotDefinition ;
+	linkml:description "The page that specifies the predicate." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/uri> .
+<https://w3id.org/lmodel/in-toto/predicate_type> a linkml:SlotDefinition ;
+	skos:altLabel "predicateType" ;
+	linkml:description "The URI that names the predicate's type and so its schema, such as https://in-toto.io/attestation/test-result/v0.1." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:predicate_type"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/predicate_type_uri> a linkml:SlotDefinition ;
+	linkml:description "The URI that names the predicate type, such as https://in-toto.io/attestation/test-result/v0.1." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/predicate_version> a linkml:SlotDefinition ;
+	linkml:description "The version of the predicate's specification, as its page states it, such as 0.1.0." .
+<https://w3id.org/lmodel/in-toto/process_event> a linkml:SlotDefinition ;
+	skos:altLabel "event" ;
+	linkml:description "The job or task the attestation is about." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/process_type> a linkml:SlotDefinition ;
+	skos:altLabel "type" ;
+	linkml:description "The URI of the type of process, such as the build type when the monitor watched a build." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/reference_attester> a linkml:SlotDefinition ;
+	skos:altLabel "attester" ;
+	linkml:description "The system that provides the documents." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoReferenceAttester> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/reference_attester_id> a linkml:SlotDefinition ;
+	skos:altLabel "id" ;
+	linkml:description "The URI that identifies the system." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/referenced_documents> a linkml:SlotDefinition ;
+	skos:altLabel "references" ;
+	linkml:description "The documents referred to." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoReferencedDocument> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/release_purl> a linkml:SlotDefinition ;
+	skos:altLabel "purl" ;
+	skos:closeMatch "spdx_software:packageUrl"^^xsd:anyURI ;
+	skos:note "The version follows the last @, as the purl specification parses a package URL, so a scoped npm name such as @angular/http may keep its @ unencoded, as the page's first example does." ;
+	linkml:description "The package URL that names the release, with its version and, unless the package type needs them, no qualifiers or subpath." ;
+	linkml:pattern "^pkg:[A-Za-z][A-Za-z0-9.+-]*/[^?#]+@[^@?#]+" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/resource_name> a linkml:SlotDefinition ;
+	skos:altLabel "name" ;
+	linkml:any_of _:c14n49 ;
+	linkml:description "A name for the resource within the attestation that carries it." ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:resource_name"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/resource_uri> a linkml:SlotDefinition ;
+	rdfs:seeAlso "https://github.com/in-toto/attestation/blob/v1.2.0/spec/v1/field_types.md#resourceuri"^^xsd:anyURI ;
+	skos:altLabel "uri" ;
+	skos:inScheme "https://w3id.org/lmodel/in-toto/in_toto_core"^^xsd:anyURI ;
+	skos:mappingRelation "https://w3id.org/lmodel/in-toto/resource_uri"^^xsd:anyURI ;
+	linkml:any_of _:c14n58 ;
+	linkml:definition_uri "https://w3id.org/lmodel/in-toto/resource_uri"^^xsd:anyURI ;
+	linkml:description "The URI that identifies a resource, such as a package URL, a git repository address or an OCI image reference." ;
+	linkml:domain_of <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:owner <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/in-toto/resource_uri"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/ripemd160> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n43 ;
+	linkml:description "The RIPEMD-160 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{40}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:ripemd160"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/scai_attribute> a linkml:SlotDefinition ;
+	skos:altLabel "attribute" ;
+	linkml:description "The functional feature asserted, in a form the producer and consumer agree on." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scai_attributes> a linkml:SlotDefinition ;
+	skos:altLabel "attributes" ;
+	linkml:description "One or more attribute assertions about the subjects." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoScaiAttributeAssertion> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scai_conditions> a linkml:SlotDefinition ;
+	skos:altLabel "conditions" ;
+	linkml:description "The conditions under which the attribute arises." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> .
+<https://w3id.org/lmodel/in-toto/scai_evidence> a linkml:SlotDefinition ;
+	skos:altLabel "evidence" ;
+	skos:note "Without evidence a consumer may judge the assertion by who produced the attestation." ;
+	linkml:description "The evidence, authenticated where possible, for the asserted attribute." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> .
+<https://w3id.org/lmodel/in-toto/scai_producer> a linkml:SlotDefinition ;
+	skos:altLabel "producer" ;
+	linkml:description "The producer of the subjects, where that applies." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> .
+<https://w3id.org/lmodel/in-toto/scai_target> a linkml:SlotDefinition ;
+	skos:altLabel "target" ;
+	linkml:description "The artifact or metadata object the attribute applies to." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoResourceDescriptor> .
+<https://w3id.org/lmodel/in-toto/scan_finished_on> a linkml:SlotDefinition ;
+	skos:altLabel "scanFinishedOn" ;
+	linkml:description "When the scan finished." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scan_metadata> a linkml:SlotDefinition ;
+	skos:altLabel "metadata" ;
+	linkml:description "When the scan ran." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoScanMetadata> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scan_results> a linkml:SlotDefinition ;
+	skos:altLabel "result" ;
+	linkml:description "The vulnerabilities the scanner found; an empty list means it found none." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnResult> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scan_started_on> a linkml:SlotDefinition ;
+	skos:altLabel "scanStartedOn" ;
+	linkml:description "When the scan started." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scanner_uri> a linkml:SlotDefinition ;
+	skos:altLabel "uri" ;
+	linkml:description "The URI that identifies the scanner's source." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/scanner_version> a linkml:SlotDefinition ;
+	skos:altLabel "version" ;
+	skos:note "The page types it as a ResourceURI, and its example is a plain version, 0.19.2, so the schema takes any string." ;
+	linkml:description "The scanner's version." .
+<https://w3id.org/lmodel/in-toto/severity_method> a linkml:SlotDefinition ;
+	skos:altLabel "method" ;
+	linkml:description "The scoring method, such as nvd or cvss." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/severity_score> a linkml:SlotDefinition ;
+	skos:altLabel "score" ;
+	linkml:description "The score under that method, as a string." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/sha1> a linkml:SlotDefinition ;
+	skos:note "SHA-1 lacks collision resistance, so most consumers should not rely on it." ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha1"^^xsd:anyURI ;
+	linkml:any_of _:c14n57 ;
+	linkml:description "The SHA-1 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{40}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha1"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha224> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha224"^^xsd:anyURI ;
+	linkml:any_of _:c14n84 ;
+	linkml:description "The SHA-224 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{56}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha224"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha256> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha256"^^xsd:anyURI ;
+	linkml:any_of _:c14n60 ;
+	linkml:description "The SHA-256 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha384> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha384"^^xsd:anyURI ;
+	linkml:any_of _:c14n42 ;
+	linkml:description "The SHA-384 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{96}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha384"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha3_224> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha3_224"^^xsd:anyURI ;
+	linkml:any_of _:c14n98 ;
+	linkml:description "The SHA3-224 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{56}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha3_224"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha3_256> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha3_256"^^xsd:anyURI ;
+	linkml:any_of _:c14n79 ;
+	linkml:description "The SHA3-256 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha3_256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha3_384> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha3_384"^^xsd:anyURI ;
+	linkml:any_of _:c14n63 ;
+	linkml:description "The SHA3-384 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{96}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha3_384"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha3_512> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha3_512"^^xsd:anyURI ;
+	linkml:any_of _:c14n45 ;
+	linkml:description "The SHA3-512 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{128}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha3_512"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha512> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:HashAlgorithm/sha512"^^xsd:anyURI ;
+	linkml:any_of _:c14n85 ;
+	linkml:description "The SHA-512 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{128}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha512"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha512_224> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n12 ;
+	linkml:description "The SHA-512/224 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{56}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha512_224"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sha512_256> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n95 ;
+	linkml:description "The SHA-512/256 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sha512_256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/shake128> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n37 ;
+	linkml:description "The SHAKE128 digest of the artifact, of at least 32 bytes." ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:shake128"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/shake256> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n29 ;
+	linkml:description "The SHAKE256 digest of the artifact, of at least 32 bytes." ;
+	linkml:pattern "^[a-f0-9]{64}([a-f0-9]{2})*$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:shake256"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sm3> a linkml:SlotDefinition ;
+	linkml:any_of _:c14n7 ;
+	linkml:description "The SM3 digest of the artifact." ;
+	linkml:pattern "^[a-f0-9]{64}$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:sm3"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/sparqlpath> dcterms:conformsTo "https://www.w3.org/TR/sparql11-query/#propertypaths" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Sparqlpath"^^xsd:anyURI ;
+	linkml:description "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/statement_type> a linkml:SlotDefinition ;
+	skos:altLabel "_type" ;
+	linkml:description "The in-toto statement type, always https://in-toto.io/Statement/v1." ;
+	linkml:pattern "^https://in-toto\\.io/Statement/v1$" ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:statement_type"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/step_byproducts> a linkml:SlotDefinition ;
+	skos:altLabel "byproducts" ;
+	linkml:description "What else the step recorded, such as its standard output, in keys the in-toto specification describes." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> .
+<https://w3id.org/lmodel/in-toto/step_command> a linkml:SlotDefinition ;
+	skos:altLabel "command" ;
+	linkml:description "The command the step ran, and its arguments; possibly empty." ;
+	linkml:multivalued true .
+<https://w3id.org/lmodel/in-toto/step_environment> a linkml:SlotDefinition ;
+	skos:altLabel "environment" ;
+	linkml:description "The environment the step ran in, in keys the producer chooses." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> .
+<https://w3id.org/lmodel/in-toto/step_name> a linkml:SlotDefinition ;
+	skos:altLabel "name" ;
+	linkml:description "The name of the step, which a layout uses to find the link metadata it verifies." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/string> a linkml:TypeDefinition ;
+	skos:editorialNote "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"." ;
+	skos:exactMatch "schema:Text"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/String"^^xsd:anyURI ;
+	linkml:description "A character string" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/subject> a linkml:SlotDefinition ;
+	linkml:description "The artifacts the predicate is about, each with a digest." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoStatementSubject> ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:subject"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/svr_verifier> a linkml:SlotDefinition ;
+	skos:altLabel "verifier" ;
+	linkml:description "The entity that performed the verification." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoSvrVerifier> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/svr_verifier_id> a linkml:SlotDefinition ;
+	skos:altLabel "id" ;
+	linkml:description "The URI that identifies the verifier, versioned when its verification logic changes materially." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_type_uri> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/test_result> a linkml:SlotDefinition ;
+	skos:altLabel "result" ;
+	linkml:description "The result of the test run." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoTestResultValue> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/test_run_url> a linkml:SlotDefinition ;
+	skos:altLabel "url" ;
+	linkml:description "Where the test run can be read, such as a CI run that holds its logs; the verifier works out how to read it." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_resource_uri> .
+<https://w3id.org/lmodel/in-toto/time> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"." , "URI is dateTime because OWL reasoners do not work with straight date or time" ;
+	skos:exactMatch "schema:Time"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDTime" ;
+	linkml:definition_uri "https://w3id.org/linkml/Time"^^xsd:anyURI ;
+	linkml:description "A time object represents a (local) time of day, independent of any particular day" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#time"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/time_created> a linkml:SlotDefinition ;
+	skos:altLabel "timeCreated" ;
+	linkml:description "When the verification took place." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/in_toto_timestamp> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/trace_metadata> a linkml:SlotDefinition ;
+	skos:altLabel "metadata" ;
+	linkml:description "Other properties of the monitoring event." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoTraceMetadata> .
+<https://w3id.org/lmodel/in-toto/trace_monitor> a linkml:SlotDefinition ;
+	skos:altLabel "monitor" ;
+	linkml:description "The monitor instance that traced the run." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoTraceMonitor> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/trace_policy> a linkml:SlotDefinition ;
+	skos:altLabel "tracePolicy" ;
+	linkml:description "The trace policy the monitor applied, in the monitor's own format, which monitor_type names." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> .
+<https://w3id.org/lmodel/in-toto/traced_network> a linkml:SlotDefinition ;
+	skos:altLabel "network" ;
+	linkml:description "The network activity the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines." ;
+	linkml:multivalued true ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/traced_processes> a linkml:SlotDefinition ;
+	skos:altLabel "process" ;
+	linkml:description "The processes the monitor observed, one JSON object each, written as its JSON text, in a format monitor_type determines." ;
+	linkml:multivalued true ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/uri> dcterms:conformsTo "https://www.ietf.org/rfc/rfc3987.txt" ;
+	a linkml:TypeDefinition ;
+	skos:closeMatch "schema:URL"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node" ;
+	linkml:base "URI" ;
+	linkml:definition_uri "https://w3id.org/linkml/Uri"^^xsd:anyURI ;
+	linkml:description "a complete URI" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/uriorcurie> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "URIorCURIE" ;
+	linkml:definition_uri "https://w3id.org/linkml/Uriorcurie"^^xsd:anyURI ;
+	linkml:description "a URI or a CURIE" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/value> a linkml:SlotDefinition ;
+	skos:relatedMatch "spdx_core:hashValue"^^xsd:anyURI ;
+	linkml:description "The digest under that algorithm, in the encoding the algorithm documents." ;
+	linkml:pattern "^\\S+$" ;
+	linkml:required true ;
+	linkml:slot_uri "in_toto_linkml:value"^^xsd:anyURI .
+<https://w3id.org/lmodel/in-toto/verified_properties> a linkml:SlotDefinition ;
+	skos:altLabel "properties" ;
+	linkml:description "The properties of the subjects that passed verification, scoped to the framework or policy verified, such as SLSA_BUILD_LEVEL_3." ;
+	linkml:multivalued true ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/vetted_as> a linkml:SlotDefinition ;
+	linkml:description "The vetted predicate this type is, when the in-toto project vetted it." ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVettedPredicate> .
+<https://w3id.org/lmodel/in-toto/vuln_annotations> a linkml:SlotDefinition ;
+	skos:altLabel "annotations" ;
+	skos:note "The page calls them a list of key and value pairs, and the protocol buffer definition a list of objects. Each pair of each object is one entry, in order, so a key may appear more than once." ;
+	linkml:description "Custom information the scanner adds, as key and value pairs." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoObjectEntry> .
+<https://w3id.org/lmodel/in-toto/vuln_db> a linkml:SlotDefinition ;
+	skos:altLabel "db" ;
+	linkml:description "The vulnerability database the scanner used." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnDatabase> .
+<https://w3id.org/lmodel/in-toto/vuln_id> a linkml:SlotDefinition ;
+	skos:altLabel "id" ;
+	linkml:description "The vulnerability's identifier, such as GHSA-fxph-q3j8-mv87 or CVE-2017-5645." ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/vuln_scanner> a linkml:SlotDefinition ;
+	skos:altLabel "scanner" ;
+	linkml:description "The scanner that ran, its version and the database it used." ;
+	linkml:inlined true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnScanner> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/vuln_severity> a linkml:SlotDefinition ;
+	skos:altLabel "severity" ;
+	linkml:description "The vulnerability's severity, by one or more scoring methods." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoVulnSeverity> ;
+	linkml:required true .
+<https://w3id.org/lmodel/in-toto/warned_tests> a linkml:SlotDefinition ;
+	skos:altLabel "warnedTests" ;
+	linkml:description "The names of the tests that expressed a warning." ;
+	linkml:multivalued true .
+_:c14n100 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha224> .
+_:c14n12 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n13 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/shake128> .
+_:c14n15 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/blake2b> .
+_:c14n17 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n18 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/blake2s> .
+_:c14n2 a linkml:AnonymousSlotExpression ;
+	linkml:equals_string_in "blake2b" , "blake2s" , "dirHash" , "dir_hash" , "gitBlob" , "gitCommit" , "gitTag" , "gitTree" , "git_blob" , "git_commit" , "git_tag" , "git_tree" , "gost" , "md5" , "ripemd160" , "sha1" , "sha224" , "sha256" , "sha384" , "sha3_224" , "sha3_256" , "sha3_384" , "sha3_512" , "sha512" , "sha512_224" , "sha512_256" , "shake128" , "shake256" , "sm3" .
+_:c14n21 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha3_256> .
+_:c14n22 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/traced_processes> .
+_:c14n25 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/md5> .
+_:c14n27 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/git_blob> .
+_:c14n28 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/resource_uri> .
+_:c14n29 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n3 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n30 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n31 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n32 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha3_224> .
+_:c14n34 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/download_location> .
+_:c14n35 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha512> .
+_:c14n36 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/InTotoDigestSet> .
+_:c14n37 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n38 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha512_256> .
+_:c14n39 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha3_384> .
+_:c14n4 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/resource_name> .
+_:c14n40 skos:example "df02077bf97218a8860a5c534eff1f1381f56984" ;
+	linkml:tag "attestation_commit"^^xsd:anyURI .
+_:c14n41 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha1> .
+_:c14n42 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n43 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n44 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/media_type> .
+_:c14n45 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n46 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/git_tag> .
+_:c14n48 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n49 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n50 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/additional_digests> .
+_:c14n51 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha384> .
+_:c14n52 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/uri> .
+_:c14n53 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/file_access> .
+_:c14n54 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n57 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n58 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/uri> .
+_:c14n6 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n60 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n61 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n63 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n64 sh:namespace "https://w3id.org/lmodel/in-toto/"^^xsd:anyURI ;
+	sh:prefix "in_toto_linkml" .
+_:c14n65 skos:example "v1.2.0" ;
+	linkml:tag "attestation_tag"^^xsd:anyURI .
+_:c14n67 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/git_commit> .
+_:c14n68 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n7 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n70 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/ripemd160> .
+_:c14n73 sh:namespace "https://w3id.org/linkml/"^^xsd:anyURI ;
+	sh:prefix "linkml" .
+_:c14n74 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha3_512> .
+_:c14n77 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha512_224> .
+_:c14n79 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n8 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/dir_hash> .
+_:c14n81 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n83 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/gost> .
+_:c14n84 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n85 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n86 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sha256> .
+_:c14n89 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/sm3> .
+_:c14n9 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/digest> .
+_:c14n90 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/shake256> .
+_:c14n92 a linkml:AnonymousSlotExpression ;
+	linkml:equals_string_in "blake2b" , "blake2s" , "dirHash" , "dir_hash" , "gitBlob" , "gitCommit" , "gitTag" , "gitTree" , "git_blob" , "git_commit" , "git_tag" , "git_tree" , "gost" , "md5" , "ripemd160" , "sha1" , "sha224" , "sha256" , "sha384" , "sha3_224" , "sha3_256" , "sha3_384" , "sha3_512" , "sha512" , "sha512_224" , "sha512_256" , "shake128" , "shake256" , "sm3" .
+_:c14n94 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/git_tree> .
+_:c14n95 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n96 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n97 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/content> .
+_:c14n98 a linkml:AnonymousSlotExpression ;
+	linkml:range <https://w3id.org/lmodel/in-toto/string> .
+_:c14n99 a linkml:AnonymousClassExpression ;
+	linkml:slot_conditions <https://w3id.org/lmodel/in-toto/traced_network> .
+
