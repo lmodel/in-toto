@@ -10,21 +10,21 @@ about:
 sources:
   - id: readme.md
     resource: README.md
-    title: What it models, Influences, Mappings and Not modelled here
+    title: What it models, Mappings and Not modelled here
   - id: about.md
     resource: docs/about.md
     title: Modules and Left out
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T21:20:44Z"
+  at: "2026-11-09T13:45:23Z"
 status: draft
 ---
 
 # Scope, influences and mappings
 
-The README says that the schema renders the in-toto Attestation Framework at release v1.2.0: the statement, the resource descriptor and the digest set, the predicate types, and eight vetted predicates.[^readme.md] Its one influence is lmodel/slsa. It follows slsa's module layout, release asset and governance files, and keeps slsa's names for the statement layer, so that slsa can import the core module alone.[^about.md]
+The README says that the schema renders the in-toto Attestation Framework at release v1.2.0: the statement, the resource descriptor and the digest set, the predicate types, and eight vetted predicates.[^readme.md] Its one influence is lmodel/slsa: `in_toto_core` imports only the LinkML types so that slsa can import it alone, and slsa models its own predicates on the same base and field types.[^about.md]
 
-It maps each predicate to the type URI its statements carry, in `exact_mappings`, and gives `media_type` and `algorithm` the IRIs LOKF gives the same keys. It borrows from no other vocabulary.
+It maps each predicate to the type URI its statements carry, in `exact_mappings`, and gives `media_type` and `algorithm` the IRIs LOKF gives the same keys. The framework itself states no mappings, so these and its mappings to SPDX 3.0.1, DCAT and EARL 1.0 are this project's own.[^readme.md]
 
 It leaves out:
 

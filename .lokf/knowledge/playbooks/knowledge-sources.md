@@ -101,7 +101,7 @@ exclusions:
     reason: The sidecar's git settings.
 generated:
   by: process:ktl-librarian
-  at: "2026-11-06T21:21:07Z"
+  at: "2026-11-09T13:45:23Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -121,7 +121,7 @@ Each concept names the file or folder it derives from by its path from the repos
 | `src/in_toto_linkml/schema/attestation/`, the in-toto section of `NOTICE` | `datasets/attestation-copy`, `references/attestation-framework`, `references/vetted-predicates`, the thirteen `predicate-types/` | re-read the copied pages and the vetted list; the upstream watch compares the blobs weekly |
 | `scripts/check_upstream_release.py`, `.github/scripts/` | `playbooks/update-upstream-pins`, `workflows/upstream-watch` | re-read the pins, the docstring, the left-out pattern and the issue title |
 | `README.md` (What it models, Influences, Mappings, Not modelled here), `docs/about.md`, `.linkmllint.yaml`, `CHANGELOG.md` | `explanations/scope-and-influences`, `explanations/element-names` | re-read each section and the lint comment |
-| `justfile`, `.linkml/generators.yaml`, `project/`, `src/in_toto_linkml/datamodel/`, `docs/schema/`, `docs/elements/`, `.pre-commit-config.yaml` | `datasets/generated-artefacts` | re-read the `gen-project`, `gen-doc` and `test` recipes and the `excludes`; re-list `project/*/` |
+| `justfile`, `project.justfile`, `.linkml/generators.yaml`, `project/`, `src/in_toto_linkml/datamodel/`, `docs/schema/`, `docs/elements/`, `.pre-commit-config.yaml` | `datasets/generated-artefacts` | re-read the `gen-project`, `gen-doc`, `gen-rdf`, `gen-merged-schema` and `test` recipes and the `excludes`; re-list `project/*/` |
 | `tests/` | `datasets/test-data` | re-count `valid/`, `invalid/` and `problem/valid/`; re-read the tests and the neighbours' checksums |
 | the Validating data section of `docs/index.md` | `playbooks/validate-data` | re-read the section |
 | `CONTRIBUTING.md`, the `lint`, `gen-project`, `gen-doc` and `test` recipes | `playbooks/regenerate-and-test` | confirm the setup, the checklist and the recipes |

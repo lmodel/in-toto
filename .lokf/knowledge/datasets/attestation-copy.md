@@ -20,7 +20,7 @@ sources:
     title: the copy, field, vetted-list and page-example tests
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T21:22:17Z"
+  at: "2026-11-09T13:45:23Z"
 status: draft
 ---
 
@@ -38,7 +38,7 @@ Runtime Trace publishes no definition. `scripts/check_upstream_release.py` pins 
 
 The script leaves out, on purpose, the envelope and bundle pages, the SLSA Provenance and Verification Summary definitions, the superseded VULNS v0.1 page and older predicate versions, and the authors' template. NOTICE says that the files are the in-toto project's under the Apache License 2.0, and that the tests read them and nothing changes them.[^notice]
 
-`tests/test_upstream.py` checks that the copy holds exactly the pinned files with their hashes. It reads each copied protocol buffer message and checks that every field maps to a slot of the class that renders it, with the Simple Verification Result's optional `policy` left out on purpose. It also checks that `InTotoVettedPredicate` holds the predicates page's list, and that each predicate's type URI is the one its page's examples carry. It checks that each vetted value means a type URI its page gives, and that the ten examples taken from the pages hold the pages' values.[^test_upstream.py]
+`tests/test_upstream.py` checks that the copy holds exactly the pinned files with their hashes. It reads each copied protocol buffer message and checks that every field maps to a slot of the class that renders it, with the Simple Verification Result's optional `policy` left out on purpose. It also checks that `InTotoVettedPredicate` holds the predicates page's list, and that each predicate's type URI is the one its page's examples carry. It checks that each vetted value means a type URI its page gives, that the ten examples taken from the pages hold the pages' values, that a class or field the framework names differently carries that name as an alias, and that the statement maps to the one type URI its `statement_type` pattern allows.[^test_upstream.py]
 
 [^check_upstream_release.py]: scripts/check_upstream_release.py, the pins and LEFT_OUT
 [^notice]: NOTICE, The in-toto Attestation Framework

@@ -19,7 +19,7 @@ sources:
     title: the comment and the one changed rule
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T21:22:17Z"
+  at: "2026-11-09T13:45:23Z"
 status: draft
 ---
 
@@ -29,7 +29,7 @@ Every class carries the `InToto` prefix and lives under `in_toto_linkml:`, `http
 
 Three keys are also LOKF's, so the adapt copy treats them apart. `media_type` carries DCAT's `mediaType`, and `algorithm` carries SPDX 2's `algorithm`: the IRIs LOKF gives the same keys. The statement's `predicate` keeps in-toto's name and its own IRI. It is a slot of its own, so `lokf adapt` renames it `in_toto_linkml_predicate` in the copy, because LOKF's `predicate` is the type of a relation. The predicates' keys carry their predicate's prefix, such as `scai_attribute`, or a noun of their own, such as `test_run_url`, so two predicates never give one key two meanings.
 
-The README says that a host imports the copy beside `lokf.yaml` and other copies, which LinkML merges into one namespace. The copy shares `subject` and `value` with the oscal and spdx copies, as slsa v0.7.0 does. It also shares the in-toto layer with slsa v0.7.0, which defines that layer until its next release imports it from here.[^readme.md]
+The copy shares `subject` and `value` with the oscal and spdx copies, and the in-toto layer with slsa v0.7.0, which defines that layer in its own namespace, so a host imports one of the two.[^readme.md]
 
 `.linkmllint.yaml` changes one rule: enum values are upper case, as the framework's `PASSED`, `WARNED` and `FAILED` are.[^linkmllint.yaml]
 

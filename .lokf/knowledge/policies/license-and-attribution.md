@@ -22,7 +22,7 @@ sources:
     title: the part adapted from the LOKF toolkit's site
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-11-09T13:45:23Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -38,7 +38,7 @@ The schema and the code are under the Apache License, Version 2.0.[^license] NOT
 - The justfile, configuration and documentation scaffolding derive from linkml-project-copier, under the MIT License, whose text NOTICE carries.
 - The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0. `website/NOTICE` lists the part adapted from the LOKF toolkit's site.
 
-The README says that the knowledge bundle in `.lokf/knowledge/` is under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), as its `index.md` declares. It adds that this is not an official in-toto project.[^readme.md]
+The README says that the knowledge bundle in `.lokf/knowledge/` is under CC BY 4.0. It adds that this is not an official in-toto project.[^readme.md]
 
 [^license]: LICENSE, the Apache License 2.0
 [^notice]: NOTICE, every section

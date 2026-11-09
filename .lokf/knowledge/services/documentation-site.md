@@ -18,6 +18,9 @@ generated:
   by: process:ktl-librarian
   at: "2026-10-30T16:14:35Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-11-09T13:45:23Z"
 ---
 
 # Documentation site

@@ -1,5 +1,17 @@
 # Change Log
 
+## 2026-11-09
+
+* **Changed**: the ktl-librarian skill pin moved to `v0.60.0`; `.github/workflows/knowledge-librarian.yaml` has named that tag since commit 3c75d892 (2026-11-02).
+* **Changed**: `project/` now also holds `rdf/` and `linkml/`, from `project.justfile`'s new `gen-rdf` and `gen-merged-schema` recipes, added in commit f5f0902 (2026-11-07).
+* **Changed**: the generated-artefacts row of the source map now names `project.justfile`'s `gen-rdf` and `gen-merged-schema` recipes too.
+* **Open question**: Regenerate and test after a schema change: `project.justfile` added the `gen-rdf` and `gen-merged-schema` recipes, under a group of its own marked extended, which write `project/rdf/` and `project/linkml/`. `CONTRIBUTING.md`'s regenerate checklist and `main.yaml`'s CI step still name only `gen-project`, `gen-doc` and `lokf-adapt`, so whether the two belong in this playbook's steps or stay a separate, unchecked step is not settled by the repository alone.
+* **Changed**: `tests/test_upstream.py` gained tests for the framework's aliased names and the statement's type URI, added in commit 32aa854 (2026-11-01).
+* **Changed**: `tests/test_data.py` gained a Pydantic-import test, and `tests/test_schema_rules.py` gained tests for digest aliases, EARL outcomes and SPDX 3.0.1 terms, added in commits 12fb337, 32aa854 and 17e6c9d (2026-11-01).
+* **Changed**: the copy shares `subject` and `value` with oscal and spdx, not slsa, which shares the in-toto layer instead; `README.md`'s Knowledge Trust Ladder section has said so since commit b4123c5 (2026-11-01).
+* **Changed**: `README.md` dropped its Influences section and now says the framework states no mappings, so the SPDX 3.0.1, DCAT and EARL 1.0 ones are this project's own, since commit b4123c5 (2026-11-01).
+* **Changed**: `README.md`'s License section now names CC BY 4.0 without spelling it out or citing `index.md`, since commit b4123c5 (2026-11-01).
+
 ## 2026-11-06
 
 * **Changed**: `lokf.yaml` and `in-toto.yaml` moved into `.lokf/schema/`, where KTL v0.62.0 keeps a sidecar's schema files, and the concepts that name them follow.

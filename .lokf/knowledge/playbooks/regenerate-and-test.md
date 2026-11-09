@@ -37,3 +37,7 @@ CI runs the same: `main.yaml` runs `just lint`, `just test` and `just lokf-adapt
 [^contributing.md]: CONTRIBUTING.md, Development setup and Before opening a pull request
 [^justfile]: justfile, the lint recipe
 [^project.justfile]: project.justfile, lokf-adapt and lokf-adapt-check
+
+## Open questions
+
+- 2026-11-09, process:ktl-librarian: `project.justfile` added the `gen-rdf` and `gen-merged-schema` recipes, under a group of its own marked extended, which write `project/rdf/` and `project/linkml/`. `CONTRIBUTING.md`'s regenerate checklist and `main.yaml`'s CI step still name only `gen-project`, `gen-doc` and `lokf-adapt`, so whether the two belong in this playbook's steps or stay a separate, unchecked step is not settled by the repository alone.

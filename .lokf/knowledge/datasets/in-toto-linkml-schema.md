@@ -32,6 +32,9 @@ generated:
   by: process:ktl-librarian
   at: "2026-11-06T21:21:07Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-11-09T13:45:23Z"
 ---
 
 # in-toto LinkML schema
