@@ -2,6 +2,7 @@
 
 ## 2026-11-15
 
+* **Changed**: sources and text follow the move of `.github/release` to `.release`.
 * **Changed**: The concepts that state the project's Python floor or its test matrix say 3.11, since the project no longer supports Python 3.10.
 * **Changed**: The generated artefacts no longer say the website builds `docs/elements/`, since the Hugo site writes its own schema pages.
 * **Changed**: The knowledge website workflow, the documentation site and the security policy describe the Hugo build that replaced the Astro one.
