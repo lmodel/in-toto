@@ -3,26 +3,26 @@ type: Service
 id: https://w3id.org/lmodel/in-toto/knowledge/services/documentation-site
 genre: reference
 title: Documentation site
-description: "The Astro Starlight site in `website/`, for <https://lmodel.github.io/in-toto>: the README as its home page, the pages of `docs/`, the schema's element pages, a page per concept of this bundle with its trust label, and the bundle's exports, built and published by Knowledge website."
+description: "The Hugo site in `website/`, for <https://lmodel.github.io/in-toto>: the README as its home page, the pages of `docs/`, the schema's element pages, a page per concept of this bundle with its trust label, and the bundle's exports, built and published by Knowledge website."
 resource: website
 endpoint: https://lmodel.github.io/in-toto
 documentation: website/README.md
 sources:
-  - id: site.config.mjs
-    resource: website/site.config.mjs
-    title: the values and options
+  - id: site.toml
+    resource: website/site.toml
+    title: the site's address, title and redirects
   - id: website-readme.md
     resource: website/README.md
     title: what each page is built from
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-11-15T02:39:07Z"
 status: draft
 ---
 
 # Documentation site
 
-`website/` holds an Astro Starlight site. `website/site.config.mjs` names the repository `lmodel/in-toto`, the site `https://lmodel.github.io` with the base path `/in-toto`, and the title `in-toto`.[^site.config.mjs] It shows the pages of `docs/` except `docs/templates-linkml/`. It redirects the addresses a w3id rule may name for a schema term or the docs:
+`website/` holds a Hugo site. `website/site.toml` names the repository `lmodel/in-toto`, the site `https://lmodel.github.io` with the base path `/in-toto`, and the title `in-toto`.[^site.toml] It shows the pages of `docs/` except `docs/templates-linkml/`. It redirects the addresses a w3id rule may name for a schema term or the docs:
 
 - `/elements` to `/schema/`;
 - any page under `/elements` to the page of the same name under `/schema/`;
@@ -32,5 +32,5 @@ The other options take the site's defaults: the Knowledge Trust Ladder logo, the
 
 `website/README.md` says what each page is built from, and that `npm run build` syncs the bundle, the README, the docs and the schema's pages before it builds and checks every link.[^website-readme.md] [Knowledge website](../workflows/knowledge-website.md) builds the site on each change to its sources and publishes it once `KNOWLEDGE_WEBSITE_ENABLED` is `true`.
 
-[^site.config.mjs]: website/site.config.mjs, REPO, SITE, BASE, TITLE, DOCS and REDIRECTS
+[^site.toml]: website/site.toml, the site's address, title and redirects
 [^website-readme.md]: website/README.md, the build and its sources
