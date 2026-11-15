@@ -2,6 +2,7 @@
 
 ## 2026-11-15
 
+* **Changed**: The generated artefacts no longer say the website builds `docs/elements/`, since the Hugo site writes its own schema pages.
 * **Changed**: The knowledge website workflow, the documentation site and the security policy describe the Hugo build that replaced the Astro one.
 * **Changed**: The concepts that cite the knowledge website describe the Hugo site that replaced the Astro one, set by `website/site.toml`.
 
