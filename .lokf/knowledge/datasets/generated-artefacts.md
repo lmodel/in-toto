@@ -26,7 +26,7 @@ sources:
     title: the exclude pattern
 generated:
   by: process:ktl-librarian
-  at: "2026-11-06T21:21:07Z"
+  at: "2026-11-15T03:08:56Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -39,7 +39,7 @@ Every file here is generated from the schema's modules under `src/in_toto_linkml
 
 `just gen-project` runs `gen-project` with `.linkml/generators.yaml` into `project/`, moves the Python dataclasses into `src/in_toto_linkml/datamodel/`, and writes the Pydantic models beside them. It then runs `gen-java`, `gen-typescript` and `gen-owl` separately, because some generators ignore the configuration or cannot create their folders, as its comment says.[^justfile] `.linkml/generators.yaml` leaves out the Markdown generator and merges imports for the others.[^generators.yaml] `project/` holds a folder each for Excel, GraphQL, Java, JSON-LD, JSON Schema, OWL, the prefix map, protobuf, SHACL, ShEx, SQL and TypeScript.[^project] The Java folder holds one class per schema class, 32 in all.
 
-`just gen-doc` writes `docs/schema/in_toto_linkml.yaml` and the element pages under `docs/elements/`, which git ignores and the website builds. `just lokf-adapt` writes `.lokf/schema/in-toto.yaml`.
+`just gen-doc` writes `docs/schema/in_toto_linkml.yaml` and the element pages under `docs/elements/`, which git ignores. `just lokf-adapt` writes `.lokf/schema/in-toto.yaml`.
 
 The pre-commit hooks leave alone these folders, the specification copy, the neighbours' copies and the sidecar's scripts, because no hook may rewrite a file the repository does not write by hand.[^pre-commit-config.yaml]
 

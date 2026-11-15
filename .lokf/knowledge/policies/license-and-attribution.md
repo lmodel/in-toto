@@ -18,11 +18,9 @@ sources:
   - id: readme.md
     resource: README.md
     title: the License section
-  - resource: website/NOTICE
-    title: the part adapted from the LOKF toolkit's site
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-11-15T02:39:07Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -36,7 +34,7 @@ The schema and the code are under the Apache License, Version 2.0.[^license] NOT
 - The schema, the generated models and `project/` render the in-toto Attestation Framework in the project's own words, with the framework's specification as the source of the definitions. NOTICE says that they are not the in-toto project's, and that their use implies no endorsement by it.
 - The specification pages and protocol buffer definitions in `src/in_toto_linkml/schema/attestation/` are the in-toto project's, copied from release v1.2.0 with the project's `LICENSE` beside them. That file holds the Apache License 2.0 notice of the in-toto Developers, from 2021.[^attestation-license] NOTICE adds that GitHub's licence detection does not recognise the file, which was read on 2026-10-30.
 - The justfile, configuration and documentation scaffolding derive from linkml-project-copier, under the MIT License, whose text NOTICE carries.
-- The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0. `website/NOTICE` lists the part adapted from the LOKF toolkit's site.
+- The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0.
 
 The README says that the knowledge bundle in `.lokf/knowledge/` is under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), as its `index.md` declares. It adds that this is not an official in-toto project.[^readme.md]
 
