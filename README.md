@@ -40,14 +40,14 @@ The framework states no mappings, so the SPDX, DCAT and EARL ones are this proje
 
 ## Repository Structure
 
-* [docs/](docs/): the website's pages, with the generated schema pages in [elements/](docs/elements/)
+* [docs/](docs/): the website's pages, with the generated schema pages in `docs/elements/`
 * [examples/](examples/): usage examples
 * [project/](project/): generated project files (do not edit them)
 * [scripts/](scripts/): the upstream watch
 * [src/in_toto_linkml/schema/](src/in_toto_linkml/schema): the LinkML schema, `in_toto_core.yaml`, `in_toto_predicates.yaml` and the umbrella `in_toto_linkml.yaml` (edit these), and the specification copy
 * [src/in_toto_linkml/datamodel/](src/in_toto_linkml/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests, with example data in [data/](tests/data) and the neighbours' adapt copies in [neighbours/](tests/neighbours)
-* [website/](website/): the Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle
+* [website/](website/): the Hugo site built from the README, `docs/`, the schema's pages and the knowledge bundle
 
 ## Developer Tools
 

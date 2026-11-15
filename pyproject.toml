@@ -67,7 +67,7 @@ skip = [
   "src/in_toto_linkml/schema/attestation/*",
   "tests/neighbours/*",
   ".lokf/scripts/*",
-  "website/package-lock.json",
+  "website/uv.lock",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -93,5 +93,5 @@ extend-exclude = [
   "src/in_toto_linkml/schema/attestation/*",
   "tests/neighbours/*",
   ".lokf/scripts/*",
-  "website/package-lock.json",
+  "website/uv.lock",
 ]
