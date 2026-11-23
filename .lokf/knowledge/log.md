@@ -1,5 +1,14 @@
 # Change Log
 
+## 2026-11-23
+
+* **Added**: `workflows/codeql.md`, for `.github/workflows/codeql.yml`, which had no concept.
+* **Added**: `workflows/scorecard.md`, for `.github/workflows/scorecard.yml`, which had no concept.
+* **Changed**: `policies/security-policy.md` now cites, as a typed relation, every workflow its table of surfaces names, including `codeql.yml` and `scorecard.yml`.
+* **Changed**: `policies/ai-covenant.md` now cites `workflows/knowledge-librarian.md` as a typed relation, the workflow its Repository-Owned Agent Automation section names.
+* **Changed**: step 4 now says the GitHub release's body is the promoted changelog section, the fix `changelog-release.mjs` carries since commit 3adc887 (the CHANGELOG's 0.4.3 entry).
+* **Changed**: the scrape map now counts eleven files under `.github/workflows/`, since `codeql.yml` and `scorecard.yml` each gained a concept this run.
+
 ## 2026-11-15
 
 * **Changed**: sources and text follow the move of `.github/release` to `.release`.

@@ -13,6 +13,9 @@ generated:
   by: process:ktl-librarian
   at: "2026-11-15T10:35:57Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-11-23T15:41:41Z"
 ---
 
 # Build and test (main.yaml)

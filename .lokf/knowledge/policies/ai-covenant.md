@@ -11,8 +11,11 @@ sources:
     title: the project note and the section on agent automation
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T16:14:35Z"
+  at: "2026-11-23T15:41:41Z"
+  revision: "0aff93bd0816dab63bb12062b47c07569ba18b03"
 status: draft
+references:
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/knowledge-librarian
 ---
 
 # AI covenant

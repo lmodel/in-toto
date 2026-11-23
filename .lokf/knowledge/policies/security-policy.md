@@ -14,8 +14,20 @@ sources:
     title: the five update entries
 generated:
   by: process:ktl-librarian
-  at: "2026-11-15T03:05:06Z"
+  at: "2026-11-23T15:41:41Z"
+  revision: "574c8bf47b6c820855dee5d9c57339a8c82184cf"
 status: draft
+references:
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/main
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/lint-and-docs
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/knowledge-registrar
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/semantic-release
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/knowledge-website
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/scorecard
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/codeql
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/upstream-watch
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/knowledge-librarian
+  - https://w3id.org/lmodel/in-toto/knowledge/workflows/knowledge-release
 ---
 
 # Security policy

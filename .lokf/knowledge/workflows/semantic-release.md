@@ -16,6 +16,9 @@ generated:
   by: process:ktl-librarian
   at: "2026-11-15T20:57:46Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-11-23T15:41:41Z"
 ---
 
 # Semantic release (semantic-release.yml)
